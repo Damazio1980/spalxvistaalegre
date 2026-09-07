@@ -6,6 +6,7 @@ import {
   FOOTER,
   FRAMES,
   OVERVIEW,
+  PLATE_RADIUS,
   TOTAL_CHAPTERS,
   scoreAt,
   type ActId,
@@ -472,7 +473,7 @@ function Plate() {
 function MiniPlate({ index }: { index: number }) {
   const f = FRAMES[index]!;
   const S = 46;
-  const scale = S / 9000;
+  const scale = S / 19000;
   return (
     <div className="relative h-[46px] w-[46px] shrink-0 rounded-full border border-navy/15 bg-porcelain">
       {FRAMES.map((fr, i) => (
