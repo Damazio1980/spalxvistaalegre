@@ -562,26 +562,28 @@ export function MarcaX({ active }: ChapterProps) {
   ];
 
   return (
-    <div className="grid h-full grid-cols-[1fr_1fr] gap-8 p-12 text-porcelain">
-      <div className="space-y-4">
+    <div className="grid h-full grid-cols-[1fr_1fr] gap-8 p-10 text-porcelain">
+      <div className="flex min-h-0 flex-col gap-3">
         <Reveal i={0}>
           <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-porcelain/50">
             F · dados didáticos · marca fictícia X
           </p>
-          <h3 className="deck-h2 mt-1">O Instagram atrai melhor. O Facebook converte o dobro.</h3>
+          <h3 className="mt-1 text-[30px] font-semibold leading-[1.1]">
+            O Instagram atrai melhor. O Facebook converte o dobro.
+          </h3>
         </Reveal>
         {campanhas.map((c, i) => (
-          <Reveal key={c.nome} i={i + 1} className="rounded-2xl bg-white p-5 text-navy">
+          <Reveal key={c.nome} i={i + 1} className="rounded-2xl bg-white p-4 text-navy">
             <p className="text-xs font-bold uppercase tracking-widest" style={{ color: c.cor }}>
               {c.nome}
             </p>
-            <div className="mt-3 grid grid-cols-3 gap-3">
+            <div className="mt-2 grid grid-cols-3 gap-2">
               {c.dados.map((d) => (
                 <div key={d.label}>
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-navy/50">
+                  <p className="text-[9.5px] font-semibold uppercase tracking-wider text-navy/50">
                     {d.label}
                   </p>
-                  <p className="deck-num text-lg">
+                  <p className="deck-num text-base">
                     <Num value={d.value} active={active} suffix={d.suffix ?? ""} />
                   </p>
                 </div>
@@ -589,26 +591,28 @@ export function MarcaX({ active }: ChapterProps) {
             </div>
           </Reveal>
         ))}
-        <Reveal i={3}>
+        <Reveal i={3} className="min-h-0">
           <ChartPanel
             title="Funil: impressões → cliques → sessões → encomendas"
             dark
+            className="h-[150px]"
             note="o Instagram traz mais tráfego; o Facebook fecha mais encomendas"
           >
             <Funil active={active} />
           </ChartPanel>
         </Reveal>
-        <Reveal i={4}>
+        <Reveal i={4} className="min-h-0">
           <ChartPanel
             title="ROAS não é lucro · os 640 € por dentro"
             dark
-            className="h-[120px]"
+            className="h-[104px]"
             note="margem de 40 % é um exemplo didático"
           >
             <MargemStack active={active} />
           </ChartPanel>
         </Reveal>
       </div>
+
 
       <div className="space-y-3">
         <div className="grid grid-cols-3 gap-2">
