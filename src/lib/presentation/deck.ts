@@ -321,8 +321,8 @@ const seeds: Seed[] = [
   {
     id: "marcax",
     act: 3,
-    title: "E se fosse a sério? Os números",
-    tag: "F · marca X",
+    title: "O Instagram atrai melhor. O Facebook converte o dobro.",
+    tag: "F · dados didáticos · marca X",
     punchline: "O Instagram atrai. O Facebook vende.",
     navy: true,
     rot: -2,
@@ -330,8 +330,8 @@ const seeds: Seed[] = [
   {
     id: "indicadores",
     act: 3,
-    title: "Como saberemos que resultou",
-    tag: "F · indicadores",
+    title: "Três indicadores. Uma decisão para cada resultado.",
+    tag: "F · acompanhar as melhorias",
     punchline: "Se não for medido, foi só uma opinião bonita.",
     rot: 1,
   },
