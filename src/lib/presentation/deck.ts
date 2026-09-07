@@ -327,7 +327,7 @@ export const FRAMES: FrameDef[] = layout();
 
 export const TOTAL_CHAPTERS = FRAMES[FRAMES.length - 1]!.n;
 
-export const PLATE_RADIUS = 9200;
+export const PLATE_RADIUS = 7800;
 
 export const ACTS: Record<ActId, { label: string; title: string; line: string }> = {
   1: { label: "Ato 1", title: "O que descobrimos", line: "Os dados, as evidências, o placar." },
