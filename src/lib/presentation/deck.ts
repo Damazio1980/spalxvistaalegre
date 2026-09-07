@@ -161,11 +161,21 @@ const seeds: Seed[] = [
     id: "redes",
     act: 1,
     title: "Nas redes",
-    tag: "C · redes",
+    tag: "C · Instagram + Facebook",
     punchline: "Uma fala como fabricante. A outra, como marca de estilo de vida.",
     rot: 2,
     score: [0, 1],
   },
+  {
+    id: "redes-posts",
+    act: 1,
+    parent: "redes",
+    sub: true,
+    title: "Doze publicações, lado a lado",
+    tag: "C · Instagram + Facebook",
+    rot: -2,
+  },
+
   {
     id: "placar1",
     act: 1,

@@ -728,118 +728,271 @@ export function Radar6({ active }: ChapterProps) {
   );
 }
 
-export function Redes({ active }: ChapterProps) {
-  const posts = Array.from({ length: 12 }, (_, i) => ({
-    brand: i < 6 ? "SPAL" : "Vista Alegre",
-    n: (i % 6) + 1,
-  }));
-  const volume = [
-    { semana: "05-11/08", SPAL: 2, "Vista Alegre": 9 },
-    { semana: "12-18/08", SPAL: 1, "Vista Alegre": 11 },
-    { semana: "19-25/08", SPAL: 3, "Vista Alegre": 8 },
-    { semana: "26-04/09", SPAL: 2, "Vista Alegre": 12 },
-  ];
-  const linhas = [
-    ["Tom", "fabricante, técnico", "estilo de vida, aspiracional"],
-    ["Imagem", "produto sobre fundo neutro", "mesa posta, casa, pessoas"],
-    ["Variedade", "quase só catálogo", "coleções, arte, lojas, parcerias"],
-    ["Adaptação", "a mesma imagem nos dois canais", "formato pensado por canal"],
-    ["Respostas", "comentários sem resposta", "responde e reencaminha para a loja"],
-  ];
+type Perfil = {
+  marca: "SPAL" | "Vista Alegre";
+  rede: "Instagram" | "Facebook";
+  handle: string;
+  nums: { value: number; label: string }[];
+  bio: string;
+  bioNota?: string;
+  extra?: string;
+};
+
+const PERFIS: Perfil[] = [
+  {
+    marca: "SPAL",
+    rede: "Instagram",
+    handle: "@spalporcelanasofficial",
+    nums: [
+      { value: 5961, label: "seguidores" },
+      { value: 863, label: "a seguir" },
+      { value: 305, label: "publicações" },
+    ],
+    bio: "Finest porcelain dinnerware both for domestic and hotelware purposes. What's your view on SPAL? Tag your photos @spalporcelanasofficial",
+    bioNota: "bio em inglês",
+  },
+  {
+    marca: "SPAL",
+    rede: "Facebook",
+    handle: "/SPALPorcelanas",
+    nums: [{ value: 15700, label: "gostos" }],
+    bio: "Desde 1965, desenhamos, produzimos e comercializamos porcelana para fins domésticos e profissionais.",
+    bioNota: "bio em português",
+    extra: "Ligação para El Corte Inglés",
+  },
+  {
+    marca: "Vista Alegre",
+    rede: "Instagram",
+    handle: "@vistaalegreofficial",
+    nums: [
+      { value: 360000, label: "seguidores" },
+      { value: 1297, label: "a seguir" },
+      { value: 3717, label: "publicações" },
+    ],
+    bio: "The Official Instagram for Vista Alegre. Inspiration, ideas and design for your home. Tag your photos with #VistaAlegre!",
+    bioNota: "bio em inglês",
+  },
+  {
+    marca: "Vista Alegre",
+    rede: "Facebook",
+    handle: "/vistaalegreofficial",
+    nums: [],
+    bio: "[dados a inserir]",
+  },
+];
+
+const COMPARACAO: { dim: string; spal: string; vaa: string }[] = [
+  {
+    dim: "Tom",
+    spal: "Institucional, bio em inglês no Instagram e em português no Facebook.",
+    vaa: "Editorial: cada lançamento tem uma história (arquiteto, designer, património).",
+  },
+  { dim: "Imagem", spal: "[a completar com a amostra]", vaa: "[a completar com a amostra]" },
+  { dim: "Variedade", spal: "[a completar com a amostra]", vaa: "[a completar com a amostra]" },
+  {
+    dim: "Adaptação à rede",
+    spal: "Facebook para Portugal, Instagram para o público internacional.",
+    vaa: "Instagram global, páginas de Facebook por região.",
+  },
+  {
+    dim: "Respostas a dúvidas",
+    spal: "[a completar com a amostra]",
+    vaa: "[a completar com a amostra]",
+  },
+];
+
+function PerfilCard({ p, i, active }: { p: Perfil; i: number; active: boolean }) {
+  const spal = p.marca === "SPAL";
+  const Icon = p.rede === "Instagram" ? Instagram : Facebook;
   return (
-    <div className="grid h-full grid-cols-[0.9fr_1.1fr] gap-8 p-12">
-      <div className="space-y-3">
-        <Reveal i={0}>
-          <p className="text-sm font-semibold text-navy/70">
-            12 publicações observadas · 05/08–04/09/2026
+    <Reveal
+      i={i}
+      className={`deck-card flex flex-col bg-white p-3 ${spal ? "border border-spal/20" : "border border-vaa/35"}`}
+    >
+      <div className="flex items-center gap-2">
+        <span
+          className={`grid h-7 w-7 place-items-center rounded-full ${spal ? "bg-spal/10 text-spal" : "bg-vaa/15 text-[oklch(0.5_0.075_78)]"}`}
+        >
+          <Icon size={14} />
+        </span>
+        <div className="min-w-0">
+          <p
+            className={`text-[10px] font-bold uppercase tracking-widest ${spal ? "text-spal" : "text-[oklch(0.5_0.075_78)]"}`}
+          >
+            {p.marca} · {p.rede}
           </p>
-        </Reveal>
-        <div className="grid grid-cols-4 gap-2">
-          {posts.map((p, i) => (
+          <p className="truncate text-[11px] text-navy/55">{p.handle}</p>
+        </div>
+      </div>
+      {p.nums.length > 0 && (
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {p.nums.map((m) => (
+            <span
+              key={m.label}
+              className="flex items-baseline gap-1.5 rounded-lg bg-porcelain px-2 py-1"
+            >
+              <Num value={m.value} active={active} className="text-[14px]" />
+              <span className="text-[9px] font-semibold uppercase tracking-wider text-navy/45">
+                {m.label}
+              </span>
+            </span>
+          ))}
+        </div>
+      )}
+      <p className="mt-2 flex-1 text-[11.5px] leading-snug text-navy/70">"{p.bio}"</p>
+      <div className="mt-2 flex flex-wrap gap-1.5">
+        {p.bioNota && <Chip>{p.bioNota}</Chip>}
+        {p.extra && <Chip>{p.extra}</Chip>}
+      </div>
+    </Reveal>
+  );
+}
+
+export function Redes({ active }: ChapterProps) {
+  return (
+    <div className="flex h-full flex-col gap-3 p-8">
+      <Reveal i={0}>
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+          C · Instagram + Facebook
+        </p>
+        <h3 className="mt-1 font-[var(--font-display)] text-[26px] font-extrabold leading-tight text-navy">
+          Uma marca fala como fabricante. A outra, como marca de estilo de vida.
+        </h3>
+      </Reveal>
+      <div className="grid min-h-0 flex-1 grid-cols-[1fr_1fr] gap-4">
+        <div className="grid grid-cols-2 gap-3">
+          {PERFIS.map((p, i) => (
+            <PerfilCard key={p.marca + p.rede} p={p} i={i + 1} active={active} />
+          ))}
+        </div>
+        <div className="flex flex-col gap-1.5">
+          {COMPARACAO.map((l, i) => (
+            <Reveal
+              key={l.dim}
+              i={i + 2}
+              className="grid grid-cols-[92px_1fr_1fr] items-start gap-2 rounded-xl bg-white px-3 py-2"
+            >
+              <span className="text-[10px] font-bold uppercase tracking-wider text-navy/50">
+                {l.dim}
+              </span>
+              <span className="text-[11.5px] leading-snug text-spal">{l.spal}</span>
+              <span className="text-[11.5px] leading-snug text-[oklch(0.5_0.075_78)]">{l.vaa}</span>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+      <Reveal i={8}>
+        <p className="rounded-2xl bg-navy px-5 py-3 text-[14px] font-semibold text-porcelain">
+          A SPAL tem matéria-prima para uma narrativa própria — SPAL Studio, designers, hotelaria —
+          que ainda não explora nas redes.
+        </p>
+      </Reveal>
+    </div>
+  );
+}
+
+type Post = {
+  marca: string;
+  rede: string;
+  data: string;
+  formato: string;
+  tema: string;
+  cta: string;
+  reacoes: string;
+  comentarios: string;
+};
+
+const VAZIO: Post = {
+  marca: "",
+  rede: "",
+  data: "",
+  formato: "",
+  tema: "",
+  cta: "",
+  reacoes: "",
+  comentarios: "",
+};
+
+const POSTS_SEED: Post[] = Array.from({ length: 12 }, (_, i) => {
+  if (i === 0)
+    return {
+      ...VAZIO,
+      marca: "SPAL",
+      rede: "Facebook",
+      data: "24/08/2026",
+      formato: "imagem",
+      tema: "Arte que se serve à mesa…",
+      reacoes: "9",
+    };
+  if (i === 6)
+    return {
+      ...VAZIO,
+      marca: "Vista Alegre",
+      rede: "Instagram",
+      data: "~28/08/2026",
+      tema: "Coleção Niemeyer: 6 pratos colecionáveis com a Fundação Niemeyer",
+    };
+  return { ...VAZIO };
+});
+
+const CAMPOS: { key: keyof Post; label: string }[] = [
+  { key: "marca", label: "Marca" },
+  { key: "rede", label: "Rede" },
+  { key: "data", label: "Data" },
+  { key: "formato", label: "Formato" },
+  { key: "tema", label: "Tema" },
+  { key: "cta", label: "CTA" },
+  { key: "reacoes", label: "Reações" },
+  { key: "comentarios", label: "Comentários" },
+];
+
+export function RedesPosts() {
+  const [posts, setPosts] = useState<Post[]>(POSTS_SEED);
+  const set = (i: number, key: keyof Post, value: string) =>
+    setPosts((prev) => prev.map((p, k) => (k === i ? { ...p, [key]: value } : p)));
+  return (
+    <div className="flex h-full flex-col gap-1.5 p-6">
+      <Reveal i={0}>
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+          C · Instagram + Facebook
+        </p>
+        <h3 className="mt-1 font-[var(--font-display)] text-[20px] font-extrabold leading-tight text-navy">
+          Doze publicações, três por perfil, com os campos à vista.
+        </h3>
+      </Reveal>
+      <div className="grid min-h-0 flex-1 grid-cols-6 grid-rows-2 gap-2">
+        {posts.map((p, i) => (
+          <Reveal
+            key={i}
+            i={1 + (i % 6)}
+            className="flex min-h-0 flex-col gap-1 overflow-hidden rounded-xl border border-navy/10 bg-white p-1.5"
+          >
             <Shot
-              key={i}
               id={`post-${i}`}
               group="posts"
               replace
-              caption={`${p.brand} · publicação ${p.n} · Instagram/Facebook · referência provisória — SUBSTITUIR pelo link real`}
-              className="aspect-[4/5]"
+              caption={`Publicação ${i + 1} · ${p.marca || "marca a inserir"} · ${p.rede || "rede a inserir"} · ${p.data || "data a inserir"}`}
+              className="h-8 shrink-0"
             >
-              <div
-                className="flex h-full flex-col justify-end p-2 text-[9px] font-semibold text-white"
-                style={{
-                  background:
-                    p.brand === "SPAL"
-                      ? "linear-gradient(160deg,#2F5C9E,#1B2A44)"
-                      : "linear-gradient(160deg,#C09C68,#8a6a3c)",
-                }}
-              >
-                {p.brand} #{p.n}
+              <div className="grid h-full place-items-center bg-porcelain text-[7px] font-semibold text-navy/45">
+                captura a inserir
               </div>
             </Shot>
-          ))}
-        </div>
-        <Reveal i={2} className="rounded-2xl border border-navy/10 bg-white p-3">
-          <p className="mb-1 text-xs font-semibold text-navy/60">Publicações por semana</p>
-          <div className="h-[150px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={volume}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
-                <XAxis dataKey="semana" tick={{ fontSize: 10 }} />
-                <YAxis tick={{ fontSize: 10 }} />
-                <Tooltip />
-                <Line
-                  type="monotone"
-                  dataKey="SPAL"
-                  stroke={SPAL}
-                  strokeWidth={3}
-                  isAnimationActive={active}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Vista Alegre"
-                  stroke={VAA}
-                  strokeWidth={3}
-                  isAnimationActive={active}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-        </Reveal>
-      </div>
-      <div className="space-y-3">
-        <Reveal i={1} className="rounded-2xl border border-navy/10 bg-white p-4">
-          <p className="mb-1 text-xs font-semibold text-navy/60">
-            Reações por publicação (média do período)
-          </p>
-          <div className="h-[170px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                data={[
-                  { m: "SPAL", v: 34 },
-                  { m: "Vista Alegre", v: 486 },
-                ]}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
-                <XAxis dataKey="m" tick={{ fontSize: 11 }} />
-                <YAxis tick={{ fontSize: 10 }} />
-                <Tooltip />
-                <Bar dataKey="v" radius={[10, 10, 0, 0]} isAnimationActive={active}>
-                  <Cell fill={SPAL} />
-                  <Cell fill={VAA} />
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </Reveal>
-        {linhas.map(([dim, s, v], i) => (
-          <Reveal
-            key={dim}
-            i={i + 2}
-            className="grid grid-cols-[110px_1fr_1fr] items-center gap-3 rounded-xl bg-white px-4 py-2"
-          >
-            <span className="text-xs font-bold uppercase tracking-wider text-navy/50">{dim}</span>
-            <span className="text-[13px] text-spal">{s}</span>
-            <span className="text-[13px] text-[oklch(0.55_0.075_78)]">{v}</span>
+            <div className="grid min-h-0 grid-cols-2 gap-x-1 gap-y-0.5">
+              {CAMPOS.map((c) => (
+                <label key={c.key} className="block min-w-0">
+                  <span className="block text-[7px] font-bold uppercase tracking-wider text-navy/40">
+                    {c.label}
+                  </span>
+                  <input
+                    value={p[c.key]}
+                    onChange={(e) => set(i, c.key, e.target.value)}
+                    placeholder="—"
+                    className="w-full rounded-md bg-porcelain px-1 py-0 text-[9px] leading-[14px] text-navy outline-none focus:ring-1 focus:ring-spal/40"
+                  />
+                </label>
+              ))}
+            </div>
           </Reveal>
         ))}
       </div>
