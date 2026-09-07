@@ -327,7 +327,7 @@ export const FRAMES: FrameDef[] = layout();
 
 export const TOTAL_CHAPTERS = FRAMES[FRAMES.length - 1]!.n;
 
-export const PLATE_RADIUS = 7800;
+export const PLATE_RADIUS = 8100;
 
 export const ACTS: Record<ActId, { label: string; title: string; line: string }> = {
   1: { label: "Ato 1", title: "O que descobrimos", line: "Os dados, as evidências, o placar." },
@@ -344,12 +344,12 @@ export const ACTS: Record<ActId, { label: string; title: string; line: string }>
 };
 
 export const ACT_VIEW: Record<ActId, { x: number; y: number; zoom: number }> = {
-  1: { x: 60, y: 500, zoom: 0.055 },
-  2: { x: 0, y: 0, zoom: 0.08 },
+  1: { x: 54, y: 500, zoom: 0.06 },
+  2: { x: 0, y: 0, zoom: 0.085 },
   3: { x: 0, y: 0, zoom: 0.2 },
 };
 
-export const OVERVIEW = { x: 60, y: 990, zoom: 0.052 };
+export const OVERVIEW = { x: 54, y: 866, zoom: 0.058 };
 
 export function frameIndex(id: string) {
   return FRAMES.findIndex((f) => f.id === id);
