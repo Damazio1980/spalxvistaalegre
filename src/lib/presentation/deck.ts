@@ -440,7 +440,7 @@ export const ACT_VIEW: Record<ActId, { x: number; y: number; zoom: number }> = {
   3: { x: 0, y: 0, zoom: 0.2 },
 };
 
-export const OVERVIEW = { x: 54, y: 866, zoom: 0.058 };
+export const OVERVIEW = { x: 54, y: 1250, zoom: 0.047 };
 
 export function frameIndex(id: string) {
   return FRAMES.findIndex((f) => f.id === id);
