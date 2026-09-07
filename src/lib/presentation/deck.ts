@@ -108,6 +108,7 @@ const seeds: Seed[] = [
   { id: "duelo-6", act: 1, title: "Ronda 6 · Confiança e contacto", tag: "B · website", parent: "website", rot: 1.5, at: { x: -320, y: 4560 }, size: SUB },
   {
     id: "radar",
+    parent: "website",
     act: 1,
     title: "As seis rondas de uma só vez",
     tag: "B · website",
