@@ -176,41 +176,55 @@ export function Jogada({ n, active }: { n: number; active: boolean }) {
 
 const SEMANA = [
   {
-    dia: "Seg 8/9",
-    titulo: "Feito em Alcobaça",
-    detalhe: "Vídeo curto da fábrica, 20 s, legenda com 'Onde comprar →'.",
-    hora: "10:00",
+    dia: "Seg 08/09",
+    hora: "19h00",
+    canal: "Instagram Reel + Facebook",
+    titulo: "Como nasce um prato — bastidores SPAL Studio",
+    cta: "Descobre as coleções",
+    indicador: "alcance, guardados",
   },
   {
-    dia: "Qua 10/9",
-    titulo: "A mesa da avó",
-    detalhe: "Foto de mesa posta em casa, com a peça de Uso Diário e preço indicativo.",
-    hora: "19:00",
+    dia: "Qua 10/09",
+    hora: "12h30",
+    canal: "Facebook carrossel + IG Stories",
+    titulo:
+      "Onde comprar SPAL — Loja de Fábrica, Outlet, El Corte Inglés Lisboa e Gaia, online",
+    cta: "Ver lojas e horários",
+    indicador: "cliques na ligação",
   },
   {
-    dia: "Sex 12/9",
-    titulo: "Escolhe tu",
-    detalhe: "Duas peças, uma pergunta à audiência. Respostas todas respondidas no mesmo dia.",
-    hora: "18:00",
+    dia: "Sex 12/09",
+    hora: "18h00",
+    canal: "Instagram carrossel",
+    titulo: "Electric Rain, peça a peça — 6 imagens com medidas do site",
+    cta: "Guarda para a próxima mesa",
+    indicador: "guardados, cliques na bio",
   },
   {
-    dia: "Dom 14/9",
-    titulo: "Onde nos encontras",
-    detalhe: "Carrossel com lojas, parceiros e link na bio atualizado.",
-    hora: "11:00",
+    dia: "Dom 14/09",
+    hora: "10h30",
+    canal: "IG Stories caixa de perguntas + Facebook",
+    titulo: "Pergunta à SPAL: vai à máquina? onde compro? fazem personalizados?",
+    cta: "Envia a tua pergunta",
+    indicador: "perguntas, resposta < 24 h",
   },
 ];
 
 export function Semana() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className="flex h-full flex-col justify-center gap-8 p-14">
+    <div className="flex h-full flex-col justify-center gap-6 p-12">
       <Reveal i={0}>
-        <h3 className="deck-h2 text-navy">8 a 14 de setembro</h3>
-        <Chip className="mt-3">horários = hipótese a testar</Chip>
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+          E · simulação · exercício académico
+        </p>
+        <h3 className="deck-h2 mt-1 text-navy">
+          Uma semana de SPAL a falar com o consumidor.
+        </h3>
+        <p className="mt-1 text-sm text-navy/60">8 a 14 de setembro de 2026</p>
       </Reveal>
-      <div className="relative pt-10">
-        <div className="deck-grow absolute left-0 right-0 top-14 h-0.5 bg-navy/15" />
+      <div className="relative pt-8">
+        <div className="deck-grow absolute left-0 right-0 top-12 h-0.5 bg-navy/15" />
         <div className="relative grid grid-cols-4 gap-4">
           {SEMANA.map((s, i) => (
             <Reveal key={s.dia} i={i + 1}>
@@ -222,42 +236,67 @@ export function Semana() {
                 <span className="block text-xs font-bold uppercase tracking-widest text-navy/50">
                   {s.dia} · {s.hora}
                 </span>
-                <span className="mt-1 block text-lg font-semibold">{s.titulo}</span>
+                <span className="mt-1 block text-[15px] font-semibold leading-snug">
+                  {s.titulo}
+                </span>
               </button>
               <div
                 className="overflow-hidden transition-all duration-500"
-                style={{ maxHeight: open === i ? 160 : 0, opacity: open === i ? 1 : 0 }}
+                style={{ maxHeight: open === i ? 220 : 0, opacity: open === i ? 1 : 0 }}
               >
-                <p className="mt-3 rounded-2xl bg-white p-4 text-[13px] leading-snug text-navy/75">
-                  {s.detalhe}
-                </p>
+                <div className="mt-3 space-y-1 rounded-2xl bg-white p-4 text-[12px] leading-snug text-navy/75">
+                  <p>
+                    <strong className="text-navy">Canal</strong> · {s.canal}
+                  </p>
+                  <p>
+                    <strong className="text-navy">Chamada à ação</strong> · «{s.cta}»
+                  </p>
+                  <p>
+                    <strong className="text-navy">Indicador</strong> · {s.indicador}
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}
         </div>
       </div>
+      <Reveal i={5}>
+        <Chip className="text-[12px]">
+          Horários como hipótese a testar: comparar 12h30 vs 19h00 durante 2 semanas e adotar o
+          vencedor por rubrica.
+        </Chip>
+      </Reveal>
     </div>
   );
 }
 
+const LEGENDA =
+  "Da mesa dos hotéis para a tua mesa. A mesma porcelana que desenhamos e produzimos em Alcobaça para a hotelaria está nas coleções de uso diário SPAL. Esta é a Electric Rain: prato de jantar Ø 27 cm, prato de sopa 76 cl, caneca 41 cl — desliza para ver as peças. Onde comprar? Ligação na bio. #SPALPorcelanas #FeitoEmAlcobaça #PorcelanaPortuguesa #MesaPosta";
+
+const ALT_TEXT =
+  "Prato de porcelana branca com friso azul sobre fundo bege; texto: Da mesa dos hotéis para a tua mesa — porcelana de design feita em Alcobaça desde 1965; botão Onde comprar; logótipo SPAL.";
+
 export function Publicacao() {
   const [alt, setAlt] = useState(false);
   return (
-    <div className="grid h-full grid-cols-[0.9fr_1.1fr] items-center gap-12 p-14">
-      <Reveal i={0} className="mx-auto w-[340px] rounded-3xl border border-navy/10 bg-white p-4 shadow-[var(--shadow-card)]">
-        <div className="flex items-center gap-2 pb-3">
-          <span className="h-8 w-8 rounded-full bg-spal" />
-          <span className="text-sm font-semibold text-navy">spal.porcelanas</span>
+    <div className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-10 p-12">
+      <Reveal
+        i={0}
+        className="mx-auto w-[300px] rounded-3xl border border-navy/10 bg-white p-3 shadow-[var(--shadow-card)]"
+      >
+        <div className="flex items-center gap-2 pb-2">
+          <span className="h-7 w-7 rounded-full bg-spal" />
+          <span className="text-[13px] font-semibold text-navy">spalporcelanasofficial</span>
         </div>
         <Shot
           id="maquete"
           group="maquete"
           caption="Maquete da publicação · Instagram SPAL · maquete_publicacao_SPAL.png"
           replace
-          className="aspect-square"
+          className="aspect-[4/5]"
         >
           <div className="flex h-full flex-col items-center justify-center gap-2 bg-[linear-gradient(160deg,#eae4d8,#f7f5f0)] text-center">
-            <p className="text-xs font-bold uppercase tracking-widest text-navy/45">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-navy/45">
               maquete_publicacao_SPAL.png
             </p>
             <p className="px-6 text-[11px] text-navy/50">
@@ -265,46 +304,53 @@ export function Publicacao() {
             </p>
           </div>
         </Shot>
-        <p className="mt-3 text-[13px] leading-snug text-navy/80">
-          <strong>Feito em Alcobaça desde 1965.</strong> Este prato sai do forno a 1 400 °C e vai
-          direto para a tua mesa. Vai à máquina e ao micro-ondas.
-          <br />
-          <span className="text-spal">Onde comprar →</span> link na bio.
+        <p className="mt-2 max-h-[150px] overflow-auto text-[11px] leading-snug text-navy/80">
+          <strong>spalporcelanasofficial</strong> {LEGENDA}
         </p>
-        <button
-          onClick={() => setAlt((a) => !a)}
-          className="deck-slide-btn mt-3 rounded-full border border-navy/15 px-4 py-1.5 text-xs font-semibold text-navy"
-        >
-          {alt ? "esconder alt text" : "ver alt text"}
-        </button>
-        {alt && (
-          <p className="deck-rise mt-2 rounded-xl bg-porcelain p-3 text-[11px] text-navy/70">
-            Prato branco de porcelana SPAL com friso azul, sobre mesa de madeira clara, ao lado de
-            um guardanapo de linho.
-          </p>
-        )}
       </Reveal>
-      <div className="space-y-4">
+      <div className="space-y-3">
         <Reveal i={1}>
-          <h3 className="deck-h2 text-navy">Uma publicação, três trabalhos</h3>
+          <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+            E · simulação · exercício académico
+          </p>
+          <h3 className="deck-h2 mt-1 text-navy">A publicação, com ficha técnica.</h3>
         </Reveal>
-        {[
-          ["Mostra a origem", "Alcobaça é um argumento de venda, não uma nota de rodapé."],
-          ["Responde à dúvida", "Vai à máquina. É a pergunta que a Inês tinha."],
-          ["Fecha o percurso", "'Onde comprar' na legenda e na bio, sempre."],
-        ].map(([t, d], i) => (
-          <Reveal key={t} i={i + 2} className="deck-card bg-white p-5">
-            <p className="font-semibold text-navy">{t}</p>
-            <p className="mt-1 text-[14px] text-navy/70">{d}</p>
+        {(
+          [
+            ["Formato", "carrossel 1080×1350"],
+            ["Chamada à ação", "Onde comprar →"],
+            ["Destino", "spal.pt/index.php/contactos/lojas"],
+          ] as const
+        ).map(([t, d], i) => (
+          <Reveal key={t} i={i + 2} className="deck-card bg-white px-5 py-3">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-navy/45">{t}</p>
+            <p className="mt-0.5 text-[15px] font-semibold text-navy">{d}</p>
           </Reveal>
         ))}
+        <Reveal i={5}>
+          <button
+            onClick={() => setAlt((a) => !a)}
+            className="deck-slide-btn rounded-full border border-navy/15 px-4 py-1.5 text-xs font-semibold text-navy"
+          >
+            {alt ? "esconder texto alternativo" : "ver texto alternativo"}
+            <Glossary term="alt text" meaning="descrição da imagem para quem não a vê" />
+          </button>
+          {alt && (
+            <p className="deck-rise mt-2 rounded-xl bg-porcelain p-3 text-[12px] leading-snug text-navy/70">
+              {ALT_TEXT}
+            </p>
+          )}
+        </Reveal>
       </div>
     </div>
   );
 }
 
+const BIO_ANTES =
+  "Finest porcelain dinnerware both for domestic and hotelware purposes. What's your view on SPAL? 📷 Tag your photos @spalporcelanasofficial";
+
 const BIO_DEPOIS =
-  "Porcelana feita em Alcobaça desde 1965. Mesa, casa e hotelaria. Vai à máquina. Onde comprar 👉";
+  "Porcelana de design feita em Alcobaça desde 1965 🇵🇹 Da mesa dos hotéis para a tua. Loja de Fábrica · Outlet · El Corte Inglés. Onde comprar 👇";
 
 export function Bio({ active }: ChapterProps) {
   const [depois, setDepois] = useState(false);
@@ -319,28 +365,38 @@ export function Bio({ active }: ChapterProps) {
       i += 1;
       setTyped(BIO_DEPOIS.slice(0, i));
       if (i >= BIO_DEPOIS.length) clearInterval(id);
-    }, 28);
+    }, 24);
     return () => clearInterval(id);
   }, [depois]);
   useEffect(() => {
     if (!active) setDepois(false);
   }, [active]);
   return (
-    <div className="flex h-full flex-col justify-center gap-8 p-14">
+    <div className="flex h-full flex-col justify-center gap-6 p-12">
       <Reveal i={0}>
-        <h3 className="deck-h2 text-navy">A bio, antes e depois</h3>
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+          E · simulação · exercício académico
+        </p>
+        <h3 className="deck-h2 mt-1 text-navy">A biografia, antes e depois.</h3>
       </Reveal>
       <div className="grid grid-cols-2 gap-6">
         <Reveal i={1} className="rounded-3xl border border-navy/10 bg-white p-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-navy/45">Antes</p>
-          <p className="mt-3 text-[15px] leading-relaxed text-navy/80">
-            SPAL Porcelanas · Portuguese porcelain manufacturer since 1965 · Tableware & Hotelware
+          <div className="flex items-center gap-2">
+            <span className="h-9 w-9 rounded-full bg-navy/15" />
+            <span className="text-[13px] font-semibold text-navy">spalporcelanasofficial</span>
+          </div>
+          <p className="mt-3 text-xs font-bold uppercase tracking-widest text-navy/45">Antes</p>
+          <p className="mt-2 text-[15px] leading-relaxed text-navy/80">{BIO_ANTES}</p>
+          <p className="mt-3 text-xs text-navy/45">
+            Fala inglês, fala com o retalho, não tem ligação para comprar.
           </p>
-          <p className="mt-4 text-xs text-navy/45">Fala inglês, fala com o retalho, não tem link útil.</p>
         </Reveal>
         <Reveal i={2} className="rounded-3xl border border-spal/25 bg-white p-6">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-bold uppercase tracking-widest text-spal">Depois</p>
+            <div className="flex items-center gap-2">
+              <span className="h-9 w-9 rounded-full bg-spal" />
+              <span className="text-[13px] font-semibold text-navy">spalporcelanasofficial</span>
+            </div>
             <button
               onClick={() => setDepois(true)}
               className="deck-slide-btn rounded-full bg-spal px-4 py-1.5 text-xs font-semibold text-porcelain"
@@ -348,16 +404,27 @@ export function Bio({ active }: ChapterProps) {
               depois
             </button>
           </div>
-          <p className="mt-3 min-h-[92px] text-[15px] leading-relaxed text-navy/85">
+          <p className="mt-3 text-xs font-bold uppercase tracking-widest text-spal">Depois</p>
+          <p className="mt-2 min-h-[92px] text-[15px] leading-relaxed text-navy/85">
             {typed}
             {depois && typed.length < BIO_DEPOIS.length && (
               <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-navy align-middle" />
             )}
           </p>
+          <p className="text-[13px] font-semibold text-spal">
+            spal.pt/index.php/contactos/lojas
+          </p>
           <p className="mt-2 text-xs font-semibold text-navy/55">
             <Num value={depois ? typed.length : 0} active={active} />/150 caracteres
           </p>
         </Reveal>
+      </div>
+      <div className="flex flex-wrap gap-3">
+        {["PT em vez de EN", "origem + posicionamento", "ligação para a compra"].map((c, i) => (
+          <Chip key={c} tone="spal" delay={300 + i * 200}>
+            {c}
+          </Chip>
+        ))}
       </div>
     </div>
   );
@@ -365,51 +432,62 @@ export function Bio({ active }: ChapterProps) {
 
 export function Resposta({ active }: ChapterProps) {
   const resposta =
-    "Olá Inês! Obrigada 💙 Essa peça é da nossa linha de Uso Diário. Pode encontrá-la no El Corte Inglés de Lisboa e Gaia, nos nossos parceiros de mesa e na loja de fábrica em Alcobaça (seg-sáb, 10h-19h). Quer que lhe indiquemos a mais perto de si?";
+    "Olá! Muito obrigada, fico feliz que tenha gostado. 😊 As peças SPAL podem ser vistas e adquiridas na nossa Loja de Fábrica e no Outlet, em Ponte da Torre, Valado dos Frades (Alcobaça), nos espaços SPAL do El Corte Inglés de Lisboa e de Gaia, e online através dos parceiros indicados em spal.pt/index.php/contactos/lojas. Para lhe confirmar se esta coleção está disponível na loja mais perto de si, envie-nos por mensagem privada a sua zona e o nome da peça — verificamos com a loja e respondemos com contacto e horário. Obrigada por nos acompanhar!";
   const [typed, setTyped] = useState("");
   useEffect(() => {
     setTyped("");
     if (!active) return;
     let i = 0;
+    let id: ReturnType<typeof setInterval> | undefined;
     const start = setTimeout(() => {
-      const id = setInterval(() => {
-        i += 2;
+      id = setInterval(() => {
+        i += 4;
         setTyped(resposta.slice(0, i));
         if (i >= resposta.length) clearInterval(id);
-      }, 26);
-    }, 1200);
-    return () => clearTimeout(start);
+      }, 20);
+    }, 900);
+    return () => {
+      clearTimeout(start);
+      if (id) clearInterval(id);
+    };
   }, [active]);
   return (
-    <div className="flex h-full flex-col justify-center gap-6 p-14">
+    <div className="flex h-full flex-col justify-center gap-4 p-12">
       <Reveal i={0}>
-        <h3 className="deck-h2 text-navy">A Inês pergunta</h3>
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+          E · simulação · exercício académico
+        </p>
+        <h3 className="deck-h2 mt-1 text-navy">A resposta ao cliente.</h3>
       </Reveal>
-      <Reveal i={1} className="max-w-[620px] rounded-3xl rounded-bl-md bg-ines/12 p-6">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-ines">Inês · comentário</p>
-        <p className="mt-2 text-lg text-navy/85">
-          "Gostei desta peça, mas não consigo perceber onde a posso comprar…"
+      <Reveal i={1} className="max-w-[620px] rounded-3xl rounded-bl-md bg-ines/12 p-5">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-ines">
+          Cliente · comentário
+        </p>
+        <p className="mt-2 text-[17px] leading-snug text-navy/85">
+          «Gostei desta peça, mas não consigo perceber onde a posso comprar nem se existe numa loja
+          perto de mim.»
         </p>
       </Reveal>
       <div className="flex justify-end">
-        <div className="max-w-[680px] rounded-3xl rounded-br-md bg-spal p-6 text-porcelain">
+        <div className="max-w-[760px] rounded-3xl rounded-br-md bg-spal p-5 text-porcelain">
           <p className="text-[10px] font-bold uppercase tracking-widest text-porcelain/70">
-            SPAL · resposta em minutos
+            SPAL · resposta em menos de 24 h
           </p>
-          <p className="mt-2 min-h-[110px] text-lg leading-snug">
+          <p className="mt-2 min-h-[150px] text-[15px] leading-snug">
             {typed}
             {typed.length < resposta.length && (
-              <span className="ml-0.5 inline-block h-5 w-0.5 animate-pulse bg-porcelain align-middle" />
+              <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-porcelain align-middle" />
             )}
           </p>
         </div>
       </div>
       <Chip tone="spal" className="self-start">
-        regra: responder a 95 % dos comentários em 24 h
+        Só pontos de venda confirmados no site; sem promessas de disponibilidade ou preço.
       </Chip>
     </div>
   );
 }
+
 
 export function MarcaX({ active }: ChapterProps) {
   const [flipped, setFlipped] = useState(false);
