@@ -27,7 +27,7 @@ export type FrameDef = {
 };
 
 const R_ACT1 = 6200;
-const R_ACT2 = 3400;
+const R_ACT2 = 4400;
 const FULL = { w: 1280, h: 720 };
 const SUB = { w: 760, h: 520 };
 
@@ -288,10 +288,10 @@ function layout(): FrameDef[] {
   const tx = -uy;
   const ty = ux;
   satellites.forEach((s, i) => {
-    const col = i % 2;
-    const row = Math.floor(i / 2);
-    const out = 1500 + row * 620;
-    const side = (col - 0.5) * 900;
+    const col = i % 4;
+    const row = Math.floor(i / 4);
+    const out = 1300 + row * 800;
+    const side = (col - 1.5) * 900;
     pos.set(s.id, {
       x: Math.round(host.x + ux * out + tx * side),
       y: Math.round(host.y + uy * out + ty * side),
@@ -308,8 +308,8 @@ function layout(): FrameDef[] {
     const col = i % 4;
     const row = Math.floor(i / 4);
     pos.set(s.id, {
-      x: -2175 + col * 1450,
-      y: -1200 + row * 800,
+      x: -2250 + col * 1500,
+      y: -1350 + row * 900,
       ...(s.sub ? SUB : FULL),
     });
   });
@@ -327,7 +327,7 @@ export const FRAMES: FrameDef[] = layout();
 
 export const TOTAL_CHAPTERS = FRAMES[FRAMES.length - 1]!.n;
 
-export const PLATE_RADIUS = 8200;
+export const PLATE_RADIUS = 9200;
 
 export const ACTS: Record<ActId, { label: string; title: string; line: string }> = {
   1: { label: "Ato 1", title: "O que descobrimos", line: "Os dados, as evidências, o placar." },
@@ -344,12 +344,12 @@ export const ACTS: Record<ActId, { label: string; title: string; line: string }>
 };
 
 export const ACT_VIEW: Record<ActId, { x: number; y: number; zoom: number }> = {
-  1: { x: 0, y: 0, zoom: 0.058 },
-  2: { x: 0, y: 0, zoom: 0.105 },
-  3: { x: 0, y: -200, zoom: 0.19 },
+  1: { x: 0, y: 0, zoom: 0.05 },
+  2: { x: 0, y: 0, zoom: 0.085 },
+  3: { x: 0, y: 0, zoom: 0.16 },
 };
 
-export const OVERVIEW = { x: 0, y: 0, zoom: 0.05 };
+export const OVERVIEW = { x: 0, y: 0, zoom: 0.043 };
 
 export function frameIndex(id: string) {
   return FRAMES.findIndex((f) => f.id === id);
