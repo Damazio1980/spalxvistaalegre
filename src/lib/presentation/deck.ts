@@ -316,7 +316,7 @@ function layout(): FrameDef[] {
 
   let chapter = 0;
   return seeds.map((s) => {
-    if (!s.parent) chapter += 1;
+    if (!s.parent && s.id !== "capa") chapter += 1;
     const p = pos.get(s.id)!;
     const { sub: _sub, ...rest } = s;
     return { ...rest, n: chapter, x: p.x, y: p.y, w: p.w, h: p.h };

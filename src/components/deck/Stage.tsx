@@ -295,7 +295,7 @@ export function Stage() {
             {ACTS[frame.act].label} · {frame.title}
           </button>
           <span className="deck-num text-xs text-navy/50">
-            {frame.n}/{TOTAL_CHAPTERS}
+            {frame.n === 0 ? "Capa" : `${frame.n}/${TOTAL_CHAPTERS}`}
           </span>
           <MiniPlate index={index} />
           <button
