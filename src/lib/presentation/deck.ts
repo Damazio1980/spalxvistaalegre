@@ -26,8 +26,8 @@ export type FrameDef = {
   score?: [number, number];
 };
 
-const R_ACT1 = 6200;
-const R_ACT2 = 4400;
+const R_ACT1 = 5600;
+const R_ACT2 = 4000;
 const FULL = { w: 1280, h: 720 };
 const SUB = { w: 760, h: 520 };
 
@@ -290,7 +290,7 @@ function layout(): FrameDef[] {
   satellites.forEach((s, i) => {
     const col = i % 4;
     const row = Math.floor(i / 4);
-    const out = 1300 + row * 800;
+    const out = 1100 + row * 740;
     const side = (col - 1.5) * 900;
     pos.set(s.id, {
       x: Math.round(host.x + ux * out + tx * side),
@@ -308,8 +308,8 @@ function layout(): FrameDef[] {
     const col = i % 4;
     const row = Math.floor(i / 4);
     pos.set(s.id, {
-      x: -2250 + col * 1500,
-      y: -1350 + row * 900,
+      x: -2175 + col * 1450,
+      y: -1275 + row * 850,
       ...(s.sub ? SUB : FULL),
     });
   });
