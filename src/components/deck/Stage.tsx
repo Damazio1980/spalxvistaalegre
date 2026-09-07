@@ -189,12 +189,12 @@ export function Stage() {
           <Plate />
           {FRAMES.map((f, i) => {
             const isVisible = visible.has(f.id);
-            const active = i === index && mode === "frame" && !actOverlay;
+            const active = i === index && mode === "frame" && !actOverlay && landed;
             const Chapter = CHAPTERS[f.id];
             return (
               <div
                 key={f.id}
-                onClick={() => mode === "overview" && goTo(i, { fly: false })}
+                onClick={() => mode === "overview" && goTo(i)}
                 className={cn(
                   "absolute overflow-hidden shadow-[var(--shadow-frame)] transition-[opacity,filter] duration-500",
                   f.navy ? "bg-navy" : "bg-porcelain",
