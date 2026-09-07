@@ -569,24 +569,15 @@ export function MarcaX({ active }: ChapterProps) {
               </p>
               <div className="flex gap-4 text-right">
                 <div>
-                  <Num
-                    value={ind.ig}
-                    active={active}
-                    decimals={1}
-                    suffix={ind.suffix}
-                    className="deck-num text-2xl"
-                    style={{ color: INSTA }}
-                  />
+                  <span className="deck-num text-2xl" style={{ color: INSTA }}>
+                    <Num value={ind.ig} active={active} decimals={1} suffix={ind.suffix} />
+                  </span>
                   <p className="text-[10px] text-navy/50">Instagram</p>
                 </div>
                 <div>
-                  <Num
-                    value={ind.fb}
-                    active={active}
-                    decimals={1}
-                    suffix={ind.suffix}
-                    className="deck-num text-2xl text-vaa"
-                  />
+                  <span className="deck-num text-2xl text-vaa">
+                    <Num value={ind.fb} active={active} decimals={1} suffix={ind.suffix} />
+                  </span>
                   <p className="text-[10px] text-navy/50">Facebook</p>
                 </div>
               </div>
