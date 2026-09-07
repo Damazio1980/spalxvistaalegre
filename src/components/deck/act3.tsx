@@ -10,6 +10,8 @@ import {
   YAxis,
 } from "recharts";
 import { Chip, Glossary, Num, Reveal, Shot } from "./primitives";
+import { RefShot } from "./mocks";
+import { MAQUETE, PERFIL_SPAL } from "@/data/images";
 import type { ChapterProps } from "./act1";
 
 const SPAL = "#2F5C9E";
@@ -288,22 +290,7 @@ export function Publicacao() {
           <span className="h-7 w-7 rounded-full bg-spal" />
           <span className="text-[13px] font-semibold text-navy">spalporcelanasofficial</span>
         </div>
-        <Shot
-          id="maquete"
-          group="maquete"
-          caption="Maquete da publicação · Instagram SPAL · maquete_publicacao_SPAL.png"
-          replace
-          className="aspect-[4/5]"
-        >
-          <div className="flex h-full flex-col items-center justify-center gap-2 bg-[linear-gradient(160deg,#eae4d8,#f7f5f0)] text-center">
-            <p className="text-[11px] font-bold uppercase tracking-widest text-navy/45">
-              maquete_publicacao_SPAL.png
-            </p>
-            <p className="px-6 text-[11px] text-navy/50">
-              carrega a imagem para substituir este espaço
-            </p>
-          </div>
-        </Shot>
+        <RefShot img={MAQUETE} group="maquete" className="aspect-[4/5]" />
         <p className="mt-2 max-h-[150px] overflow-auto text-[11px] leading-snug text-navy/80">
           <strong>spalporcelanasofficial</strong> {LEGENDA}
         </p>
@@ -382,8 +369,18 @@ export function Bio({ active }: ChapterProps) {
       <div className="grid grid-cols-2 gap-6">
         <Reveal i={1} className="rounded-3xl border border-navy/10 bg-white p-6">
           <div className="flex items-center gap-2">
-            <span className="h-9 w-9 rounded-full bg-navy/15" />
-            <span className="text-[13px] font-semibold text-navy">spalporcelanasofficial</span>
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-navy/15 text-sm font-bold text-navy">
+              S
+            </span>
+            <div>
+              <span className="block text-[13px] font-semibold text-navy">
+                {PERFIL_SPAL.handle.replace("@", "")}
+              </span>
+              <span className="block text-[11px] text-navy/50">
+                {PERFIL_SPAL.seguidores.toLocaleString("pt-PT")} seguidores ·{" "}
+                {PERFIL_SPAL.publicacoes} publicações
+              </span>
+            </div>
           </div>
           <p className="mt-3 text-xs font-bold uppercase tracking-widest text-navy/45">Antes</p>
           <p className="mt-2 text-[15px] leading-relaxed text-navy/80">{BIO_ANTES}</p>
@@ -394,8 +391,18 @@ export function Bio({ active }: ChapterProps) {
         <Reveal i={2} className="rounded-3xl border border-spal/25 bg-white p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="h-9 w-9 rounded-full bg-spal" />
-              <span className="text-[13px] font-semibold text-navy">spalporcelanasofficial</span>
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-spal text-sm font-bold text-porcelain">
+                S
+              </span>
+              <div>
+                <span className="block text-[13px] font-semibold text-navy">
+                  {PERFIL_SPAL.handle.replace("@", "")}
+                </span>
+                <span className="block text-[11px] text-navy/50">
+                  {PERFIL_SPAL.seguidores.toLocaleString("pt-PT")} seguidores ·{" "}
+                  {PERFIL_SPAL.publicacoes} publicações
+                </span>
+              </div>
             </div>
             <button
               onClick={() => setDepois(true)}
