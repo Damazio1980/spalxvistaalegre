@@ -20,6 +20,8 @@ import {
   YAxis,
 } from "recharts";
 import { Chip, DuelBar, Glossary, Num, Reveal, Shot } from "./primitives";
+import { RefShot } from "./mocks";
+import { DUELO_FIGS, FIG, POSTS } from "@/data/images";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 
 export type ChapterProps = { active: boolean };
@@ -644,17 +646,12 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
               {name} {side.score}/5
             </p>
             <p className="mt-2 flex-1 text-[13px] leading-snug text-navy/75">{side.obs}</p>
-            <Shot
-              id={`d${n}-${name}`}
+            <RefShot
+              img={FIG[DUELO_FIGS[n - 1]![i]!]!}
               group={`duelo-${n}`}
-              caption={`${name} · dimensão ${n}: ${d.title} · consulta 04/09/2026`}
-              replace
+              idSuffix={`-d${n}`}
               className="mt-3 h-24"
-            >
-              <div className="flex h-full items-center justify-center bg-porcelain text-[11px] font-semibold text-navy/45">
-                captura de ecrã — {name}
-              </div>
-            </Shot>
+            />
           </Reveal>
         ))}
       </div>
@@ -903,38 +900,16 @@ type Post = {
   comentarios: string;
 };
 
-const VAZIO: Post = {
-  marca: "",
-  rede: "",
-  data: "",
-  formato: "",
-  tema: "",
-  cta: "",
-  reacoes: "",
-  comentarios: "",
-};
-
-const POSTS_SEED: Post[] = Array.from({ length: 12 }, (_, i) => {
-  if (i === 0)
-    return {
-      ...VAZIO,
-      marca: "SPAL",
-      rede: "Facebook",
-      data: "24/08/2026",
-      formato: "imagem",
-      tema: "Arte que se serve à mesa…",
-      reacoes: "9",
-    };
-  if (i === 6)
-    return {
-      ...VAZIO,
-      marca: "Vista Alegre",
-      rede: "Instagram",
-      data: "~28/08/2026",
-      tema: "Coleção Niemeyer: 6 pratos colecionáveis com a Fundação Niemeyer",
-    };
-  return { ...VAZIO };
-});
+const POSTS_SEED: Post[] = POSTS.map((img) => ({
+  marca: img.perfil?.toLowerCase().includes("spal") ? "SPAL" : "Vista Alegre",
+  rede: img.canal,
+  data: img.data,
+  formato: img.formato ?? "",
+  tema: img.tema ?? "",
+  cta: img.cta ?? "",
+  reacoes: img.reacoes ?? "",
+  comentarios: img.comentarios ?? "",
+}));
 
 const CAMPOS: { key: keyof Post; label: string }[] = [
   { key: "marca", label: "Marca" },
@@ -968,17 +943,12 @@ export function RedesPosts() {
             i={1 + (i % 6)}
             className="flex min-h-0 flex-col gap-1 overflow-hidden rounded-xl border border-navy/10 bg-white p-1.5"
           >
-            <Shot
-              id={`post-${i}`}
+            <RefShot
+              img={POSTS[i]!}
               group="posts"
-              replace
-              caption={`Publicação ${i + 1} · ${p.marca || "marca a inserir"} · ${p.rede || "rede a inserir"} · ${p.data || "data a inserir"}`}
-              className="h-8 shrink-0"
-            >
-              <div className="grid h-full place-items-center bg-porcelain text-[7px] font-semibold text-navy/45">
-                captura a inserir
-              </div>
-            </Shot>
+              compact
+              className="h-14 shrink-0"
+            />
             <div className="grid min-h-0 grid-cols-2 gap-x-1 gap-y-0.5">
               {CAMPOS.map((c) => (
                 <label key={c.key} className="block min-w-0">

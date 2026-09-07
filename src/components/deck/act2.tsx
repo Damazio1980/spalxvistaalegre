@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Chip, Num, Phone, Reveal, Shot } from "./primitives";
+import { RefShot } from "./mocks";
+import { FIG } from "@/data/images";
 import type { ChapterProps } from "./act1";
 
 export function InesPersona() {
@@ -85,28 +87,8 @@ export function Min0() {
         </Reveal>
       </div>
       <div className="flex gap-3">
-        <Shot
-          id="min0-spal"
-          group="min0"
-          caption="spal.pt · página inicial no telemóvel · consulta 04/09/2026"
-          replace
-          className="h-16 w-56"
-        >
-          <div className="flex h-full items-center justify-center text-[11px] font-semibold text-navy/45">
-            captura · spal.pt
-          </div>
-        </Shot>
-        <Shot
-          id="min0-vaa"
-          group="min0"
-          caption="vistaalegre.com/pt · página inicial no telemóvel · consulta 04/09/2026"
-          replace
-          className="h-16 w-56"
-        >
-          <div className="flex h-full items-center justify-center text-[11px] font-semibold text-navy/45">
-            captura · vistaalegre.com
-          </div>
-        </Shot>
+        <RefShot img={FIG["fig8-spal-mobile"]!} group="min0" idSuffix="-min0" className="h-24 w-56" />
+        <RefShot img={FIG["fig9-vaa-mobile"]!} group="min0" idSuffix="-min0" className="h-24 w-56" />
       </div>
       <Chip tone="ines">isto é a ronda 1 do Ato 1 a acontecer</Chip>
     </div>

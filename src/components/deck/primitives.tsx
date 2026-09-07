@@ -130,13 +130,15 @@ export function Shot({
   children,
   className,
   replace,
+  placeholder,
 }: {
   id: string;
   group: string;
   caption: string;
   children: ReactNode;
-  className?: string;
-  replace?: boolean;
+  className?: string | undefined;
+  replace?: boolean | undefined;
+  placeholder?: boolean | undefined;
 }) {
   const ctx = useContext(Ctx);
   useEffect(() => {
@@ -145,6 +147,11 @@ export function Shot({
   return (
     <div className={cn("group/shot relative overflow-hidden rounded-2xl border border-navy/10 bg-white", className)}>
       {children}
+      {placeholder && (
+        <span className="pointer-events-none absolute -right-10 top-3 rotate-45 bg-ines/75 px-10 py-[2px] text-center text-[7px] font-bold uppercase tracking-wider text-white">
+          Referência · Substituir
+        </span>
+      )}
       {replace && (
         <span className="absolute left-2 top-2 rounded-full bg-ines px-2 py-0.5 text-[10px] font-bold tracking-wide text-white">
           SUBSTITUIR
@@ -159,6 +166,7 @@ export function Shot({
     </div>
   );
 }
+
 
 /* ── Count-up ─────────────────────────────────────────────────────────── */
 
