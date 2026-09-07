@@ -26,8 +26,10 @@ export type FrameDef = {
   score?: [number, number];
 };
 
-const RING_1 = 3050;
-const RING_2 = 1750;
+const R_ACT1 = 6200;
+const R_ACT2 = 3400;
+const FULL = { w: 1280, h: 720 };
+const SUB = { w: 760, h: 520 };
 
 /** point on the plate: angle in degrees, 0 = top, clockwise */
 function ring(radius: number, angle: number) {
@@ -35,15 +37,7 @@ function ring(radius: number, angle: number) {
   return { x: Math.round(Math.cos(a) * radius), y: Math.round(Math.sin(a) * radius) };
 }
 
-const FULL = { w: 1280, h: 720 };
-const SUB = { w: 760, h: 520 };
-
-type Seed = Omit<FrameDef, "x" | "y" | "w" | "h" | "n"> & {
-  ringAngle?: number;
-  ringRadius?: number;
-  at?: { x: number; y: number };
-  size?: { w: number; h: number };
-};
+type Seed = Omit<FrameDef, "x" | "y" | "w" | "h" | "n"> & { sub?: boolean };
 
 const seeds: Seed[] = [
   // ── Ato 1 · aro exterior ────────────────────────────────────────────────
@@ -53,8 +47,6 @@ const seeds: Seed[] = [
     title: "SPAL × Vista Alegre",
     navy: true,
     rot: 0,
-    ringAngle: 0,
-    ringRadius: RING_1,
     zoom: 0.78,
   },
   {
@@ -64,8 +56,6 @@ const seeds: Seed[] = [
     tag: "enquadramento",
     punchline: "A concorrente acabou de se instalar na rua da SPAL.",
     rot: -2.5,
-    ringAngle: 30,
-    ringRadius: RING_1,
   },
   {
     id: "pergunta",
@@ -75,8 +65,6 @@ const seeds: Seed[] = [
     punchline: "Tudo o que vem a seguir responde a esta pergunta.",
     navy: true,
     rot: 2,
-    ringAngle: 58,
-    ringRadius: RING_1,
   },
   {
     id: "canais",
@@ -85,8 +73,6 @@ const seeds: Seed[] = [
     tag: "A · canais",
     punchline: "Uma usa o site como loja. A outra, como catálogo.",
     rot: -1.5,
-    ringAngle: 86,
-    ringRadius: RING_1,
     score: [0, 1],
   },
   {
@@ -96,26 +82,22 @@ const seeds: Seed[] = [
     tag: "B · website",
     punchline: "Seis rondas. O mesmo vencedor em todas.",
     rot: 2.5,
-    ringAngle: 116,
-    ringRadius: RING_1,
     zoom: 0.62,
   },
-  { id: "duelo-1", act: 1, title: "Ronda 1 · Entrar no site", tag: "B · website", parent: "website", rot: -3, at: { x: -1180, y: 3260 }, size: SUB },
-  { id: "duelo-2", act: 1, title: "Ronda 2 · Encontrar o produto", tag: "B · website", parent: "website", rot: 2, at: { x: -320, y: 3320 }, size: SUB },
-  { id: "duelo-3", act: 1, title: "Ronda 3 · A ficha do produto", tag: "B · website", parent: "website", rot: -1.5, at: { x: -1180, y: 3880 }, size: SUB },
-  { id: "duelo-4", act: 1, title: "Ronda 4 · Comprar", tag: "B · website", parent: "website", rot: 3, at: { x: -320, y: 3940 }, size: SUB },
-  { id: "duelo-5", act: 1, title: "Ronda 5 · No telemóvel", tag: "B · website", parent: "website", rot: -2, at: { x: -1180, y: 4500 }, size: SUB },
-  { id: "duelo-6", act: 1, title: "Ronda 6 · Confiança e contacto", tag: "B · website", parent: "website", rot: 1.5, at: { x: -320, y: 4560 }, size: SUB },
+  { id: "duelo-1", act: 1, title: "Ronda 1 · Entrar no site", tag: "B · website", parent: "website", sub: true, rot: -3 },
+  { id: "duelo-2", act: 1, title: "Ronda 2 · Encontrar o produto", tag: "B · website", parent: "website", sub: true, rot: 2 },
+  { id: "duelo-3", act: 1, title: "Ronda 3 · A ficha do produto", tag: "B · website", parent: "website", sub: true, rot: -1.5 },
+  { id: "duelo-4", act: 1, title: "Ronda 4 · Comprar", tag: "B · website", parent: "website", sub: true, rot: 3 },
+  { id: "duelo-5", act: 1, title: "Ronda 5 · No telemóvel", tag: "B · website", parent: "website", sub: true, rot: -2 },
+  { id: "duelo-6", act: 1, title: "Ronda 6 · Confiança e contacto", tag: "B · website", parent: "website", sub: true, rot: 1.5 },
   {
     id: "radar",
-    parent: "website",
     act: 1,
+    parent: "website",
+    sub: true,
     title: "As seis rondas de uma só vez",
     tag: "B · website",
-    punchline: "Repara na forma: uma quase toca o limite, a outra encolhe.",
     rot: -2,
-    ringAngle: 146,
-    ringRadius: RING_1,
     score: [0, 1],
   },
   {
@@ -125,8 +107,6 @@ const seeds: Seed[] = [
     tag: "C · redes",
     punchline: "Uma fala como fabricante. A outra, como marca de estilo de vida.",
     rot: 2,
-    ringAngle: 176,
-    ringRadius: RING_1,
     score: [0, 1],
   },
   {
@@ -137,8 +117,6 @@ const seeds: Seed[] = [
     punchline: "Não é falta de produto. É um site de 2013 a falar com o retalho.",
     navy: true,
     rot: -1,
-    ringAngle: 206,
-    ringRadius: RING_1,
   },
 
   // ── Ato 2 · anel intermédio ─────────────────────────────────────────────
@@ -149,8 +127,6 @@ const seeds: Seed[] = [
     tag: "D · diagnóstico",
     punchline: "20 minutos. Um telemóvel. Uma prenda para a mãe.",
     rot: -2,
-    ringAngle: 0,
-    ringRadius: RING_2,
   },
   {
     id: "min0",
@@ -159,8 +135,6 @@ const seeds: Seed[] = [
     tag: "B · website",
     punchline: "Um site pede-lhe uma escolha. O outro mostra-lhe um preço.",
     rot: 2.5,
-    ringAngle: 55,
-    ringRadius: RING_2,
   },
   {
     id: "min3",
@@ -169,8 +143,6 @@ const seeds: Seed[] = [
     tag: "B · website",
     punchline: "Cinco passos contra quatro. E um deles é uma miniatura sem nome.",
     rot: -2.5,
-    ringAngle: 110,
-    ringRadius: RING_2,
     score: [0, 1],
   },
   {
@@ -180,8 +152,6 @@ const seeds: Seed[] = [
     tag: "B · website",
     punchline: "Peso em gramas. E nem uma palavra sobre preço.",
     rot: 2,
-    ringAngle: 165,
-    ringRadius: RING_2,
     score: [0, 1],
   },
   {
@@ -191,8 +161,6 @@ const seeds: Seed[] = [
     tag: "B · website",
     punchline: "A SPAL perde a Inês exatamente no momento em que ela decide comprar.",
     rot: -1.5,
-    ringAngle: 220,
-    ringRadius: RING_2,
     score: [0, 1],
   },
   {
@@ -203,8 +171,6 @@ const seeds: Seed[] = [
     punchline: "Os dados e a pessoa contam a mesma história.",
     navy: true,
     rot: 1.5,
-    ringAngle: 285,
-    ringRadius: RING_2,
   },
 
   // ── Ato 3 · centro do prato ─────────────────────────────────────────────
@@ -215,7 +181,6 @@ const seeds: Seed[] = [
     tag: "E · intervenção",
     punchline: "A matéria-prima da resposta já existe.",
     rot: -1.5,
-    at: { x: -1520, y: -520 },
   },
   {
     id: "jogadas",
@@ -225,12 +190,11 @@ const seeds: Seed[] = [
     punchline: "Três jogadas. Nenhuma precisa de site novo.",
     navy: true,
     rot: 1.5,
-    at: { x: -120, y: -520 },
     zoom: 0.62,
   },
-  { id: "jogada-1", act: 3, title: "01 · Onde comprar, em todo o lado", tag: "E · intervenção", parent: "jogadas", rot: -2.5, at: { x: -560, y: 90 }, size: SUB },
-  { id: "jogada-2", act: 3, title: "02 · Fichas que falam com a Inês", tag: "E · intervenção", parent: "jogadas", rot: 2, at: { x: 300, y: 150 }, size: SUB },
-  { id: "jogada-3", act: 3, title: "03 · Feito em Alcobaça — 3 por semana", tag: "E · intervenção", parent: "jogadas", rot: -1.5, at: { x: -130, y: 700 }, size: SUB },
+  { id: "jogada-1", act: 3, title: "01 · Onde comprar, em todo o lado", tag: "E · intervenção", parent: "jogadas", sub: true, rot: -2.5 },
+  { id: "jogada-2", act: 3, title: "02 · Fichas que falam com a Inês", tag: "E · intervenção", parent: "jogadas", sub: true, rot: 2 },
+  { id: "jogada-3", act: 3, title: "03 · Feito em Alcobaça — 3 por semana", tag: "E · intervenção", parent: "jogadas", sub: true, rot: -1.5 },
   {
     id: "semana",
     act: 3,
@@ -238,7 +202,6 @@ const seeds: Seed[] = [
     tag: "E · calendário",
     punchline: "Uma semana chega para mudar a primeira impressão.",
     rot: -2,
-    at: { x: 1280, y: -520 },
   },
   {
     id: "publicacao",
@@ -247,7 +210,6 @@ const seeds: Seed[] = [
     tag: "E · intervenção",
     punchline: "A legenda diz onde comprar. É a única coisa que falta hoje.",
     rot: 2.5,
-    at: { x: -1520, y: 1360 },
   },
   {
     id: "bio",
@@ -256,7 +218,6 @@ const seeds: Seed[] = [
     tag: "E · intervenção",
     punchline: "150 caracteres também vendem.",
     rot: -1,
-    at: { x: 1280, y: 1360 },
   },
   {
     id: "resposta",
@@ -265,7 +226,6 @@ const seeds: Seed[] = [
     tag: "E · intervenção",
     punchline: "Responder é a campanha mais barata que existe.",
     rot: 2,
-    at: { x: 2680, y: -520 },
   },
   {
     id: "marcax",
@@ -275,7 +235,6 @@ const seeds: Seed[] = [
     punchline: "O Instagram atrai. O Facebook vende.",
     navy: true,
     rot: -2,
-    at: { x: 2680, y: 1360 },
   },
   {
     id: "indicadores",
@@ -284,7 +243,6 @@ const seeds: Seed[] = [
     tag: "F · indicadores",
     punchline: "Se não for medido, foi só uma opinião bonita.",
     rot: 1,
-    at: { x: 4080, y: -520 },
   },
   {
     id: "final",
@@ -295,7 +253,6 @@ const seeds: Seed[] = [
       "A SPAL precisa de falar com a Inês antes que a Vista Alegre o faça por ela — em Alcobaça.",
     navy: true,
     rot: 0,
-    at: { x: 4080, y: 1360 },
   },
   {
     id: "bastidores",
@@ -303,20 +260,74 @@ const seeds: Seed[] = [
     title: "Bastidores",
     tag: "fontes",
     rot: -1.5,
-    at: { x: 5480, y: 420 },
   },
 ];
 
-let chapter = 0;
-export const FRAMES: FrameDef[] = seeds.map((s) => {
-  if (!s.parent) chapter += 1;
-  const pos = s.at ?? ring(s.ringRadius ?? RING_1, s.ringAngle ?? 0);
-  const size = s.size ?? FULL;
-  const { ringAngle: _a, ringRadius: _r, at: _at, size: _s, ...rest } = s;
-  return { ...rest, n: chapter, x: pos.x, y: pos.y, w: size.w, h: size.h };
-});
+/* ── layout on the plate ──────────────────────────────────────────────────
+ * Act 1 sits on the outer rim (clockwise), Act 2 on the middle ring,
+ * Act 3 fills the centre of the plate as a grid.
+ */
+function layout(): FrameDef[] {
+  const act1Main = seeds.filter((s) => s.act === 1 && !s.sub);
+  const act2Main = seeds.filter((s) => s.act === 2 && !s.sub);
+  const act3All = seeds.filter((s) => s.act === 3);
+  const satellites = seeds.filter((s) => s.act === 1 && s.sub);
 
-export const TOTAL_CHAPTERS = chapter;
+  const pos = new Map<string, { x: number; y: number; w: number; h: number }>();
+
+  act1Main.forEach((s, i) => {
+    const p = ring(R_ACT1, i * 43);
+    pos.set(s.id, { ...p, ...FULL });
+  });
+
+  // satellites of the website chapter: 2 columns × 4 rows, pushed outward
+  const host = pos.get("website")!;
+  const len = Math.hypot(host.x, host.y) || 1;
+  const ux = host.x / len;
+  const uy = host.y / len;
+  const tx = -uy;
+  const ty = ux;
+  satellites.forEach((s, i) => {
+    const col = i % 2;
+    const row = Math.floor(i / 2);
+    const out = 1500 + row * 620;
+    const side = (col - 0.5) * 900;
+    pos.set(s.id, {
+      x: Math.round(host.x + ux * out + tx * side),
+      y: Math.round(host.y + uy * out + ty * side),
+      ...SUB,
+    });
+  });
+
+  act2Main.forEach((s, i) => {
+    const p = ring(R_ACT2, 20 + i * 60);
+    pos.set(s.id, { ...p, ...FULL });
+  });
+
+  act3All.forEach((s, i) => {
+    const col = i % 4;
+    const row = Math.floor(i / 4);
+    pos.set(s.id, {
+      x: -2175 + col * 1450,
+      y: -1200 + row * 800,
+      ...(s.sub ? SUB : FULL),
+    });
+  });
+
+  let chapter = 0;
+  return seeds.map((s) => {
+    if (!s.parent) chapter += 1;
+    const p = pos.get(s.id)!;
+    const { sub: _sub, ...rest } = s;
+    return { ...rest, n: chapter, x: p.x, y: p.y, w: p.w, h: p.h };
+  });
+}
+
+export const FRAMES: FrameDef[] = layout();
+
+export const TOTAL_CHAPTERS = FRAMES[FRAMES.length - 1]!.n;
+
+export const PLATE_RADIUS = 8200;
 
 export const ACTS: Record<ActId, { label: string; title: string; line: string }> = {
   1: { label: "Ato 1", title: "O que descobrimos", line: "Os dados, as evidências, o placar." },
@@ -333,12 +344,12 @@ export const ACTS: Record<ActId, { label: string; title: string; line: string }>
 };
 
 export const ACT_VIEW: Record<ActId, { x: number; y: number; zoom: number }> = {
-  1: { x: 0, y: 400, zoom: 0.115 },
-  2: { x: 0, y: 200, zoom: 0.2 },
-  3: { x: 2000, y: 420, zoom: 0.16 },
+  1: { x: 0, y: 0, zoom: 0.058 },
+  2: { x: 0, y: 0, zoom: 0.105 },
+  3: { x: 0, y: -200, zoom: 0.19 },
 };
 
-export const OVERVIEW = { x: 900, y: 700, zoom: 0.075 };
+export const OVERVIEW = { x: 0, y: 0, zoom: 0.05 };
 
 export function frameIndex(id: string) {
   return FRAMES.findIndex((f) => f.id === id);
