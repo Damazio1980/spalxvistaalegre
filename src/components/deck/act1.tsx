@@ -23,6 +23,18 @@ import { Chip, DuelBar, Glossary, Num, Reveal, Shot } from "./primitives";
 import { RefShot } from "./mocks";
 import { DUELO_FIGS, FIG, POSTS } from "@/data/images";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
+import {
+  AudienciaLog,
+  BarrasDimensoes,
+  ChartPanel,
+  DonutExportacao,
+  EvolucaoVAA,
+  PassosChart,
+  PublicacoesPorPerfil,
+  RadarDimensoes,
+  ReacoesPorPublicacao,
+} from "./charts";
+
 
 export type ChapterProps = { active: boolean };
 
@@ -78,7 +90,9 @@ export function Capa({ active }: ChapterProps) {
 
 export function Nomes({ active }: ChapterProps) {
   return (
-    <div className="grid h-full grid-cols-[1.15fr_0.85fr] gap-10 p-14">
+    <div className="flex h-full flex-col gap-5 p-12">
+    <div className="grid min-h-0 flex-1 grid-cols-[1.15fr_0.85fr] gap-10">
+
       <div className="space-y-5">
         <Reveal i={0} className="deck-card border border-spal/20 bg-white p-6">
           <p className="text-xs font-bold uppercase tracking-widest text-spal">SPAL</p>
@@ -123,6 +137,22 @@ export function Nomes({ active }: ChapterProps) {
         </div>
       </Reveal>
     </div>
+      <div className="grid h-[190px] shrink-0 grid-cols-[1.3fr_1fr] gap-4">
+        <ChartPanel
+          title="Evolução Vista Alegre · 1.º semestre"
+          note="Volume de negócios 70,2 → 71,3 M€ · resultado líquido 3,6 → 4,3 M€"
+        >
+          <EvolucaoVAA active={active} />
+        </ChartPanel>
+        <ChartPanel title="Peso da exportação" note="valores aproximados">
+          <div className="flex h-full gap-2">
+            <DonutExportacao label="SPAL" value={60} color={SPAL} active={active} />
+            <DonutExportacao label="Vista Alegre" value={70} color={VAA} active={active} />
+          </div>
+        </ChartPanel>
+      </div>
+    </div>
+
   );
 }
 
@@ -331,11 +361,21 @@ export function Canais({ active }: ChapterProps) {
           </Reveal>
         </div>
       </div>
-      <Reveal i={6} className="space-y-2">
+      <Reveal i={6}>
+        <ChartPanel
+          title="Audiência nas redes · 04/09/2026"
+          note="escala logarítmica para a diferença ser legível · audiência ≠ vendas · Facebook Vista Alegre [a inserir]"
+          className="h-[168px]"
+        >
+          <AudienciaLog active={active} />
+        </ChartPanel>
+      </Reveal>
+      <Reveal i={7} className="space-y-2">
         <p className="text-[11px] text-navy/50">
           Seguidores e gostos não demonstram vendas; servem para dimensionar a audiência.
           <Glossary term="audiência" meaning="quantas pessoas podem ver" />
         </p>
+
         <p className="rounded-2xl bg-navy px-5 py-3 text-[15px] font-semibold text-porcelain">
           A Vista Alegre usa o site como loja e as redes como montra. A SPAL usa o site como
           catálogo e as redes como galeria.
@@ -428,11 +468,7 @@ function Dots({ n, tone }: { n: number; tone: "spal" | "vaa" }) {
 
 export function Website({ active }: ChapterProps) {
   const [open, setOpen] = useState<number | null>(1);
-  const data = DUELOS.map((d) => ({
-    dim: d.title,
-    SPAL: d.spal.score,
-    "Vista Alegre": d.vaa.score,
-  }));
+
   return (
     <div className="grid h-full grid-cols-[1.15fr_0.85fr] gap-6 p-10">
       <div className="flex min-h-0 flex-col gap-3">
@@ -482,43 +518,23 @@ export function Website({ active }: ChapterProps) {
           })}
         </div>
       </div>
-      <Reveal
-        i={2}
-        className="flex min-h-0 flex-col rounded-3xl border border-navy/10 bg-white p-4"
-      >
-        <p className="text-sm font-semibold text-navy/70">
-          Pontuação por dimensão
-          <Glossary term="1 a 5" meaning="1 dificulta, 5 facilita" />
-        </p>
-        <div className="mt-2 min-h-0 flex-1">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={data} layout="vertical" barGap={4} margin={{ left: 8, right: 16 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
-              <XAxis type="number" domain={[0, 5]} tick={{ fontSize: 10 }} />
-              <YAxis type="category" dataKey="dim" width={120} tick={{ fontSize: 10 }} />
-              <Tooltip />
-              <Legend />
-              <Bar
-                dataKey="SPAL"
-                fill={SPAL}
-                radius={[0, 6, 6, 0]}
-                isAnimationActive={active}
-                animationDuration={1100}
-              />
-              <Bar
-                dataKey="Vista Alegre"
-                fill={VAA}
-                radius={[0, 6, 6, 0]}
-                isAnimationActive={active}
-                animationDuration={1100}
-              />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-        <p className="mt-2 text-[11px] text-navy/50">
-          Toca numa linha para abrir a evidência de cada dimensão.
-        </p>
+      <Reveal i={2} className="flex min-h-0 flex-col gap-3">
+        <ChartPanel
+          title="Radar das seis dimensões (1 a 5)"
+          className="min-h-0 flex-1"
+          note="1 dificulta, 5 facilita"
+        >
+          <RadarDimensoes active={active} />
+        </ChartPanel>
+        <ChartPanel
+          title="Pontuação por dimensão"
+          className="min-h-0 flex-1"
+          note="Toca numa linha à esquerda para abrir a evidência de cada dimensão."
+        >
+          <BarrasDimensoes active={active} />
+        </ChartPanel>
       </Reveal>
+
     </div>
   );
 }
@@ -587,7 +603,7 @@ function Fluxo({
   );
 }
 
-export function Percurso() {
+export function Percurso({ active }: ChapterProps) {
   return (
     <div className="flex h-full flex-col gap-2 p-8">
       <Reveal i={0}>
@@ -614,7 +630,25 @@ export function Percurso() {
           i={2}
         />
       </div>
+      <div className="grid h-[132px] shrink-0 grid-cols-[1.3fr_1fr] gap-4">
+        <ChartPanel title="Passos até saber como comprar">
+          <PassosChart active={active} />
+        </ChartPanel>
+        <ChartPanel title="Sai do site para comprar?">
+          <div className="flex h-full items-center justify-around">
+            <div className="text-center">
+              <Chip tone="spal">SPAL · Sim</Chip>
+              <p className="mt-1 text-[10px] text-navy/50">termina em terceiros</p>
+            </div>
+            <div className="text-center">
+              <Chip tone="vaa">Vista Alegre · Não</Chip>
+              <p className="mt-1 text-[10px] text-navy/50">compra ou loja no site</p>
+            </div>
+          </div>
+        </ChartPanel>
+      </div>
       <Reveal i={9}>
+
         <p className="rounded-2xl bg-navy px-5 py-3 text-[15px] font-semibold text-porcelain">
           A SPAL perde o consumidor exatamente no momento em que ele decide comprar.
         </p>
@@ -879,7 +913,22 @@ export function Redes({ active }: ChapterProps) {
           ))}
         </div>
       </div>
+      <div className="grid h-[136px] shrink-0 grid-cols-2 gap-4">
+        <ChartPanel
+          title="Publicações no período 05/08–04/09"
+          note="valores por confirmar na amostra"
+        >
+          <PublicacoesPorPerfil active={active} />
+        </ChartPanel>
+        <ChartPanel
+          title="Reações por publicação (1 a 12)"
+          note="publicação 1 = 9 reações · restantes a inserir"
+        >
+          <ReacoesPorPublicacao active={active} />
+        </ChartPanel>
+      </div>
       <Reveal i={8}>
+
         <p className="rounded-2xl bg-navy px-5 py-3 text-[14px] font-semibold text-porcelain">
           A SPAL tem matéria-prima para uma narrativa própria — SPAL Studio, designers, hotelaria —
           que ainda não explora nas redes.
@@ -1067,7 +1116,39 @@ export function Placar1({ active }: ChapterProps) {
               <p className="text-[10px] text-porcelain/60">Vista Alegre</p>
             </div>
           </div>
+          <div className="mt-4 space-y-2 text-left">
+            <p className="text-[9.5px] uppercase tracking-widest text-porcelain/55">
+              Cliques até à peça
+            </p>
+            {(["Descobrir", "Informar", "Avançar"] as const).map((c, k) => (
+              <div key={c} className="space-y-0.5">
+                <p className="text-[9px] text-porcelain/60">{c}</p>
+                {(
+                  [
+                    ["SPAL", 5, "#7FA6E0"],
+                    ["Vista Alegre", 4, VAA],
+                  ] as const
+                ).map(([nome, v, cor]) => (
+                  <div key={nome} className="flex items-center gap-1.5">
+                    <span className="w-14 shrink-0 text-[8.5px] text-porcelain/55">{nome}</span>
+                    <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-porcelain/15">
+                      <span
+                        className="deck-grow block h-full rounded-full"
+                        style={{
+                          width: active ? `${(v / 6) * 100}%` : "0%",
+                          background: cor,
+                          animationDelay: `${k * 120}ms`,
+                        }}
+                      />
+                    </span>
+                    <span className="deck-num w-3 text-[9px] text-porcelain/80">{v}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </Reveal>
+
       </div>
       <div className="grid grid-cols-2 gap-4">
         {marcas.map((m, i) => (

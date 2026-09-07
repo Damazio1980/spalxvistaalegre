@@ -13,6 +13,16 @@ import { Chip, Glossary, Num, Reveal, Shot } from "./primitives";
 import { RefShot } from "./mocks";
 import { MAQUETE, PERFIL_SPAL } from "@/data/images";
 import type { ChapterProps } from "./act1";
+import {
+  AntesDepois,
+  ChartPanel,
+  Funil,
+  Gauge,
+  IndicadorMini,
+  MargemStack,
+  RadarDimensoes,
+} from "./charts";
+
 
 const SPAL = "#2F5C9E";
 const VAA = "#C09C68";
@@ -90,7 +100,13 @@ const JOGADAS = [
   },
 ];
 
-export function Jogadas() {
+const QUAL = [
+  { antes: "0 cliques medidos", depois: "meta ≥ 5 % das sessões" },
+  { antes: "bio com ligação: Não", depois: "bio com ligação: Sim" },
+  { antes: "[atual] por semana", depois: "3 por semana" },
+];
+
+export function Jogadas({ active }: ChapterProps) {
   return (
     <div className="flex h-full flex-col justify-center gap-7 p-14 text-porcelain">
       <Reveal i={0}>
@@ -109,9 +125,18 @@ export function Jogadas() {
             <p className="deck-num text-5xl text-vaa">{j.n}</p>
             <p className="mt-3 text-lg font-semibold">{j.title}</p>
             <p className="mt-2 text-[12px] text-porcelain/60">{j.onde}</p>
+            <div className="mt-4">
+              <ChartPanel title="antes → depois esperado" dark className="h-[132px]" note={j.unidade}>
+                <AntesDepois antes={j.antes} depois={j.depois} active={active} />
+              </ChartPanel>
+              <p className="mt-1 text-[10px] text-porcelain/60">
+                {QUAL[i]!.antes} → {QUAL[i]!.depois}
+              </p>
+            </div>
           </Reveal>
         ))}
       </div>
+
       <Reveal i={4}>
         <p className="text-[15px] text-porcelain/80">
           A distância entre o que a SPAL tem e o que comunica é grande — e pode ser reduzida com
@@ -564,54 +589,54 @@ export function MarcaX({ active }: ChapterProps) {
             </div>
           </Reveal>
         ))}
+        <Reveal i={3}>
+          <ChartPanel
+            title="Funil: impressões → cliques → sessões → encomendas"
+            dark
+            note="o Instagram traz mais tráfego; o Facebook fecha mais encomendas"
+          >
+            <Funil active={active} />
+          </ChartPanel>
+        </Reveal>
+        <Reveal i={4}>
+          <ChartPanel
+            title="ROAS não é lucro · os 640 € por dentro"
+            dark
+            className="h-[120px]"
+            note="margem de 40 % é um exemplo didático"
+          >
+            <MargemStack active={active} />
+          </ChartPanel>
+        </Reveal>
       </div>
 
       <div className="space-y-3">
-        {indicadores.map((ind, i) => (
-          <Reveal key={ind.label} i={i + 1} className="rounded-2xl bg-white p-4 text-navy">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-sm font-semibold text-navy/85">
-                {ind.label}
-                <Glossary term={ind.label.toLowerCase()} meaning={ind.gloss} />
+        <div className="grid grid-cols-3 gap-2">
+          {indicadores.map((ind, i) => (
+            <Reveal key={ind.label} i={i + 1} className="rounded-2xl bg-white p-2 text-navy">
+              <p className="text-[11px] font-semibold text-navy/85">{ind.label}</p>
+              <p className="text-[9px] text-navy/50">{ind.gloss}</p>
+              <IndicadorMini
+                label={`Instagram vs Facebook (${ind.suffix.trim()})`}
+                ig={ind.ig}
+                fb={ind.fb}
+                max={ind.label === "ROAS" ? 10 : 6}
+                suffix={ind.suffix}
+                active={active}
+              />
+              <p className="mt-1 text-center text-[10px] text-navy/60">
+                <span style={{ color: INSTA }}>
+                  <Num value={ind.ig} active={active} decimals={1} suffix={ind.suffix} />
+                </span>{" "}
+                ·{" "}
+                <span className="text-navy">
+                  <Num value={ind.fb} active={active} decimals={1} suffix={ind.suffix} />
+                </span>
               </p>
-              <div className="flex gap-4 text-right">
-                <div>
-                  <span className="deck-num text-2xl" style={{ color: INSTA }}>
-                    <Num value={ind.ig} active={active} decimals={1} suffix={ind.suffix} />
-                  </span>
-                  <p className="text-[10px] text-navy/50">Instagram</p>
-                </div>
-                <div>
-                  <span className="deck-num text-2xl text-vaa">
-                    <Num value={ind.fb} active={active} decimals={1} suffix={ind.suffix} />
-                  </span>
-                  <p className="text-[10px] text-navy/50">Facebook</p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-3 flex h-3 gap-1">
-              <div className="flex-1 overflow-hidden rounded-full bg-navy/8">
-                <div
-                  className="deck-grow h-full rounded-full"
-                  style={{
-                    width: active ? `${(ind.ig / (ind.label === "ROAS" ? 10 : 5)) * 100}%` : "0%",
-                    background: INSTA,
-                    animationDelay: `${i * 100}ms`,
-                  }}
-                />
-              </div>
-              <div className="flex-1 overflow-hidden rounded-full bg-navy/8">
-                <div
-                  className="deck-grow h-full rounded-full bg-vaa"
-                  style={{
-                    width: active ? `${(ind.fb / (ind.label === "ROAS" ? 10 : 5)) * 100}%` : "0%",
-                    animationDelay: `${i * 100 + 80}ms`,
-                  }}
-                />
-              </div>
-            </div>
-          </Reveal>
-        ))}
+            </Reveal>
+          ))}
+        </div>
+
         {extras.map((e, i) => (
           <Reveal
             key={e.label}
@@ -653,7 +678,14 @@ export function MarcaX({ active }: ChapterProps) {
   );
 }
 
+const GAUGES = [
+  { low: 2, high: 5, max: 10, unidade: " %" },
+  { low: 80, high: 95, max: 100, unidade: " %" },
+  { low: 5, high: 10, max: 20, unidade: " pontos" },
+];
+
 export function Indicadores({ active }: ChapterProps) {
+
   const cards = [
     {
       label: 'Cliques em "Onde comprar"',
@@ -711,7 +743,17 @@ export function Indicadores({ active }: ChapterProps) {
                 </p>
               )}
             </div>
-            <div className="mt-4 rounded-xl bg-porcelain p-3">
+            <div className="mt-3">
+              <Gauge
+                low={GAUGES[i]!.low}
+                high={GAUGES[i]!.high}
+                max={GAUGES[i]!.max}
+                unidade={GAUGES[i]!.unidade}
+                active={active}
+              />
+            </div>
+            <div className="mt-3 rounded-xl bg-porcelain p-3">
+
               <p className="text-[11px] font-semibold uppercase tracking-wider text-navy/50">
                 Decisão
               </p>
@@ -736,7 +778,7 @@ export function Indicadores({ active }: ChapterProps) {
   );
 }
 
-export function Final() {
+export function Final({ active }: ChapterProps) {
   return (
     <div className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-12 p-14 text-porcelain">
       <Reveal i={0} className="mx-auto w-[300px] rounded-[28px] border-4 border-porcelain/25 bg-porcelain p-3">
@@ -765,7 +807,18 @@ export function Final() {
             Alcobaça.
           </p>
         </Reveal>
+        <Reveal i={3}>
+          <ChartPanel
+            title="Síntese · as seis dimensões do website"
+            dark
+            className="h-[230px] max-w-[520px]"
+            note="SPAL 3-2-3-1-2-2 · Vista Alegre 5-5-5-5-4-5"
+          >
+            <RadarDimensoes active={active} compact dark />
+          </ChartPanel>
+        </Reveal>
       </div>
+
     </div>
   );
 }
