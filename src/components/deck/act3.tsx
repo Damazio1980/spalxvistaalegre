@@ -490,92 +490,166 @@ export function Resposta({ active }: ChapterProps) {
 
 
 export function MarcaX({ active }: ChapterProps) {
-  const [flipped, setFlipped] = useState(false);
-  const duelos: Array<[string, number, number, string, string]> = [
-    ["CTR", 3.0, 2.5, "%", "quantas pessoas clicam no anúncio"],
-    ["Conversão", 2.5, 5.0, "%", "quantos cliques acabam em compra"],
-    ["ROAS", 4, 8, "×", "quanto rende cada euro de anúncio"],
+  const INSTA = "#7FA6E0";
+  const campanhas = [
+    {
+      nome: "Instagram",
+      cor: INSTA,
+      dados: [
+        { label: "Impressões", value: 10000 },
+        { label: "Cliques", value: 300 },
+        { label: "Sessões", value: 240 },
+        { label: "Encomendas", value: 6 },
+        { label: "Receita", value: 480, suffix: " €" },
+        { label: "Investimento", value: 120, suffix: " €" },
+      ],
+    },
+    {
+      nome: "Facebook",
+      cor: VAA,
+      dados: [
+        { label: "Impressões", value: 8000 },
+        { label: "Cliques", value: 200 },
+        { label: "Sessões", value: 160 },
+        { label: "Encomendas", value: 8 },
+        { label: "Receita", value: 640, suffix: " €" },
+        { label: "Investimento", value: 80, suffix: " €" },
+      ],
+    },
   ];
+
+  const indicadores = [
+    { label: "CTR", ig: 3.0, fb: 2.5, suffix: "%", gloss: "cliques por cada 100 impressões" },
+    { label: "Conversão", ig: 2.5, fb: 5.0, suffix: "%", gloss: "encomendas por cada 100 sessões" },
+    { label: "ROAS", ig: 4.0, fb: 8.0, suffix: "×", gloss: "receita por cada euro de anúncio" },
+  ];
+
+  const extras = [
+    { label: "Custo por encomenda", ig: 20, fb: 10, suffix: " €" },
+    { label: "Valor médio", ig: 80, fb: 80, suffix: " €" },
+  ];
+
   return (
-    <div className="grid h-full grid-cols-[0.95fr_1.05fr] gap-10 p-14 text-porcelain">
+    <div className="grid h-full grid-cols-[1fr_1fr] gap-8 p-12 text-porcelain">
       <div className="space-y-4">
         <Reveal i={0}>
-          <h3 className="deck-h2">O Instagram atrai. O Facebook vende.</h3>
+          <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-porcelain/50">
+            F · dados didáticos · marca fictícia X
+          </p>
+          <h3 className="deck-h2 mt-1">O Instagram atrai melhor. O Facebook converte o dobro.</h3>
         </Reveal>
-        {(
-          [
-            ["Instagram", 100, 3.0, 2.5, "#7FA6E0"],
-            ["Facebook", 100, 2.5, 5.0, VAA],
-          ] as const
-        ).map(([canal, base, ctr, conv, color], i) => (
-          <Reveal key={canal} i={i + 1} className="rounded-2xl border border-porcelain/15 p-4">
-            <p className="text-xs font-bold uppercase tracking-widest" style={{ color }}>
-              {canal}
+        {campanhas.map((c, i) => (
+          <Reveal key={c.nome} i={i + 1} className="rounded-2xl bg-white p-5 text-navy">
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: c.cor }}>
+              {c.nome}
             </p>
-            <div className="mt-3 space-y-2">
-              {[
-                ["Impressões", base],
-                ["Cliques", ctr],
-                ["Compras", (base * ctr * conv) / 10000],
-              ].map(([label, v], k) => (
-                <div key={label as string} className="flex items-center gap-3">
-                  <span className="w-24 text-[11px] text-porcelain/60">{label}</span>
-                  <div className="h-3 flex-1 overflow-hidden rounded-full bg-porcelain/10">
-                    <div
-                      className="deck-grow h-full rounded-full"
-                      style={{
-                        width: active ? `${100 / (k * 6 + 1)}%` : 0,
-                        background: color,
-                        animationDelay: `${i * 200 + k * 150}ms`,
-                      }}
-                    />
-                  </div>
-                  <span className="deck-num w-14 text-right text-xs">
-                    {(v as number).toLocaleString("pt-PT", { maximumFractionDigits: 1 })}
-                  </span>
+            <div className="mt-3 grid grid-cols-3 gap-3">
+              {c.dados.map((d) => (
+                <div key={d.label}>
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-navy/50">
+                    {d.label}
+                  </p>
+                  <p className="deck-num text-lg">
+                    <Num value={d.value} active={active} suffix={d.suffix ?? ""} />
+                  </p>
                 </div>
               ))}
             </div>
           </Reveal>
         ))}
       </div>
-      <div className="space-y-4">
-        {duelos.map(([label, ig, fb, suffix, gloss], i) => (
-          <Reveal key={label} i={i + 1} className="rounded-2xl bg-porcelain/8 p-4">
-            <p className="text-sm font-semibold">
-              {label}
-              <span className="ml-2 text-[11px] font-normal text-porcelain/60">{gloss}</span>
-            </p>
-            <div className="mt-2 flex items-end gap-6">
-              <div>
-                <Num value={ig} active={active} decimals={label === "ROAS" ? 0 : 1} suffix={suffix} className="text-4xl text-[#7FA6E0]" />
-                <p className="text-[11px] text-porcelain/60">Instagram</p>
+
+      <div className="space-y-3">
+        {indicadores.map((ind, i) => (
+          <Reveal key={ind.label} i={i + 1} className="rounded-2xl bg-white p-4 text-navy">
+            <div className="flex items-start justify-between gap-4">
+              <p className="text-sm font-semibold text-navy/85">
+                {ind.label}
+                <Glossary term={ind.label.toLowerCase()} meaning={ind.gloss} />
+              </p>
+              <div className="flex gap-4 text-right">
+                <div>
+                  <Num
+                    value={ind.ig}
+                    active={active}
+                    decimals={1}
+                    suffix={ind.suffix}
+                    className="deck-num text-2xl"
+                    style={{ color: INSTA }}
+                  />
+                  <p className="text-[10px] text-navy/50">Instagram</p>
+                </div>
+                <div>
+                  <Num
+                    value={ind.fb}
+                    active={active}
+                    decimals={1}
+                    suffix={ind.suffix}
+                    className="deck-num text-2xl text-vaa"
+                  />
+                  <p className="text-[10px] text-navy/50">Facebook</p>
+                </div>
               </div>
-              <div>
-                <Num value={fb} active={active} decimals={label === "ROAS" ? 0 : 1} suffix={suffix} className="text-4xl text-vaa" />
-                <p className="text-[11px] text-porcelain/60">Facebook</p>
+            </div>
+            <div className="mt-3 flex h-3 gap-1">
+              <div className="flex-1 overflow-hidden rounded-full bg-navy/8">
+                <div
+                  className="deck-grow h-full rounded-full"
+                  style={{
+                    width: active ? `${(ind.ig / (ind.label === "ROAS" ? 10 : 5)) * 100}%` : "0%",
+                    background: INSTA,
+                    animationDelay: `${i * 100}ms`,
+                  }}
+                />
+              </div>
+              <div className="flex-1 overflow-hidden rounded-full bg-navy/8">
+                <div
+                  className="deck-grow h-full rounded-full bg-vaa"
+                  style={{
+                    width: active ? `${(ind.fb / (ind.label === "ROAS" ? 10 : 5)) * 100}%` : "0%",
+                    animationDelay: `${i * 100 + 80}ms`,
+                  }}
+                />
               </div>
             </div>
           </Reveal>
         ))}
-        <div className="[perspective:1200px]" onClick={() => setFlipped((f) => !f)}>
-          <div
-            className="relative h-[120px] cursor-pointer transition-transform duration-700 [transform-style:preserve-3d]"
-            style={{ transform: flipped ? "rotateY(180deg)" : "none" }}
+        {extras.map((e, i) => (
+          <Reveal
+            key={e.label}
+            i={i + 4}
+            className="flex items-center justify-between rounded-2xl bg-white px-4 py-3 text-navy"
           >
-            <div className="absolute inset-0 rounded-2xl bg-vaa p-5 text-navy [backface-visibility:hidden]">
-              <p className="deck-num text-3xl">ROAS 8</p>
-              <p className="text-sm">clica para ver o senão</p>
-            </div>
-            <div className="absolute inset-0 rounded-2xl bg-porcelain p-5 text-navy [backface-visibility:hidden] [transform:rotateY(180deg)]">
-              <p className="font-semibold">ROAS 8 → não é lucro</p>
-              <p className="mt-1 text-[13px] text-navy/70">
-                Falta descontar produto, portes, devoluções e o trabalho. É receita por euro
-                investido, não margem.
+            <p className="text-sm font-semibold text-navy/80">{e.label}</p>
+            <div className="flex gap-5">
+              <p className="deck-num text-base" style={{ color: INSTA }}>
+                IG <Num value={e.ig} active={active} suffix={e.suffix} />
+              </p>
+              <p className="deck-num text-base text-vaa">
+                FB <Num value={e.fb} active={active} suffix={e.suffix} />
               </p>
             </div>
-          </div>
-        </div>
+          </Reveal>
+        ))}
+        <Reveal i={6} className="rounded-2xl bg-vaa p-4 text-navy">
+          <p className="text-xs font-bold uppercase tracking-widest">Decisão</p>
+          <p className="mt-2 text-[13px] leading-snug">
+            Reforçar o Facebook (mais encomendas, mais receita, menos investimento). No Instagram
+            testar a página de destino — enviar o clique diretamente para a ficha do produto com
+            preço e botão de compra — porque o problema está entre a sessão e a encomenda, não no
+            anúncio.
+          </p>
+        </Reveal>
+        <Reveal i={7} className="rounded-2xl bg-white p-4 text-navy">
+          <p className="text-xs font-bold uppercase tracking-widest text-navy/70">
+            Porque o ROAS 8 não é lucro
+          </p>
+          <p className="mt-2 text-[13px] leading-snug text-navy/80">
+            ROAS 8 = 8 € de receita por 1 € de anúncio, não 8 € de lucro. Ignora custo do produto,
+            embalagem, transporte, devoluções, comissões, IVA e equipa. Com margem bruta de 40 %, os
+            640 € deixam 256 € — antes dos 80 € de anúncios e da logística.
+          </p>
+        </Reveal>
       </div>
     </div>
   );
