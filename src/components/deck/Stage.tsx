@@ -54,6 +54,7 @@ export function Stage() {
     setMenu(false);
     setZoomBoost(1);
     setDur(1100);
+    setActOverlay(null);
     setMode("overview");
     setCam(OVERVIEW);
     setLanded(false);
@@ -61,7 +62,11 @@ export function Stage() {
 
   /* camera choreography: pull back, fly over, zoom in */
   useEffect(() => {
-    if (mode === "overview") return;
+    if (mode === "overview") {
+      setActOverlay(null);
+      return;
+    }
+    setActOverlay(null);
     const from = FRAMES[previous.current]!;
     const to = FRAMES[index]!;
     const timers: number[] = [];
