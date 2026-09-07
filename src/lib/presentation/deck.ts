@@ -344,12 +344,12 @@ export const ACTS: Record<ActId, { label: string; title: string; line: string }>
 };
 
 export const ACT_VIEW: Record<ActId, { x: number; y: number; zoom: number }> = {
-  1: { x: 0, y: 0, zoom: 0.05 },
-  2: { x: 0, y: 0, zoom: 0.085 },
-  3: { x: 0, y: 0, zoom: 0.16 },
+  1: { x: 60, y: 500, zoom: 0.055 },
+  2: { x: 0, y: 0, zoom: 0.08 },
+  3: { x: 0, y: 0, zoom: 0.2 },
 };
 
-export const OVERVIEW = { x: 0, y: 0, zoom: 0.043 };
+export const OVERVIEW = { x: 60, y: 990, zoom: 0.052 };
 
 export function frameIndex(id: string) {
   return FRAMES.findIndex((f) => f.id === id);

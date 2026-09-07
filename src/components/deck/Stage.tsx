@@ -258,7 +258,7 @@ export function Stage() {
               </p>
             </div>
             {frame.act === 2 && (
-              <div className="ml-2 border-l border-navy/10 pl-4 text-center">
+              <div className="ml-2 border-l border-navy/20 pl-4 text-center">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-ines">Inês</p>
                 <p className="deck-num text-2xl text-ines">
                   {String(Math.floor(seconds / 60)).padStart(2, "0")}:
@@ -435,11 +435,11 @@ function Plate() {
           boxShadow: "inset 0 0 600px oklch(0.259 0.049 262 / 0.08)",
         }}
       >
-        <div className="absolute inset-[300px] rounded-full border-[14px] border-spal/10" />
-        <div className="absolute inset-[560px] rounded-full border-2 border-navy/10" />
-        <div className="absolute inset-[2600px] rounded-full border-[30px] border-vaa/10" />
-        <div className="absolute inset-[5000px] rounded-full border-2 border-navy/10" />
-        <div className="absolute inset-[6300px] rounded-full bg-white/40" />
+        <div className="absolute inset-[300px] rounded-full border-[14px] border-spal/25" />
+        <div className="absolute inset-[560px] rounded-full border-2 border-navy/20" />
+        <div className="absolute inset-[2600px] rounded-full border-[30px] border-vaa/25" />
+        <div className="absolute inset-[5000px] rounded-full border-2 border-navy/20" />
+        <div className="absolute inset-[6300px] rounded-full bg-white/60" />
         <svg
           className="absolute inset-0 h-full w-full opacity-[0.10]"
           viewBox="0 0 100 100"
