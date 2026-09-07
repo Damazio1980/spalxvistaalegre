@@ -1002,62 +1002,126 @@ export function RedesPosts() {
 
 export function Placar1({ active }: ChapterProps) {
   const criterios = [
-    ["Descobrir", "5 cliques até um prato", "4 cliques e um preço", "Vista Alegre"],
-    ["Informar", "medidas, peso, referência", "preço, cuidados, materiais", "Vista Alegre"],
-    ["Comprar", "sai do site", "compra no site", "Vista Alegre"],
+    [
+      "Descobrir",
+      "≤ 4 cliques ou pesquisa",
+      "5 cliques, sem pesquisa",
+      "3-4 cliques, pesquisa e filtros",
+      "Vista Alegre",
+    ],
+    [
+      "Informar",
+      "foto, medidas, uso, contexto",
+      "foto e medidas sim; uso e contexto não",
+      "foto, preço, cuidados, narrativa",
+      "Vista Alegre",
+    ],
+    [
+      "Avançar",
+      "preço, compra ou onde comprar na ficha",
+      "só via página Lojas, com saída para terceiros",
+      "compra na ficha; lojas com contacto",
+      "Vista Alegre",
+    ],
+  ];
+  const marcas = [
+    {
+      nome: "SPAL",
+      cor: "text-[#7FA6E0]",
+      forte:
+        "Fichas técnicas completas, secção de design própria, rede física real (loja de fábrica, outlet, El Corte Inglés).",
+      oportunidade:
+        "Sem preço, sem 'onde comprar', sem pesquisa, conteúdos de 2011-2015, bio em inglês.",
+    },
+    {
+      nome: "Vista Alegre",
+      cor: "text-vaa",
+      forte: "Loja online completa, store locator, newsletter, lançamentos com narrativa.",
+      oportunidade:
+        "Redirecionamento regional, navegação parcialmente em inglês, menu extenso com áreas institucionais.",
+    },
   ];
   return (
-    <div className="grid h-full grid-cols-[1.2fr_0.8fr] gap-10 p-14 text-porcelain">
-      <div className="space-y-4">
-        {criterios.map(([c, s, v, w], i) => (
-          <Reveal
-            key={c}
-            i={i}
-            className="rounded-2xl border border-porcelain/15 bg-porcelain/5 p-5"
-          >
-            <div className="flex items-center justify-between">
-              <p className="deck-h2 text-3xl">{c}</p>
-              <Chip tone="vaa">vence {w}</Chip>
-            </div>
-            <div className="mt-2 grid grid-cols-2 gap-4 text-[13px]">
-              <p className="text-porcelain/70">
-                <span className="font-bold text-[#7FA6E0]">SPAL</span> · {s}
-              </p>
-              <p className="text-porcelain/70">
-                <span className="font-bold text-vaa">Vista Alegre</span> · {v}
-              </p>
-            </div>
+    <div className="flex h-full flex-col gap-4 p-10 text-porcelain">
+      <Reveal i={0}>
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-porcelain/50">
+          D · diagnóstico
+        </p>
+        <h3 className="mt-1 font-[var(--font-display)] text-[26px] font-extrabold leading-tight">
+          A Vista Alegre facilita melhor o percurso completo. A SPAL destaca-se na informação
+          técnica.
+        </h3>
+      </Reveal>
+      <div className="grid grid-cols-[1.45fr_0.55fr] gap-5">
+        <div className="space-y-2.5">
+          {criterios.map(([c, def, s, v, w], i) => (
+            <Reveal
+              key={c}
+              i={i + 1}
+              className="rounded-2xl border border-porcelain/15 bg-porcelain/5 p-3.5"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-lg font-extrabold">
+                  {c}
+                  <span className="ml-2 text-[11px] font-medium text-porcelain/50">{def}</span>
+                </p>
+                <Chip tone="vaa">vence {w}</Chip>
+              </div>
+              <div className="mt-1.5 grid grid-cols-2 gap-4 text-[12px]">
+                <p className="text-porcelain/70">
+                  <span className="font-bold text-[#7FA6E0]">SPAL</span> · {s}
+                </p>
+                <p className="text-porcelain/70">
+                  <span className="font-bold text-vaa">Vista Alegre</span> · {v}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+          <Reveal i={4}>
+            <p className="text-[11px] text-porcelain/55">
+              Em «Informar», a SPAL empata na parte técnica.
+            </p>
           </Reveal>
-        ))}
-      </div>
-      <div className="flex flex-col gap-4">
-        <Reveal i={3} className="rounded-3xl bg-porcelain/10 p-6 text-center">
-          <p className="text-xs uppercase tracking-widest text-porcelain/60">Placar do Ato 1</p>
-          <div className="mt-3 flex items-center justify-center gap-6">
+        </div>
+        <Reveal i={4} className="rounded-3xl bg-porcelain/10 p-5 text-center">
+          <p className="text-[10px] uppercase tracking-widest text-porcelain/60">Placar do Ato 1</p>
+          <div className="mt-2 flex items-center justify-center gap-4">
             <div>
-              <Num value={0} active={active} className="text-7xl text-[#7FA6E0]" />
-              <p className="text-xs text-porcelain/60">SPAL</p>
+              <Num value={0} active={active} className="text-5xl text-[#7FA6E0]" />
+              <p className="text-[10px] text-porcelain/60">SPAL</p>
             </div>
-            <span className="text-3xl text-porcelain/40">—</span>
+            <span className="text-2xl text-porcelain/40">—</span>
             <div>
-              <Num value={3} active={active} className="text-7xl text-vaa" />
-              <p className="text-xs text-porcelain/60">Vista Alegre</p>
+              <Num value={3} active={active} className="text-5xl text-vaa" />
+              <p className="text-[10px] text-porcelain/60">Vista Alegre</p>
             </div>
           </div>
         </Reveal>
-        <Reveal i={4} className="rounded-3xl border border-porcelain/15 p-5">
-          <p className="text-xs uppercase tracking-widest text-porcelain/60">
-            Onde cada uma brilha
-          </p>
-          <p className="mt-3 text-[14px] text-porcelain/85">
-            <span className="font-bold text-vaa">Vista Alegre:</span> comprar sem sair do site.
-          </p>
-          <p className="mt-2 text-[14px] text-porcelain/85">
-            <span className="font-bold text-[#7FA6E0]">SPAL:</span> informação técnica e design
-            próprio.
-          </p>
-        </Reveal>
       </div>
+      <div className="grid grid-cols-2 gap-4">
+        {marcas.map((m, i) => (
+          <Reveal
+            key={m.nome}
+            i={i + 5}
+            className="rounded-2xl border border-porcelain/15 p-3.5 text-[12px]"
+          >
+            <p className={cn("text-sm font-bold", m.cor)}>{m.nome}</p>
+            <p className="mt-1 text-porcelain/85">
+              <span className="font-semibold text-porcelain">Ponto forte:</span> {m.forte}
+            </p>
+            <p className="mt-1 text-porcelain/70">
+              <span className="font-semibold text-porcelain">Oportunidade:</span> {m.oportunidade}
+            </p>
+          </Reveal>
+        ))}
+      </div>
+      <Reveal i={7}>
+        <p className="text-[14px] font-semibold text-porcelain/90">
+          Não é uma falha de produto. É uma decisão histórica de comunicar para o retalho e não para
+          o consumidor.
+        </p>
+      </Reveal>
     </div>
   );
 }
+
