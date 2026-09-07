@@ -416,22 +416,24 @@ function FrameBody({
 /* watermark plate drawn on the canvas itself */
 const r = (n: number) => Math.round(n * 100) / 100;
 function Plate() {
+  const R = PLATE_RADIUS;
+  const S = R * 2;
   return (
-    <div className="pointer-events-none absolute" style={{ left: -4200, top: -3900 }}>
+    <div className="pointer-events-none absolute" style={{ left: -R, top: -R }}>
       <div
         className="rounded-full"
         style={{
-          width: 8400,
-          height: 8400,
+          width: S,
+          height: S,
           background: "var(--gradient-plate)",
-          boxShadow: "inset 0 0 400px oklch(0.259 0.049 262 / 0.08)",
+          boxShadow: "inset 0 0 600px oklch(0.259 0.049 262 / 0.08)",
         }}
       >
-        <div className="absolute inset-[220px] rounded-full border-[10px] border-spal/10" />
-        <div className="absolute inset-[420px] rounded-full border border-navy/10" />
-        <div className="absolute inset-[1400px] rounded-full border-[24px] border-vaa/10" />
-        <div className="absolute inset-[2600px] rounded-full border border-navy/8" />
-        <div className="absolute inset-[3200px] rounded-full bg-white/40" />
+        <div className="absolute inset-[300px] rounded-full border-[14px] border-spal/10" />
+        <div className="absolute inset-[560px] rounded-full border-2 border-navy/10" />
+        <div className="absolute inset-[2600px] rounded-full border-[30px] border-vaa/10" />
+        <div className="absolute inset-[5000px] rounded-full border-2 border-navy/10" />
+        <div className="absolute inset-[6300px] rounded-full bg-white/40" />
         <svg
           className="absolute inset-0 h-full w-full opacity-[0.10]"
           viewBox="0 0 100 100"
@@ -452,19 +454,20 @@ function Plate() {
           ))}
         </svg>
       </div>
-      <svg className="absolute left-0 top-0" width={8400} height={8400}>
+      <svg className="absolute left-0 top-0" width={S} height={S}>
         <polyline
-          points={FRAMES.map((f) => `${f.x + 4200},${f.y + 3900}`).join(" ")}
+          points={FRAMES.map((f) => `${f.x + R},${f.y + R}`).join(" ")}
           fill="none"
           stroke="#1B2A44"
-          strokeOpacity="0.25"
-          strokeWidth="4"
-          strokeDasharray="18 14"
+          strokeOpacity="0.22"
+          strokeWidth="6"
+          strokeDasharray="24 18"
         />
       </svg>
     </div>
   );
 }
+
 
 function MiniPlate({ index }: { index: number }) {
   const f = FRAMES[index]!;
