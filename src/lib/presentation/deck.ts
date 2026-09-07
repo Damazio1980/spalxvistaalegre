@@ -26,8 +26,8 @@ export type FrameDef = {
   score?: [number, number];
 };
 
-const R_ACT1 = 6200;
-const R_ACT2 = 4400;
+const R_ACT1 = 5600;
+const R_ACT2 = 4000;
 const FULL = { w: 1280, h: 720 };
 const SUB = { w: 760, h: 520 };
 
@@ -290,7 +290,7 @@ function layout(): FrameDef[] {
   satellites.forEach((s, i) => {
     const col = i % 4;
     const row = Math.floor(i / 4);
-    const out = 1300 + row * 800;
+    const out = 1100 + row * 740;
     const side = (col - 1.5) * 900;
     pos.set(s.id, {
       x: Math.round(host.x + ux * out + tx * side),
@@ -308,15 +308,15 @@ function layout(): FrameDef[] {
     const col = i % 4;
     const row = Math.floor(i / 4);
     pos.set(s.id, {
-      x: -2250 + col * 1500,
-      y: -1350 + row * 900,
+      x: -2175 + col * 1450,
+      y: -1275 + row * 850,
       ...(s.sub ? SUB : FULL),
     });
   });
 
   let chapter = 0;
   return seeds.map((s) => {
-    if (!s.parent) chapter += 1;
+    if (!s.parent && s.id !== "capa") chapter += 1;
     const p = pos.get(s.id)!;
     const { sub: _sub, ...rest } = s;
     return { ...rest, n: chapter, x: p.x, y: p.y, w: p.w, h: p.h };
@@ -327,7 +327,7 @@ export const FRAMES: FrameDef[] = layout();
 
 export const TOTAL_CHAPTERS = FRAMES[FRAMES.length - 1]!.n;
 
-export const PLATE_RADIUS = 9200;
+export const PLATE_RADIUS = 8100;
 
 export const ACTS: Record<ActId, { label: string; title: string; line: string }> = {
   1: { label: "Ato 1", title: "O que descobrimos", line: "Os dados, as evidências, o placar." },
@@ -344,12 +344,12 @@ export const ACTS: Record<ActId, { label: string; title: string; line: string }>
 };
 
 export const ACT_VIEW: Record<ActId, { x: number; y: number; zoom: number }> = {
-  1: { x: 60, y: 500, zoom: 0.055 },
-  2: { x: 0, y: 0, zoom: 0.08 },
+  1: { x: 54, y: 500, zoom: 0.06 },
+  2: { x: 0, y: 0, zoom: 0.085 },
   3: { x: 0, y: 0, zoom: 0.2 },
 };
 
-export const OVERVIEW = { x: 60, y: 990, zoom: 0.052 };
+export const OVERVIEW = { x: 54, y: 866, zoom: 0.058 };
 
 export function frameIndex(id: string) {
   return FRAMES.findIndex((f) => f.id === id);

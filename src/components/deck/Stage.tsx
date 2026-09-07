@@ -189,7 +189,7 @@ export function Stage() {
       >
         {/* the plate canvas */}
         <div
-          className="absolute left-0 top-0 origin-top-left will-change-transform"
+          className="absolute left-0 top-0 origin-top-left"
           style={{ transform, transition: `transform ${dur}ms ${EASE}` }}
         >
           <Plate />
@@ -295,7 +295,7 @@ export function Stage() {
             {ACTS[frame.act].label} · {frame.title}
           </button>
           <span className="deck-num text-xs text-navy/50">
-            {frame.n}/{TOTAL_CHAPTERS}
+            {frame.n === 0 ? "Capa" : `${frame.n}/${TOTAL_CHAPTERS}`}
           </span>
           <MiniPlate index={index} />
           <button
@@ -431,15 +431,16 @@ function Plate() {
         style={{
           width: S,
           height: S,
-          background: "var(--gradient-plate)",
+          background:
+            "radial-gradient(circle at 50% 45%, oklch(0.995 0.003 90) 0%, oklch(0.975 0.006 90) 52%, oklch(0.945 0.009 88) 80%, oklch(0.915 0.012 88) 100%)",
           boxShadow: "inset 0 0 600px oklch(0.259 0.049 262 / 0.08)",
         }}
       >
-        <div className="absolute inset-[300px] rounded-full border-[14px] border-spal/25" />
-        <div className="absolute inset-[560px] rounded-full border-2 border-navy/20" />
-        <div className="absolute inset-[2600px] rounded-full border-[30px] border-vaa/25" />
-        <div className="absolute inset-[5000px] rounded-full border-2 border-navy/20" />
-        <div className="absolute inset-[6300px] rounded-full bg-white/60" />
+        <div className="absolute inset-[3%] rounded-full border-[14px] border-spal/25" />
+        <div className="absolute inset-[6%] rounded-full border-2 border-navy/20" />
+        <div className="absolute inset-[28%] rounded-full border-[30px] border-vaa/25" />
+        <div className="absolute inset-[46%] rounded-full border-2 border-navy/20" />
+        <div className="absolute inset-[62%] rounded-full bg-white/60" />
         <svg
           className="absolute inset-0 h-full w-full opacity-[0.10]"
           viewBox="0 0 100 100"
