@@ -647,43 +647,83 @@ export function MarcaX({ active }: ChapterProps) {
 }
 
 export function Indicadores({ active }: ChapterProps) {
-  const gauges = [
-    { label: "Cliques em 'Onde comprar'", base: 0, min: 2, alvo: 5, suffix: " %" },
-    { label: "Respostas em 24 h", base: 40, min: 80, alvo: 95, suffix: " %" },
-    { label: "Rejeição no telemóvel", base: 0, min: -10, alvo: -10, suffix: " pontos" },
+  const cards = [
+    {
+      label: 'Cliques em "Onde comprar"',
+      fonte: "Analytics do site + Meta Business Suite",
+      freq: "semanal",
+      utm: true,
+      decisao:
+        "< 2 % das sessões → rever posição e texto do botão · ≥ 5 % → replicar em todas as coleções",
+      acesso: "sim",
+    },
+    {
+      label: "Taxa de resposta a comentários e mensagens em < 24 h",
+      fonte: "Meta Business Suite + contagem manual de comentários públicos",
+      freq: "semanal",
+      utm: false,
+      decisao:
+        "< 80 % → definir responsável e modelos · ≥ 95 % → alargar ao fim de semana",
+      acesso: "parcial",
+    },
+    {
+      label: "Sessões em telemóvel nas fichas e taxa de rejeição",
+      fonte: "Google Analytics",
+      freq: "mensal, antes/depois",
+      utm: false,
+      decisao:
+        "rejeição não baixa 10 pontos em 2 meses → rever layout móvel · baixa → continuar para Ocasiões Especiais",
+      acesso: "sim",
+    },
   ];
+
   return (
-    <div className="flex h-full flex-col justify-center gap-8 p-14">
+    <div className="flex h-full flex-col justify-center gap-6 p-12">
       <Reveal i={0}>
-        <h3 className="deck-h2 text-navy">Como saberemos que resultou</h3>
-        <Chip className="mt-3">a medir · 30 dias após arrancar</Chip>
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+          F · acompanhar as melhorias
+        </p>
+        <h3 className="deck-h2 mt-1 text-navy">
+          Três indicadores. Uma decisão para cada resultado.
+        </h3>
       </Reveal>
-      <div className="grid grid-cols-3 gap-6">
-        {gauges.map((g, i) => (
-          <Reveal key={g.label} i={i + 1} className="deck-card bg-white p-6">
-            <p className="text-sm font-semibold text-navy/70">{g.label}</p>
-            <div className="mt-4 flex items-end gap-2">
-              <Num value={g.alvo} active={active} suffix={g.suffix} className="text-5xl text-spal" />
+      <div className="grid grid-cols-3 gap-5">
+        {cards.map((c, i) => (
+          <Reveal key={c.label} i={i + 1} className="deck-card bg-white p-5">
+            <p className="text-sm font-semibold leading-snug text-navy/85">{c.label}</p>
+            <div className="mt-4 space-y-2 text-[12px] leading-snug text-navy/70">
+              <p>
+                <strong className="text-navy/90">Fonte</strong> · {c.fonte}
+              </p>
+              <p>
+                <strong className="text-navy/90">Frequência</strong> · {c.freq}
+              </p>
+              {c.utm && (
+                <p>
+                  <Glossary term="UTM" meaning="código no link que identifica a origem do clique" />
+                </p>
+              )}
             </div>
-            <div className="mt-4 h-3 overflow-hidden rounded-full bg-navy/8">
-              <div
-                className="deck-grow h-full rounded-full bg-spal"
-                style={{ width: active ? "78%" : 0, animationDelay: `${i * 150}ms` }}
-              />
+            <div className="mt-4 rounded-xl bg-porcelain p-3">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-navy/50">
+                Decisão
+              </p>
+              <p className="mt-1 text-[13px] font-medium leading-snug text-navy/85">
+                {c.decisao}
+              </p>
             </div>
-            <p className="mt-2 text-xs text-navy/55">
-              mínimo aceitável {g.min}
-              {g.suffix} · alvo {g.alvo}
-              {g.suffix}
+            <p className="mt-3 text-[11px] text-navy/45">
+              Acesso interno:{" "}
+              <span className="font-semibold text-navy/70">{c.acesso}</span>
             </p>
           </Reveal>
         ))}
       </div>
       <Reveal i={4}>
-        <p className="text-sm text-navy/60">
-          Medição
-          <Glossary term="taxa de rejeição" meaning="quem entra e sai sem clicar em nada" />
-        </p>
+        <Chip tone="ink">
+          Indicadores públicos sem acesso interno: publicações por semana, reações, comentários,
+          seguidores — não medem vendas.
+        </Chip>
       </Reveal>
     </div>
   );
