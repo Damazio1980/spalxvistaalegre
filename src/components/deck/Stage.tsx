@@ -407,6 +407,7 @@ function FrameBody({
 }
 
 /* watermark plate drawn on the canvas itself */
+const r = (n: number) => Math.round(n * 100) / 100;
 function Plate() {
   return (
     <div className="pointer-events-none absolute" style={{ left: -4200, top: -3900 }}>
@@ -432,9 +433,11 @@ function Plate() {
           {Array.from({ length: 24 }).map((_, i) => (
             <path
               key={i}
-              d={`M50 50 C ${50 + Math.cos(i) * 16} ${50 + Math.sin(i) * 22}, ${
-                50 + Math.cos(i * 2) * 30
-              } ${50 + Math.sin(i * 1.4) * 34}, ${50 + Math.cos(i) * 46} ${50 + Math.sin(i) * 46}`}
+              d={`M50 50 C ${r(50 + Math.cos(i) * 16)} ${r(50 + Math.sin(i) * 22)}, ${r(
+                50 + Math.cos(i * 2) * 30,
+              )} ${r(50 + Math.sin(i * 1.4) * 34)}, ${r(50 + Math.cos(i) * 46)} ${r(
+                50 + Math.sin(i) * 46,
+              )}`}
               stroke="#1B2A44"
               strokeWidth="0.15"
               fill="none"
