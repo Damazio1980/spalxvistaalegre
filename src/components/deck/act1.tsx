@@ -980,10 +980,7 @@ export function RedesPosts() {
             </Shot>
             <div className="grid min-h-0 grid-cols-2 gap-x-1 gap-y-0.5">
               {CAMPOS.map((c) => (
-                <label
-                  key={c.key}
-                  className={c.key === "tema" ? "col-span-2 block" : "block min-w-0"}
-                >
+                <label key={c.key} className="block min-w-0">
                   <span className="block text-[7px] font-bold uppercase tracking-wider text-navy/40">
                     {c.label}
                   </span>
