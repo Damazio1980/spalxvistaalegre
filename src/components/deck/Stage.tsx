@@ -29,73 +29,78 @@ export function Stage() {
   const [cam, setCam] = useState<Cam>(() => frameCam(FRAMES[0]!));
   const [zoomBoost, setZoomBoost] = useState(1);
   const [dur, setDur] = useState(1000);
+  const [landed, setLanded] = useState(true);
   const [actOverlay, setActOverlay] = useState<ActId | null>(null);
   const [menu, setMenu] = useState(false);
   const [seconds, setSeconds] = useState(0);
-  const timers = useRef<number[]>([]);
+  const previous = useRef(0);
   const shell = useRef<HTMLDivElement>(null);
 
   const frame = FRAMES[index]!;
   const score = scoreAt(index);
 
-  const clearTimers = () => {
-    timers.current.forEach(clearTimeout);
-    timers.current = [];
-  };
-
-  const goTo = useCallback(
-    (next: number, opts: { fly?: boolean } = { fly: true }) => {
-      const target = Math.max(0, Math.min(FRAMES.length - 1, next));
-      const from = FRAMES[index]!;
-      const to = FRAMES[target]!;
-      clearTimers();
-      setMenu(false);
-      setMode("frame");
-      setZoomBoost(1);
-
-      const land = () => {
-        setDur(1000);
-        setCam(frameCam(to));
-        setIndex(target);
-      };
-
-      const actChanged = from.act !== to.act && target > index;
-      if (actChanged) {
-        setDur(900);
-        setCam(ACT_VIEW[to.act]);
-        setActOverlay(to.act);
-        timers.current.push(
-          window.setTimeout(() => {
-            setActOverlay(null);
-            land();
-          }, 2100) as unknown as number,
-        );
-        return;
-      }
-
-      if (opts.fly) {
-        // fly-over: pull back over the midpoint, then zoom into the target
-        setDur(480);
-        setCam({
-          x: (from.x + to.x) / 2,
-          y: (from.y + to.y) / 2,
-          zoom: Math.min(frameCam(from).zoom, frameCam(to).zoom) * 0.42,
-        });
-        timers.current.push(window.setTimeout(land, 460) as unknown as number);
-      } else {
-        land();
-      }
-    },
-    [index],
-  );
+  const goTo = useCallback((next: number) => {
+    setMenu(false);
+    setZoomBoost(1);
+    setMode("frame");
+    setIndex((cur) => {
+      previous.current = cur;
+      return Math.max(0, Math.min(FRAMES.length - 1, next));
+    });
+  }, []);
 
   const overview = useCallback(() => {
-    clearTimers();
-    setDur(1100);
+    setMenu(false);
     setZoomBoost(1);
+    setDur(1100);
     setMode("overview");
     setCam(OVERVIEW);
+    setLanded(false);
   }, []);
+
+  /* camera choreography: pull back, fly over, zoom in */
+  useEffect(() => {
+    if (mode === "overview") return;
+    const from = FRAMES[previous.current]!;
+    const to = FRAMES[index]!;
+    const timers: number[] = [];
+
+    if (from.act !== to.act && previous.current !== index) {
+      setLanded(false);
+      setDur(900);
+      setCam(ACT_VIEW[to.act]);
+      setActOverlay(to.act);
+      timers.push(
+        window.setTimeout(() => {
+          setActOverlay(null);
+          setDur(1000);
+          setCam(frameCam(to));
+        }, 1900),
+        window.setTimeout(() => setLanded(true), 2900),
+      );
+    } else if (previous.current !== index) {
+      setLanded(false);
+      setDur(460);
+      setCam({
+        x: (from.x + to.x) / 2,
+        y: (from.y + to.y) / 2,
+        zoom: Math.min(frameCam(from).zoom, frameCam(to).zoom) * 0.42,
+      });
+      timers.push(
+        window.setTimeout(() => {
+          setDur(950);
+          setCam(frameCam(to));
+        }, 450),
+        window.setTimeout(() => setLanded(true), 900),
+      );
+    } else {
+      setDur(900);
+      setCam(frameCam(to));
+      timers.push(window.setTimeout(() => setLanded(true), 500));
+    }
+
+    return () => timers.forEach(clearTimeout);
+  }, [index, mode]);
 
   /* keyboard */
   useEffect(() => {
@@ -107,7 +112,8 @@ export function Stage() {
         e.preventDefault();
         goTo(index - 1);
       } else if (e.key === "Escape") {
-        mode === "overview" ? goTo(index, { fly: false }) : overview();
+        if (mode === "overview") goTo(index);
+        else overview();
       } else if (e.key.toLowerCase() === "f") {
         if (document.fullscreenElement) document.exitFullscreen();
         else shell.current?.requestFullscreen?.();
@@ -116,6 +122,7 @@ export function Stage() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [goTo, index, mode, overview]);
+
 
   /* swipe */
   useEffect(() => {
