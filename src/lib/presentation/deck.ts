@@ -179,9 +179,9 @@ const seeds: Seed[] = [
   {
     id: "placar1",
     act: 1,
-    title: "Placar do Ato 1",
+    title: "A resposta à pergunta",
     tag: "D · diagnóstico",
-    punchline: "Não é falta de produto. É um site de 2013 a falar com o retalho.",
+    punchline: "Não é falta de produto. É uma decisão histórica de comunicar para o retalho.",
     navy: true,
     rot: -1,
   },
@@ -252,9 +252,9 @@ const seeds: Seed[] = [
   {
     id: "jogadas",
     act: 3,
-    title: "Três jogadas",
-    tag: "E · intervenção",
-    punchline: "Três jogadas. Nenhuma precisa de site novo.",
+    title: "Três melhorias, por ordem de prioridade",
+    tag: "D · marca escolhida: SPAL",
+    punchline: "Três ações concretas. Nenhuma precisa de site novo.",
     navy: true,
     rot: 1.5,
     zoom: 0.62,
@@ -262,7 +262,7 @@ const seeds: Seed[] = [
   {
     id: "jogada-1",
     act: 3,
-    title: "01 · Onde comprar, em todo o lado",
+    title: "01 · «Onde comprar» ligado a tudo",
     tag: "E · intervenção",
     parent: "jogadas",
     sub: true,
@@ -271,7 +271,7 @@ const seeds: Seed[] = [
   {
     id: "jogada-2",
     act: 3,
-    title: "02 · Fichas que falam com a Inês",
+    title: "02 · Fichas para o consumidor",
     tag: "E · intervenção",
     parent: "jogadas",
     sub: true,
@@ -280,7 +280,7 @@ const seeds: Seed[] = [
   {
     id: "jogada-3",
     act: 3,
-    title: "03 · Feito em Alcobaça — 3 por semana",
+    title: "03 · Linha editorial «Feito em Alcobaça»",
     tag: "E · intervenção",
     parent: "jogadas",
     sub: true,

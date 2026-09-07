@@ -49,36 +49,39 @@ export function PorqueSpal() {
 const JOGADAS = [
   {
     n: "01",
-    title: "Onde comprar, em todo o lado",
-    prova: "No minuto 12 a Inês sai do site e não volta.",
+    title: "«Onde comprar» ligado a tudo",
+    prova:
+      "Ficha sem preço nem onde comprar; página Lojas com ligações externas e e-mails ilegíveis; bio do Instagram sem ligação de compra.",
     jogada:
-      "Botão fixo 'Onde comprar' na ficha e no menu, com lista de lojas, parceiros e link para os marketplaces onde a SPAL já está.",
-    onde: "spal.pt · bio do Instagram · destaques",
-    muda: "A Inês termina o percurso sem sair.",
+      "Página «Onde comprar» com mapa, horários e e-mail legível; botão «Onde comprar esta coleção» em cada ficha; a mesma ligação na bio do Instagram e no botão do Facebook.",
+    onde: "website + Instagram + Facebook",
+    muda: "Cliques medíveis por UTM; menos mensagens «onde compro?».",
     antes: 0,
     depois: 5,
     unidade: "% de cliques em 'Onde comprar'",
   },
   {
     n: "02",
-    title: "Fichas que falam com a Inês",
-    prova: "Peso em gramas e Pack 04/24 não respondem a quem compra uma prenda.",
+    title: "Fichas para o consumidor",
+    prova:
+      "Referência e «Pack 04/24», sem uso nem cuidados, coleções em miniaturas numeradas.",
     jogada:
-      "Manter a informação técnica e acrescentar três linhas humanas: vai à máquina, vai ao micro-ondas, ideia de presente. Preço indicativo ou 'preço na loja'.",
-    onde: "20 fichas mais vistas, primeiro",
-    muda: "A dúvida desaparece antes do contacto.",
+      "Reescrever as 26 fichas de Uso Diário — nome visível, 2 frases sobre o design, ícones de uso confirmados pela SPAL, foto de mesa posta, ligação Onde comprar; dados técnicos num separador «Profissionais».",
+    onde: "website",
+    muda: "Mais tempo na página, menos rejeição em telemóvel.",
     antes: 2,
     depois: 5,
     unidade: "nota da ficha (1-5)",
   },
   {
     n: "03",
-    title: "Feito em Alcobaça — 3 publicações por semana",
-    prova: "2 publicações por semana, sempre catálogo, contra 10 da concorrente.",
+    title: "Linha editorial «Feito em Alcobaça»",
+    prova:
+      "305 publicações e bio em inglês, contra 3 717 publicações e narrativa de coleção na Vista Alegre.",
     jogada:
-      "Um ritmo fixo: segunda a fábrica, quarta a mesa posta em casa, sexta uma pergunta à audiência. Sempre com 'Onde comprar' na legenda.",
-    onde: "Instagram e Facebook, formato adaptado a cada um",
-    muda: "A marca passa a ter uma voz, não só um catálogo.",
+      "3 publicações por semana em 3 rubricas — Bastidores/SPAL Studio (Reel), Da hotelaria para casa (carrossel), Onde comprar/perguntas (Stories + Facebook); bio em português com ligação.",
+    onde: "Instagram + Facebook",
+    muda: "Alcance e guardados; seguidores portugueses; cliques na bio.",
     antes: 2,
     depois: 3,
     unidade: "publicações por semana",
@@ -87,12 +90,12 @@ const JOGADAS = [
 
 export function Jogadas() {
   return (
-    <div className="flex h-full flex-col justify-center gap-8 p-14 text-porcelain">
+    <div className="flex h-full flex-col justify-center gap-7 p-14 text-porcelain">
       <Reveal i={0}>
-        <h3 className="deck-title">Três jogadas</h3>
-        <p className="mt-3 text-xl text-porcelain/70">
-          Cada uma nasce de uma prova do Ato 1. Avança para abrir uma a uma.
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-porcelain/50">
+          D · marca escolhida: SPAL
         </p>
+        <h3 className="deck-title mt-2">Três melhorias, por ordem de prioridade.</h3>
       </Reveal>
       <div className="grid grid-cols-3 gap-5">
         {JOGADAS.map((j, i) => (
@@ -103,9 +106,16 @@ export function Jogadas() {
           >
             <p className="deck-num text-5xl text-vaa">{j.n}</p>
             <p className="mt-3 text-lg font-semibold">{j.title}</p>
+            <p className="mt-2 text-[12px] text-porcelain/60">{j.onde}</p>
           </Reveal>
         ))}
       </div>
+      <Reveal i={4}>
+        <p className="text-[15px] text-porcelain/80">
+          A distância entre o que a SPAL tem e o que comunica é grande — e pode ser reduzida com
+          três ações concretas.
+        </p>
+      </Reveal>
     </div>
   );
 }
@@ -114,24 +124,24 @@ export function Jogada({ n, active }: { n: number; active: boolean }) {
   const j = JOGADAS[n - 1]!;
   return (
     <div className="grid h-full grid-cols-[1.25fr_0.75fr] gap-6 p-10">
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         <Reveal i={0}>
           <p className="deck-num text-4xl text-vaa">{j.n}</p>
-          <h3 className="font-[var(--font-display)] text-3xl font-extrabold text-navy">
+          <h3 className="font-[var(--font-display)] text-2xl font-extrabold text-navy">
             {j.title}
           </h3>
         </Reveal>
         {(
           [
-            ["A prova", j.prova],
-            ["A jogada", j.jogada],
-            ["Onde", j.onde],
-            ["O que muda", j.muda],
+            ["Evidência", j.prova],
+            ["Ação", j.jogada],
+            ["Canal", j.onde],
+            ["Resultado esperado", j.muda],
           ] as const
         ).map(([k, v], i) => (
           <Reveal key={k} i={i + 1} className="rounded-2xl bg-white p-3">
             <p className="text-[10px] font-bold uppercase tracking-widest text-navy/45">{k}</p>
-            <p className="text-[13px] leading-snug text-navy/80">{v}</p>
+            <p className="text-[12px] leading-snug text-navy/80">{v}</p>
           </Reveal>
         ))}
       </div>
@@ -162,6 +172,7 @@ export function Jogada({ n, active }: { n: number; active: boolean }) {
     </div>
   );
 }
+
 
 const SEMANA = [
   {
