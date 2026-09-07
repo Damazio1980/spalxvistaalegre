@@ -111,6 +111,10 @@ export function Stage() {
   /* keyboard */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null;
+      const typing =
+        !!t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+      if (typing && e.key !== "Escape") return;
       if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
         e.preventDefault();
         goTo(index + 1);
@@ -125,8 +129,9 @@ export function Stage() {
         else shell.current?.requestFullscreen?.();
       }
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    shell.current?.focus?.({ preventScroll: true });
+    window.addEventListener("keydown", onKey, true);
+    return () => window.removeEventListener("keydown", onKey, true);
   }, [goTo, index, mode, overview]);
 
 
@@ -185,7 +190,8 @@ export function Stage() {
     <LightboxProvider>
       <div
         ref={shell}
-        className="relative h-screen w-screen overflow-hidden bg-[oklch(0.9_0.012_90)] font-sans text-ink"
+        tabIndex={-1}
+        className="relative h-screen w-screen overflow-hidden bg-[oklch(0.9_0.012_90)] font-sans text-ink outline-none"
       >
         {/* the plate canvas */}
         <div
