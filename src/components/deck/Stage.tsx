@@ -446,7 +446,7 @@ function PorcelainBackdrop() {
         src={porcelainNavigationBackground}
         alt=""
         width={1920}
-        height={1080}
+        height={1088}
         className="porcelain-pattern__art"
       />
       <div className="porcelain-pattern__glaze" />
