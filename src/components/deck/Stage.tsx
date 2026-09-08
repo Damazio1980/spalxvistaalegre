@@ -22,8 +22,8 @@ const EASE = "cubic-bezier(0.66, 0, 0.24, 1)";
 type Viewport = { width: number; height: number };
 
 function frameCam(f: FrameDef, viewport: Viewport): Cam {
-  const widthFit = (viewport.width * 0.86) / f.w;
-  const heightFit = (viewport.height * 0.72) / f.h;
+  const widthFit = (viewport.width * 0.9) / f.w;
+  const heightFit = (viewport.height * 0.82) / f.h;
   return { x: f.x, y: f.y, zoom: Math.min(widthFit, heightFit) };
 }
 
