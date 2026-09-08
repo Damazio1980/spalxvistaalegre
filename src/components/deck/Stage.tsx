@@ -6,7 +6,6 @@ import {
   FOOTER,
   FRAMES,
   OVERVIEW,
-  PLATE_RADIUS,
   TOTAL_CHAPTERS,
   scoreAt,
   type ActId,
@@ -20,14 +19,19 @@ type Cam = { x: number; y: number; zoom: number };
 
 const EASE = "cubic-bezier(0.66, 0, 0.24, 1)";
 
-function frameCam(f: FrameDef): Cam {
-  return { x: f.x, y: f.y, zoom: f.zoom ?? (f.w < 1000 ? 1.15 : 0.82) };
+type Viewport = { width: number; height: number };
+
+function frameCam(f: FrameDef, viewport: Viewport): Cam {
+  const widthFit = (viewport.width * 0.86) / f.w;
+  const heightFit = (viewport.height * 0.72) / f.h;
+  return { x: f.x, y: f.y, zoom: Math.min(widthFit, heightFit) };
 }
 
 export function Stage() {
   const [index, setIndex] = useState(0);
   const [mode, setMode] = useState<"frame" | "overview">("frame");
-  const [cam, setCam] = useState<Cam>(() => frameCam(FRAMES[0]!));
+  const [viewport, setViewport] = useState<Viewport>({ width: 1280, height: 720 });
+  const [cam, setCam] = useState<Cam>(() => frameCam(FRAMES[0]!, { width: 1280, height: 720 }));
   const [zoomBoost, setZoomBoost] = useState(1);
   const [dur, setDur] = useState(1000);
   const [landed, setLanded] = useState(true);
@@ -39,6 +43,13 @@ export function Stage() {
 
   const frame = FRAMES[index]!;
   const score = scoreAt(index);
+
+  useEffect(() => {
+    const measure = () => setViewport({ width: window.innerWidth, height: window.innerHeight });
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
   const goTo = useCallback((next: number) => {
     setMenu(false);
@@ -80,7 +91,7 @@ export function Stage() {
         window.setTimeout(() => {
           setActOverlay(null);
           setDur(1000);
-          setCam(frameCam(to));
+          setCam(frameCam(to, viewport));
         }, 1900),
         window.setTimeout(() => setLanded(true), 2900),
       );
@@ -90,23 +101,23 @@ export function Stage() {
       setCam({
         x: (from.x + to.x) / 2,
         y: (from.y + to.y) / 2,
-        zoom: Math.min(frameCam(from).zoom, frameCam(to).zoom) * 0.42,
+          zoom: Math.min(frameCam(from, viewport).zoom, frameCam(to, viewport).zoom) * 0.42,
       });
       timers.push(
         window.setTimeout(() => {
           setDur(950);
-          setCam(frameCam(to));
+          setCam(frameCam(to, viewport));
         }, 450),
         window.setTimeout(() => setLanded(true), 900),
       );
     } else {
       setDur(900);
-      setCam(frameCam(to));
+      setCam(frameCam(to, viewport));
       timers.push(window.setTimeout(() => setLanded(true), 500));
     }
 
     return () => timers.forEach(clearTimeout);
-  }, [index, mode]);
+  }, [index, mode, viewport]);
 
   /* keyboard */
   useEffect(() => {
@@ -191,14 +202,15 @@ export function Stage() {
       <div
         ref={shell}
         tabIndex={-1}
-        className="relative h-screen w-screen overflow-hidden bg-[oklch(0.9_0.012_90)] font-sans text-ink outline-none"
+        className="relative h-screen w-screen overflow-hidden bg-porcelain font-sans text-ink outline-none"
       >
-        {/* the plate canvas */}
+        <PorcelainBackdrop />
+
+        {/* presentation canvas */}
         <div
           className="absolute left-0 top-0 origin-top-left"
           style={{ transform, transition: `transform ${dur}ms ${EASE}` }}
         >
-          <Plate />
           {FRAMES.map((f, i) => {
             const isVisible = visible.has(f.id);
             const active = i === index && mode === "frame" && !actOverlay && landed;
@@ -218,8 +230,8 @@ export function Stage() {
                   top: f.y - f.h / 2,
                   width: f.w,
                   height: f.h,
-                  borderRadius: 24,
-                  transform: `rotate(${f.rot}deg)`,
+                   borderRadius: 10,
+                   transform: "rotate(0deg)",
                 }}
               >
                 {isVisible && Chapter && (
@@ -303,7 +315,7 @@ export function Stage() {
           <span className="deck-num text-xs text-navy/50">
             {frame.n === 0 ? "Capa" : `${frame.n}/${TOTAL_CHAPTERS}`}
           </span>
-          <MiniPlate index={index} />
+           <ChapterPlate frame={frame} />
           <button
             onClick={overview}
             className="deck-slide-btn flex items-center gap-1.5 rounded-full border border-navy/15 px-3 py-1 text-xs font-semibold text-navy"
@@ -425,84 +437,24 @@ function FrameBody({
   );
 }
 
-/* watermark plate drawn on the canvas itself */
-const r = (n: number) => Math.round(n * 100) / 100;
-function Plate() {
-  const R = PLATE_RADIUS;
-  const S = R * 2;
+/* fixed porcelain pattern: decorative, never map-like */
+function PorcelainBackdrop() {
   return (
-    <div className="pointer-events-none absolute" style={{ left: -R, top: -R }}>
-      <div
-        className="rounded-full"
-        style={{
-          width: S,
-          height: S,
-          background:
-            "radial-gradient(circle at 50% 45%, oklch(0.995 0.003 90) 0%, oklch(0.975 0.006 90) 52%, oklch(0.945 0.009 88) 80%, oklch(0.915 0.012 88) 100%)",
-          boxShadow: "inset 0 0 600px oklch(0.259 0.049 262 / 0.08)",
-        }}
-      >
-        <div className="absolute inset-[3%] rounded-full border-[14px] border-spal/25" />
-        <div className="absolute inset-[6%] rounded-full border-2 border-navy/20" />
-        <div className="absolute inset-[28%] rounded-full border-[30px] border-vaa/25" />
-        <div className="absolute inset-[46%] rounded-full border-2 border-navy/20" />
-        <div className="absolute inset-[62%] rounded-full bg-white/60" />
-        <svg
-          className="absolute inset-0 h-full w-full opacity-[0.10]"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          {Array.from({ length: 24 }).map((_, i) => (
-            <path
-              key={i}
-              d={`M50 50 C ${r(50 + Math.cos(i) * 16)} ${r(50 + Math.sin(i) * 22)}, ${r(
-                50 + Math.cos(i * 2) * 30,
-              )} ${r(50 + Math.sin(i * 1.4) * 34)}, ${r(50 + Math.cos(i) * 46)} ${r(
-                50 + Math.sin(i) * 46,
-              )}`}
-              stroke="#1B2A44"
-              strokeWidth="0.15"
-              fill="none"
-            />
-          ))}
-        </svg>
-      </div>
-      <svg className="absolute left-0 top-0" width={S} height={S}>
-        <polyline
-          points={FRAMES.map((f) => `${f.x + R},${f.y + R}`).join(" ")}
-          fill="none"
-          stroke="#1B2A44"
-          strokeOpacity="0.22"
-          strokeWidth="6"
-          strokeDasharray="24 18"
-        />
-      </svg>
+    <div className="porcelain-pattern pointer-events-none absolute inset-0" aria-hidden="true">
+      <div className="porcelain-pattern__medallion" />
+      <div className="porcelain-pattern__corner porcelain-pattern__corner--top" />
+      <div className="porcelain-pattern__corner porcelain-pattern__corner--bottom" />
     </div>
   );
 }
 
-
-function MiniPlate({ index }: { index: number }) {
-  const f = FRAMES[index]!;
-  const S = 46;
-  const scale = S / 19000;
+function ChapterPlate({ frame }: { frame: FrameDef }) {
   return (
-    <div className="relative h-[46px] w-[46px] shrink-0 rounded-full border border-navy/15 bg-porcelain">
-      {FRAMES.map((fr, i) => (
-        <span
-          key={fr.id}
-          className={cn(
-            "absolute h-[3px] w-[3px] rounded-full",
-            i === index ? "bg-ines" : "bg-navy/25",
-          )}
-          style={{
-            left: S / 2 + fr.x * scale,
-            top: S / 2 + fr.y * scale,
-            transform: i === index ? "scale(2.2)" : undefined,
-          }}
-        />
-      ))}
-      <span className="sr-only">{f.title}</span>
+    <div className="grid h-[46px] w-[46px] shrink-0 place-items-center rounded-full border-2 border-spal/30 bg-porcelain shadow-inner">
+      <span className="deck-num text-[11px] text-navy/55">
+        {frame.n === 0 ? "00" : String(frame.n).padStart(2, "0")}
+      </span>
+      <span className="sr-only">{frame.title}</span>
     </div>
   );
 }
