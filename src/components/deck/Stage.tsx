@@ -14,6 +14,7 @@ import {
 import { CHAPTERS } from "./registry";
 import { LightboxProvider } from "./primitives";
 import { cn } from "@/lib/utils";
+import porcelainNavigationBackground from "@/assets/porcelain-navigation-bg.jpg";
 
 type Cam = { x: number; y: number; zoom: number };
 
@@ -441,9 +442,14 @@ function FrameBody({
 function PorcelainBackdrop() {
   return (
     <div className="porcelain-pattern pointer-events-none absolute inset-0" aria-hidden="true">
-      <div className="porcelain-pattern__medallion" />
-      <div className="porcelain-pattern__corner porcelain-pattern__corner--top" />
-      <div className="porcelain-pattern__corner porcelain-pattern__corner--bottom" />
+      <img
+        src={porcelainNavigationBackground}
+        alt=""
+        width={1920}
+        height={1088}
+        className="porcelain-pattern__art"
+      />
+      <div className="porcelain-pattern__glaze" />
     </div>
   );
 }

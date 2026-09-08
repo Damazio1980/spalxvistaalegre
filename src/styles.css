@@ -176,58 +176,27 @@
 }
 
 .porcelain-pattern {
+  overflow: hidden;
   background-color: var(--porcelain);
-  background-image:
-    radial-gradient(circle at center, transparent 0 18px, var(--pattern-blue) 19px 20px, transparent 21px),
-    radial-gradient(circle at center, transparent 0 30px, var(--pattern-gold) 31px 32px, transparent 33px),
-    linear-gradient(45deg, transparent 48%, var(--pattern-line) 49% 51%, transparent 52%),
-    linear-gradient(-45deg, transparent 48%, var(--pattern-line) 49% 51%, transparent 52%);
-  background-position: 0 0, 0 0, 38px 38px, 38px 38px;
-  background-size: 152px 152px;
 }
 
-.porcelain-pattern::after {
-  content: "";
+.porcelain-pattern__art {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 32%, var(--porcelain) 82%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.9) contrast(0.96);
+  transform: scale(1.015);
 }
 
-.porcelain-pattern__medallion {
+.porcelain-pattern__glaze {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: min(78vw, 1080px);
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  border: 1px solid var(--pattern-gold);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 14px var(--porcelain),
-    0 0 0 16px var(--pattern-blue),
-    0 0 0 34px var(--porcelain),
-    0 0 0 35px var(--pattern-gold);
-  opacity: 0.7;
-}
-
-.porcelain-pattern__corner {
-  position: absolute;
-  width: 260px;
-  aspect-ratio: 1;
-  border: 2px solid var(--pattern-blue);
-  border-radius: 50%;
-  box-shadow: 0 0 0 12px var(--porcelain), 0 0 0 14px var(--pattern-gold);
-  opacity: 0.75;
-}
-
-.porcelain-pattern__corner--top {
-  right: -120px;
-  top: -120px;
-}
-
-.porcelain-pattern__corner--bottom {
-  bottom: -120px;
-  left: -120px;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, oklch(0.98 0.006 90 / 0.22) 0 34%, transparent 67%),
+    linear-gradient(to bottom, oklch(1 0 0 / 0.06), oklch(0.93 0.018 90 / 0.12));
+  box-shadow: inset 0 0 110px oklch(0.259 0.049 262 / 0.12);
 }
 
 @utility deck-title {
