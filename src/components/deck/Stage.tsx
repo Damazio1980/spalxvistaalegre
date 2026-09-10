@@ -14,7 +14,7 @@ import {
 import { CHAPTERS } from "./registry";
 import { LightboxProvider } from "./primitives";
 import { cn } from "@/lib/utils";
-import porcelainNavigationBackground from "@/assets/porcelain-navigation-bg.jpg";
+import porcelainNavigationBackground from "@/assets/porcelain-navigation-bg-v2.jpg";
 
 type Cam = { x: number; y: number; zoom: number };
 
