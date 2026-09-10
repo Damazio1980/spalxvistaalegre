@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { ChevronLeft, ChevronRight, Maximize, List } from "lucide-react";
 import {
   ACTS,
@@ -119,6 +119,21 @@ export function Stage() {
   }, [frame.id]);
 
   const scale = useMemo(() => fitScale(frame, viewport), [frame, viewport]);
+  const transitionStyle = useMemo(() => {
+    const from = FRAMES[previous.current] ?? frame;
+    const rawX = frame.x - from.x;
+    const rawY = frame.y - from.y;
+    const distance = Math.hypot(rawX, rawY);
+    const fallback = index >= previous.current ? 1 : -1;
+    const unitX = distance > 0 ? rawX / distance : fallback;
+    const unitY = distance > 0 ? rawY / distance : 0;
+    return {
+      "--deck-scale": scale,
+      "--deck-entry-scale": scale * 0.72,
+      "--deck-travel-x": `${Math.round(unitX * 150)}px`,
+      "--deck-travel-y": `${Math.round(unitY * 100)}px`,
+    } as CSSProperties;
+  }, [frame, index, scale]);
   const Chapter = CHAPTERS[frame.id];
 
   return (
@@ -145,7 +160,7 @@ export function Stage() {
               width: frame.w,
               height: frame.h,
               borderRadius: 12,
-              transform: `scale(${scale})`,
+               ...transitionStyle,
             }}
           >
             {Chapter && (
@@ -176,12 +191,12 @@ export function Stage() {
             </div>
             <span className="text-navy/25">—</span>
             <div className="text-center">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-[oklch(0.55_0.075_78)]">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-vaa">
                 V. Alegre
               </p>
               <p
                 key={score.vaa}
-                className="deck-num deck-pop text-2xl text-[oklch(0.55_0.075_78)]"
+                className="deck-num deck-pop text-2xl text-vaa"
                 style={{ animation: "deck-pop 500ms both, deck-glow 900ms 200ms" }}
               >
                 {score.vaa}

@@ -25,7 +25,7 @@ import {
 
 
 const SPAL = "#2F5C9E";
-const VAA = "#C09C68";
+const VAA = "#B76876";
 
 export function PorqueSpal() {
   const chips = [

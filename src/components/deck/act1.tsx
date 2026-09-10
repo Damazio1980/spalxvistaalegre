@@ -39,7 +39,7 @@ import {
 export type ChapterProps = { active: boolean };
 
 const SPAL = "#2F5C9E";
-const VAA = "#C09C68";
+const VAA = "#B76876";
 
 export function Capa({ active }: ChapterProps) {
   return (
