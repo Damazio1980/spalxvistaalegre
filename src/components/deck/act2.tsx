@@ -75,10 +75,10 @@ export function Min0() {
           <Phone title="Vista Alegre" tone="vaa">
             <div className="h-full p-3">
               <p className="text-[9px] uppercase tracking-widest text-navy/40">vistaalegre.com</p>
-              <div className="mt-2 h-28 rounded-lg bg-[linear-gradient(160deg,#C09C68,#e6d3b3)]" />
+              <div className="mt-2 h-28 rounded-lg bg-gradient-to-br from-vaa to-vaa/25" />
               <p className="mt-2 font-semibold">Coleção Primavera</p>
               <p className="text-[10px] text-navy/60">Prato de sobremesa</p>
-              <p className="mt-1 font-bold text-[oklch(0.55_0.075_78)]">29,50 €</p>
+              <p className="mt-1 font-bold text-vaa">29,50 €</p>
               <div className="mt-2 rounded-md bg-navy py-1 text-center text-[10px] font-semibold text-porcelain">
                 Comprar
               </div>
@@ -106,7 +106,7 @@ export function Min3() {
       {(
         [
           ["SPAL", spal, "bg-spal", "text-spal"],
-          ["Vista Alegre", vaa, "bg-vaa", "text-[oklch(0.55_0.075_78)]"],
+          ["Vista Alegre", vaa, "bg-vaa", "text-vaa"],
         ] as const
       ).map(([name, steps, bg, text], row) => (
         <Reveal key={name} i={row + 1} className="space-y-2">
@@ -172,7 +172,7 @@ function FlipCard({
         <div className="absolute inset-0 rounded-3xl border border-navy/10 bg-white p-6 [backface-visibility:hidden]">
           <p
             className={`text-xs font-bold uppercase tracking-widest ${
-              tone === "spal" ? "text-spal" : "text-[oklch(0.55_0.075_78)]"
+              tone === "spal" ? "text-spal" : "text-vaa"
             }`}
           >
             {brand}
@@ -263,7 +263,7 @@ export function Min12({ active }: ChapterProps) {
         </div>
       </Reveal>
       <Reveal i={1} className="rounded-3xl border border-vaa/40 bg-white p-6">
-        <p className="text-xs font-bold uppercase tracking-widest text-[oklch(0.55_0.075_78)]">
+        <p className="text-xs font-bold uppercase tracking-widest text-vaa">
           Vista Alegre
         </p>
         <p className="mt-2 text-lg font-semibold text-navy">O caminho chega ao fim</p>
@@ -283,7 +283,7 @@ export function Min12({ active }: ChapterProps) {
         </div>
         <div className="mt-6 rounded-2xl bg-porcelain p-4">
           <p className="text-xs text-navy/55">Ao minuto 6</p>
-          <Num value={6} active={active} suffix=" min" className="text-4xl text-[oklch(0.55_0.075_78)]" />
+          <Num value={6} active={active} suffix=" min" className="text-4xl text-vaa" />
           <p className="text-xs text-navy/55">com carrinho</p>
         </div>
       </Reveal>

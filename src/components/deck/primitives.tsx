@@ -235,7 +235,7 @@ export function Chip({
   const tones: Record<string, string> = {
     ink: "bg-navy/8 text-navy",
     spal: "bg-spal/12 text-spal",
-    vaa: "bg-vaa/20 text-[oklch(0.55_0.075_78)]",
+    vaa: "bg-vaa/20 text-vaa",
     ines: "bg-ines/12 text-ines",
     light: "bg-porcelain/15 text-porcelain",
   };
