@@ -180,16 +180,34 @@
   background-color: var(--porcelain);
 }
 
-/* watermark look: pattern stays, colors washed out so slides keep focus */
+/* alternating backdrops */
+.porcelain-pattern--navy {
+  background:
+    radial-gradient(ellipse 80% 80% at center, oklch(0.31 0.055 262) 0%, oklch(0.2 0.045 262) 100%);
+}
+
+.porcelain-pattern--rose {
+  background:
+    radial-gradient(ellipse 80% 80% at center, oklch(0.87 0.035 25) 0%, oklch(0.79 0.05 24) 100%);
+}
+
+/* soft watermark: pattern stays, colors washed out so slides keep focus */
 .porcelain-pattern__art {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.32;
-  filter: saturate(0.68) contrast(0.94) brightness(1.05);
+  opacity: 0.3;
+  filter: saturate(0.65) contrast(0.94) brightness(1.05);
   transform: scale(1.02);
+}
+
+/* original artwork, full colour */
+.porcelain-pattern__art--full {
+  opacity: 1;
+  filter: none;
+  transform: none;
 }
 
 .porcelain-pattern__glaze {
@@ -199,6 +217,22 @@
     radial-gradient(ellipse 72% 78% at center, var(--porcelain) 0 42%, oklch(0.97 0.008 90 / 0.55) 68%, transparent 100%),
     linear-gradient(to bottom, oklch(1 0 0 / 0.1), oklch(0.93 0.018 90 / 0.16));
   box-shadow: inset 0 0 110px oklch(0.259 0.049 262 / 0.08);
+}
+
+/* prezi-like entry: slide zooms in gently, no canvas fly-over */
+.deck-slide-enter {
+  animation: deck-slide-enter 620ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+@keyframes deck-slide-enter {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 
 @utility deck-title {

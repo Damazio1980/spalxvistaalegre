@@ -64,8 +64,8 @@ export function Capa({ active }: ChapterProps) {
           </Reveal>
           <Reveal i={3}>
             <p className="mt-8 text-sm text-porcelain/55">
-              Usa <strong>←</strong> <strong>→</strong> para andar, <strong>Esc</strong> para a
-              vista geral, <strong>F</strong> para ecrã inteiro.
+              Usa <strong>←</strong> <strong>→</strong> para andar e <strong>F</strong> para ecrã
+              inteiro.
             </p>
           </Reveal>
         </div>
