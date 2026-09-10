@@ -55,7 +55,7 @@ function LojaMock({ img }: { img: RefImage }) {
         <span className="h-1.5 w-10 rounded-sm bg-vaa/60" />
         <div className="h-1.5 w-full rounded-sm bg-navy/15" />
         <div className="h-1.5 w-3/4 rounded-sm bg-navy/10" />
-        <p className="mt-1 text-[9px] font-bold text-[oklch(0.55_0.075_78)]">29,50 €</p>
+        <p className="mt-1 text-[9px] font-bold text-vaa">29,50 €</p>
         <div className="rounded-sm bg-navy py-[2px] text-center text-[6px] font-semibold text-porcelain">
           Comprar
         </div>
@@ -91,7 +91,7 @@ function MobileMock({ img }: { img: RefImage }) {
           <div className="h-1 w-1/2 rounded-sm bg-navy/10" />
           {loja ? (
             <>
-              <p className="text-[7px] font-bold text-[oklch(0.55_0.075_78)]">29,50 €</p>
+              <p className="text-[7px] font-bold text-vaa">29,50 €</p>
               <div className="rounded-sm bg-navy py-[1px] text-center text-[6px] text-porcelain">
                 Comprar
               </div>

@@ -22,7 +22,7 @@ import {
 import { cn } from "@/lib/utils";
 
 export const SPAL_C = "#2F5C9E";
-export const VAA_C = "#C09C68";
+export const VAA_C = "#B76876";
 export const IG_C = "#7FA6E0";
 export const FB_C = "#1B2A44";
 

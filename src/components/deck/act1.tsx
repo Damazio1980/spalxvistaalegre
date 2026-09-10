@@ -39,7 +39,7 @@ import {
 export type ChapterProps = { active: boolean };
 
 const SPAL = "#2F5C9E";
-const VAA = "#C09C68";
+const VAA = "#B76876";
 
 export function Capa({ active }: ChapterProps) {
   return (
@@ -103,7 +103,7 @@ export function Nomes({ active }: ChapterProps) {
           </p>
         </Reveal>
         <Reveal i={1} className="deck-card border border-vaa/30 bg-white p-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-[oklch(0.55_0.075_78)]">
+          <p className="text-xs font-bold uppercase tracking-widest text-vaa">
             Vista Alegre
           </p>
           <p className="mt-2 text-[15px] leading-relaxed text-navy/80">
@@ -298,7 +298,7 @@ function CanalCard({
       <div className="flex items-start gap-3">
         <span
           className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${
-            tone === "spal" ? "bg-spal/10 text-spal" : "bg-vaa/15 text-[oklch(0.55_0.075_78)]"
+            tone === "spal" ? "bg-spal/10 text-spal" : "bg-vaa/15 text-vaa"
           }`}
         >
           <Icon className="h-4 w-4" />
@@ -348,7 +348,7 @@ export function Canais({ active }: ChapterProps) {
           </Reveal>
         </div>
         <div className="space-y-2">
-          <p className="text-xs font-bold uppercase tracking-widest text-[oklch(0.55_0.075_78)]">
+          <p className="text-xs font-bold uppercase tracking-widest text-vaa">
             Vista Alegre
           </p>
           {CANAIS_VAA.map((c, i) => (
@@ -505,7 +505,7 @@ export function Website({ active }: ChapterProps) {
                         <p className="mt-1 text-[12px] leading-snug text-navy/75">{d.spal.obs}</p>
                       </div>
                       <div className="rounded-xl border border-vaa/35 bg-porcelain p-3">
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-[oklch(0.55_0.075_78)]">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-vaa">
                           Vista Alegre {d.vaa.score}/5
                         </p>
                         <p className="mt-1 text-[12px] leading-snug text-navy/75">{d.vaa.obs}</p>
@@ -571,7 +571,7 @@ function Fluxo({
     <div className="flex flex-col gap-1.5">
       <p
         className={`text-xs font-bold uppercase tracking-widest ${
-          tone === "spal" ? "text-spal" : "text-[oklch(0.55_0.075_78)]"
+          tone === "spal" ? "text-spal" : "text-vaa"
         }`}
       >
         {nome}
@@ -593,7 +593,7 @@ function Fluxo({
       <Reveal i={i + passos.length}>
         <p
           className={`rounded-2xl px-4 py-2 text-[13px] font-bold ${
-            tone === "spal" ? "bg-spal/10 text-spal" : "bg-vaa/15 text-[oklch(0.48_0.075_78)]"
+            tone === "spal" ? "bg-spal/10 text-spal" : "bg-vaa/15 text-vaa"
           }`}
         >
           {resultado}
@@ -668,7 +668,7 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
         {(
           [
             ["SPAL", d.spal, "border-spal/25", "text-spal"],
-            ["Vista Alegre", d.vaa, "border-vaa/40", "text-[oklch(0.55_0.075_78)]"],
+            ["Vista Alegre", d.vaa, "border-vaa/40", "text-vaa"],
           ] as const
         ).map(([name, side, border, text], i) => (
           <Reveal
@@ -843,13 +843,13 @@ function PerfilCard({ p, i, active }: { p: Perfil; i: number; active: boolean })
     >
       <div className="flex items-center gap-2">
         <span
-          className={`grid h-7 w-7 place-items-center rounded-full ${spal ? "bg-spal/10 text-spal" : "bg-vaa/15 text-[oklch(0.5_0.075_78)]"}`}
+          className={`grid h-7 w-7 place-items-center rounded-full ${spal ? "bg-spal/10 text-spal" : "bg-vaa/15 text-vaa"}`}
         >
           <Icon size={14} />
         </span>
         <div className="min-w-0">
           <p
-            className={`text-[10px] font-bold uppercase tracking-widest ${spal ? "text-spal" : "text-[oklch(0.5_0.075_78)]"}`}
+            className={`text-[10px] font-bold uppercase tracking-widest ${spal ? "text-spal" : "text-vaa"}`}
           >
             {p.marca} · {p.rede}
           </p>
@@ -908,7 +908,7 @@ export function Redes({ active }: ChapterProps) {
                 {l.dim}
               </span>
               <span className="text-[11.5px] leading-snug text-spal">{l.spal}</span>
-              <span className="text-[11.5px] leading-snug text-[oklch(0.5_0.075_78)]">{l.vaa}</span>
+              <span className="text-[11.5px] leading-snug text-vaa">{l.vaa}</span>
             </Reveal>
           ))}
         </div>
