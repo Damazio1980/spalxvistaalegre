@@ -443,7 +443,7 @@ function PorcelainBackdrop() {
   return (
     <div className="porcelain-pattern pointer-events-none absolute inset-0" aria-hidden="true">
       <img
-        src={porcelainNavigationBackground}
+        src={porcelainNavigationBackground.url}
         alt=""
         width={1920}
         height={1088}
