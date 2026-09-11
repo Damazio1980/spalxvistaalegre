@@ -698,7 +698,7 @@ function VideoPlayer({
   site,
   className,
 }: {
-  src: string;
+  src: string | null;
   label: string;
   site: string;
   className?: string;
