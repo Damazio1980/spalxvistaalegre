@@ -217,6 +217,9 @@ type Canal = {
   funcao: string;
   num?: { label: string; value: number; suffix?: string };
   num2?: { label: string; value: number };
+  selo?: boolean;
+  bio?: string;
+  chips?: string[];
 };
 
 const CANAIS_SPAL: Canal[] = [
@@ -269,8 +272,17 @@ const CANAIS_VAA: Canal[] = [
     icon: "Facebook",
     nome: "Facebook",
     addr: "/vistaalegreofficial",
-    detalhe: "presença ativa",
+    detalhe: "conta oficial · Produto/serviço",
     funcao: "Informar",
+    num: { label: "seguidores", value: 347000 },
+    num2: { label: "publicações", value: 6000 },
+    selo: true,
+    bio: "Fundada em 1824, a Vista Alegre adquiriu uma notoriedade ímpar, tornando-a numa das poucas insígnias portuguesas de luxo a nível mundial. A Vista Alegre produz porcelana de mesa, decorativa, giftware e hotelware, vidro e cristal de alta qualidade.",
+    chips: [
+      "★ Recomendado por 92% (293 avaliações)",
+      "socialmedia@vistaalegre.com",
+      "vistaalegre.com",
+    ],
   },
 ];
 
