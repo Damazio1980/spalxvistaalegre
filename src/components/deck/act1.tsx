@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { BadgeCheck, ChevronDown, Facebook, Globe, Instagram, Play } from "lucide-react";
 import identidadeVideo from "@/assets/identidade-6d-spal.mp4.asset.json";
+import identidadeVaaVideo from "@/assets/identidade-vaa.mp4.asset.json";
 import {
   Bar,
   BarChart,
@@ -691,7 +692,17 @@ export function Percurso({ active }: ChapterProps) {
 
 
 
-function VideoSpal({ className }: { className?: string }) {
+function VideoPlayer({
+  src,
+  label,
+  site,
+  className,
+}: {
+  src: string;
+  label: string;
+  site: string;
+  className?: string;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -711,7 +722,7 @@ function VideoSpal({ className }: { className?: string }) {
     <div className={cn("relative overflow-hidden rounded-2xl border border-navy/10 bg-navy", className)}>
       <video
         ref={ref}
-        src={identidadeVideo.url}
+        src={src}
         className="h-full w-full object-cover"
         playsInline
         muted
@@ -722,17 +733,17 @@ function VideoSpal({ className }: { className?: string }) {
       <button
         type="button"
         onClick={toggle}
-        aria-label={playing ? "Pausar vídeo do site da SPAL" : "Ver vídeo do site da SPAL"}
+        aria-label={playing ? `Pausar vídeo do site da ${label}` : `Ver vídeo do site da ${label}`}
         className="absolute inset-0 grid place-items-center bg-navy/25 transition-colors hover:bg-navy/10"
       >
         {!playing && (
-          <span className="grid h-11 w-11 place-items-center rounded-full bg-porcelain/95 shadow-lg">
-            <Play className="ml-0.5 h-5 w-5 fill-navy text-navy" />
+          <span className="grid h-16 w-16 place-items-center rounded-full bg-porcelain/95 shadow-xl transition-transform hover:scale-110">
+            <Play className="ml-1 h-7 w-7 fill-navy text-navy" />
           </span>
         )}
       </button>
-      <span className="pointer-events-none absolute bottom-1.5 left-2 rounded-full bg-porcelain/90 px-2 py-[1px] text-[9px] font-bold uppercase tracking-wider text-navy">
-        vídeo · spal.pt
+      <span className="pointer-events-none absolute bottom-2 left-3 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
+        ▶ vídeo · {site}
       </span>
     </div>
   );
@@ -740,6 +751,49 @@ function VideoSpal({ className }: { className?: string }) {
 
 export function Duelo({ n, active }: { n: number; active: boolean }) {
   const d = DUELOS[n - 1]!;
+
+  /* Identidade e mensagem: os dois sites em vídeo, lado a lado, em destaque. */
+  if (n === 1) {
+    const sides = [
+      { name: "SPAL", side: d.spal, border: "border-spal/30", text: "text-spal", src: identidadeVideo.url, site: "spal.pt" },
+      { name: "Vista Alegre", side: d.vaa, border: "border-vaa/40", text: "text-vaa", src: identidadeVaaVideo.url, site: "vistaalegre.com/pt" },
+    ] as const;
+    return (
+      <div className="flex h-full flex-col gap-4 p-8">
+        <Reveal i={0} className="shrink-0">
+          <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+            B · identidade e mensagem
+          </p>
+          <h3 className="mt-1 font-[var(--font-display)] text-3xl font-extrabold text-navy">
+            {d.title} <span className="text-navy/45">— os dois sites em movimento</span>
+          </h3>
+        </Reveal>
+        <div className="grid min-h-0 flex-1 grid-cols-2 gap-5">
+          {sides.map(({ name, side, border, text, src, site }, i) => (
+            <Reveal
+              key={name}
+              i={i + 1}
+              className={`flex min-h-0 flex-col rounded-3xl border-2 bg-white p-3 ${border}`}
+            >
+              <p className={`shrink-0 px-1 pb-2 text-[12px] font-bold uppercase tracking-widest ${text}`}>
+                {name} <span className="deck-num text-navy/70">{side.score}/5</span>
+              </p>
+              <VideoPlayer src={src} label={name} site={site} className="min-h-0 flex-1" />
+              <p className="shrink-0 px-1 pt-2 text-[12.5px] leading-snug text-navy/75">{side.obs}</p>
+            </Reveal>
+          ))}
+        </div>
+        <DuelBar
+          label={`Pontuação da dimensão ${n} (1 a 5)`}
+          spal={d.spal.score}
+          vaa={d.vaa.score}
+          active={active}
+          i={3}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-full flex-col gap-2 p-8">
       <Reveal i={0}>
@@ -761,16 +815,12 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
               {name} {side.score}/5
             </p>
             <p className="mt-2 flex-1 text-[13px] leading-snug text-navy/75">{side.obs}</p>
-            {n === 1 && i === 0 ? (
-              <VideoSpal className="mt-3 h-28" />
-            ) : (
-              <RefShot
-                img={FIG[DUELO_FIGS[n - 1]![i]!]!}
-                group={`duelo-${n}`}
-                idSuffix={`-d${n}`}
-                className="mt-3 h-24"
-              />
-            )}
+            <RefShot
+              img={FIG[DUELO_FIGS[n - 1]![i]!]!}
+              group={`duelo-${n}`}
+              idSuffix={`-d${n}`}
+              className="mt-3 h-24"
+            />
           </Reveal>
         ))}
       </div>
