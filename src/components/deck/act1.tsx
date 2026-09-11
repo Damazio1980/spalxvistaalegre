@@ -603,31 +603,31 @@ function Fluxo({
   i: number;
 }) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex min-h-0 flex-col gap-1">
       <p
-        className={`text-xs font-bold uppercase tracking-widest ${
+        className={`text-[11px] font-bold uppercase tracking-widest ${
           tone === "spal" ? "text-spal" : "text-vaa"
         }`}
       >
         {nome}
       </p>
       {passos.map((p, k) => (
-        <Reveal key={p} i={i + k} className="flex items-start gap-3">
+        <Reveal key={p} i={i + k} className="flex items-start gap-2">
           <span
-            className={`deck-num flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] text-white ${
+            className={`deck-num flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] text-white ${
               tone === "spal" ? "bg-spal" : "bg-vaa"
             }`}
           >
             {k + 1}
           </span>
-          <span className="flex-1 rounded-xl border border-navy/10 bg-white px-3 py-1.5 text-[12.5px] leading-snug text-navy/80">
+          <span className="flex-1 rounded-lg border border-navy/10 bg-white px-2.5 py-1 text-[11.5px] leading-snug text-navy/80">
             {p}
           </span>
         </Reveal>
       ))}
-      <Reveal i={i + passos.length}>
+      <Reveal i={i + passos.length} className="mt-auto">
         <p
-          className={`rounded-2xl px-4 py-2 text-[13px] font-bold ${
+          className={`rounded-xl px-3 py-1.5 text-[12px] font-bold leading-snug ${
             tone === "spal" ? "bg-spal/10 text-spal" : "bg-vaa/15 text-vaa"
           }`}
         >
@@ -637,6 +637,7 @@ function Fluxo({
     </div>
   );
 }
+
 
 export function Percurso({ active }: ChapterProps) {
   return (
