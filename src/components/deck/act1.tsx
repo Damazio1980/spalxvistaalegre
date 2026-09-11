@@ -640,16 +640,16 @@ function Fluxo({
 
 export function Percurso({ active }: ChapterProps) {
   return (
-    <div className="flex h-full flex-col gap-2 p-8">
-      <Reveal i={0}>
+    <div className="flex h-full flex-col gap-3 overflow-hidden px-8 py-6">
+      <Reveal i={0} className="shrink-0">
         <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
           B · percurso
         </p>
-        <h3 className="mt-1 font-[var(--font-display)] text-[26px] font-extrabold leading-tight text-navy">
+        <h3 className="mt-1 font-[var(--font-display)] text-[24px] font-extrabold leading-tight text-navy">
           "Procuro uma peça para oferecer e quero saber como a adquirir."
         </h3>
       </Reveal>
-      <div className="grid min-h-0 flex-1 grid-cols-2 gap-5">
+      <div className="grid min-h-0 flex-1 grid-cols-2 items-start gap-5">
         <Fluxo
           nome="SPAL"
           tone="spal"
@@ -665,7 +665,7 @@ export function Percurso({ active }: ChapterProps) {
           i={2}
         />
       </div>
-      <div className="grid h-[132px] shrink-0 grid-cols-[1.3fr_1fr] gap-4">
+      <div className="grid h-[118px] shrink-0 grid-cols-[1.3fr_1fr] gap-4">
         <ChartPanel title="Passos até saber como comprar">
           <PassosChart active={active} />
         </ChartPanel>
@@ -682,12 +682,59 @@ export function Percurso({ active }: ChapterProps) {
           </div>
         </ChartPanel>
       </div>
-      <Reveal i={9}>
-
-        <p className="rounded-2xl bg-navy px-5 py-3 text-[15px] font-semibold text-porcelain">
+      <Reveal i={9} className="shrink-0">
+        <p className="rounded-2xl bg-navy px-5 py-2.5 text-[14px] font-semibold text-porcelain">
           A SPAL perde o consumidor exatamente no momento em que ele decide comprar.
         </p>
       </Reveal>
+    </div>
+  );
+}
+
+
+function VideoSpal({ className }: { className?: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const toggle = () => {
+    const v = ref.current;
+    if (!v) return;
+    if (v.paused) {
+      void v.play();
+      setPlaying(true);
+    } else {
+      v.pause();
+      setPlaying(false);
+    }
+  };
+
+  return (
+    <div className={cn("relative overflow-hidden rounded-2xl border border-navy/10 bg-navy", className)}>
+      <video
+        ref={ref}
+        src={identidadeVideo.url}
+        className="h-full w-full object-cover"
+        playsInline
+        muted
+        loop
+        preload="metadata"
+        onEnded={() => setPlaying(false)}
+      />
+      <button
+        type="button"
+        onClick={toggle}
+        aria-label={playing ? "Pausar vídeo do site da SPAL" : "Ver vídeo do site da SPAL"}
+        className="absolute inset-0 grid place-items-center bg-navy/25 transition-colors hover:bg-navy/10"
+      >
+        {!playing && (
+          <span className="grid h-11 w-11 place-items-center rounded-full bg-porcelain/95 shadow-lg">
+            <Play className="ml-0.5 h-5 w-5 fill-navy text-navy" />
+          </span>
+        )}
+      </button>
+      <span className="pointer-events-none absolute bottom-1.5 left-2 rounded-full bg-porcelain/90 px-2 py-[1px] text-[9px] font-bold uppercase tracking-wider text-navy">
+        vídeo · spal.pt
+      </span>
     </div>
   );
 }
