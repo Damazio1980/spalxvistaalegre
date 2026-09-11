@@ -885,27 +885,28 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
   ] as const;
 
   return (
-    <div className="flex h-full flex-col gap-4 p-8">
-      <Reveal i={0} className="shrink-0">
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+    <div className="flex h-full flex-col gap-3 p-6">
+      <Reveal i={0} className="flex shrink-0 items-baseline gap-3">
+        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-navy/45">
           B · {d.title.toLowerCase()}
         </p>
-        <h3 className="mt-1 font-[var(--font-display)] text-3xl font-extrabold text-navy">
+        <h3 className="font-[var(--font-display)] text-2xl font-extrabold text-navy">
           {d.title} <span className="text-navy/45">— os dois sites em movimento</span>
         </h3>
       </Reveal>
-      <div className="grid min-h-0 flex-1 grid-cols-2 gap-5">
+      <div className="grid min-h-0 flex-1 grid-cols-2 gap-4">
         {sides.map(({ name, side, border, text, src, site }, i) => (
           <Reveal
             key={name}
             i={i + 1}
-            className={`flex min-h-0 flex-col rounded-3xl border-2 bg-white p-3 ${border}`}
+            className={`flex min-h-0 flex-col rounded-3xl border-2 bg-white p-2.5 ${border}`}
           >
-            <p className={`shrink-0 px-1 pb-2 text-[12px] font-bold uppercase tracking-widest ${text}`}>
+            <p className={`shrink-0 px-1 pb-1.5 text-[12px] font-bold uppercase tracking-widest ${text}`}>
               {name} <span className="deck-num text-navy/70">{side.score}/5</span>
             </p>
+            {/* vídeo em destaque: ocupa quase todo o cartão, formato alto e quadrado */}
             <VideoPlayer src={src} label={name} site={site} className="min-h-0 flex-1" />
-            <p className="shrink-0 px-1 pt-2 text-[12.5px] leading-snug text-navy/75">{side.obs}</p>
+            <p className="shrink-0 px-1 pt-1.5 text-[11.5px] leading-snug text-navy/70">{side.obs}</p>
           </Reveal>
         ))}
       </div>
