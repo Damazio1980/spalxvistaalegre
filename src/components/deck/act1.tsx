@@ -641,16 +641,13 @@ function Fluxo({
 
 export function Percurso({ active }: ChapterProps) {
   return (
-    <div className="flex h-full flex-col gap-3 overflow-hidden px-8 py-6">
-      <Reveal i={0} className="shrink-0">
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
-          B · percurso
-        </p>
-        <h3 className="mt-1 font-[var(--font-display)] text-[24px] font-extrabold leading-tight text-navy">
+    <div className="grid h-full grid-rows-[auto_1fr_auto_auto] gap-3 overflow-hidden px-8 py-5">
+      <Reveal i={0}>
+        <h3 className="font-[var(--font-display)] text-[22px] font-extrabold leading-tight text-navy">
           "Procuro uma peça para oferecer e quero saber como a adquirir."
         </h3>
       </Reveal>
-      <div className="grid min-h-0 flex-1 grid-cols-2 items-start gap-5">
+      <div className="grid min-h-0 grid-cols-2 gap-5">
         <Fluxo
           nome="SPAL"
           tone="spal"
@@ -666,7 +663,7 @@ export function Percurso({ active }: ChapterProps) {
           i={2}
         />
       </div>
-      <div className="grid h-[118px] shrink-0 grid-cols-[1.3fr_1fr] gap-4">
+      <div className="grid h-[112px] grid-cols-[1.3fr_1fr] gap-4">
         <ChartPanel title="Passos até saber como comprar">
           <PassosChart active={active} />
         </ChartPanel>
@@ -683,7 +680,7 @@ export function Percurso({ active }: ChapterProps) {
           </div>
         </ChartPanel>
       </div>
-      <Reveal i={9} className="shrink-0">
+      <Reveal i={9}>
         <p className="rounded-2xl bg-navy px-5 py-2.5 text-[14px] font-semibold text-porcelain">
           A SPAL perde o consumidor exatamente no momento em que ele decide comprar.
         </p>
@@ -691,6 +688,7 @@ export function Percurso({ active }: ChapterProps) {
     </div>
   );
 }
+
 
 
 function VideoSpal({ className }: { className?: string }) {
