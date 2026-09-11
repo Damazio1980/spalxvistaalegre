@@ -705,10 +705,26 @@ function VideoPlayer({
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const bigRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
+  /* um clique no play: o vídeo toca já aqui, sem abrir nada */
+  const toggle = () => {
+    const v = ref.current;
+    if (!v) return;
+    if (v.paused) {
+      void v.play();
+      setPlaying(true);
+    } else {
+      v.pause();
+      setPlaying(false);
+    }
+  };
+
+  /* ampliar: abre direto em ecrã cheio a tocar */
   const open = () => {
     ref.current?.pause();
+    setPlaying(false);
     setExpanded(true);
   };
   const close = () => {
@@ -759,26 +775,39 @@ function VideoPlayer({
   return (
     <>
       <div className={cn("relative overflow-hidden rounded-2xl border border-navy/10 bg-navy", className)}>
+        {/* quadro alto e quase quadrado: o site vê-se bem à primeira vista */}
         <video
           ref={ref}
           src={src}
-          className="h-full w-full object-cover"
+          onClick={toggle}
+          className="h-full w-full cursor-pointer object-cover"
           playsInline
           muted
           loop
-          preload="metadata"
+          preload="auto"
         />
+        {!playing && (
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={`Reproduzir vídeo do site da ${label}`}
+            className="absolute inset-0 grid place-items-center bg-navy/20 transition-colors hover:bg-navy/5"
+          >
+            <span className="grid h-20 w-20 place-items-center rounded-full bg-porcelain/95 shadow-xl transition-transform hover:scale-110">
+              <Play className="ml-1.5 h-9 w-9 fill-navy text-navy" />
+            </span>
+          </button>
+        )}
+        {/* ampliar: abre já em ecrã cheio, sem passos intermédios */}
         <button
           type="button"
           onClick={open}
-          aria-label={`Ver vídeo ampliado do site da ${label}`}
-          className="absolute inset-0 grid place-items-center bg-navy/25 transition-colors hover:bg-navy/10"
+          aria-label={`Ampliar vídeo do site da ${label}`}
+          className="absolute bottom-2 right-2 flex items-center gap-1.5 rounded-full bg-navy/85 px-3.5 py-1.5 text-[11px] font-semibold text-porcelain transition hover:bg-navy"
         >
-          <span className="grid h-16 w-16 place-items-center rounded-full bg-porcelain/95 shadow-xl transition-transform hover:scale-110">
-            <Play className="ml-1 h-7 w-7 fill-navy text-navy" />
-          </span>
+          <Maximize2 className="h-3.5 w-3.5" /> Ampliar
         </button>
-        <span className="pointer-events-none absolute bottom-2 left-3 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
+        <span className="pointer-events-none absolute left-3 top-2 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
           ▶ vídeo · {site}
         </span>
       </div>
