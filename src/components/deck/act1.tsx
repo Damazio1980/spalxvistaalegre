@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Facebook, Globe, Instagram } from "lucide-react";
+import { BadgeCheck, Facebook, Globe, Instagram } from "lucide-react";
 import {
   Bar,
   BarChart,
@@ -217,6 +217,9 @@ type Canal = {
   funcao: string;
   num?: { label: string; value: number; suffix?: string };
   num2?: { label: string; value: number };
+  selo?: boolean;
+  bio?: string;
+  chips?: string[];
 };
 
 const CANAIS_SPAL: Canal[] = [
@@ -269,8 +272,17 @@ const CANAIS_VAA: Canal[] = [
     icon: "Facebook",
     nome: "Facebook",
     addr: "/vistaalegreofficial",
-    detalhe: "presença ativa",
+    detalhe: "conta oficial · Produto/serviço",
     funcao: "Informar",
+    num: { label: "seguidores", value: 347000 },
+    num2: { label: "publicações", value: 6000 },
+    selo: true,
+    bio: "Fundada em 1824, a Vista Alegre adquiriu uma notoriedade ímpar, tornando-a numa das poucas insígnias portuguesas de luxo a nível mundial. A Vista Alegre produz porcelana de mesa, decorativa, giftware e hotelware, vidro e cristal de alta qualidade.",
+    chips: [
+      "★ Recomendado por 92% (293 avaliações)",
+      "socialmedia@vistaalegre.com",
+      "vistaalegre.com",
+    ],
   },
 ];
 
@@ -304,9 +316,24 @@ function CanalCard({
           <Icon className="h-4 w-4" />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="text-[13px] font-bold text-navy">{canal.nome}</p>
+          <p className="flex items-center gap-1 text-[13px] font-bold text-navy">
+            {canal.nome}
+            {canal.selo && (
+              <BadgeCheck className="h-3.5 w-3.5 text-spal" aria-label="conta verificada" />
+            )}
+          </p>
           <p className="truncate text-[12px] text-navy/55">{canal.addr}</p>
           <p className="mt-1 text-[12px] leading-snug text-navy/70">{canal.detalhe}</p>
+          {canal.bio && (
+            <p className="mt-1 text-[11px] italic leading-snug text-navy/60">“{canal.bio}”</p>
+          )}
+          {canal.chips && (
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              {canal.chips.map((c) => (
+                <Chip key={c}>{c}</Chip>
+              ))}
+            </div>
+          )}
         </div>
         <Chip tone={tone}>{canal.funcao}</Chip>
       </div>
@@ -364,7 +391,7 @@ export function Canais({ active }: ChapterProps) {
       <Reveal i={6}>
         <ChartPanel
           title="Audiência nas redes · 04/09/2026"
-          note="escala logarítmica para a diferença ser legível · audiência ≠ vendas · Facebook Vista Alegre [a inserir]"
+          note="escala logarítmica para a diferença ser legível · audiência ≠ vendas"
           className="h-[168px]"
         >
           <AudienciaLog active={active} />
@@ -445,7 +472,7 @@ const DUELOS = [
       score: 2,
     },
     vaa: {
-      obs: "Newsletter, contactos, termos, tabela de cookies, certificações, ligação ao grupo.",
+      obs: "Newsletter, contactos, termos, tabela de cookies, certificações, ligação ao grupo. ★ Recomendado por 92% (293 avaliações) no Facebook.",
       score: 5,
     },
   },
@@ -768,6 +795,8 @@ type Perfil = {
   bio: string;
   bioNota?: string;
   extra?: string;
+  extras?: string[];
+  selo?: boolean;
 };
 
 const PERFIS: Perfil[] = [
@@ -808,8 +837,15 @@ const PERFIS: Perfil[] = [
     marca: "Vista Alegre",
     rede: "Facebook",
     handle: "/vistaalegreofficial",
-    nums: [],
-    bio: "[dados a inserir]",
+    selo: true,
+    nums: [
+      { value: 347000, label: "seguidores" },
+      { value: 6000, label: "publicações" },
+    ],
+    bio: "Fundada em 1824, a Vista Alegre adquiriu uma notoriedade ímpar, tornando-a numa das poucas insígnias portuguesas de luxo a nível mundial. A Vista Alegre produz porcelana de mesa, decorativa, giftware e hotelware, vidro e cristal de alta qualidade.",
+    bioNota: "conta oficial verificada",
+    extra: "★ Recomendado por 92% (293 avaliações)",
+    extras: ["Produto/serviço", "socialmedia@vistaalegre.com", "vistaalegre.com"],
   },
 ];
 
@@ -852,6 +888,9 @@ function PerfilCard({ p, i, active }: { p: Perfil; i: number; active: boolean })
             className={`text-[10px] font-bold uppercase tracking-widest ${spal ? "text-spal" : "text-vaa"}`}
           >
             {p.marca} · {p.rede}
+            {p.selo && (
+              <BadgeCheck className="inline h-3 w-3 text-spal" aria-label="conta verificada" />
+            )}
           </p>
           <p className="truncate text-[11px] text-navy/55">{p.handle}</p>
         </div>
@@ -875,6 +914,7 @@ function PerfilCard({ p, i, active }: { p: Perfil; i: number; active: boolean })
       <div className="mt-2 flex flex-wrap gap-1.5">
         {p.bioNota && <Chip>{p.bioNota}</Chip>}
         {p.extra && <Chip>{p.extra}</Chip>}
+        {p.extras?.map((e) => <Chip key={e}>{e}</Chip>)}
       </div>
     </Reveal>
   );
