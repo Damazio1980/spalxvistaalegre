@@ -182,9 +182,7 @@ export function AudienciaLog({ active }: { active: boolean }) {
         <YAxis type="category" dataKey="m" width={86} tick={{ fontSize: 9 }} />
         <Tooltip
           {...tip}
-          formatter={(v: number, n) =>
-            n === "Vista Alegre" && v === 1 ? "[a inserir]" : v.toLocaleString("pt-PT")
-          }
+          formatter={(v: number) => v.toLocaleString("pt-PT")}
         />
         <Legend wrapperStyle={{ fontSize: 9 }} />
         <Bar
