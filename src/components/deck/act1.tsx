@@ -691,7 +691,17 @@ export function Percurso({ active }: ChapterProps) {
 
 
 
-function VideoSpal({ className }: { className?: string }) {
+function VideoPlayer({
+  src,
+  label,
+  site,
+  className,
+}: {
+  src: string;
+  label: string;
+  site: string;
+  className?: string;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -711,7 +721,7 @@ function VideoSpal({ className }: { className?: string }) {
     <div className={cn("relative overflow-hidden rounded-2xl border border-navy/10 bg-navy", className)}>
       <video
         ref={ref}
-        src={identidadeVideo.url}
+        src={src}
         className="h-full w-full object-cover"
         playsInline
         muted
@@ -722,17 +732,17 @@ function VideoSpal({ className }: { className?: string }) {
       <button
         type="button"
         onClick={toggle}
-        aria-label={playing ? "Pausar vídeo do site da SPAL" : "Ver vídeo do site da SPAL"}
+        aria-label={playing ? `Pausar vídeo do site da ${label}` : `Ver vídeo do site da ${label}`}
         className="absolute inset-0 grid place-items-center bg-navy/25 transition-colors hover:bg-navy/10"
       >
         {!playing && (
-          <span className="grid h-11 w-11 place-items-center rounded-full bg-porcelain/95 shadow-lg">
-            <Play className="ml-0.5 h-5 w-5 fill-navy text-navy" />
+          <span className="grid h-16 w-16 place-items-center rounded-full bg-porcelain/95 shadow-xl transition-transform hover:scale-110">
+            <Play className="ml-1 h-7 w-7 fill-navy text-navy" />
           </span>
         )}
       </button>
-      <span className="pointer-events-none absolute bottom-1.5 left-2 rounded-full bg-porcelain/90 px-2 py-[1px] text-[9px] font-bold uppercase tracking-wider text-navy">
-        vídeo · spal.pt
+      <span className="pointer-events-none absolute bottom-2 left-3 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
+        ▶ vídeo · {site}
       </span>
     </div>
   );
