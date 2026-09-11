@@ -715,12 +715,16 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
               {name} {side.score}/5
             </p>
             <p className="mt-2 flex-1 text-[13px] leading-snug text-navy/75">{side.obs}</p>
-            <RefShot
-              img={FIG[DUELO_FIGS[n - 1]![i]!]!}
-              group={`duelo-${n}`}
-              idSuffix={`-d${n}`}
-              className="mt-3 h-24"
-            />
+            {n === 1 && i === 0 ? (
+              <VideoSpal className="mt-3 h-28" />
+            ) : (
+              <RefShot
+                img={FIG[DUELO_FIGS[n - 1]![i]!]!}
+                group={`duelo-${n}`}
+                idSuffix={`-d${n}`}
+                className="mt-3 h-24"
+              />
+            )}
           </Reveal>
         ))}
       </div>
