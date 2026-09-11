@@ -161,7 +161,7 @@ export function AudienciaLog({ active }: { active: boolean }) {
   const data = [
     { m: "IG seguidores", SPAL: 5961, "Vista Alegre": 360000 },
     { m: "IG publicações", SPAL: 305, "Vista Alegre": 3717 },
-    { m: "FB gostos", SPAL: 15700, "Vista Alegre": 1 },
+    { m: "Facebook", SPAL: 15700, "Vista Alegre": 347000 },
   ];
   return (
     <ResponsiveContainer width="100%" height="100%">

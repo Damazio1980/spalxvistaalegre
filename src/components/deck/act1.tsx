@@ -914,6 +914,7 @@ function PerfilCard({ p, i, active }: { p: Perfil; i: number; active: boolean })
       <div className="mt-2 flex flex-wrap gap-1.5">
         {p.bioNota && <Chip>{p.bioNota}</Chip>}
         {p.extra && <Chip>{p.extra}</Chip>}
+        {p.extras?.map((e) => <Chip key={e}>{e}</Chip>)}
       </div>
     </Reveal>
   );
