@@ -738,6 +738,24 @@ function VideoPlayer({
     if (expanded) void bigRef.current?.play();
   }, [expanded]);
 
+  if (!src) {
+    return (
+      <div
+        className={cn(
+          "relative grid place-items-center overflow-hidden rounded-2xl border-2 border-dashed border-navy/20 bg-navy/[0.06]",
+          className,
+        )}
+      >
+        <span className="grid h-16 w-16 place-items-center rounded-full bg-porcelain/80 shadow-md">
+          <Play className="ml-1 h-7 w-7 fill-navy/40 text-navy/40" />
+        </span>
+        <span className="absolute bottom-2 left-3 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy/60">
+          vídeo a inserir · {site}
+        </span>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className={cn("relative overflow-hidden rounded-2xl border border-navy/10 bg-navy", className)}>
