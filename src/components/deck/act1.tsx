@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { BadgeCheck, ChevronDown, Facebook, Globe, Instagram, Play } from "lucide-react";
 import identidadeVideo from "@/assets/identidade-6d-spal.mp4.asset.json";
