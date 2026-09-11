@@ -813,7 +813,8 @@ function VideoPlayer({
         </span>
       </div>
 
-      {expanded && (
+      {expanded &&
+        createPortal(
         <div
           className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-3 bg-navy/95 p-6 backdrop-blur-sm"
           onClick={close}
@@ -845,8 +846,9 @@ function VideoPlayer({
             muted
             loop
           />
-        </div>
-      )}
+        </div>,
+          document.body,
+        )}
     </>
   );
 }
