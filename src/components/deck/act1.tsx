@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
-import { BadgeCheck, ChevronDown, Facebook, Globe, Instagram, Play, X } from "lucide-react";
+import { BadgeCheck, ChevronDown, Facebook, Globe, Instagram, Maximize2, Play, X } from "lucide-react";
 import identidadeVideo from "@/assets/identidade-6d-spal.mp4.asset.json";
 import identidadeVaaVideo from "@/assets/identidade-vaa.mp4.asset.json";
 import {
@@ -705,10 +706,26 @@ function VideoPlayer({
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const bigRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
+  /* um clique no play: o vídeo toca já aqui, sem abrir nada */
+  const toggle = () => {
+    const v = ref.current;
+    if (!v) return;
+    if (v.paused) {
+      void v.play();
+      setPlaying(true);
+    } else {
+      v.pause();
+      setPlaying(false);
+    }
+  };
+
+  /* ampliar: abre direto em ecrã cheio a tocar */
   const open = () => {
     ref.current?.pause();
+    setPlaying(false);
     setExpanded(true);
   };
   const close = () => {
@@ -759,31 +776,45 @@ function VideoPlayer({
   return (
     <>
       <div className={cn("relative overflow-hidden rounded-2xl border border-navy/10 bg-navy", className)}>
+        {/* quadro alto e quase quadrado: o site vê-se bem à primeira vista */}
         <video
           ref={ref}
           src={src}
-          className="h-full w-full object-cover"
+          onClick={toggle}
+          className="h-full w-full cursor-pointer object-cover"
           playsInline
           muted
           loop
-          preload="metadata"
+          preload="auto"
         />
+        {!playing && (
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={`Reproduzir vídeo do site da ${label}`}
+            className="absolute inset-0 grid place-items-center bg-navy/20 transition-colors hover:bg-navy/5"
+          >
+            <span className="grid h-20 w-20 place-items-center rounded-full bg-porcelain/95 shadow-xl transition-transform hover:scale-110">
+              <Play className="ml-1.5 h-9 w-9 fill-navy text-navy" />
+            </span>
+          </button>
+        )}
+        {/* ampliar: abre já em ecrã cheio, sem passos intermédios */}
         <button
           type="button"
           onClick={open}
-          aria-label={`Ver vídeo ampliado do site da ${label}`}
-          className="absolute inset-0 grid place-items-center bg-navy/25 transition-colors hover:bg-navy/10"
+          aria-label={`Ampliar vídeo do site da ${label}`}
+          className="absolute bottom-2 right-2 flex items-center gap-1.5 rounded-full bg-navy/85 px-3.5 py-1.5 text-[11px] font-semibold text-porcelain transition hover:bg-navy"
         >
-          <span className="grid h-16 w-16 place-items-center rounded-full bg-porcelain/95 shadow-xl transition-transform hover:scale-110">
-            <Play className="ml-1 h-7 w-7 fill-navy text-navy" />
-          </span>
+          <Maximize2 className="h-3.5 w-3.5" /> Ampliar
         </button>
-        <span className="pointer-events-none absolute bottom-2 left-3 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
+        <span className="pointer-events-none absolute left-3 top-2 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
           ▶ vídeo · {site}
         </span>
       </div>
 
-      {expanded && (
+      {expanded &&
+        createPortal(
         <div
           className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-3 bg-navy/95 p-6 backdrop-blur-sm"
           onClick={close}
@@ -815,8 +846,9 @@ function VideoPlayer({
             muted
             loop
           />
-        </div>
-      )}
+        </div>,
+          document.body,
+        )}
     </>
   );
 }
@@ -856,27 +888,28 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
   ] as const;
 
   return (
-    <div className="flex h-full flex-col gap-4 p-8">
-      <Reveal i={0} className="shrink-0">
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+    <div className="flex h-full flex-col gap-3 p-6">
+      <Reveal i={0} className="flex shrink-0 items-baseline gap-3">
+        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-navy/45">
           B · {d.title.toLowerCase()}
         </p>
-        <h3 className="mt-1 font-[var(--font-display)] text-3xl font-extrabold text-navy">
+        <h3 className="font-[var(--font-display)] text-2xl font-extrabold text-navy">
           {d.title} <span className="text-navy/45">— os dois sites em movimento</span>
         </h3>
       </Reveal>
-      <div className="grid min-h-0 flex-1 grid-cols-2 gap-5">
+      <div className="grid min-h-0 flex-1 grid-cols-2 gap-4">
         {sides.map(({ name, side, border, text, src, site }, i) => (
           <Reveal
             key={name}
             i={i + 1}
-            className={`flex min-h-0 flex-col rounded-3xl border-2 bg-white p-3 ${border}`}
+            className={`flex min-h-0 flex-col rounded-3xl border-2 bg-white p-2.5 ${border}`}
           >
-            <p className={`shrink-0 px-1 pb-2 text-[12px] font-bold uppercase tracking-widest ${text}`}>
+            <p className={`shrink-0 px-1 pb-1.5 text-[12px] font-bold uppercase tracking-widest ${text}`}>
               {name} <span className="deck-num text-navy/70">{side.score}/5</span>
             </p>
+            {/* vídeo em destaque: ocupa quase todo o cartão, formato alto e quadrado */}
             <VideoPlayer src={src} label={name} site={site} className="min-h-0 flex-1" />
-            <p className="shrink-0 px-1 pt-2 text-[12.5px] leading-snug text-navy/75">{side.obs}</p>
+            <p className="shrink-0 px-1 pt-1.5 text-[11.5px] leading-snug text-navy/70">{side.obs}</p>
           </Reveal>
         ))}
       </div>
