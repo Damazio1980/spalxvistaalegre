@@ -23,7 +23,7 @@ import {
 } from "recharts";
 import { Chip, DuelBar, Glossary, Num, Reveal, Shot } from "./primitives";
 import { RefShot } from "./mocks";
-import { DUELO_FIGS, FIG, POSTS } from "@/data/images";
+import { FIG, POSTS } from "@/data/images";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import {
   AudienciaLog,
