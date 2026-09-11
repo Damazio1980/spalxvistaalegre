@@ -461,8 +461,8 @@ const DUELOS = [
   {
     id: 5,
     title: "Telemóvel",
-    spal: { obs: "Plataforma de 2013, menu por hover, slideshows. [captura a inserir]", score: 2 },
-    vaa: { obs: "Meta viewport, app instalável. [captura a inserir]", score: 4 },
+    spal: { obs: "Plataforma de 2013, menu por hover, slideshows.", score: 2 },
+    vaa: { obs: "Meta viewport, app instalável.", score: 4 },
   },
   {
     id: 6,
@@ -515,6 +515,7 @@ export function Website({ active }: ChapterProps) {
               <Reveal key={d.id} i={i + 1}>
                 <button
                   onClick={() => setOpen(isOpen ? null : d.id)}
+                  aria-expanded={isOpen}
                   className="w-full rounded-2xl border border-navy/10 bg-white px-4 py-3 text-left transition-colors hover:border-navy/25"
                 >
                   <div className="flex items-center gap-3">
@@ -522,6 +523,12 @@ export function Website({ active }: ChapterProps) {
                     <span className="flex-1 text-[14px] font-semibold text-navy">{d.title}</span>
                     <Dots n={d.spal.score} tone="spal" />
                     <Dots n={d.vaa.score} tone="vaa" />
+                    <span className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-navy/45">
+                      {isOpen ? "fechar" : "abrir"}
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                      />
+                    </span>
                   </div>
                   {isOpen && (
                     <div className="deck-rise mt-3 grid grid-cols-2 gap-3">
