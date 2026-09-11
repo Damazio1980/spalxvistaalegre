@@ -822,78 +822,61 @@ function VideoPlayer({
 }
 
 
+/* Vídeos por dimensão. Substitui o null pelo url do vídeo quando estiver pronto. */
+const DUELO_VIDEOS: { spal: string | null; vaa: string | null }[] = [
+  { spal: identidadeVideo.url, vaa: identidadeVaaVideo.url },
+  { spal: null, vaa: null },
+  { spal: null, vaa: null },
+  { spal: null, vaa: null },
+  { spal: null, vaa: null },
+  { spal: null, vaa: null },
+];
+
 export function Duelo({ n, active }: { n: number; active: boolean }) {
   const d = DUELOS[n - 1]!;
+  const vids = DUELO_VIDEOS[n - 1]!;
 
-  /* Identidade e mensagem: os dois sites em vídeo, lado a lado, em destaque. */
-  if (n === 1) {
-    const sides = [
-      { name: "SPAL", side: d.spal, border: "border-spal/30", text: "text-spal", src: identidadeVideo.url, site: "spal.pt" },
-      { name: "Vista Alegre", side: d.vaa, border: "border-vaa/40", text: "text-vaa", src: identidadeVaaVideo.url, site: "vistaalegre.com/pt" },
-    ] as const;
-    return (
-      <div className="flex h-full flex-col gap-4 p-8">
-        <Reveal i={0} className="shrink-0">
-          <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
-            B · identidade e mensagem
-          </p>
-          <h3 className="mt-1 font-[var(--font-display)] text-3xl font-extrabold text-navy">
-            {d.title} <span className="text-navy/45">— os dois sites em movimento</span>
-          </h3>
-        </Reveal>
-        <div className="grid min-h-0 flex-1 grid-cols-2 gap-5">
-          {sides.map(({ name, side, border, text, src, site }, i) => (
-            <Reveal
-              key={name}
-              i={i + 1}
-              className={`flex min-h-0 flex-col rounded-3xl border-2 bg-white p-3 ${border}`}
-            >
-              <p className={`shrink-0 px-1 pb-2 text-[12px] font-bold uppercase tracking-widest ${text}`}>
-                {name} <span className="deck-num text-navy/70">{side.score}/5</span>
-              </p>
-              <VideoPlayer src={src} label={name} site={site} className="min-h-0 flex-1" />
-              <p className="shrink-0 px-1 pt-2 text-[12.5px] leading-snug text-navy/75">{side.obs}</p>
-            </Reveal>
-          ))}
-        </div>
-        <DuelBar
-          label={`Pontuação da dimensão ${n} (1 a 5)`}
-          spal={d.spal.score}
-          vaa={d.vaa.score}
-          active={active}
-          i={3}
-        />
-      </div>
-    );
-  }
+  const sides = [
+    {
+      name: "SPAL",
+      side: d.spal,
+      border: "border-spal/30",
+      text: "text-spal",
+      src: vids.spal,
+      site: "spal.pt",
+    },
+    {
+      name: "Vista Alegre",
+      side: d.vaa,
+      border: "border-vaa/40",
+      text: "text-vaa",
+      src: vids.vaa,
+      site: "vistaalegre.com/pt",
+    },
+  ] as const;
 
   return (
-    <div className="flex h-full flex-col gap-2 p-8">
-      <Reveal i={0}>
-        <h3 className="font-[var(--font-display)] text-3xl font-extrabold text-navy">{d.title}</h3>
+    <div className="flex h-full flex-col gap-4 p-8">
+      <Reveal i={0} className="shrink-0">
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
+          B · {d.title.toLowerCase()}
+        </p>
+        <h3 className="mt-1 font-[var(--font-display)] text-3xl font-extrabold text-navy">
+          {d.title} <span className="text-navy/45">— os dois sites em movimento</span>
+        </h3>
       </Reveal>
-      <div className="grid flex-1 grid-cols-2 gap-4">
-        {(
-          [
-            ["SPAL", d.spal, "border-spal/25", "text-spal"],
-            ["Vista Alegre", d.vaa, "border-vaa/40", "text-vaa"],
-          ] as const
-        ).map(([name, side, border, text], i) => (
+      <div className="grid min-h-0 flex-1 grid-cols-2 gap-5">
+        {sides.map(({ name, side, border, text, src, site }, i) => (
           <Reveal
             key={name}
             i={i + 1}
-            className={`flex flex-col rounded-2xl border bg-white p-4 ${border}`}
+            className={`flex min-h-0 flex-col rounded-3xl border-2 bg-white p-3 ${border}`}
           >
-            <p className={`text-[11px] font-bold uppercase tracking-widest ${text}`}>
-              {name} {side.score}/5
+            <p className={`shrink-0 px-1 pb-2 text-[12px] font-bold uppercase tracking-widest ${text}`}>
+              {name} <span className="deck-num text-navy/70">{side.score}/5</span>
             </p>
-            <p className="mt-2 flex-1 text-[13px] leading-snug text-navy/75">{side.obs}</p>
-            <RefShot
-              img={FIG[DUELO_FIGS[n - 1]![i]!]!}
-              group={`duelo-${n}`}
-              idSuffix={`-d${n}`}
-              className="mt-3 h-24"
-            />
+            <VideoPlayer src={src} label={name} site={site} className="min-h-0 flex-1" />
+            <p className="shrink-0 px-1 pt-2 text-[12.5px] leading-snug text-navy/75">{side.obs}</p>
           </Reveal>
         ))}
       </div>
