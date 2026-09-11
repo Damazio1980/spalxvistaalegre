@@ -795,6 +795,8 @@ type Perfil = {
   bio: string;
   bioNota?: string;
   extra?: string;
+  extras?: string[];
+  selo?: boolean;
 };
 
 const PERFIS: Perfil[] = [
@@ -886,6 +888,9 @@ function PerfilCard({ p, i, active }: { p: Perfil; i: number; active: boolean })
             className={`text-[10px] font-bold uppercase tracking-widest ${spal ? "text-spal" : "text-vaa"}`}
           >
             {p.marca} · {p.rede}
+            {p.selo && (
+              <BadgeCheck className="inline h-3 w-3 text-spal" aria-label="conta verificada" />
+            )}
           </p>
           <p className="truncate text-[11px] text-navy/55">{p.handle}</p>
         </div>
