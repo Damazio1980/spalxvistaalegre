@@ -704,50 +704,105 @@ function VideoPlayer({
   className?: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const bigRef = useRef<HTMLVideoElement>(null);
+  const [expanded, setExpanded] = useState(false);
 
-  const toggle = () => {
-    const v = ref.current;
-    if (!v) return;
-    if (v.paused) {
-      void v.play();
-      setPlaying(true);
-    } else {
-      v.pause();
-      setPlaying(false);
-    }
+  const open = () => {
+    ref.current?.pause();
+    setExpanded(true);
+  };
+  const close = () => {
+    bigRef.current?.pause();
+    setExpanded(false);
   };
 
+  /* enquanto o vídeo está ampliado, as teclas não mudam de slide */
+  useEffect(() => {
+    if (!expanded) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.stopPropagation();
+        e.preventDefault();
+        close();
+        return;
+      }
+      if (["ArrowRight", "ArrowLeft", " ", "PageUp", "PageDown"].includes(e.key)) {
+        e.stopPropagation();
+      }
+    };
+    window.addEventListener("keydown", onKey, true);
+    return () => window.removeEventListener("keydown", onKey, true);
+  }, [expanded]);
+
+  useEffect(() => {
+    if (expanded) void bigRef.current?.play();
+  }, [expanded]);
+
   return (
-    <div className={cn("relative overflow-hidden rounded-2xl border border-navy/10 bg-navy", className)}>
-      <video
-        ref={ref}
-        src={src}
-        className="h-full w-full object-cover"
-        playsInline
-        muted
-        loop
-        preload="metadata"
-        onEnded={() => setPlaying(false)}
-      />
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={playing ? `Pausar vídeo do site da ${label}` : `Ver vídeo do site da ${label}`}
-        className="absolute inset-0 grid place-items-center bg-navy/25 transition-colors hover:bg-navy/10"
-      >
-        {!playing && (
+    <>
+      <div className={cn("relative overflow-hidden rounded-2xl border border-navy/10 bg-navy", className)}>
+        <video
+          ref={ref}
+          src={src}
+          className="h-full w-full object-cover"
+          playsInline
+          muted
+          loop
+          preload="metadata"
+        />
+        <button
+          type="button"
+          onClick={open}
+          aria-label={`Ver vídeo ampliado do site da ${label}`}
+          className="absolute inset-0 grid place-items-center bg-navy/25 transition-colors hover:bg-navy/10"
+        >
           <span className="grid h-16 w-16 place-items-center rounded-full bg-porcelain/95 shadow-xl transition-transform hover:scale-110">
             <Play className="ml-1 h-7 w-7 fill-navy text-navy" />
           </span>
-        )}
-      </button>
-      <span className="pointer-events-none absolute bottom-2 left-3 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
-        ▶ vídeo · {site}
-      </span>
-    </div>
+        </button>
+        <span className="pointer-events-none absolute bottom-2 left-3 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
+          ▶ vídeo · {site}
+        </span>
+      </div>
+
+      {expanded && (
+        <div
+          className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-3 bg-navy/95 p-6 backdrop-blur-sm"
+          onClick={close}
+        >
+          <div
+            className="flex w-full max-w-[1500px] items-center justify-between text-porcelain"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="text-[12px] font-bold uppercase tracking-[0.3em]">
+              {label} · {site}
+            </p>
+            <button
+              type="button"
+              onClick={close}
+              aria-label="Fechar vídeo"
+              className="flex items-center gap-2 rounded-full bg-porcelain/10 px-4 py-1.5 text-[12px] font-semibold text-porcelain transition hover:bg-porcelain/20"
+            >
+              <X className="h-4 w-4" /> Fechar
+            </button>
+          </div>
+          <video
+            ref={bigRef}
+            src={src}
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[82vh] w-full max-w-[1500px] rounded-2xl bg-black object-contain shadow-2xl"
+            playsInline
+            controls
+            autoPlay
+            muted
+            loop
+          />
+        </div>
+      )}
+    </>
   );
 }
+
 
 export function Duelo({ n, active }: { n: number; active: boolean }) {
   const d = DUELOS[n - 1]!;
