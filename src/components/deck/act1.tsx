@@ -10,6 +10,8 @@ import produtoSpalVideo from "@/assets/produto-spal.mp4.asset.json";
 import produtoVaaVideo from "@/assets/produto-vista-alegre.mp4.asset.json";
 import compraSpalVideo from "@/assets/compra-spal.mp4.asset.json";
 import compraVaaVideo from "@/assets/compra-vaa.mp4.asset.json";
+import telemovelSpalVideo from "@/assets/telemovel-spal.mp4.asset.json";
+import telemovelVaaVideo from "@/assets/telemovel-vista-alegre.mp4.asset.json";
 import {
   Bar,
   BarChart,
@@ -704,11 +706,13 @@ function VideoPlayer({
   label,
   site,
   className,
+  phone = false,
 }: {
   src: string | null;
   label: string;
   site: string;
   className?: string;
+  phone?: boolean;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const bigRef = useRef<HTMLVideoElement>(null);
@@ -781,13 +785,21 @@ function VideoPlayer({
 
   return (
     <>
-      <div className={cn("relative overflow-hidden rounded-2xl border border-navy/10 bg-navy", className)}>
+      <div
+        className={cn(
+          "relative overflow-hidden bg-navy",
+          phone
+            ? "mx-auto w-[250px] max-w-full rounded-[30px] border-[6px] border-navy shadow-xl"
+            : "rounded-2xl border border-navy/10",
+          className,
+        )}
+      >
         {/* quadro alto e quase quadrado: o site vê-se bem à primeira vista */}
         <video
           ref={ref}
           src={src}
           onClick={toggle}
-          className="h-full w-full cursor-pointer object-cover"
+          className={cn("h-full w-full cursor-pointer", phone ? "object-contain" : "object-cover")}
           playsInline
           muted
           loop
@@ -866,13 +878,14 @@ const DUELO_VIDEOS: { spal: string | null; vaa: string | null }[] = [
   { spal: navegacaoSpalVideo.url, vaa: navegacaoVaaVideo.url },
   { spal: produtoSpalVideo.url, vaa: produtoVaaVideo.url },
   { spal: compraSpalVideo.url, vaa: compraVaaVideo.url },
-  { spal: null, vaa: null },
+  { spal: telemovelSpalVideo.url, vaa: telemovelVaaVideo.url },
   { spal: null, vaa: null },
 ];
 
 export function Duelo({ n, active }: { n: number; active: boolean }) {
   const d = DUELOS[n - 1]!;
   const vids = DUELO_VIDEOS[n - 1]!;
+  const phone = n === 5;
 
   const sides = [
     {
@@ -914,7 +927,13 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
               {name} <span className="deck-num text-navy/70">{side.score}/5</span>
             </p>
             {/* vídeo em destaque: ocupa quase todo o cartão, formato alto e quadrado */}
-            <VideoPlayer src={src} label={name} site={site} className="min-h-0 flex-1" />
+            <VideoPlayer
+              src={src}
+              label={name}
+              site={site}
+              phone={phone}
+              className="min-h-0 flex-1"
+            />
             <p className="shrink-0 px-1 pt-1.5 text-[11.5px] leading-snug text-navy/70">{side.obs}</p>
           </Reveal>
         ))}
