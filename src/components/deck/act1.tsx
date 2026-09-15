@@ -6,6 +6,8 @@ import identidadeVideo from "@/assets/identidade-6d-spal.mp4.asset.json";
 import identidadeVaaVideo from "@/assets/identidade-vaa.mp4.asset.json";
 import navegacaoSpalVideo from "@/assets/navegacao-spal.mp4.asset.json";
 import navegacaoVaaVideo from "@/assets/navegacao-vista-alegre.mp4.asset.json";
+import produtoSpalVideo from "@/assets/produto-spal.mp4.asset.json";
+import produtoVaaVideo from "@/assets/produto-vista-alegre.mp4.asset.json";
 import {
   Bar,
   BarChart,
@@ -860,7 +862,7 @@ function VideoPlayer({
 const DUELO_VIDEOS: { spal: string | null; vaa: string | null }[] = [
   { spal: identidadeVideo.url, vaa: identidadeVaaVideo.url },
   { spal: navegacaoSpalVideo.url, vaa: navegacaoVaaVideo.url },
-  { spal: null, vaa: null },
+  { spal: produtoSpalVideo.url, vaa: produtoVaaVideo.url },
   { spal: null, vaa: null },
   { spal: null, vaa: null },
   { spal: null, vaa: null },
