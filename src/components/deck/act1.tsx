@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 import { BadgeCheck, ChevronDown, Facebook, Globe, Instagram, Maximize2, Play, X } from "lucide-react";
 import identidadeVideo from "@/assets/identidade-6d-spal.mp4.asset.json";
 import identidadeVaaVideo from "@/assets/identidade-vaa.mp4.asset.json";
+import navegacaoSpalVideo from "@/assets/navegacao-spal.mp4.asset.json";
+import navegacaoVaaVideo from "@/assets/navegacao-vista-alegre.mp4.asset.json";
 import {
   Bar,
   BarChart,
@@ -857,7 +859,7 @@ function VideoPlayer({
 /* Vídeos por dimensão. Substitui o null pelo url do vídeo quando estiver pronto. */
 const DUELO_VIDEOS: { spal: string | null; vaa: string | null }[] = [
   { spal: identidadeVideo.url, vaa: identidadeVaaVideo.url },
-  { spal: null, vaa: null },
+  { spal: navegacaoSpalVideo.url, vaa: navegacaoVaaVideo.url },
   { spal: null, vaa: null },
   { spal: null, vaa: null },
   { spal: null, vaa: null },
