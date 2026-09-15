@@ -866,6 +866,8 @@ const DUELO_VIDEOS: { spal: string | null; vaa: string | null }[] = [
   { spal: navegacaoSpalVideo.url, vaa: navegacaoVaaVideo.url },
   { spal: produtoSpalVideo.url, vaa: produtoVaaVideo.url },
   { spal: compraSpalVideo.url, vaa: compraVaaVideo.url },
+  { spal: null, vaa: null },
+  { spal: null, vaa: null },
 ];
 
 export function Duelo({ n, active }: { n: number; active: boolean }) {
