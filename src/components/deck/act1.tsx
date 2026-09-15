@@ -8,6 +8,8 @@ import navegacaoSpalVideo from "@/assets/navegacao-spal.mp4.asset.json";
 import navegacaoVaaVideo from "@/assets/navegacao-vista-alegre.mp4.asset.json";
 import produtoSpalVideo from "@/assets/produto-spal.mp4.asset.json";
 import produtoVaaVideo from "@/assets/produto-vista-alegre.mp4.asset.json";
+import compraSpalVideo from "@/assets/compra-spal.mp4.asset.json";
+import compraVaaVideo from "@/assets/compra-vaa.mp4.asset.json";
 import {
   Bar,
   BarChart,
@@ -863,7 +865,7 @@ const DUELO_VIDEOS: { spal: string | null; vaa: string | null }[] = [
   { spal: identidadeVideo.url, vaa: identidadeVaaVideo.url },
   { spal: navegacaoSpalVideo.url, vaa: navegacaoVaaVideo.url },
   { spal: produtoSpalVideo.url, vaa: produtoVaaVideo.url },
-  { spal: null, vaa: null },
+  { spal: compraSpalVideo.url, vaa: compraVaaVideo.url },
   { spal: null, vaa: null },
   { spal: null, vaa: null },
 ];
