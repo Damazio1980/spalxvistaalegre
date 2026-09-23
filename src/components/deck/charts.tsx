@@ -25,6 +25,10 @@ export const SPAL_C = "#2F5C9E";
 export const VAA_C = "#B76876";
 export const IG_C = "#7FA6E0";
 export const FB_C = "#1B2A44";
+const EDITORIAL_LIGHT = "var(--chart-editorial-light)";
+const EDITORIAL_SOFT = "var(--chart-editorial-soft)";
+const EDITORIAL_DARK = "var(--chart-editorial-dark)";
+const EDITORIAL_MUTED = "var(--chart-editorial-muted)";
 
 const tip = {
   contentStyle: {
@@ -53,7 +57,7 @@ export function ChartPanel({
     <div
       className={cn(
         "flex min-h-0 flex-col rounded-2xl p-3",
-        dark ? "bg-porcelain/10" : "border border-navy/10 bg-white",
+        dark ? "border border-porcelain/20 bg-transparent" : "border border-navy/10 bg-white",
         className,
       )}
     >
@@ -77,7 +81,7 @@ export function ChartPanel({
 
 /* ── Capítulo 1 · evolução Vista Alegre + peso da exportação ─────────── */
 
-export function EvolucaoVAA({ active }: { active: boolean }) {
+export function EvolucaoVAA({ active, editorial = false }: { active: boolean; editorial?: boolean }) {
   const data = [
     { m: "Volume de negócios", "1.º sem. 2025": 70.2, "1.º sem. 2026": 71.3 },
     { m: "Resultado líquido", "1.º sem. 2025": 3.6, "1.º sem. 2026": 4.3 },
@@ -85,21 +89,21 @@ export function EvolucaoVAA({ active }: { active: boolean }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data} barGap={6} margin={{ top: 4, right: 8, left: -18, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
-        <XAxis dataKey="m" tick={{ fontSize: 9 }} />
-        <YAxis tick={{ fontSize: 9 }} unit=" M€" width={52} />
+        <CartesianGrid strokeDasharray="3 3" stroke={editorial ? EDITORIAL_MUTED : "#1B2A4415"} />
+        <XAxis dataKey="m" tick={{ fontSize: 9, fill: editorial ? EDITORIAL_SOFT : EDITORIAL_DARK }} />
+        <YAxis tick={{ fontSize: 9, fill: editorial ? EDITORIAL_SOFT : EDITORIAL_DARK }} unit=" M€" width={52} />
         <Tooltip {...tip} formatter={(v) => `${v} M€`} />
         <Legend wrapperStyle={{ fontSize: 9 }} />
         <Bar
           dataKey="1.º sem. 2025"
-          fill="#9FB3CE"
+          fill={editorial ? EDITORIAL_SOFT : "#9FB3CE"}
           radius={[6, 6, 0, 0]}
           isAnimationActive={active}
           animationDuration={1100}
         />
         <Bar
           dataKey="1.º sem. 2026"
-          fill={VAA_C}
+          fill={editorial ? EDITORIAL_LIGHT : VAA_C}
           radius={[6, 6, 0, 0]}
           isAnimationActive={active}
           animationDuration={1100}
@@ -114,11 +118,13 @@ export function DonutExportacao({
   value,
   color,
   active,
+  editorial = false,
 }: {
   label: string;
   value: number;
   color: string;
   active: boolean;
+  editorial?: boolean;
 }) {
   const data = [
     { name: "Exportação", value },
@@ -142,15 +148,15 @@ export function DonutExportacao({
               stroke="none"
             >
               <Cell fill={color} />
-              <Cell fill="#1B2A4415" />
+              <Cell fill={editorial ? EDITORIAL_MUTED : "#1B2A4415"} />
             </Pie>
           </PieChart>
         </ResponsiveContainer>
-        <span className="deck-num pointer-events-none absolute inset-0 grid place-items-center text-[15px] text-navy">
+        <span className={cn("deck-num pointer-events-none absolute inset-0 grid place-items-center text-[15px]", editorial ? "text-porcelain" : "text-navy")}>
           ≈{value} %
         </span>
       </div>
-      <p className="text-[9.5px] font-semibold uppercase tracking-wider text-navy/55">{label}</p>
+      <p className={cn("text-[9.5px] font-semibold uppercase tracking-wider", editorial ? "text-porcelain/60" : "text-navy/55")}>{label}</p>
     </div>
   );
 }

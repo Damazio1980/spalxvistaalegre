@@ -9,4 +9,5 @@
 
 7. Criar três slides separadores e ajustar o título/subtítulo de “A pergunta”. — feito
 8. Criar uma amostra dos seis primeiros slides após a capa com fundos lisos alternados e sem página branca interior. — feito
+9. Redesenhar os seis primeiros slides após a capa numa linguagem editorial azul/rosa, sem cartões preenchidos e com gráficos integrados. — feito
 

@@ -19,14 +19,14 @@ type Viewport = { width: number; height: number };
 type Backdrop = "pattern" | "navy" | "rose" | "wash" | "white";
 const BACKDROPS: Backdrop[] = ["pattern", "navy", "rose", "wash"];
 
-/** Amostra aprovada por etapas: seis slides lisos depois da capa. */
-const SAMPLE_SLIDE_THEMES: Record<string, Extract<Backdrop, "navy" | "rose" | "white">> = {
+/** Nova direção editorial: seis slides lisos depois da capa. */
+const SAMPLE_SLIDE_THEMES: Record<string, Extract<Backdrop, "navy" | "rose">> = {
   apresentacao: "navy",
   "apresentacao-empresas": "rose",
-  nomes: "white",
-  pergunta: "navy",
-  "identificacao-canais": "rose",
-  canais: "white",
+  nomes: "navy",
+  pergunta: "rose",
+  "identificacao-canais": "navy",
+  canais: "rose",
 };
 
 /** Slides com gráficos ou vídeos usam sempre uma base exterior lisa. */
@@ -395,7 +395,7 @@ function FrameBody({
         <span
           className={cn(
             "absolute left-6 top-5 z-10 text-[11px] font-bold uppercase tracking-[0.25em]",
-            theme === "navy" ? "text-vaa" : theme === "rose" ? "text-porcelain/70" : frame.navy ? "text-vaa" : "text-navy/40",
+            theme === "navy" ? "text-porcelain/55" : theme === "rose" ? "text-navy/60" : frame.navy ? "text-vaa" : "text-navy/40",
           )}
         >
           {frame.title}

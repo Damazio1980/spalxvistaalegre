@@ -173,6 +173,10 @@
   --pattern-blue: oklch(0.462 0.121 259 / 0.13);
   --pattern-gold: oklch(0.61 0.095 15 / 0.16);
   --pattern-line: oklch(0.259 0.049 262 / 0.08);
+  --chart-editorial-light: oklch(0.966 0.007 90);
+  --chart-editorial-soft: oklch(0.84 0.04 240);
+  --chart-editorial-dark: oklch(0.259 0.049 262);
+  --chart-editorial-muted: oklch(0.966 0.007 90 / 0.2);
 }
 
 .porcelain-pattern {
@@ -211,25 +215,12 @@
   color: oklch(0.966 0.007 90 / 0.78);
 }
 
-.deck-theme-white .sample-company-slide .deck-card,
-.deck-theme-white .sample-company-slide > div > div:last-child,
-.deck-theme-white .sample-company-slide > div:last-child > div,
-.deck-theme-white .sample-channels-slide [class*="bg-white"] {
-  box-shadow: none;
+.deck-theme-navy .section-slide {
+  color: var(--porcelain);
 }
 
-.deck-theme-white .sample-company-slide .deck-card,
-.deck-theme-white .sample-company-slide > div > div:last-child,
-.deck-theme-white .sample-company-slide > div:last-child > div {
-  background-color: color-mix(in oklab, var(--porcelain) 72%, var(--navy) 3%);
-}
-
-.deck-theme-white .sample-channels-slide [class*="bg-white"] {
-  background-color: transparent;
-}
-
-.deck-theme-white .sample-channels-slide [class*="rounded-2xl"] {
-  border-radius: 8px;
+.deck-theme-navy .sample-company-slide strong {
+  color: var(--porcelain);
 }
 
 /* soft watermark: pattern stays, colors washed out so slides keep focus */
