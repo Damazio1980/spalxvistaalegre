@@ -319,23 +319,23 @@ function CanalCard({ canal, i }: { canal: Canal; i: number }) {
   return (
     <Reveal
       i={i}
-      className="min-h-0 border-t border-navy/25 px-1 py-3"
+      className="min-h-0 border-t border-porcelain/25 px-1 py-3"
     >
       <div className="flex items-center gap-2 pb-1.5">
         <span
-          className={cn("flex h-7 w-7 shrink-0 items-center justify-center", tone === "spal" ? "text-navy" : "text-porcelain")}
+          className={cn("flex h-7 w-7 shrink-0 items-center justify-center", tone === "spal" ? "text-porcelain" : "text-vaa")}
         >
           <Icon className="h-3.5 w-3.5" />
         </span>
-        <p className={cn("text-[12px] font-extrabold", tone === "spal" ? "text-navy" : "text-porcelain")}>
+        <p className={cn("text-[12px] font-extrabold", tone === "spal" ? "text-porcelain" : "text-vaa")}>
           {canal.marca} · {canal.nome}
         </p>
       </div>
-      <div className="mt-2 space-y-1 text-[10.5px] leading-[1.22] text-navy/75">
-        <p><strong className="text-navy">Endereço:</strong> {canal.endereco}</p>
-        <p><strong className="text-navy">Indício de autenticidade:</strong> {canal.autenticidade}</p>
-        <p><strong className="text-navy">Público aparente:</strong> {canal.publico}</p>
-        <p><strong className="text-navy">Função:</strong> {canal.funcao}</p>
+      <div className="mt-2 space-y-1 text-[10.5px] leading-[1.22] text-porcelain/75">
+        <p><strong className="text-porcelain">Endereço:</strong> {canal.endereco}</p>
+        <p><strong className="text-porcelain">Indício de autenticidade:</strong> {canal.autenticidade}</p>
+        <p><strong className="text-porcelain">Público aparente:</strong> {canal.publico}</p>
+        <p><strong className="text-porcelain">Função:</strong> {canal.funcao}</p>
       </div>
     </Reveal>
   );
