@@ -329,7 +329,7 @@ function FrameBody({
           {frame.tag}
         </span>
       )}
-      {frame.id !== "capa" && (
+      {frame.id !== "capa" && frame.id !== "apresentacao" && (
         <span
           className={cn(
             "absolute left-6 top-5 z-10 text-[11px] font-bold uppercase tracking-[0.25em]",

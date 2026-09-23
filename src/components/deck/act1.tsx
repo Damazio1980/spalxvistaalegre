@@ -72,15 +72,8 @@ export function Capa({}: ChapterProps) {
 
 export function Apresentacao({ active }: ChapterProps) {
   return (
-    <div
-      className="relative flex h-full flex-col justify-between overflow-hidden p-16 text-porcelain"
-      style={{
-        backgroundImage: `url(${coverPlate.url})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/40 to-navy/10" />
+    <div className="relative flex h-full flex-col justify-between overflow-hidden bg-navy p-16 text-porcelain">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-navy via-navy to-navy/80" />
       <div className="relative z-10 flex items-start justify-between gap-10">
         <div className="max-w-[720px]">
           <Reveal i={0}>
