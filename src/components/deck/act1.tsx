@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { BadgeCheck, ChevronDown, Facebook, Globe, Instagram, Maximize2, Play, X } from "lucide-react";
+import coverPlate from "@/assets/cover-plate.png.asset.json";
+import spinningPlate from "@/assets/spinning-plate.png.asset.json";
 import identidadeVideo from "@/assets/identidade-6d-spal.mp4.asset.json";
 import identidadeVaaVideo from "@/assets/identidade-vaa.mp4.asset.json";
 import navegacaoSpalVideo from "@/assets/navegacao-spal.mp4.asset.json";
@@ -54,44 +56,54 @@ const VAA = "#B76876";
 
 export function Capa({ active }: ChapterProps) {
   return (
-    <div className="flex h-full flex-col justify-between p-16 text-porcelain">
-      <div className="flex items-start justify-between gap-10">
+    <div
+      className="relative flex h-full flex-col justify-between overflow-hidden p-16 text-porcelain"
+      style={{
+        backgroundImage: `url(${coverPlate.url})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/40 to-navy/10" />
+      <div className="relative z-10 flex items-start justify-between gap-10">
         <div className="max-w-[720px]">
           <Reveal i={0}>
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-porcelain/60">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-porcelain/75">
               Apresentação
             </p>
           </Reveal>
           <Reveal i={1}>
-            <h1 className="deck-title mt-4">
+            <h1 className="deck-title mt-4 drop-shadow-lg">
               SPAL <span className="text-vaa">×</span> Vista Alegre
             </h1>
           </Reveal>
           <Reveal i={2}>
-            <p className="mt-6 max-w-[560px] text-2xl leading-snug text-porcelain/85">
+            <p className="mt-6 max-w-[560px] text-2xl leading-snug text-porcelain/90 drop-shadow-md">
               Duas porcelanas portuguesas. Um percurso até à compra.{" "}
               <em className="text-vaa">Quem chega ao fim?</em>
             </p>
           </Reveal>
           <Reveal i={3}>
-            <p className="mt-8 text-sm text-porcelain/55">
+            <p className="mt-8 text-sm text-porcelain/70 drop-shadow">
               Usa <strong>←</strong> <strong>→</strong> para andar e <strong>F</strong> para ecrã
               inteiro.
             </p>
           </Reveal>
         </div>
-        <div className="relative mt-4 h-[320px] w-[320px] shrink-0">
+        <div className="relative z-10 mt-4 h-[320px] w-[320px] shrink-0">
           <div
-            className="absolute inset-0 rounded-full bg-porcelain shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)]"
+            className="absolute inset-0 overflow-hidden rounded-full bg-porcelain shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)]"
             style={{ animation: active ? "deck-spin 26s linear infinite" : "none" }}
           >
-            <div className="absolute inset-3 rounded-full border-[6px] border-spal/70 border-r-vaa/80" />
-            <div className="absolute inset-10 rounded-full border border-navy/10" />
-            <div className="absolute inset-20 rounded-full bg-[var(--gradient-plate)]" />
+            <img
+              src={spinningPlate.url}
+              alt="Prato SPAL × Vista Alegre"
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </div>
-      <div className="space-y-1 border-t border-porcelain/15 pt-5 text-[12px] text-porcelain/55">
+      <div className="relative z-10 space-y-1 border-t border-porcelain/25 pt-5 text-[12px] text-porcelain/70 drop-shadow">
         <p>{FOOTER}</p>
         <p>{PERIOD}</p>
       </div>
