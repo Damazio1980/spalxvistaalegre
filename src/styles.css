@@ -211,6 +211,38 @@
   color: var(--porcelain);
 }
 
+/* Full-deck editorial treatment: content sits directly on one dominant colour. */
+.deck-theme-navy .text-navy,
+.deck-theme-navy [class*="text-navy/"] {
+  color: var(--porcelain) !important;
+}
+
+.deck-theme-navy .bg-white,
+.deck-theme-rose .bg-white {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.deck-theme-navy .deck-card,
+.deck-theme-rose .deck-card {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.deck-theme-navy .border-navy\/10,
+.deck-theme-navy .border-navy\/15,
+.deck-theme-navy .border-navy\/20,
+.deck-theme-navy .border-navy\/25 {
+  border-color: oklch(0.966 0.007 90 / 0.22) !important;
+}
+
+.deck-theme-rose .border-navy\/10,
+.deck-theme-rose .border-navy\/15,
+.deck-theme-rose .border-navy\/20,
+.deck-theme-rose .border-navy\/25 {
+  border-color: oklch(0.259 0.049 262 / 0.2) !important;
+}
+
 .deck-theme-rose .section-slide {
   color: var(--porcelain);
 }
