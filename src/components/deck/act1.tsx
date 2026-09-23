@@ -1301,7 +1301,7 @@ export function Placar1({ active }: ChapterProps) {
   const marcas = [
     {
       nome: "SPAL",
-      cor: "text-[#7FA6E0]",
+      cor: "text-spal",
       forte:
         "Fichas técnicas completas, secção de design própria, rede física real (loja de fábrica, outlet, El Corte Inglés).",
       oportunidade:
@@ -1343,7 +1343,7 @@ export function Placar1({ active }: ChapterProps) {
               </div>
               <div className="mt-1.5 grid grid-cols-2 gap-4 text-[12px]">
                 <p className="text-porcelain/70">
-                  <span className="font-bold text-[#7FA6E0]">SPAL</span> · {s}
+                  <span className="font-bold text-spal">SPAL</span> · {s}
                 </p>
                 <p className="text-porcelain/70">
                   <span className="font-bold text-vaa">Vista Alegre</span> · {v}
@@ -1361,7 +1361,7 @@ export function Placar1({ active }: ChapterProps) {
           <p className="text-[10px] uppercase tracking-widest text-porcelain/60">Placar do Ato 1</p>
           <div className="mt-2 flex items-center justify-center gap-4">
             <div>
-              <Num value={0} active={active} className="text-5xl text-[#7FA6E0]" />
+              <Num value={0} active={active} className="text-5xl text-spal" />
               <p className="text-[10px] text-porcelain/60">SPAL</p>
             </div>
             <span className="text-2xl text-porcelain/40">—</span>
@@ -1379,7 +1379,7 @@ export function Placar1({ active }: ChapterProps) {
                 <p className="text-[9px] text-porcelain/60">{c}</p>
                 {(
                   [
-                    ["SPAL", 5, "#7FA6E0"],
+                    ["SPAL", 5, SPAL],
                     ["Vista Alegre", 4, VAA],
                   ] as const
                 ).map(([nome, v, cor]) => (

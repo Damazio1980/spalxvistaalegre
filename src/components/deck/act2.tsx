@@ -323,7 +323,7 @@ export function DoisPlacares({ active }: ChapterProps) {
           >
             <p className="text-xs uppercase tracking-widest text-porcelain/60">{label}</p>
             <div className="mt-3 flex items-center justify-center gap-5">
-              <Num value={0} active={active} className="text-7xl text-[#7FA6E0]" />
+              <Num value={0} active={active} className="text-7xl text-spal" />
               <span className="text-2xl text-porcelain/40">—</span>
               <Num value={3} active={active} className="text-7xl text-vaa" />
             </div>
