@@ -352,7 +352,7 @@ function FrameBody({
 }: {
   frame: FrameDef;
   active: boolean;
-  theme?: "navy" | "rose" | "white";
+  theme?: "navy" | "rose" | "white" | undefined;
   children: React.ReactNode;
 }) {
   const [phase, setPhase] = useState<"punch" | "content">(
