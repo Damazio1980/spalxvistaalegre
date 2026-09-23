@@ -47,15 +47,21 @@ export function Stage() {
   const [menu, setMenu] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const [canaisPage, setCanaisPage] = useState(0);
+  const [redesPage, setRedesPage] = useState(0);
   const previous = useRef(0);
   const shell = useRef<HTMLDivElement>(null);
 
   const frame = FRAMES[index]!;
-  const score = scoreAt(index);
-  const chartTheme = frame.id === "canais" && canaisPage === 1 ? "white" : CHART_BACKDROPS[frame.id];
+  const cumulativeScore = scoreAt(index);
+  const score = frame.id === "redes" && redesPage < 2
+    ? { ...cumulativeScore, vaa: cumulativeScore.vaa - 2 }
+    : cumulativeScore;
+  const redesTheme: Extract<Backdrop, "navy" | "rose" | "white"> | undefined =
+    frame.id === "redes" ? (redesPage === 0 ? "navy" : redesPage === 1 ? "white" : "rose") : undefined;
+  const chartTheme = frame.id === "canais" && canaisPage === 1 ? "white" : frame.id === "redes" ? undefined : CHART_BACKDROPS[frame.id];
   const editorialTheme: Extract<Backdrop, "navy" | "rose"> = index % 2 === 0 ? "rose" : "navy";
-  const backdrop: Backdrop = frame.id === "capa" ? "pattern" : chartTheme ?? editorialTheme;
-  const frameTheme = frame.id === "capa" ? undefined : chartTheme ?? editorialTheme;
+  const backdrop: Backdrop = frame.id === "capa" ? "pattern" : redesTheme ?? chartTheme ?? editorialTheme;
+  const frameTheme = frame.id === "capa" ? undefined : redesTheme ?? chartTheme ?? editorialTheme;
 
   useEffect(() => {
     const measure = () => setViewport({ width: window.innerWidth, height: window.innerHeight });
@@ -70,6 +76,7 @@ export function Stage() {
       previous.current = cur;
       const target = Math.max(0, Math.min(FRAMES.length - 1, next));
       if (FRAMES[target]?.id === "canais") setCanaisPage(next < cur ? 1 : 0);
+      if (FRAMES[target]?.id === "redes") setRedesPage(next < cur ? 2 : 0);
       return target;
     });
   }, []);
@@ -79,16 +86,24 @@ export function Stage() {
       setCanaisPage((page) => page + 1);
       return;
     }
+    if (frame.id === "redes" && redesPage < 2) {
+      setRedesPage((page) => page + 1);
+      return;
+    }
     goTo(index + 1);
-  }, [canaisPage, frame.id, goTo, index]);
+  }, [canaisPage, frame.id, goTo, index, redesPage]);
 
   const goBack = useCallback(() => {
     if (frame.id === "canais" && canaisPage > 0) {
       setCanaisPage((page) => page - 1);
       return;
     }
+    if (frame.id === "redes" && redesPage > 0) {
+      setRedesPage((page) => page - 1);
+      return;
+    }
     goTo(index - 1);
-  }, [canaisPage, frame.id, goTo, index]);
+  }, [canaisPage, frame.id, goTo, index, redesPage]);
 
   /* act transition: short title card between acts */
   useEffect(() => {
@@ -207,6 +222,7 @@ export function Stage() {
                 <Chapter
                   active={!actOverlay}
                   {...(frame.id === "canais" ? { subframe: canaisPage } : {})}
+                  {...(frame.id === "redes" ? { subframe: redesPage } : {})}
                 />
               </FrameBody>
             )}
@@ -281,6 +297,7 @@ export function Stage() {
             <List className="h-4 w-4 text-navy/50" />
             {ACTS[frame.act].label} · {frame.title}
             {frame.id === "canais" ? ` ${canaisPage + 1}/2` : ""}
+            {frame.id === "redes" ? ` ${redesPage + 1}/3` : ""}
           </button>
           <span className="deck-num text-xs text-navy/50">
             {frame.n === 0 ? "Capa" : `${frame.n}/${TOTAL_CHAPTERS}`}

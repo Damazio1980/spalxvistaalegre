@@ -173,30 +173,46 @@ const post = (
 });
 
 export const POSTS: RefImage[] = [
-  post("post-1", "SPAL Porcelanas", "Facebook", refMesa, {
-    data: "24/08/2026",
-    formato: "imagem",
-    tema: "Arte que se serve à mesa…",
-    reacoes: "9",
-    comentarios: "[comentários: 00]",
-    cta: "[CTA exemplo: Saber mais]",
+  post("post-1", "@vistaalegreofficial", "Instagram", refMesa, {
+    data: "23/09",
+    formato: "Reel (7s)",
+    tema: "Lançamento coleção Outono",
+    cta: "nenhum explícito",
+    reacoes: "130 gostos, 2 comentários, 3 reposts, 11 envios",
   }),
-  post("post-2", "@spalporcelanasofficial", "Instagram", refPorcelana, {}),
-  post("post-3", "@spalporcelanasofficial", "Instagram", refMesa, {}),
-  post("post-4", "SPAL Porcelanas", "Facebook", refPorcelana, {}),
-  post("post-5", "@spalporcelanasofficial", "Instagram", refMesa, {}),
-  post("post-6", "SPAL Porcelanas", "Facebook", refPorcelana, {}),
-  post("post-7", "@vistaalegreofficial", "Instagram", refPorcelana, {
-    data: "~28/08/2026",
-    formato: "carrossel",
-    tema: "Coleção Niemeyer: 6 pratos colecionáveis com a Fundação Niemeyer",
-    cta: "[CTA exemplo: Comprar agora]",
+  post("post-2", "@vistaalegreofficial", "Instagram", refPorcelana, {
+    data: "21/09", formato: "Carrossel 2 fotos", tema: "History — bilha de 1931", cta: "nenhum", reacoes: "155 gostos, 4 reposts/partilhas",
   }),
-  post("post-8", "@vistaalegreofficial", "Instagram", refMesa, {}),
-  post("post-9", "@vistaalegreofficial", "Instagram", refPorcelana, {}),
-  post("post-10", "Vista Alegre", "Facebook", refMesa, {}),
-  post("post-11", "Vista Alegre", "Facebook", refPorcelana, {}),
-  post("post-12", "Vista Alegre", "Facebook", refMesa, {}),
+  post("post-3", "@vistaalegreofficial", "Instagram", refMesa, {
+    data: "18/09", formato: "Carrossel 5 fotos", tema: "Nova loja no Fórum Algarve", cta: "Venha conhecer as nossas coleções", reacoes: "1.324 gostos, 18 comentários, 2 reposts, 44 envios",
+  }),
+  post("post-4", "Vista Alegre", "Facebook", refPorcelana, {
+    data: "23/09 (há 6h)", formato: "Vídeo", tema: "Lançamento coleção Outono", cta: "nenhum", reacoes: "[não visível na captura]",
+  }),
+  post("post-5", "Vista Alegre", "Facebook", refMesa, {
+    data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "History — bilha de 1931 e Art Déco", cta: "nenhum", reacoes: "35 gostos, 2 partilhas",
+  }),
+  post("post-6", "Vista Alegre", "Facebook", refPorcelana, {
+    data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "Jornadas Europeias do Património", cta: "Conheça aqui as atividades e programação", reacoes: "[não visível]",
+  }),
+  post("post-7", "@spalporcelanasofficial", "Instagram", refMesa, {
+    data: "09/09", formato: "Imagem única", tema: "Recrutamento — Assistente de Loja", cta: "envie o seu CV para rh@spal.pt", reacoes: "24 gostos, 12 envios",
+  }),
+  post("post-8", "@spalporcelanasofficial", "Instagram", refPorcelana, {
+    data: "24/08", formato: "Reel", tema: "Arte que se serve à mesa", cta: "nenhum", reacoes: "17 gostos, 1 repost, 4 envios",
+  }),
+  post("post-9", "@spalporcelanasofficial", "Instagram", refMesa, {
+    data: "28/07", formato: "Carrossel 9 imagens", tema: "Sustentabilidade", cta: "nenhum", reacoes: "36 gostos, 1 envio",
+  }),
+  post("post-10", "SPAL Porcelanas", "Facebook", refPorcelana, {
+    data: "09/09", formato: "Imagem única", tema: "Recrutamento Assistente de Loja", cta: "envie o seu CV para rh@spal.pt", reacoes: "5 gostos, 2 partilhas",
+  }),
+  post("post-11", "SPAL Porcelanas", "Facebook", refMesa, {
+    data: "24/08", formato: "Reel", tema: "Arte que se serve à mesa", cta: "nenhum", reacoes: "10 reações, 1 partilha",
+  }),
+  post("post-12", "SPAL Porcelanas", "Facebook", refPorcelana, {
+    data: "28/07", formato: "Carrossel 9 imagens", tema: "Sustentabilidade", cta: "nenhum", reacoes: "[não totalmente visível]",
+  }),
 ];
 
 /* ── maquete da publicação (secção E) ───────────────────────────────────── */
