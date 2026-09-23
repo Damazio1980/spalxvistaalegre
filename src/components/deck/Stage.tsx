@@ -209,7 +209,7 @@ export function Stage() {
               <FrameBody frame={frame} active={!actOverlay}>
                 <Chapter
                   active={!actOverlay}
-                  subframe={frame.id === "canais" ? canaisPage : undefined}
+                  {...(frame.id === "canais" ? { subframe: canaisPage } : {})}
                 />
               </FrameBody>
             )}
