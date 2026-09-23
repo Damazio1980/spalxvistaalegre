@@ -8,4 +8,5 @@
 6. Reorganizar Canais por marca, juntar os antigos quadros 2/3 e 3/3 e acrescentar os contactos SPAL. — feito
 
 7. Criar três slides separadores e ajustar o título/subtítulo de “A pergunta”. — feito
+8. Criar uma amostra dos seis primeiros slides após a capa com fundos lisos alternados e sem página branca interior. — feito
 

@@ -16,8 +16,18 @@ import porcelainNavigationBackground from "@/assets/porcelain-navigation-bg-new.
 type Viewport = { width: number; height: number };
 
 /** background rotation: pattern → navy → dusty rose → soft pattern */
-type Backdrop = "pattern" | "navy" | "rose" | "wash";
+type Backdrop = "pattern" | "navy" | "rose" | "wash" | "white";
 const BACKDROPS: Backdrop[] = ["pattern", "navy", "rose", "wash"];
+
+/** Amostra aprovada por etapas: seis slides lisos depois da capa. */
+const SAMPLE_SLIDE_THEMES: Record<string, Extract<Backdrop, "navy" | "rose" | "white">> = {
+  apresentacao: "navy",
+  "apresentacao-empresas": "rose",
+  nomes: "white",
+  pergunta: "navy",
+  "identificacao-canais": "rose",
+  canais: "white",
+};
 
 /** Slides com gráficos ou vídeos usam sempre uma base exterior lisa. */
 const SOLID_MEDIA_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "rose">> = {
@@ -61,7 +71,8 @@ export function Stage() {
 
   const frame = FRAMES[index]!;
   const score = scoreAt(index);
-  const backdrop = SOLID_MEDIA_BACKDROPS[frame.id] ?? BACKDROPS[index % BACKDROPS.length]!;
+  const sampleTheme = SAMPLE_SLIDE_THEMES[frame.id];
+  const backdrop = sampleTheme ?? SOLID_MEDIA_BACKDROPS[frame.id] ?? BACKDROPS[index % BACKDROPS.length]!;
 
   useEffect(() => {
     const measure = () => setViewport({ width: window.innerWidth, height: window.innerHeight });
@@ -75,7 +86,7 @@ export function Stage() {
     setIndex((cur) => {
       previous.current = cur;
       const target = Math.max(0, Math.min(FRAMES.length - 1, next));
-      if (FRAMES[target]?.id === "canais") setCanaisPage(next < cur ? 2 : 0);
+      if (FRAMES[target]?.id === "canais") setCanaisPage(next < cur ? 1 : 0);
       return target;
     });
   }, []);
@@ -185,7 +196,7 @@ export function Stage() {
         tabIndex={-1}
         className={cn(
           "relative h-screen w-screen overflow-hidden font-sans text-ink outline-none",
-          backdrop === "navy" ? "bg-navy" : "bg-porcelain",
+          backdrop === "navy" ? "bg-navy" : backdrop === "rose" ? "bg-vaa" : "bg-porcelain",
         )}
       >
         <PorcelainBackdrop variant={backdrop} />
@@ -195,18 +206,21 @@ export function Stage() {
           <div
             key={frame.id}
             className={cn(
-              "deck-slide-enter overflow-hidden shadow-[var(--shadow-frame)]",
-              frame.navy ? "bg-navy" : "bg-porcelain",
+              "deck-slide-enter overflow-hidden",
+              sampleTheme ? "deck-sample-slide" : "shadow-[var(--shadow-frame)]",
+              sampleTheme === "navy" || (!sampleTheme && frame.navy) ? "bg-navy" :
+                sampleTheme === "rose" ? "bg-vaa" : "bg-porcelain",
+              sampleTheme && `deck-theme-${sampleTheme}`,
             )}
             style={{
               width: frame.w,
               height: frame.h,
-              borderRadius: 12,
+              borderRadius: sampleTheme ? 0 : 12,
                ...transitionStyle,
             }}
           >
             {Chapter && (
-              <FrameBody frame={frame} active={!actOverlay}>
+              <FrameBody frame={frame} active={!actOverlay} theme={sampleTheme}>
                 <Chapter
                   active={!actOverlay}
                   {...(frame.id === "canais" ? { subframe: canaisPage } : {})}
@@ -333,10 +347,12 @@ export function Stage() {
 function FrameBody({
   frame,
   active,
+  theme,
   children,
 }: {
   frame: FrameDef;
   active: boolean;
+  theme?: "navy" | "rose" | "white" | undefined;
   children: React.ReactNode;
 }) {
   const [phase, setPhase] = useState<"punch" | "content">(
@@ -361,7 +377,9 @@ function FrameBody({
         <span
           className={cn(
             "absolute right-5 top-5 z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest",
-            frame.navy ? "bg-porcelain/10 text-porcelain/70" : "bg-navy/6 text-navy/45",
+            theme === "navy" || theme === "rose" || frame.navy
+              ? "bg-porcelain/10 text-porcelain/70"
+              : "bg-navy/6 text-navy/45",
           )}
         >
           {frame.tag}
@@ -377,7 +395,7 @@ function FrameBody({
         <span
           className={cn(
             "absolute left-6 top-5 z-10 text-[11px] font-bold uppercase tracking-[0.25em]",
-            frame.navy ? "text-vaa" : "text-navy/40",
+            theme === "navy" ? "text-vaa" : theme === "rose" ? "text-porcelain/70" : frame.navy ? "text-vaa" : "text-navy/40",
           )}
         >
           {frame.title}
@@ -388,7 +406,7 @@ function FrameBody({
           key="punch"
           className={cn(
             "flex h-full items-center justify-center px-16 text-center",
-            frame.navy ? "text-porcelain" : "text-navy",
+            theme === "navy" || theme === "rose" || frame.navy ? "text-porcelain" : "text-navy",
           )}
         >
           <p
@@ -416,6 +434,7 @@ function PorcelainBackdrop({ variant }: { variant: Backdrop }) {
         "porcelain-pattern pointer-events-none absolute inset-0",
         variant === "navy" && "porcelain-pattern--navy",
         variant === "rose" && "porcelain-pattern--rose",
+        variant === "white" && "porcelain-pattern--white",
       )}
       aria-hidden="true"
     >
