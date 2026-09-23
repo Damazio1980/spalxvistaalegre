@@ -72,16 +72,15 @@ export function Capa({}: ChapterProps) {
 export function Apresentacao({ active }: ChapterProps) {
   return (
     <div className="relative flex h-full items-center justify-center overflow-hidden bg-navy p-12 text-porcelain">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-navy via-navy to-navy/80" />
       <div className="relative z-10 flex w-full max-w-[1120px] items-center justify-center gap-16">
         <div className="max-w-[620px] text-center">
           <Reveal i={1}>
-            <h1 className="deck-title drop-shadow-lg">
+            <h1 className="deck-title">
               SPAL <span className="text-vaa">×</span> Vista Alegre
             </h1>
           </Reveal>
           <Reveal i={2}>
-            <p className="mx-auto mt-6 max-w-[560px] text-2xl leading-snug text-porcelain/90 drop-shadow-md">
+            <p className="mx-auto mt-6 max-w-[560px] text-2xl leading-snug text-porcelain/90">
               Duas porcelanas portuguesas. Um percurso até à compra.{" "}
               <em className="text-vaa">Quem chega ao fim?</em>
             </p>
@@ -89,7 +88,7 @@ export function Apresentacao({ active }: ChapterProps) {
         </div>
         <div className="relative z-10 h-[420px] w-[420px] shrink-0">
           <div
-            className="absolute inset-0 overflow-hidden rounded-full bg-porcelain shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)]"
+            className="absolute inset-0 overflow-hidden rounded-full bg-porcelain"
             style={{ animation: active ? "deck-spin 26s linear infinite" : "none" }}
           >
             <img
@@ -106,13 +105,14 @@ export function Apresentacao({ active }: ChapterProps) {
 
 function SectionSlide({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
-    <div className="section-slide flex h-full flex-col items-center justify-center px-16 text-center text-navy">
+    <div className="section-slide flex h-full flex-col items-start justify-center px-24 text-left">
+      <div className="mb-8 h-px w-28 bg-current opacity-40" />
       <Reveal i={0}>
         <h2 className="deck-title text-[64px] leading-tight">{title}</h2>
       </Reveal>
       {subtitle && (
         <Reveal i={1}>
-          <p className="mt-5 text-[28px] leading-snug text-navy/65">{subtitle}</p>
+          <p className="mt-5 max-w-[760px] text-[28px] leading-snug opacity-75">{subtitle}</p>
         </Reveal>
       )}
     </div>
@@ -138,41 +138,41 @@ export function IntroducaoWebsite() {
 
 export function Nomes({ active }: ChapterProps) {
   return (
-    <div className="sample-company-slide flex h-full flex-col gap-5 p-12">
-    <div className="grid min-h-0 flex-1 grid-cols-[1.15fr_0.85fr] gap-10">
+    <div className="sample-company-slide flex h-full flex-col gap-5 px-14 pb-10 pt-14 text-porcelain">
+    <div className="grid min-h-0 flex-1 grid-cols-[1.15fr_0.85fr] gap-12">
 
       <div className="space-y-5">
-        <Reveal i={0} className="deck-card border border-spal/20 bg-white p-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-spal">SPAL</p>
-          <p className="mt-2 text-[15px] leading-relaxed text-navy/80">
+        <Reveal i={0} className="border-t border-porcelain/35 py-5">
+          <p className="text-xs font-bold uppercase tracking-widest text-porcelain">SPAL</p>
+          <p className="mt-2 text-[15px] leading-relaxed text-porcelain/75">
             Alcobaça, 1965. Desenha e produz porcelana para casas e para hotelaria. Cerca de{" "}
             <strong>60 % de exportação</strong>, mais de <strong>45 países</strong>, com o SPAL
             Studio a criar coleções próprias.
           </p>
         </Reveal>
-        <Reveal i={1} className="deck-card border border-vaa/30 bg-white p-6">
+        <Reveal i={1} className="border-t border-porcelain/20 py-5">
           <p className="text-xs font-bold uppercase tracking-widest text-vaa">
             Vista Alegre
           </p>
-          <p className="mt-2 text-[15px] leading-relaxed text-navy/80">
+          <p className="mt-2 text-[15px] leading-relaxed text-porcelain/75">
             Ílhavo, 1824. Grupo cotado em bolsa, arte e colecionismo, loja online a funcionar, cerca
             de <strong>25 lojas</strong> e <strong>6 outlets</strong>.
           </p>
         </Reveal>
         <div className="grid grid-cols-2 gap-4">
-          <Reveal i={2} className="deck-card bg-navy p-6 text-porcelain">
+          <Reveal i={2} className="border-l border-porcelain/30 pl-5 text-porcelain">
             <Num value={71.3} decimals={1} suffix=" M€" active={active} className="text-5xl" />
             <p className="mt-2 text-xs text-porcelain/70">Vendas VAA, 1.º semestre 2026 (+1,6 %)</p>
           </Reveal>
-          <Reveal i={3} className="deck-card bg-navy p-6 text-porcelain">
+          <Reveal i={3} className="border-l border-porcelain/30 pl-5 text-porcelain">
             <Num value={4.3} decimals={1} suffix=" M€" active={active} className="text-5xl" />
             <p className="mt-2 text-xs text-porcelain/70">Resultado líquido (+18,9 %)</p>
           </Reveal>
         </div>
       </div>
-      <Reveal i={2} className="relative rounded-3xl border border-navy/10 bg-white p-6">
-        <p className="text-sm font-semibold text-navy/70">Portugal, três pontos</p>
-        <div className="relative mx-auto mt-4 h-[380px] w-[150px] rounded-[60px_60px_40px_40px] bg-porcelain">
+      <Reveal i={2} className="relative border-l border-porcelain/20 pl-10 pt-5">
+        <p className="text-sm font-semibold text-porcelain/70">Portugal, três pontos</p>
+        <div className="relative mx-auto mt-4 h-[380px] w-[150px] rounded-[60px_60px_40px_40px] border border-porcelain/25 bg-porcelain/5">
           <Dot top="28%" left="18%" color={VAA} label="Ílhavo · Vista Alegre" delay={200} />
           <Dot top="47%" left="26%" color={SPAL} label="Alcobaça · SPAL" delay={700} />
           <Dot
@@ -186,16 +186,16 @@ export function Nomes({ active }: ChapterProps) {
       </Reveal>
     </div>
       <div className="grid h-[190px] shrink-0 grid-cols-[1.3fr_1fr] gap-4">
-        <ChartPanel
+        <ChartPanel dark
           title="Evolução Vista Alegre · 1.º semestre"
           note="Volume de negócios 70,2 → 71,3 M€ · resultado líquido 3,6 → 4,3 M€"
         >
-          <EvolucaoVAA active={active} />
+          <EvolucaoVAA active={active} editorial />
         </ChartPanel>
-        <ChartPanel title="Peso da exportação" note="valores aproximados">
+        <ChartPanel dark title="Peso da exportação" note="valores aproximados">
           <div className="flex h-full gap-2">
-            <DonutExportacao label="SPAL" value={60} color={SPAL} active={active} />
-            <DonutExportacao label="Vista Alegre" value={70} color={VAA} active={active} />
+            <DonutExportacao label="SPAL" value={60} color="var(--chart-editorial-soft)" active={active} editorial />
+            <DonutExportacao label="Vista Alegre" value={70} color="var(--chart-editorial-light)" active={active} editorial />
           </div>
         </ChartPanel>
       </div>
@@ -228,7 +228,7 @@ function Dot({
         }}
       />
       <span
-        className="deck-rise absolute left-6 top-[-6px] w-[190px] text-[11px] font-semibold leading-tight text-navy/75"
+        className="deck-rise absolute left-6 top-[-6px] w-[190px] text-[11px] font-semibold leading-tight text-porcelain/75"
         style={{ animationDelay: `${delay + 150}ms` }}
       >
         {label}
@@ -239,12 +239,12 @@ function Dot({
 
 export function Pergunta() {
   return (
-    <div className="sample-question-slide flex h-full flex-col items-center justify-center gap-8 p-16 text-center text-porcelain">
+    <div className="sample-question-slide flex h-full flex-col items-start justify-center gap-8 px-24 text-left text-porcelain">
       <Reveal i={0}>
         <h2 className="deck-title text-[64px]">A pergunta</h2>
       </Reveal>
       <Reveal i={1}>
-        <p className="max-w-[1000px] text-[28px] font-semibold leading-snug text-porcelain/85">
+        <p className="max-w-[900px] border-l border-porcelain/40 pl-8 text-[28px] font-semibold leading-snug text-porcelain/85">
           Qual das marcas facilita melhor o percurso entre descobrir um produto, obter informação e
           avançar para a compra ou para um contacto?
         </p>
@@ -335,17 +335,15 @@ function CanalCard({ canal, i }: { canal: Canal; i: number }) {
   return (
     <Reveal
       i={i}
-      className={`min-h-0 rounded-2xl border bg-white p-3 ${tone === "spal" ? "border-spal/25" : "border-vaa/40"}`}
+      className="min-h-0 border-t border-navy/25 px-1 py-3"
     >
-      <div className="flex items-center gap-2 border-b border-navy/10 pb-1.5">
+      <div className="flex items-center gap-2 pb-1.5">
         <span
-          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${
-            tone === "spal" ? "bg-spal/10 text-spal" : "bg-vaa/15 text-vaa"
-          }`}
+          className={cn("flex h-7 w-7 shrink-0 items-center justify-center", tone === "spal" ? "text-navy" : "text-porcelain")}
         >
           <Icon className="h-3.5 w-3.5" />
         </span>
-        <p className={`text-[12px] font-extrabold ${tone === "spal" ? "text-spal" : "text-vaa"}`}>
+        <p className={cn("text-[12px] font-extrabold", tone === "spal" ? "text-navy" : "text-porcelain")}>
           {canal.marca} · {canal.nome}
         </p>
       </div>
@@ -364,7 +362,7 @@ export function Canais({ active, subframe = 0 }: ChapterProps) {
   const spalCanais = CANAIS.filter((canal) => canal.marca === "SPAL");
   const vaaCanais = CANAIS.filter((canal) => canal.marca === "Vista Alegre");
   return (
-    <div className="sample-channels-slide flex h-full flex-col gap-3 px-8 pb-6 pt-8">
+    <div className="sample-channels-slide flex h-full flex-col gap-4 px-12 pb-8 pt-12 text-navy">
       <div className="flex shrink-0 items-end justify-between">
         <Reveal i={0}>
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-navy/45">
@@ -396,18 +394,18 @@ export function Canais({ active, subframe = 0 }: ChapterProps) {
         <div className="grid min-h-0 flex-1 grid-cols-[1.25fr_1fr] gap-3">
           <div className="flex min-h-0 flex-col gap-3">
             <Reveal i={1} className="min-h-0 flex-1">
-              <ChartPanel title="IG seguidores · IG publicações · Facebook seguidores" note="audiência ≠ vendas" className="h-full p-4">
+              <ChartPanel title="IG seguidores · IG publicações · Facebook seguidores" note="audiência ≠ vendas" className="h-full border-navy/25 bg-transparent p-4">
                 <AudienciaLog active={active} />
               </ChartPanel>
             </Reveal>
             <Reveal i={2}>
-              <p className="rounded-2xl bg-navy px-5 py-3 text-[15px] font-semibold leading-snug text-porcelain">
+              <p className="border-l-2 border-navy px-5 py-2 text-[15px] font-semibold leading-snug text-navy">
                 A Vista Alegre usa o site como loja e as redes como montra. A SPAL usa o site como catálogo e as redes como galeria.
               </p>
             </Reveal>
           </div>
           <div className="grid min-h-0 grid-rows-2 gap-3">
-            <Reveal i={2} className="flex min-h-0 flex-col rounded-2xl border border-spal/25 bg-white p-4">
+            <Reveal i={2} className="flex min-h-0 flex-col border-t border-navy/30 p-4">
               <p className="text-xs font-extrabold uppercase tracking-widest text-spal">SPAL · outros canais</p>
               <p className="mt-2 text-[13px] font-semibold leading-relaxed text-navy">{OUTROS_SPAL.join(" · ")}</p>
               <div className="mt-auto border-t border-navy/10 pt-2">
@@ -416,7 +414,7 @@ export function Canais({ active, subframe = 0 }: ChapterProps) {
                 <p className="text-[12px] font-semibold text-navy">outlet.alcobaca@spal.pt</p>
               </div>
             </Reveal>
-            <Reveal i={3} className="flex min-h-0 flex-col rounded-2xl border border-vaa/40 bg-white p-4">
+            <Reveal i={3} className="flex min-h-0 flex-col border-t border-porcelain/40 p-4">
               <p className="text-xs font-extrabold uppercase tracking-widest text-vaa">Vista Alegre · outros canais</p>
               <p className="mt-2 text-[13px] font-semibold leading-relaxed text-navy">{OUTROS_VAA.join(" · ")}</p>
               <div className="mt-auto border-t border-navy/10 pt-2">
