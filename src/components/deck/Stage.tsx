@@ -81,7 +81,7 @@ export function Stage() {
   }, []);
 
   const goForward = useCallback(() => {
-    if (frame.id === "canais" && canaisPage < 2) {
+    if (frame.id === "canais" && canaisPage < 1) {
       setCanaisPage((page) => page + 1);
       return;
     }
@@ -283,7 +283,7 @@ export function Stage() {
           >
             <List className="h-4 w-4 text-navy/50" />
             {ACTS[frame.act].label} · {frame.title}
-            {frame.id === "canais" ? ` ${canaisPage + 1}/3` : ""}
+            {frame.id === "canais" ? ` ${canaisPage + 1}/2` : ""}
           </button>
           <span className="deck-num text-xs text-navy/50">
             {frame.n === 0 ? "Capa" : `${frame.n}/${TOTAL_CHAPTERS}`}
