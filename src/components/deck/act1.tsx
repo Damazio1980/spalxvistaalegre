@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { BadgeCheck, ChevronDown, Facebook, Globe, Instagram, Maximize2, Play, X } from "lucide-react";
+import coverPlate from "@/assets/cover-plate.png.asset.json";
+import spinningPlate from "@/assets/spinning-plate.png.asset.json";
 import identidadeVideo from "@/assets/identidade-6d-spal.mp4.asset.json";
 import identidadeVaaVideo from "@/assets/identidade-vaa.mp4.asset.json";
 import navegacaoSpalVideo from "@/assets/navegacao-spal.mp4.asset.json";
