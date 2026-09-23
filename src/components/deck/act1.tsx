@@ -106,7 +106,7 @@ export function Apresentacao({ active }: ChapterProps) {
 
 function SectionSlide({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
-    <div className="flex h-full flex-col items-center justify-center px-16 text-center text-navy">
+    <div className="section-slide flex h-full flex-col items-center justify-center px-16 text-center text-navy">
       <Reveal i={0}>
         <h2 className="deck-title text-[64px] leading-tight">{title}</h2>
       </Reveal>
@@ -138,7 +138,7 @@ export function IntroducaoWebsite() {
 
 export function Nomes({ active }: ChapterProps) {
   return (
-    <div className="flex h-full flex-col gap-5 p-12">
+    <div className="sample-company-slide flex h-full flex-col gap-5 p-12">
     <div className="grid min-h-0 flex-1 grid-cols-[1.15fr_0.85fr] gap-10">
 
       <div className="space-y-5">
@@ -239,7 +239,7 @@ function Dot({
 
 export function Pergunta() {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-8 p-16 text-center text-porcelain">
+    <div className="sample-question-slide flex h-full flex-col items-center justify-center gap-8 p-16 text-center text-porcelain">
       <Reveal i={0}>
         <h2 className="deck-title text-[64px]">A pergunta</h2>
       </Reveal>
@@ -364,7 +364,7 @@ export function Canais({ active, subframe = 0 }: ChapterProps) {
   const spalCanais = CANAIS.filter((canal) => canal.marca === "SPAL");
   const vaaCanais = CANAIS.filter((canal) => canal.marca === "Vista Alegre");
   return (
-    <div className="flex h-full flex-col gap-3 px-8 pb-6 pt-8">
+    <div className="sample-channels-slide flex h-full flex-col gap-3 px-8 pb-6 pt-8">
       <div className="flex shrink-0 items-end justify-between">
         <Reveal i={0}>
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-navy/45">

@@ -189,6 +189,49 @@
   background: var(--vaa);
 }
 
+.porcelain-pattern--white {
+  background: var(--porcelain);
+}
+
+/* First six-slide flat-background study: the frame and stage read as one canvas. */
+.deck-sample-slide {
+  box-shadow: none;
+}
+
+.deck-theme-navy,
+.deck-theme-rose {
+  color: var(--porcelain);
+}
+
+.deck-theme-rose .section-slide {
+  color: var(--porcelain);
+}
+
+.deck-theme-rose .section-slide p {
+  color: oklch(0.966 0.007 90 / 0.78);
+}
+
+.deck-theme-white .sample-company-slide .deck-card,
+.deck-theme-white .sample-company-slide > div > div:last-child,
+.deck-theme-white .sample-company-slide > div:last-child > div,
+.deck-theme-white .sample-channels-slide [class*="bg-white"] {
+  box-shadow: none;
+}
+
+.deck-theme-white .sample-company-slide .deck-card,
+.deck-theme-white .sample-company-slide > div > div:last-child,
+.deck-theme-white .sample-company-slide > div:last-child > div {
+  background-color: color-mix(in oklab, var(--porcelain) 72%, var(--navy) 3%);
+}
+
+.deck-theme-white .sample-channels-slide [class*="bg-white"] {
+  background-color: transparent;
+}
+
+.deck-theme-white .sample-channels-slide [class*="rounded-2xl"] {
+  border-radius: 8px;
+}
+
 /* soft watermark: pattern stays, colors washed out so slides keep focus */
 .porcelain-pattern__art {
   position: absolute;
