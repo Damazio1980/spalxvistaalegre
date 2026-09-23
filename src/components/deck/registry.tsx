@@ -13,7 +13,6 @@ import {
   Placar1,
   Radar6,
   Redes,
-  RedesPosts,
   Website,
   type ChapterProps,
 } from "./act1";
@@ -51,7 +50,6 @@ export const CHAPTERS: Record<string, ComponentType<ChapterProps>> = {
   percurso: Percurso,
   radar: Radar6,
   redes: Redes,
-  "redes-posts": RedesPosts,
   placar1: Placar1,
   ines: InesPersona,
   min0: Min0,

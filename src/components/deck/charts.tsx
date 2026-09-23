@@ -351,19 +351,35 @@ export function PublicacoesPorPerfil({ active }: { active: boolean }) {
 }
 
 export function ReacoesPorPublicacao({ active }: { active: boolean }) {
-  const data = Array.from({ length: 12 }, (_, i) => ({
-    m: `${i + 1}`,
-    v: i === 0 ? 9 : 0,
-    cor: i < 6 ? SPAL_C : VAA_C,
-  }));
+  const data = [
+    { m: "1", v: 130, label: "130", cor: VAA_C },
+    { m: "2–3", v: 155, label: "155", cor: VAA_C },
+    { m: "4", v: 1324, label: "1.324", cor: VAA_C },
+    { m: "5", v: 0, label: "n/d", cor: VAA_C },
+    { m: "6", v: 35, label: "35", cor: VAA_C },
+    { m: "7", v: 0, label: "n/d", cor: VAA_C },
+    { m: "8", v: 24, label: "24", cor: SPAL_C },
+    { m: "9", v: 17, label: "17", cor: SPAL_C },
+    { m: "10", v: 36, label: "36", cor: SPAL_C },
+    { m: "11", v: 5, label: "5", cor: SPAL_C },
+    { m: "12", v: 10, label: "10", cor: SPAL_C },
+    { m: "13", v: 0, label: "n/d", cor: SPAL_C },
+  ];
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <BarChart data={data} margin={{ top: 2, right: 6, left: -22, bottom: 0 }}>
+      <BarChart data={data} margin={{ top: 18, right: 6, left: -14, bottom: 0 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
         <XAxis dataKey="m" tick={{ fontSize: 8.5 }} />
         <YAxis allowDecimals={false} tick={{ fontSize: 8.5 }} width={40} />
-        <Tooltip {...tip} formatter={(v: number) => (v ? `${v} reações` : "valor a inserir")} />
-        <Bar dataKey="v" radius={[4, 4, 0, 0]} isAnimationActive={active}>
+        <Tooltip
+          {...tip}
+          formatter={(v: number, _name, item) => item.payload.label === "n/d" ? "n/d" : `${v.toLocaleString("pt-PT")} reações`}
+        />
+        <Bar
+          dataKey="v"
+          radius={[4, 4, 0, 0]}
+          isAnimationActive={active}
+        >
           {data.map((d) => (
             <Cell key={d.m} fill={d.cor} />
           ))}

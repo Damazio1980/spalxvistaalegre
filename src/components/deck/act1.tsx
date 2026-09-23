@@ -43,7 +43,6 @@ import {
   DonutExportacao,
   EvolucaoVAA,
   PassosChart,
-  PublicacoesPorPerfil,
   RadarDimensoes,
   ReacoesPorPublicacao,
 } from "./charts";
@@ -1007,7 +1006,6 @@ type Perfil = {
   handle: string;
   nums: { value: number; label: string }[];
   bio: string;
-  bioNota?: string;
   extra?: string;
   extras?: string[];
   selo?: boolean;
@@ -1024,7 +1022,6 @@ const PERFIS: Perfil[] = [
       { value: 305, label: "publicações" },
     ],
     bio: "Finest porcelain dinnerware both for domestic and hotelware purposes. What's your view on SPAL? Tag your photos @spalporcelanasofficial",
-    bioNota: "bio em inglês",
   },
   {
     marca: "SPAL",
@@ -1032,8 +1029,7 @@ const PERFIS: Perfil[] = [
     handle: "/SPALPorcelanas",
     nums: [{ value: 15700, label: "gostos" }],
     bio: "Desde 1965, desenhamos, produzimos e comercializamos porcelana para fins domésticos e profissionais.",
-    bioNota: "bio em português",
-    extra: "Ligação para El Corte Inglés",
+    extra: "liga para El Corte Inglés",
   },
   {
     marca: "Vista Alegre",
@@ -1045,7 +1041,6 @@ const PERFIS: Perfil[] = [
       { value: 3717, label: "publicações" },
     ],
     bio: "The Official Instagram for Vista Alegre. Inspiration, ideas and design for your home. Tag your photos with #VistaAlegre!",
-    bioNota: "bio em inglês",
   },
   {
     marca: "Vista Alegre",
@@ -1057,29 +1052,68 @@ const PERFIS: Perfil[] = [
       { value: 6000, label: "publicações" },
     ],
     bio: "Fundada em 1824, a Vista Alegre adquiriu uma notoriedade ímpar, tornando-a numa das poucas insígnias portuguesas de luxo a nível mundial. A Vista Alegre produz porcelana de mesa, decorativa, giftware e hotelware, vidro e cristal de alta qualidade.",
-    bioNota: "conta oficial verificada",
-    extra: "★ Recomendado por 92% (293 avaliações)",
-    extras: ["Produto/serviço", "socialmedia@vistaalegre.com", "vistaalegre.com"],
+    extra: "Recomendado por 92% (293 avaliações)",
+    extras: ["socialmedia@vistaalegre.com"],
   },
 ];
 
-const COMPARACAO: { dim: string; spal: string; vaa: string }[] = [
+type SocialPost = {
+  numero: string;
+  marca: "SPAL" | "Vista Alegre";
+  rede: "Instagram" | "Facebook";
+  perfil: string;
+  data: string;
+  formato: string;
+  tema: string;
+  publico?: string;
+  objetivo?: string;
+  cta?: string;
+  reacoes: string;
+  nota?: string;
+};
+
+const SOCIAL_POSTS: SocialPost[] = [
+  { numero: "1", marca: "Vista Alegre", rede: "Instagram", perfil: "@vistaalegreofficial", data: "23/09", formato: "Reel (7s)", tema: "Lançamento coleção Outono", publico: "consumidor global, decoração", objetivo: "Inspirar", cta: "nenhum explícito", reacoes: "130 gostos, 2 comentários, 3 reposts, 11 envios" },
+  { numero: "2–3", marca: "Vista Alegre", rede: "Instagram", perfil: "@vistaalegreofficial", data: "21/09", formato: "Carrossel 2 fotos", tema: "“History” — bilha de 1931 (ficha de arquivo + foto do produto)", publico: "colecionadores, património", objetivo: "Informar/Inspirar", cta: "nenhum", reacoes: "155 gostos, 4 (reposts/partilhas)" },
+  { numero: "4", marca: "Vista Alegre", rede: "Instagram", perfil: "@vistaalegreofficial", data: "18/09", formato: "Carrossel 5 fotos", tema: "Nova loja no Fórum Algarve", publico: "consumidor Algarve + geral", objetivo: "Encaminhar (visitar loja)", cta: "“Venha conhecer as nossas coleções”", reacoes: "1.324 gostos, 18 comentários, 2 reposts, 44 envios" },
+  { numero: "5", marca: "Vista Alegre", rede: "Facebook", perfil: "/vistaalegreofficial", data: "23/09 (há 6h)", formato: "Vídeo", tema: "Lançamento coleção Outono (mesmo conteúdo do IG)", objetivo: "Inspirar", cta: "nenhum", reacoes: "[não visível na captura]" },
+  { numero: "6", marca: "Vista Alegre", rede: "Facebook", perfil: "/vistaalegreofficial", data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "“History” — bilha de 1931, com texto expandido e análise estilística (Art Déco) — mais longo que a versão do Instagram", objetivo: "Informar (curadoria)", cta: "nenhum", reacoes: "35 gostos, 2 partilhas" },
+  { numero: "7", marca: "Vista Alegre", rede: "Facebook", perfil: "/vistaalegreofficial", data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "Jornadas Europeias do Património — Museu Vista Alegre, tema “Reviver, resistir, reinventar”, visitas guiadas e oficinas 18–27 set.", objetivo: "Institucional/cultural (conteúdo exclusivo do Facebook, não existe no Instagram)", cta: "“Conheça aqui as atividades e programação”", reacoes: "[não visível]" },
+  { numero: "8", marca: "SPAL", rede: "Instagram", perfil: "@spalporcelanasofficial", data: "09/09", formato: "Imagem única", tema: "Recrutamento — Assistente de Loja (Loja de Fábrica de Alcobaça)", publico: "candidatos a emprego, não consumidor", objetivo: "Institucional/RH", cta: "“envie o seu CV para rh@spal.pt”", reacoes: "24 gostos, 12 envios" },
+  { numero: "9", marca: "SPAL", rede: "Instagram", perfil: "@spalporcelanasofficial", data: "24/08", formato: "Reel", tema: "“Arte que se serve à mesa” — artesão a pintar à mão, Dia Mundial do Artista, bilingue PT/EN", publico: "geral/institucional", objetivo: "Inspirar (marca)", cta: "nenhum", reacoes: "17 gostos, 1 repost, 4 envios" },
+  { numero: "10", marca: "SPAL", rede: "Instagram", perfil: "@spalporcelanasofficial", data: "28/07", formato: "Carrossel 9 imagens", tema: "Sustentabilidade (água reciclada, argila reciclada, embalagem reciclável, toque suave, usar e reutilizar, consciência energética, versátil e multifuncional)", publico: "institucional/ESG", objetivo: "Informar", cta: "nenhum", reacoes: "36 gostos, 1 envio" },
+  { numero: "11", marca: "SPAL", rede: "Facebook", perfil: "/SPALPorcelanas", data: "09/09", formato: "cross-posting idêntico ao Instagram", tema: "Recrutamento Assistente de Loja (idêntico ao post 8)", reacoes: "5 gostos, 2 partilhas", nota: "mesmo texto e imagem, sem adaptação" },
+  { numero: "12", marca: "SPAL", rede: "Facebook", perfil: "/SPALPorcelanas", data: "24/08", formato: "cross-posting idêntico ao Instagram", tema: "“Arte que se serve à mesa” (idêntico ao post 9)", reacoes: "10 reações, 1 partilha", nota: "mesmo texto e imagem, sem adaptação" },
+  { numero: "13", marca: "SPAL", rede: "Facebook", perfil: "/SPALPorcelanas", data: "28/07", formato: "cross-posting idêntico ao Instagram", tema: "Sustentabilidade (idêntico ao post 10)", reacoes: "[não totalmente visível]", nota: "mesmo texto e imagem, sem adaptação" },
+];
+
+const COMPARACAO: { dim: string; spal: string; vaa: string; winner?: boolean }[] = [
   {
     dim: "Tom",
-    spal: "Institucional, bio em inglês no Instagram e em português no Facebook.",
-    vaa: "Editorial: cada lançamento tem uma história (arquiteto, designer, património).",
+    spal: "Institucional e bilingue PT/EN em todas as publicações (post 8: “envie o seu CV”; post 9–10: linguagem de missão e valores). Nenhuma publicação fala de uma coleção à venda.",
+    vaa: "Editorial e emocional, maioritariamente em português (post 1: “tons mais quentes e envolventes”; post 6: tom de curadoria de museu, “presença da Art Déco na estilização minimalista”).",
   },
-  { dim: "Imagem", spal: "[a completar com a amostra]", vaa: "[a completar com a amostra]" },
-  { dim: "Variedade", spal: "[a completar com a amostra]", vaa: "[a completar com a amostra]" },
+  {
+    dim: "Imagem",
+    spal: "Preto e branco no carrossel de sustentabilidade (post 10) e no reel institucional (post 9); azul institucional no post de recrutamento (post 8) — nenhuma é fotografia de produto SPAL identificável.",
+    vaa: "Cor viva e still-life de produto (post 1: verde-jade e terracota sazonais); post 2–3 combina fotografia de arquivo histórico (ficha de catálogo de 1931) com a peça real — recurso que a SPAL não usa.",
+  },
+  {
+    dim: "Variedade",
+    spal: "3 publicações, 3 temas institucionais (RH, arte/processo, sustentabilidade) — zero sobre coleções à venda.",
+    vaa: "4 temas nos 2 perfis — lançamento sazonal, património/arquivo, expansão de loja, agenda cultural do museu (só no Facebook) — cobre produto, história e retalho.",
+    winner: true,
+  },
   {
     dim: "Adaptação à rede",
-    spal: "Facebook para Portugal, Instagram para o público internacional.",
-    vaa: "Instagram global, páginas de Facebook por região.",
+    spal: "Nenhuma — os 3 posts do Facebook (11–13) são cópia exata dos 3 do Instagram (8–10): mesmo texto, mesma imagem, mesma data.",
+    vaa: "Clara — o post da Bilha (6) tem texto mais longo e analítico no Facebook do que no Instagram (2–3); a publicação das Jornadas Europeias do Património (7) existe só no Facebook, dirigida a um público diferente.",
+    winner: true,
   },
   {
-    dim: "Respostas a dúvidas",
-    spal: "[a completar com a amostra]",
-    vaa: "[a completar com a amostra]",
+    dim: "Respostas a dúvidas públicas",
+    spal: "Nenhum comentário de dúvida de cliente identificável nas capturas recolhidas; sem exemplo de resposta a citar nesta amostra.",
+    vaa: "Nenhum comentário de dúvida de cliente identificável nas capturas recolhidas; sem exemplo de resposta a citar nesta amostra.",
   },
 ];
 
@@ -1087,189 +1121,127 @@ function PerfilCard({ p, i, active }: { p: Perfil; i: number; active: boolean })
   const spal = p.marca === "SPAL";
   const Icon = p.rede === "Instagram" ? Instagram : Facebook;
   return (
-    <Reveal
-      i={i}
-      className={`deck-card flex flex-col bg-white p-3 ${spal ? "border border-spal/20" : "border border-vaa/35"}`}
-    >
+    <Reveal i={i} className={`flex min-h-0 flex-col border-t-2 p-3 ${spal ? "border-spal" : "border-vaa"}`}>
       <div className="flex items-center gap-2">
-        <span
-          className={`grid h-7 w-7 place-items-center rounded-full ${spal ? "bg-spal/10 text-spal" : "bg-vaa/15 text-vaa"}`}
-        >
-          <Icon size={14} />
-        </span>
-        <div className="min-w-0">
-          <p
-            className={`text-[10px] font-bold uppercase tracking-widest ${spal ? "text-spal" : "text-vaa"}`}
-          >
-            {p.marca} · {p.rede}
-            {p.selo && (
-              <BadgeCheck className="inline h-3 w-3 text-spal" aria-label="conta verificada" />
-            )}
-          </p>
-          <p className="truncate text-[11px] text-navy/55">{p.handle}</p>
-        </div>
+        <Icon className={spal ? "text-spal" : "text-vaa"} size={15} />
+        <p className={`text-[11px] font-bold uppercase tracking-widest ${spal ? "text-spal" : "text-vaa"}`}>
+          {p.marca} · {p.rede}
+        </p>
+        {p.selo && <BadgeCheck className="h-3.5 w-3.5 text-vaa" aria-label="selo de verificado" />}
+        <p className="ml-auto text-[11px] text-navy/55">{p.handle}</p>
       </div>
-      {p.nums.length > 0 && (
-        <div className="mt-2 flex flex-wrap gap-1.5">
-          {p.nums.map((m) => (
-            <span
-              key={m.label}
-              className="flex items-baseline gap-1.5 rounded-lg bg-porcelain px-2 py-1"
-            >
-              <Num value={m.value} active={active} className="text-[14px]" />
-              <span className="text-[9px] font-semibold uppercase tracking-wider text-navy/45">
-                {m.label}
-              </span>
-            </span>
+      <div className="mt-2 flex flex-wrap gap-3">
+        {p.nums.map((m) => (
+          <span key={m.label} className="flex items-baseline gap-1">
+            <Num value={m.value} active={active} className="text-[19px] text-navy" />
+            <span className="text-[8px] font-bold uppercase text-navy/45">{m.label}</span>
+          </span>
+        ))}
+      </div>
+      <p className="mt-2 text-[10.5px] leading-[1.35] text-navy/75">bio ({p.rede === "Instagram" ? "EN" : "PT"}): “{p.bio}”</p>
+      {p.extra && <p className="mt-1 text-[9.5px] font-semibold text-navy/65">{p.extra}</p>}
+      {p.extras?.map((extra) => <p key={extra} className="text-[9.5px] font-semibold text-navy/65">contacto {extra}</p>)}
+    </Reveal>
+  );
+}
+
+function PostCard({ post, index }: { post: SocialPost; index: number }) {
+  const spal = post.marca === "SPAL";
+  const fields = [
+    ["Data", post.data], ["Formato", post.formato], ["Tema", post.tema],
+    ...(post.publico ? [["Público", post.publico]] : []),
+    ...(post.objetivo ? [["Objetivo", post.objetivo]] : []),
+    ...(post.cta ? [["CTA", post.cta]] : []),
+    ["Reações", post.reacoes],
+    ...(post.nota ? [["Nota", post.nota]] : []),
+  ];
+  return (
+    <Reveal i={(index % 4) + 1} className={`grid min-h-0 grid-cols-[92px_1fr] gap-2 border-t p-2 ${spal ? "border-spal/70" : "border-vaa/80"}`}>
+      <div className="min-w-0">
+        <div className="mb-1 flex items-center gap-1 text-[7.5px] font-bold text-porcelain">
+          <span className={`grid h-4 w-4 place-items-center rounded-full ${spal ? "bg-spal" : "bg-vaa"}`}>{post.marca.charAt(0)}</span>
+          <span className="truncate">{post.perfil}</span>
+        </div>
+        <RefShot img={POSTS[index]!} group="posts" compact className="h-[78px] rounded-md" />
+      </div>
+      <div className="min-w-0">
+        <div className="flex items-center justify-between">
+          <p className={`deck-num text-[15px] ${spal ? "text-spal" : "text-vaa"}`}>POST {post.numero}</p>
+          <p className="text-[7px] font-bold uppercase text-porcelain/55">{post.rede}</p>
+        </div>
+        <div className="mt-0.5 space-y-[1px]">
+          {fields.map(([label, value]) => (
+            <p key={`${label}-${value}`} className="text-[7.2px] leading-[1.22] text-porcelain/78">
+              <strong className="text-porcelain">{label}:</strong> {value}
+            </p>
           ))}
         </div>
-      )}
-      <p className="mt-2 flex-1 text-[11.5px] leading-snug text-navy/70">"{p.bio}"</p>
-      <div className="mt-2 flex flex-wrap gap-1.5">
-        {p.bioNota && <Chip>{p.bioNota}</Chip>}
-        {p.extra && <Chip>{p.extra}</Chip>}
-        {p.extras?.map((e) => <Chip key={e}>{e}</Chip>)}
       </div>
     </Reveal>
   );
 }
 
-export function Redes({ active }: ChapterProps) {
-  return (
-    <div className="flex h-full flex-col gap-3 p-8">
-      <Reveal i={0}>
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
-          C · Instagram + Facebook
-        </p>
-        <h3 className="mt-1 font-[var(--font-display)] text-[26px] font-extrabold leading-tight text-navy">
-          Uma marca fala como fabricante. A outra, como marca de estilo de vida.
-        </h3>
-      </Reveal>
-      <div className="grid min-h-0 flex-1 grid-cols-[1fr_1fr] gap-4">
-        <div className="grid grid-cols-2 gap-3">
-          {PERFIS.map((p, i) => (
-            <PerfilCard key={p.marca + p.rede} p={p} i={i + 1} active={active} />
-          ))}
+export function Redes({ active, subframe = 0 }: ChapterProps) {
+  const titles = ["As 12 publicações", "Perfis e frequência", "Comparação qualitativa"];
+  if (subframe === 0) {
+    return (
+      <div className="flex h-full flex-col p-7 text-porcelain">
+        <div className="mb-3 flex items-end justify-between border-b border-porcelain/20 pb-2">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 1/3</p>
+            <h3 className="font-[var(--font-display)] text-[27px] font-extrabold">{titles[0]}</h3>
+          </div>
+          <p className="text-[10px] text-porcelain/55">Instagram + Facebook · 23/09</p>
         </div>
-        <div className="flex flex-col gap-1.5">
-          {COMPARACAO.map((l, i) => (
-            <Reveal
-              key={l.dim}
-              i={i + 2}
-              className="grid grid-cols-[92px_1fr_1fr] items-start gap-2 rounded-xl bg-white px-3 py-2"
-            >
-              <span className="text-[10px] font-bold uppercase tracking-wider text-navy/50">
-                {l.dim}
-              </span>
-              <span className="text-[11.5px] leading-snug text-spal">{l.spal}</span>
-              <span className="text-[11.5px] leading-snug text-vaa">{l.vaa}</span>
-            </Reveal>
-          ))}
+        <div className="grid min-h-0 flex-1 grid-cols-4 grid-rows-3 gap-x-3 gap-y-1">
+          {SOCIAL_POSTS.map((post, i) => <PostCard key={post.numero} post={post} index={i} />)}
         </div>
       </div>
-      <div className="grid h-[136px] shrink-0 grid-cols-2 gap-4">
-        <ChartPanel
-          title="Publicações no período 05/08–04/09"
-          note="valores por confirmar na amostra"
-        >
-          <PublicacoesPorPerfil active={active} />
-        </ChartPanel>
-        <ChartPanel
-          title="Reações por publicação (1 a 12)"
-          note="publicação 1 = 9 reações · restantes a inserir"
-        >
+    );
+  }
+  if (subframe === 1) {
+    return (
+      <div className="flex h-full flex-col p-8 text-navy">
+        <div className="mb-3">
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 2/3</p>
+          <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[1]}</h3>
+        </div>
+        <div className="grid h-[310px] grid-cols-2 grid-rows-2 gap-x-6 gap-y-3">
+          {PERFIS.map((p, i) => <PerfilCard key={p.marca + p.rede} p={p} i={i + 1} active={active} />)}
+        </div>
+        <p className="my-3 rounded-md bg-muted px-4 py-2 text-[10.5px] font-semibold leading-snug text-muted-foreground">
+          Frequência total no período 26/06–23/09: n/d — a listagem completa de cada perfil não estava acessível para contagem; analisámos a amostra das 3 publicações mais recentes por perfil, como o enunciado permite.
+        </p>
+        <ChartPanel title="Reações por publicação (das 12 analisadas)" note="Publicações 5, 7 e 13: n/d — reação não visível na captura." className="min-h-0 flex-1">
           <ReacoesPorPublicacao active={active} />
         </ChartPanel>
       </div>
-      <Reveal i={8}>
-
-        <p className="rounded-2xl bg-navy px-5 py-3 text-[14px] font-semibold text-porcelain">
-          A SPAL tem matéria-prima para uma narrativa própria — SPAL Studio, designers, hotelaria —
-          que ainda não explora nas redes.
-        </p>
-      </Reveal>
-    </div>
-  );
-}
-
-type Post = {
-  marca: string;
-  rede: string;
-  data: string;
-  formato: string;
-  tema: string;
-  cta: string;
-  reacoes: string;
-  comentarios: string;
-};
-
-const POSTS_SEED: Post[] = POSTS.map((img) => ({
-  marca: img.perfil?.toLowerCase().includes("spal") ? "SPAL" : "Vista Alegre",
-  rede: img.canal,
-  data: img.data,
-  formato: img.formato ?? "",
-  tema: img.tema ?? "",
-  cta: img.cta ?? "",
-  reacoes: img.reacoes ?? "",
-  comentarios: img.comentarios ?? "",
-}));
-
-const CAMPOS: { key: keyof Post; label: string }[] = [
-  { key: "marca", label: "Marca" },
-  { key: "rede", label: "Rede" },
-  { key: "data", label: "Data" },
-  { key: "formato", label: "Formato" },
-  { key: "tema", label: "Tema" },
-  { key: "cta", label: "CTA" },
-  { key: "reacoes", label: "Reações" },
-  { key: "comentarios", label: "Comentários" },
-];
-
-export function RedesPosts() {
-  const [posts, setPosts] = useState<Post[]>(POSTS_SEED);
-  const set = (i: number, key: keyof Post, value: string) =>
-    setPosts((prev) => prev.map((p, k) => (k === i ? { ...p, [key]: value } : p)));
+    );
+  }
   return (
-    <div className="flex h-full flex-col gap-1.5 p-6">
-      <Reveal i={0}>
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
-          C · Instagram + Facebook
-        </p>
-        <h3 className="mt-1 font-[var(--font-display)] text-[20px] font-extrabold leading-tight text-navy">
-          Doze publicações, três por perfil, com os campos à vista.
-        </h3>
-      </Reveal>
-      <div className="grid min-h-0 flex-1 grid-cols-6 grid-rows-2 gap-2">
-        {posts.map((p, i) => (
-          <Reveal
-            key={i}
-            i={1 + (i % 6)}
-            className="flex min-h-0 flex-col gap-1 overflow-hidden rounded-xl border border-navy/10 bg-white p-1.5"
-          >
-            <RefShot
-              img={POSTS[i]!}
-              group="posts"
-              compact
-              className="h-14 shrink-0"
-            />
-            <div className="grid min-h-0 grid-cols-2 gap-x-1 gap-y-0.5">
-              {CAMPOS.map((c) => (
-                <label key={c.key} className="block min-w-0">
-                  <span className="block text-[7px] font-bold uppercase tracking-wider text-navy/40">
-                    {c.label}
-                  </span>
-                  <input
-                    value={p[c.key]}
-                    onChange={(e) => set(i, c.key, e.target.value)}
-                    placeholder="—"
-                    className="w-full rounded-md bg-porcelain px-1 py-0 text-[9px] leading-[14px] text-navy outline-none focus:ring-1 focus:ring-spal/40"
-                  />
-                </label>
-              ))}
+    <div className="flex h-full flex-col p-8 text-porcelain">
+      <div className="mb-3">
+        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-navy/60">C · Redes 3/3</p>
+        <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[2]}</h3>
+      </div>
+      <div className="min-h-0 flex-1 divide-y divide-navy/20 border-y border-navy/20">
+        {COMPARACAO.map((row, i) => (
+          <Reveal key={row.dim} i={i + 1} className="grid grid-cols-[165px_1fr_1fr] gap-5 py-3">
+            <div>
+              <p className="text-[10px] font-extrabold uppercase tracking-widest text-navy">{row.dim}</p>
+              {row.winner && <span className="mt-1 inline-block rounded-full bg-navy/10 px-2 py-0.5 text-[8px] font-bold uppercase text-navy">vence Vista Alegre +1</span>}
+              {!row.winner && i < 2 && <span className="mt-1 block text-[8px] text-navy/60">estilos diferentes · sem ponto</span>}
             </div>
+            <p className="text-[10.5px] leading-[1.4] text-porcelain/90"><strong className="text-navy">SPAL:</strong> {row.spal}</p>
+            <p className="text-[10.5px] leading-[1.4] text-porcelain/90"><strong className="text-navy">Vista Alegre:</strong> {row.vaa}</p>
           </Reveal>
         ))}
       </div>
+      <Reveal i={7} className="mt-5 border-l-4 border-navy pl-5">
+        <p className="font-[var(--font-display)] text-[23px] font-extrabold leading-tight">
+          “A SPAL fala uma língua institucional em duas redes iguais. A Vista Alegre fala duas línguas diferentes — uma por rede.”
+        </p>
+      </Reveal>
     </div>
   );
 }
