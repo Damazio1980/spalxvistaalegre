@@ -379,7 +379,6 @@ export function ReacoesPorPublicacao({ active }: { active: boolean }) {
           dataKey="v"
           radius={[4, 4, 0, 0]}
           isAnimationActive={active}
-          label={{ position: "top", fontSize: 8, fill: "var(--navy)", formatter: (_v: number, _name: string, props: { payload?: { label?: string } }) => props.payload?.label ?? "" }}
         >
           {data.map((d) => (
             <Cell key={d.m} fill={d.cor} />
