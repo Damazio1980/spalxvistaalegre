@@ -23,6 +23,7 @@ import { cn } from "@/lib/utils";
 
 export const SPAL_C = "#2F5C9E";
 export const VAA_C = "#B76876";
+const AUDIENCIA_VAA_C = "#C09C68";
 export const IG_C = "#7FA6E0";
 export const FB_C = "#1B2A44";
 
@@ -161,7 +162,7 @@ export function AudienciaLog({ active }: { active: boolean }) {
   const data = [
     { m: "IG seguidores", SPAL: 5961, "Vista Alegre": 360000 },
     { m: "IG publicações", SPAL: 305, "Vista Alegre": 3717 },
-    { m: "Facebook", SPAL: 15700, "Vista Alegre": 347000 },
+    { m: "Facebook seguidores", SPAL: 15700, "Vista Alegre": 347000 },
   ];
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -194,7 +195,7 @@ export function AudienciaLog({ active }: { active: boolean }) {
         />
         <Bar
           dataKey="Vista Alegre"
-          fill={VAA_C}
+          fill={AUDIENCIA_VAA_C}
           radius={[0, 5, 5, 0]}
           isAnimationActive={active}
           animationDuration={1100}

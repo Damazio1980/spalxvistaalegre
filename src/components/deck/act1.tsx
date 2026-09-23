@@ -49,7 +49,7 @@ import {
 } from "./charts";
 
 
-export type ChapterProps = { active: boolean };
+export type ChapterProps = { active: boolean; subframe?: number };
 
 const SPAL = "#2F5C9E";
 const VAA = "#B76876";
@@ -226,204 +226,170 @@ export function Pergunta() {
 }
 
 type Canal = {
-  icon: string;
-  nome: string;
-  addr: string;
-  detalhe: string;
+  marca: "SPAL" | "Vista Alegre";
+  nome: "Website" | "Instagram" | "Facebook";
+  endereco: string;
+  autenticidade: string;
+  publico: string;
   funcao: string;
-  num?: { label: string; value: number; suffix?: string };
-  num2?: { label: string; value: number };
-  selo?: boolean;
-  bio?: string;
-  chips?: string[];
 };
 
-const CANAIS_SPAL: Canal[] = [
+const CANAIS: Canal[] = [
   {
-    icon: "Globe",
+    marca: "SPAL",
     nome: "Website",
-    addr: "spal.pt",
-    detalhe: "catálogo técnico · PT/EN/ES/FR",
+    endereco: "spal.pt (sem redirecionamento; PT/EN/ES/FR)",
+    autenticidade:
+      "domínio próprio; morada da sede e Loja de Fábrica; ligação ao Livro de Reclamações",
+    publico:
+      "comprador profissional (retalho, hotelaria, corporate); consumidor final em segundo plano",
     funcao: "Informar",
-    num: { label: "idiomas", value: 4 },
   },
   {
-    icon: "Instagram",
+    marca: "SPAL",
     nome: "Instagram",
-    addr: "@spalporcelanasofficial",
-    detalhe: "5 961 seguidores · 305 publicações",
+    endereco: "instagram.com/spalporcelanasofficial",
+    autenticidade: "ligado a partir do rodapé de spal.pt; 5 961 seguidores · 305 publicações",
+    publico: "internacional / design (bio em inglês)",
     funcao: "Inspirar",
-    num: { label: "seguidores", value: 5961 },
-    num2: { label: "publicações", value: 305 },
   },
   {
-    icon: "Facebook",
+    marca: "SPAL",
     nome: "Facebook",
-    addr: "/SPALPorcelanas",
-    detalhe: "15 700 gostos",
-    funcao: "Encaminhar (link para El Corte Inglés)",
-    num: { label: "gostos", value: 15700 },
+    endereco: "facebook.com/SPALPorcelanas",
+    autenticidade: "ligado a partir do site; 15 700 gostos; morada e horário da loja de fábrica",
+    publico: "consumidor português (bio em PT)",
+    funcao: "Encaminhar para compra (link para El Corte Inglés)",
   },
-];
-
-const CANAIS_VAA: Canal[] = [
   {
-    icon: "Globe",
+    marca: "Vista Alegre",
     nome: "Website",
-    addr: "vistaalegre.com/pt",
-    detalhe: "loja online · preços · carrinho · wishlist",
+    endereco:
+      "vistaalegre.com/pt (confirmar região PT; redireciona por geolocalização fora de Portugal)",
+    autenticidade:
+      "domínio próprio; loja online com preços, carrinho, wishlist, login; política de privacidade, termos, cookies; ligação ao Grupo Visabeira e a Investidores",
+    publico: "consumidor final (prendas, mesa, decoração, colecionismo) + corporate",
     funcao: "Comprar",
-    num: { label: "passos até comprar", value: 4 },
   },
   {
-    icon: "Instagram",
+    marca: "Vista Alegre",
     nome: "Instagram",
-    addr: "@vistaalegreofficial",
-    detalhe: "360 000 seguidores · 3 717 publicações",
+    endereco: "instagram.com/vistaalegreofficial",
+    autenticidade:
+      '360 000 seguidores · 3 717 publicações; bio "The Official Instagram for Vista Alegre"',
+    publico: "consumidor global, decoração e lifestyle",
     funcao: "Inspirar + comprar",
-    num: { label: "seguidores", value: 360000 },
-    num2: { label: "publicações", value: 3717 },
   },
   {
-    icon: "Facebook",
+    marca: "Vista Alegre",
     nome: "Facebook",
-    addr: "/vistaalegreofficial",
-    detalhe: "conta oficial · Produto/serviço",
-    funcao: "Informar",
-    num: { label: "seguidores", value: 347000 },
-    num2: { label: "publicações", value: 6000 },
-    selo: true,
-    bio: "Fundada em 1824, a Vista Alegre adquiriu uma notoriedade ímpar, tornando-a numa das poucas insígnias portuguesas de luxo a nível mundial. A Vista Alegre produz porcelana de mesa, decorativa, giftware e hotelware, vidro e cristal de alta qualidade.",
-    chips: [
-      "★ Recomendado por 92% (293 avaliações)",
-      "socialmedia@vistaalegre.com",
-      "vistaalegre.com",
-    ],
+    endereco: "facebook.com/vistaalegreofficial",
+    autenticidade:
+      'selo azul de verificado; 347 000 seguidores · 6 000 publicações; "Recomendado por 92% (293 avaliações)"',
+    publico: "consumidor português",
+    funcao: "Informar + confiança",
   },
 ];
 
-const OUTROS_SPAL = ["Pinterest", "YouTube", "LinkedIn", "Newsletter: não encontrada"];
+const OUTROS_SPAL = ["Pinterest", "YouTube", "LinkedIn", "sem newsletter — não confirmada"];
 const OUTROS_VAA = ["Newsletter", "App instalável", "Pinterest", "YouTube", "LinkedIn"];
 
-function CanalCard({
-  canal,
-  tone,
-  active,
-  i,
-}: {
-  canal: Canal;
-  tone: "spal" | "vaa";
-  active: boolean;
-  i: number;
-}) {
-  const Icon =
-    canal.icon === "Instagram" ? Instagram : canal.icon === "Facebook" ? Facebook : Globe;
+function CanalCard({ canal, i }: { canal: Canal; i: number }) {
+  const tone = canal.marca === "SPAL" ? "spal" : "vaa";
+  const Icon = canal.nome === "Instagram" ? Instagram : canal.nome === "Facebook" ? Facebook : Globe;
   return (
     <Reveal
       i={i}
-      className={`deck-card bg-white p-3 ${tone === "spal" ? "border border-spal/20" : "border border-vaa/35"}`}
+      className={`min-h-0 rounded-2xl border bg-white p-3 ${tone === "spal" ? "border-spal/25" : "border-vaa/40"}`}
     >
-      <div className="flex items-start gap-3">
+      <div className="flex items-center gap-2 border-b border-navy/10 pb-1.5">
         <span
-          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${
+          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${
             tone === "spal" ? "bg-spal/10 text-spal" : "bg-vaa/15 text-vaa"
           }`}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="h-3.5 w-3.5" />
         </span>
-        <div className="min-w-0 flex-1">
-          <p className="flex items-center gap-1 text-[13px] font-bold text-navy">
-            {canal.nome}
-            {canal.selo && (
-              <BadgeCheck className="h-3.5 w-3.5 text-spal" aria-label="conta verificada" />
-            )}
-          </p>
-          <p className="truncate text-[12px] text-navy/55">{canal.addr}</p>
-          <p className="mt-1 text-[12px] leading-snug text-navy/70">{canal.detalhe}</p>
-          {canal.bio && (
-            <p className="mt-1 text-[11px] italic leading-snug text-navy/60">“{canal.bio}”</p>
-          )}
-          {canal.chips && (
-            <div className="mt-1.5 flex flex-wrap gap-1.5">
-              {canal.chips.map((c) => (
-                <Chip key={c}>{c}</Chip>
-              ))}
-            </div>
-          )}
-        </div>
-        <Chip tone={tone}>{canal.funcao}</Chip>
+        <p className={`text-[12px] font-extrabold ${tone === "spal" ? "text-spal" : "text-vaa"}`}>
+          {canal.marca} · {canal.nome}
+        </p>
       </div>
-      {(canal.num || canal.num2) && (
-        <div className="mt-2 flex gap-2">
-          {[canal.num, canal.num2].map((m, k) =>
-            m ? (
-              <div key={k} className="flex items-baseline gap-2 rounded-lg bg-porcelain px-2 py-1">
-                <Num value={m.value} active={active} className="text-[15px]" />
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-navy/45">
-                  {m.label}
-                </span>
-              </div>
-            ) : null,
-          )}
-        </div>
-      )}
+      <div className="mt-2 space-y-1 text-[10.5px] leading-[1.22] text-navy/75">
+        <p><strong className="text-navy">Endereço:</strong> {canal.endereco}</p>
+        <p><strong className="text-navy">Indício de autenticidade:</strong> {canal.autenticidade}</p>
+        <p><strong className="text-navy">Público aparente:</strong> {canal.publico}</p>
+        <p><strong className="text-navy">Função:</strong> {canal.funcao}</p>
+      </div>
     </Reveal>
   );
 }
 
-export function Canais({ active }: ChapterProps) {
+export function Canais({ active, subframe = 0 }: ChapterProps) {
+  const titles = ["Os canais e as suas funções", "Audiência nas redes", "Outros canais confirmados"];
   return (
-    <div className="flex h-full flex-col gap-3 p-8">
-      <Reveal i={0}>
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">A · canais</p>
-        <h3 className="deck-h2 mt-1 text-navy">Os mesmos canais. Funções diferentes.</h3>
-      </Reveal>
-      <div className="grid min-h-0 flex-1 grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <p className="text-xs font-bold uppercase tracking-widest text-spal">SPAL</p>
-          {CANAIS_SPAL.map((c, i) => (
-            <CanalCard key={c.nome} canal={c} tone="spal" active={active} i={i + 1} />
-          ))}
-          <Reveal i={4} className="flex flex-wrap gap-2">
-            {OUTROS_SPAL.map((o) => (
-              <Chip key={o}>{o}</Chip>
-            ))}
-          </Reveal>
-        </div>
-        <div className="space-y-2">
-          <p className="text-xs font-bold uppercase tracking-widest text-vaa">
-            Vista Alegre
+    <div className="flex h-full flex-col gap-3 px-8 pb-6 pt-8">
+      <div className="flex shrink-0 items-end justify-between">
+        <Reveal i={0}>
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-navy/45">
+            A · Canais {subframe + 1}/3
           </p>
-          {CANAIS_VAA.map((c, i) => (
-            <CanalCard key={c.nome} canal={c} tone="vaa" active={active} i={i + 2} />
+          <h3 className="mt-1 font-[var(--font-display)] text-[27px] font-extrabold leading-none text-navy">
+            {titles[subframe]}
+          </h3>
+        </Reveal>
+        <div className="flex gap-1.5" aria-hidden="true">
+          {[0, 1, 2].map((page) => (
+            <span key={page} className={`h-1.5 w-8 rounded-full ${page === subframe ? "bg-navy" : "bg-navy/15"}`} />
           ))}
-          <Reveal i={5} className="flex flex-wrap gap-2">
-            {OUTROS_VAA.map((o) => (
-              <Chip key={o}>{o}</Chip>
-            ))}
-          </Reveal>
         </div>
       </div>
-      <Reveal i={6}>
-        <ChartPanel
-          title="Audiência nas redes · 04/09/2026"
-          note="escala logarítmica para a diferença ser legível · audiência ≠ vendas"
-          className="h-[168px]"
-        >
-          <AudienciaLog active={active} />
-        </ChartPanel>
-      </Reveal>
-      <Reveal i={7} className="space-y-2">
-        <p className="text-[11px] text-navy/50">
-          Seguidores e gostos não demonstram vendas; servem para dimensionar a audiência.
-          <Glossary term="audiência" meaning="quantas pessoas podem ver" />
-        </p>
 
-        <p className="rounded-2xl bg-navy px-5 py-3 text-[15px] font-semibold text-porcelain">
-          A Vista Alegre usa o site como loja e as redes como montra. A SPAL usa o site como
-          catálogo e as redes como galeria.
-        </p>
-      </Reveal>
+      {subframe === 0 && (
+        <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-3 gap-2.5">
+          {CANAIS.map((canal, i) => <CanalCard key={`${canal.marca}-${canal.nome}`} canal={canal} i={i + 1} />)}
+        </div>
+      )}
+
+      {subframe === 1 && (
+        <div className="flex min-h-0 flex-1 flex-col gap-3">
+          <Reveal i={1} className="min-h-0 flex-1">
+            <ChartPanel title="IG seguidores · IG publicações · Facebook seguidores" note="audiência ≠ vendas" className="h-full p-5">
+              <AudienciaLog active={active} />
+            </ChartPanel>
+          </Reveal>
+          <Reveal i={2}>
+            <p className="rounded-2xl bg-navy px-6 py-4 text-[18px] font-semibold leading-snug text-porcelain">
+              A Vista Alegre usa o site como loja e as redes como montra. A SPAL usa o site como catálogo e as redes como galeria.
+            </p>
+          </Reveal>
+        </div>
+      )}
+
+      {subframe === 2 && (
+        <div className="grid min-h-0 flex-1 grid-cols-2 gap-5">
+          <Reveal i={1} className="flex flex-col rounded-2xl border border-spal/25 bg-white p-6">
+            <p className="text-sm font-extrabold uppercase tracking-widest text-spal">SPAL</p>
+            <div className="mt-5 space-y-3">
+              {OUTROS_SPAL.map((item) => <p key={item} className="rounded-xl bg-porcelain px-4 py-3 text-[16px] font-semibold text-navy">{item}</p>)}
+            </div>
+            <div className="mt-auto border-t border-navy/10 pt-5">
+              <p className="text-[11px] font-bold uppercase tracking-widest text-navy/45">Contactos</p>
+              <p className="mt-2 text-[16px] font-semibold text-navy">e-mail protegido</p>
+            </div>
+          </Reveal>
+          <Reveal i={2} className="flex flex-col rounded-2xl border border-vaa/40 bg-white p-6">
+            <p className="text-sm font-extrabold uppercase tracking-widest text-vaa">Vista Alegre</p>
+            <div className="mt-5 space-y-3">
+              {OUTROS_VAA.map((item) => <p key={item} className="rounded-xl bg-porcelain px-4 py-3 text-[16px] font-semibold text-navy">{item}</p>)}
+            </div>
+            <div className="mt-auto border-t border-navy/10 pt-5">
+              <p className="text-[11px] font-bold uppercase tracking-widest text-navy/45">Contactos</p>
+              <p className="mt-2 text-[16px] font-semibold text-navy">socialmedia@vistaalegre.com</p>
+              <p className="mt-1 text-[16px] font-semibold text-navy">vistaalegre.com</p>
+            </div>
+          </Reveal>
+        </div>
+      )}
     </div>
   );
 }
