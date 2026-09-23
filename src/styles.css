@@ -223,6 +223,18 @@
   color: var(--porcelain);
 }
 
+.deck-theme-white .sample-company-slide strong {
+  color: var(--navy);
+}
+
+.deck-theme-navy .sample-channels-slide {
+  color: var(--porcelain);
+}
+
+.deck-theme-navy .sample-channels-slide > div:first-child h3 {
+  color: var(--porcelain);
+}
+
 /* soft watermark: pattern stays, colors washed out so slides keep focus */
 .porcelain-pattern__art {
   position: absolute;

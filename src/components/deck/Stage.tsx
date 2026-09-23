@@ -20,37 +20,39 @@ type Backdrop = "pattern" | "navy" | "rose" | "wash" | "white";
 const BACKDROPS: Backdrop[] = ["pattern", "navy", "rose", "wash"];
 
 /** Nova direção editorial: seis slides lisos depois da capa. */
-const SAMPLE_SLIDE_THEMES: Record<string, Extract<Backdrop, "navy" | "rose">> = {
+const SAMPLE_SLIDE_THEMES: Record<string, Extract<Backdrop, "navy" | "rose" | "white">> = {
   apresentacao: "navy",
   "apresentacao-empresas": "rose",
-  nomes: "navy",
+  nomes: "white",
   pergunta: "rose",
   "identificacao-canais": "navy",
-  canais: "rose",
 };
 
-/** Slides com gráficos ou vídeos usam sempre uma base exterior lisa. */
+/** Todas as páginas que incluem gráficos usam uma base branca. */
+const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
+  nomes: "white",
+  website: "white",
+  percurso: "white",
+  radar: "white",
+  redes: "white",
+  jogadas: "white",
+  "jogada-1": "white",
+  "jogada-2": "white",
+  "jogada-3": "white",
+  marcax: "white",
+  indicadores: "white",
+  final: "white",
+};
+
+/** Slides de vídeo mantêm uma base exterior lisa. */
 const SOLID_MEDIA_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "rose">> = {
-  nomes: "navy",
-  canais: "rose",
-  website: "navy",
   "duelo-1": "rose",
   "duelo-2": "navy",
   "duelo-3": "rose",
   "duelo-4": "navy",
   "duelo-5": "rose",
   "duelo-6": "navy",
-  percurso: "rose",
-  radar: "navy",
-  redes: "rose",
   placar1: "navy",
-  jogadas: "rose",
-  "jogada-1": "navy",
-  "jogada-2": "rose",
-  "jogada-3": "navy",
-  marcax: "rose",
-  indicadores: "navy",
-  final: "rose",
 };
 
 function fitScale(f: FrameDef, viewport: Viewport) {
@@ -72,7 +74,9 @@ export function Stage() {
   const frame = FRAMES[index]!;
   const score = scoreAt(index);
   const sampleTheme = SAMPLE_SLIDE_THEMES[frame.id];
-  const backdrop = sampleTheme ?? SOLID_MEDIA_BACKDROPS[frame.id] ?? BACKDROPS[index % BACKDROPS.length]!;
+  const chartTheme = frame.id === "canais" && canaisPage === 1 ? "white" : CHART_BACKDROPS[frame.id];
+  const backdrop = chartTheme ?? sampleTheme ?? SOLID_MEDIA_BACKDROPS[frame.id] ?? BACKDROPS[index % BACKDROPS.length]!;
+  const frameTheme = chartTheme ?? sampleTheme;
 
   useEffect(() => {
     const measure = () => setViewport({ width: window.innerWidth, height: window.innerHeight });
@@ -207,20 +211,20 @@ export function Stage() {
             key={frame.id}
             className={cn(
               "deck-slide-enter overflow-hidden",
-              sampleTheme ? "deck-sample-slide" : "shadow-[var(--shadow-frame)]",
-              sampleTheme === "navy" || (!sampleTheme && frame.navy) ? "bg-navy" :
-                sampleTheme === "rose" ? "bg-vaa" : "bg-porcelain",
-              sampleTheme && `deck-theme-${sampleTheme}`,
+              frameTheme ? "deck-sample-slide" : "shadow-[var(--shadow-frame)]",
+              frameTheme === "navy" || (!frameTheme && frame.navy) ? "bg-navy" :
+                frameTheme === "rose" ? "bg-vaa" : "bg-porcelain",
+              frameTheme && `deck-theme-${frameTheme}`,
             )}
             style={{
               width: frame.w,
               height: frame.h,
-              borderRadius: sampleTheme ? 0 : 12,
+              borderRadius: frameTheme ? 0 : 12,
                ...transitionStyle,
             }}
           >
             {Chapter && (
-              <FrameBody frame={frame} active={!actOverlay} theme={sampleTheme}>
+              <FrameBody frame={frame} active={!actOverlay} theme={frameTheme}>
                 <Chapter
                   active={!actOverlay}
                   {...(frame.id === "canais" ? { subframe: canaisPage } : {})}
