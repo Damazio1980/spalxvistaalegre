@@ -103,10 +103,10 @@ export function Apresentacao({ active }: ChapterProps) {
   );
 }
 
-function SectionSlide({ title, subtitle }: { title: string; subtitle?: string }) {
+function SectionSlide({ title, subtitle, roseAccent = false }: { title: string; subtitle?: string; roseAccent?: boolean }) {
   return (
     <div className="section-slide flex h-full flex-col items-start justify-center px-24 text-left">
-      <div className="mb-8 h-px w-28 bg-current opacity-40" />
+      <div className={cn("mb-8 h-px w-28", roseAccent ? "bg-vaa" : "bg-current opacity-40")} />
       <Reveal i={0}>
         <h2 className="deck-title text-[64px] leading-tight">{title}</h2>
       </Reveal>
@@ -128,6 +128,7 @@ export function IdentificacaoCanais() {
     <SectionSlide
       title="Identificação dos canais"
       subtitle="Os mesmos canais — funções diferentes"
+      roseAccent
     />
   );
 }
@@ -377,7 +378,7 @@ export function Canais({ active, subframe = 0 }: ChapterProps) {
       {subframe === 1 && (
         <div className="grid min-h-0 flex-1 grid-rows-[1.35fr_0.65fr] gap-4">
           <div className="grid min-h-0 grid-cols-[1.55fr_0.75fr] gap-6">
-            <Reveal i={1} className="min-h-0 border border-navy/15 p-5">
+            <Reveal i={1} className="min-h-0 border-y border-navy/15 py-5">
               <ChartPanel title="IG seguidores · IG publicações · Facebook seguidores" note="audiência ≠ vendas" className="h-full border-0 bg-transparent p-0">
                 <AudienciaLog active={active} />
               </ChartPanel>

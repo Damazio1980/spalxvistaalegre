@@ -73,7 +73,9 @@ export function Stage() {
 
   const frame = FRAMES[index]!;
   const score = scoreAt(index);
-  const sampleTheme = SAMPLE_SLIDE_THEMES[frame.id];
+  const sampleTheme = frame.id === "canais"
+    ? (canaisPage === 0 ? "navy" : "white")
+    : SAMPLE_SLIDE_THEMES[frame.id];
   const chartTheme = frame.id === "canais" && canaisPage === 1 ? "white" : CHART_BACKDROPS[frame.id];
   const backdrop = chartTheme ?? sampleTheme ?? SOLID_MEDIA_BACKDROPS[frame.id] ?? BACKDROPS[index % BACKDROPS.length]!;
   const frameTheme = chartTheme ?? sampleTheme;

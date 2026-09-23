@@ -56,8 +56,8 @@ export function ChartPanel({
   return (
     <div
       className={cn(
-        "flex min-h-0 flex-col rounded-2xl p-3",
-        dark ? "border border-porcelain/20 bg-transparent" : "border border-navy/10 bg-white",
+        "flex min-h-0 flex-col border-y p-3",
+        dark ? "border-porcelain/20 bg-transparent" : "border-navy/15 bg-transparent",
         className,
       )}
     >

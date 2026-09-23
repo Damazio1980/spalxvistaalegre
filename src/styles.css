@@ -235,6 +235,27 @@
   color: var(--porcelain);
 }
 
+/* White chart canvases: editorial rules instead of floating dashboard cards. */
+.deck-theme-white .text-porcelain,
+.deck-theme-white [class*="text-porcelain/"] {
+  color: var(--navy) !important;
+}
+
+.deck-theme-white .bg-porcelain\/5,
+.deck-theme-white .bg-white {
+  background-color: transparent !important;
+}
+
+.deck-theme-white .border-porcelain\/15,
+.deck-theme-white .border-porcelain\/20,
+.deck-theme-white .border-porcelain\/25 {
+  border-color: oklch(0.259 0.049 262 / 0.18) !important;
+}
+
+.deck-theme-navy .sample-channels-slide strong {
+  color: var(--porcelain);
+}
+
 /* soft watermark: pattern stays, colors washed out so slides keep focus */
 .porcelain-pattern__art {
   position: absolute;
