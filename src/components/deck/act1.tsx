@@ -104,6 +104,38 @@ export function Apresentacao({ active }: ChapterProps) {
   );
 }
 
+function SectionSlide({ title, subtitle }: { title: string; subtitle?: string }) {
+  return (
+    <div className="flex h-full flex-col items-center justify-center px-16 text-center text-navy">
+      <Reveal i={0}>
+        <h2 className="deck-title text-[64px] leading-tight">{title}</h2>
+      </Reveal>
+      {subtitle && (
+        <Reveal i={1}>
+          <p className="mt-5 text-[28px] leading-snug text-navy/65">{subtitle}</p>
+        </Reveal>
+      )}
+    </div>
+  );
+}
+
+export function ApresentacaoEmpresas() {
+  return <SectionSlide title="Apresentação das empresas" />;
+}
+
+export function IdentificacaoCanais() {
+  return (
+    <SectionSlide
+      title="Identificação dos canais"
+      subtitle="Os mesmos canais — funções diferentes"
+    />
+  );
+}
+
+export function IntroducaoWebsite() {
+  return <SectionSlide title="Website" subtitle="Em seis dimensões" />;
+}
+
 export function Nomes({ active }: ChapterProps) {
   return (
     <div className="flex h-full flex-col gap-5 p-12">
@@ -207,12 +239,15 @@ function Dot({
 
 export function Pergunta() {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-10 p-16 text-center text-porcelain">
+    <div className="flex h-full flex-col items-center justify-center gap-8 p-16 text-center text-porcelain">
       <Reveal i={0}>
-        <h2 className="deck-title max-w-[1000px]">
+        <h2 className="deck-title text-[64px]">A pergunta</h2>
+      </Reveal>
+      <Reveal i={1}>
+        <p className="max-w-[1000px] text-[28px] font-semibold leading-snug text-porcelain/85">
           Qual das marcas facilita melhor o percurso entre descobrir um produto, obter informação e
           avançar para a compra ou para um contacto?
-        </h2>
+        </p>
       </Reveal>
       <div className="flex gap-4">
         {["Descobrir", "Informar", "Comprar"].map((c, i) => (
