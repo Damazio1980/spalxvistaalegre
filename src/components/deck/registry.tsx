@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import {
+  Apresentacao,
   Canais,
   Capa,
   Duelo,
@@ -30,6 +31,7 @@ import {
 
 export const CHAPTERS: Record<string, ComponentType<ChapterProps>> = {
   capa: Capa,
+  apresentacao: Apresentacao,
   nomes: Nomes,
   pergunta: Pergunta,
   canais: Canais,

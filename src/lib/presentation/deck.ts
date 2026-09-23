@@ -44,7 +44,15 @@ const seeds: Seed[] = [
   {
     id: "capa",
     act: 1,
-    title: "SPAL × Vista Alegre",
+    title: "Capa",
+    navy: false,
+    rot: 0,
+    zoom: 0.78,
+  },
+  {
+    id: "apresentacao",
+    act: 1,
+    title: "Apresentação",
     navy: true,
     rot: 0,
     zoom: 0.78,
