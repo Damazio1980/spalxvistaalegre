@@ -52,7 +52,7 @@ const seeds: Seed[] = [
   {
     id: "apresentacao",
     act: 1,
-    title: "Apresentação",
+    title: "SPAL × Vista Alegre",
     navy: true,
     rot: 0,
     zoom: 0.78,

@@ -12,6 +12,7 @@ import {
 import { Chip, Glossary, Num, Reveal, Shot } from "./primitives";
 import { RefShot } from "./mocks";
 import { MAQUETE, PERFIL_SPAL } from "@/data/images";
+import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
   AntesDepois,
@@ -822,7 +823,6 @@ export function Final({ active }: ChapterProps) {
           </ChartPanel>
         </Reveal>
       </div>
-
     </div>
   );
 }
@@ -837,7 +837,7 @@ export function Bastidores() {
     "Notícias do outlet de Alcobaça e da coleção Niemeyer",
   ];
   return (
-    <div className="grid h-full grid-cols-2 gap-10 p-14">
+    <div className="relative grid h-full grid-cols-2 gap-10 px-14 pb-24 pt-14">
       <div className="space-y-3">
         <Reveal i={0}>
           <h3 className="deck-h2 text-navy">Bastidores</h3>
@@ -856,6 +856,10 @@ export function Bastidores() {
           verificadas e capturas próprias; interpretações e propostas da formanda.
         </p>
       </Reveal>
+      <div className="absolute inset-x-14 bottom-7 border-t border-navy/15 pt-4 text-[11px] leading-relaxed text-navy/55">
+        <p>{FOOTER}</p>
+        <p>{PERIOD}</p>
+      </div>
     </div>
   );
 }

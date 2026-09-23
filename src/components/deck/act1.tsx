@@ -36,7 +36,6 @@ import {
 import { Chip, DuelBar, Glossary, Num, Reveal, Shot } from "./primitives";
 import { RefShot } from "./mocks";
 import { FIG, POSTS } from "@/data/images";
-import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import {
   AudienciaLog,
   BarrasDimensoes,
@@ -72,34 +71,23 @@ export function Capa({}: ChapterProps) {
 
 export function Apresentacao({ active }: ChapterProps) {
   return (
-    <div className="relative flex h-full flex-col justify-between overflow-hidden bg-navy p-16 text-porcelain">
+    <div className="relative flex h-full items-center justify-center overflow-hidden bg-navy p-12 text-porcelain">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-navy via-navy to-navy/80" />
-      <div className="relative z-10 flex items-start justify-between gap-10">
-        <div className="max-w-[720px]">
-          <Reveal i={0}>
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-porcelain/75">
-              Apresentação
-            </p>
-          </Reveal>
+      <div className="relative z-10 flex w-full max-w-[1120px] items-center justify-center gap-16">
+        <div className="max-w-[620px] text-center">
           <Reveal i={1}>
-            <h1 className="deck-title mt-4 drop-shadow-lg">
+            <h1 className="deck-title drop-shadow-lg">
               SPAL <span className="text-vaa">×</span> Vista Alegre
             </h1>
           </Reveal>
           <Reveal i={2}>
-            <p className="mt-6 max-w-[560px] text-2xl leading-snug text-porcelain/90 drop-shadow-md">
+            <p className="mx-auto mt-6 max-w-[560px] text-2xl leading-snug text-porcelain/90 drop-shadow-md">
               Duas porcelanas portuguesas. Um percurso até à compra.{" "}
               <em className="text-vaa">Quem chega ao fim?</em>
             </p>
           </Reveal>
-          <Reveal i={3}>
-            <p className="mt-8 text-sm text-porcelain/70 drop-shadow">
-              Usa <strong>←</strong> <strong>→</strong> para andar e <strong>F</strong> para ecrã
-              inteiro.
-            </p>
-          </Reveal>
         </div>
-        <div className="relative z-10 mt-4 h-[320px] w-[320px] shrink-0">
+        <div className="relative z-10 h-[420px] w-[420px] shrink-0">
           <div
             className="absolute inset-0 overflow-hidden rounded-full bg-porcelain shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)]"
             style={{ animation: active ? "deck-spin 26s linear infinite" : "none" }}
@@ -111,10 +99,6 @@ export function Apresentacao({ active }: ChapterProps) {
             />
           </div>
         </div>
-      </div>
-      <div className="relative z-10 space-y-1 border-t border-porcelain/25 pt-5 text-[12px] text-porcelain/70 drop-shadow">
-        <p>{FOOTER}</p>
-        <p>{PERIOD}</p>
       </div>
     </div>
   );

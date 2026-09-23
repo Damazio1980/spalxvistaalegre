@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 import { ChevronLeft, ChevronRight, Maximize, List } from "lucide-react";
 import {
   ACTS,
-  FOOTER,
   FRAMES,
   TOTAL_CHAPTERS,
   scoreAt,
@@ -278,14 +277,6 @@ export function Stage() {
           </div>
         )}
 
-        <p
-          className={cn(
-            "pointer-events-none absolute bottom-2 left-4 z-20 max-w-[420px] text-[10px] leading-tight",
-            backdrop === "navy" ? "text-porcelain/45" : "text-navy/40",
-          )}
-        >
-          {FOOTER}
-        </p>
       </div>
     </LightboxProvider>
   );
