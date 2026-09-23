@@ -43,7 +43,6 @@ import {
   DonutExportacao,
   EvolucaoVAA,
   PassosChart,
-  PublicacoesPorPerfil,
   RadarDimensoes,
   ReacoesPorPublicacao,
 } from "./charts";
