@@ -10,8 +10,8 @@
 7. Criar três slides separadores e ajustar o título/subtítulo de “A pergunta”. — feito
 8. Criar uma amostra dos seis primeiros slides após a capa com fundos lisos alternados e sem página branca interior. — feito
 9. Redesenhar os seis primeiros slides após a capa numa linguagem editorial azul/rosa, sem cartões preenchidos e com gráficos integrados. — feito
-10. Substituir o elemento “Portugal, três pontos” por um mapa de Portugal com três locais assinalados. — em curso
-11. Manter “Identificação dos canais” em azul, texto branco e detalhes rosa seco. — em curso
-12. Aplicar fundo branco a todas as páginas com gráficos, preservando SPAL azul e Vista Alegre rosa seco. — em curso
-13. Apresentar uma nova proposta visual para “Audiência e outros canais confirmados”. — em curso
+10. Substituir o elemento “Portugal, três pontos” por um mapa de Portugal com três locais assinalados. — feito
+11. Manter “Identificação dos canais” em azul, texto branco e detalhes rosa seco. — feito
+12. Aplicar fundo branco a todas as páginas com gráficos, preservando SPAL azul e Vista Alegre rosa seco. — feito
+13. Aplicar a nova proposta escolhida em “Audiência e outros canais confirmados”. — feito
 
