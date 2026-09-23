@@ -328,11 +328,11 @@ function CanalCard({ canal, i }: { canal: Canal; i: number }) {
         >
           <Icon className="h-3.5 w-3.5" />
         </span>
-        <p className={cn("text-[12px] font-extrabold", tone === "spal" ? "text-porcelain" : "text-vaa")}>
+        <p className={cn("text-[14.5px] font-extrabold", tone === "spal" ? "text-porcelain" : "text-vaa")}>
           {canal.marca} · {canal.nome}
         </p>
       </div>
-      <div className="mt-2 space-y-1 text-[10.5px] leading-[1.22] text-porcelain/75">
+      <div className="mt-2 space-y-1 text-[12.5px] leading-[1.18] text-porcelain/75">
         <p><strong className="text-porcelain">Endereço:</strong> {canal.endereco}</p>
         <p><strong className="text-porcelain">Indício de autenticidade:</strong> {canal.autenticidade}</p>
         <p><strong className="text-porcelain">Público aparente:</strong> {canal.publico}</p>
@@ -347,13 +347,13 @@ export function Canais({ active, subframe = 0 }: ChapterProps) {
   const spalCanais = CANAIS.filter((canal) => canal.marca === "SPAL");
   const vaaCanais = CANAIS.filter((canal) => canal.marca === "Vista Alegre");
   return (
-    <div className={cn("sample-channels-slide flex h-full flex-col gap-4 px-12 pb-8 pt-12", subframe === 0 ? "text-porcelain" : "text-navy")}>
+    <div className={cn("sample-channels-slide flex h-full flex-col gap-4 px-12 pb-8 pt-12", subframe === 0 ? "channels-page-one text-porcelain" : "text-navy")}>
       <div className="flex shrink-0 items-end justify-between">
         <Reveal i={0}>
-          <p className={cn("text-[10px] font-bold uppercase tracking-[0.3em]", subframe === 0 ? "text-porcelain/55" : "text-navy/45")}>
+          <p className={cn("text-[12px] font-bold uppercase tracking-[0.3em]", subframe === 0 ? "text-porcelain/55" : "text-navy/45")}>
             A · Canais {subframe + 1}/2
           </p>
-          <h3 className={cn("mt-1 font-[var(--font-display)] text-[27px] font-extrabold leading-none", subframe === 0 ? "text-porcelain" : "text-navy")}>
+          <h3 className={cn("mt-1 font-[var(--font-display)] text-[32px] font-extrabold leading-none", subframe === 0 ? "text-porcelain" : "text-navy")}>
             {titles[subframe]}
           </h3>
         </Reveal>

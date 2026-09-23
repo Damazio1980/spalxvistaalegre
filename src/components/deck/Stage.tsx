@@ -15,18 +15,8 @@ import porcelainNavigationBackground from "@/assets/porcelain-navigation-bg-new.
 
 type Viewport = { width: number; height: number };
 
-/** background rotation: pattern → navy → dusty rose → soft pattern */
+/** Single-colour editorial canvases. The cover remains the sole image-led exception. */
 type Backdrop = "pattern" | "navy" | "rose" | "wash" | "white";
-const BACKDROPS: Backdrop[] = ["pattern", "navy", "rose", "wash"];
-
-/** Nova direção editorial: seis slides lisos depois da capa. */
-const SAMPLE_SLIDE_THEMES: Record<string, Extract<Backdrop, "navy" | "rose" | "white">> = {
-  apresentacao: "navy",
-  "apresentacao-empresas": "rose",
-  nomes: "white",
-  pergunta: "rose",
-  "identificacao-canais": "navy",
-};
 
 /** Todas as páginas que incluem gráficos usam uma base branca. */
 const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
@@ -42,17 +32,6 @@ const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
   marcax: "white",
   indicadores: "white",
   final: "white",
-};
-
-/** Slides de vídeo mantêm uma base exterior lisa. */
-const SOLID_MEDIA_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "rose">> = {
-  "duelo-1": "rose",
-  "duelo-2": "navy",
-  "duelo-3": "rose",
-  "duelo-4": "navy",
-  "duelo-5": "rose",
-  "duelo-6": "navy",
-  placar1: "navy",
 };
 
 function fitScale(f: FrameDef, viewport: Viewport) {
@@ -73,12 +52,10 @@ export function Stage() {
 
   const frame = FRAMES[index]!;
   const score = scoreAt(index);
-  const sampleTheme = frame.id === "canais"
-    ? (canaisPage === 0 ? "navy" : "white")
-    : SAMPLE_SLIDE_THEMES[frame.id];
   const chartTheme = frame.id === "canais" && canaisPage === 1 ? "white" : CHART_BACKDROPS[frame.id];
-  const backdrop = chartTheme ?? sampleTheme ?? SOLID_MEDIA_BACKDROPS[frame.id] ?? BACKDROPS[index % BACKDROPS.length]!;
-  const frameTheme = chartTheme ?? sampleTheme;
+  const editorialTheme: Extract<Backdrop, "navy" | "rose"> = index % 2 === 0 ? "rose" : "navy";
+  const backdrop: Backdrop = frame.id === "capa" ? "pattern" : chartTheme ?? editorialTheme;
+  const frameTheme = frame.id === "capa" ? undefined : chartTheme ?? editorialTheme;
 
   useEffect(() => {
     const measure = () => setViewport({ width: window.innerWidth, height: window.innerHeight });

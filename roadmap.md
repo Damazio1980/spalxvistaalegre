@@ -15,4 +15,5 @@
 12. Aplicar fundo branco a todas as páginas com gráficos, preservando SPAL azul e Vista Alegre rosa seco. — feito
 13. Aplicar a nova proposta escolhida em “Audiência e outros canais confirmados”. — feito
 14. Remover tons fluorescentes dos gráficos e consolidar a paleta azul SPAL, rosa Vista Alegre e neutros sobre fundo branco. — feito
+15. Aumentar 20% o texto de “Canais 1/2” e aplicar fundos azul/rosa sem gráficos e branco com gráficos até ao fim. — feito
 
