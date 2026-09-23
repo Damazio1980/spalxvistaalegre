@@ -55,6 +55,7 @@ export function Stage() {
   const [actOverlay, setActOverlay] = useState<ActId | null>(null);
   const [menu, setMenu] = useState(false);
   const [seconds, setSeconds] = useState(0);
+  const [canaisPage, setCanaisPage] = useState(0);
   const previous = useRef(0);
   const shell = useRef<HTMLDivElement>(null);
 
@@ -73,9 +74,27 @@ export function Stage() {
     setMenu(false);
     setIndex((cur) => {
       previous.current = cur;
-      return Math.max(0, Math.min(FRAMES.length - 1, next));
+      const target = Math.max(0, Math.min(FRAMES.length - 1, next));
+      if (FRAMES[target]?.id === "canais") setCanaisPage(next < cur ? 2 : 0);
+      return target;
     });
   }, []);
+
+  const goForward = useCallback(() => {
+    if (frame.id === "canais" && canaisPage < 2) {
+      setCanaisPage((page) => page + 1);
+      return;
+    }
+    goTo(index + 1);
+  }, [canaisPage, frame.id, goTo, index]);
+
+  const goBack = useCallback(() => {
+    if (frame.id === "canais" && canaisPage > 0) {
+      setCanaisPage((page) => page - 1);
+      return;
+    }
+    goTo(index - 1);
+  }, [canaisPage, frame.id, goTo, index]);
 
   /* act transition: short title card between acts */
   useEffect(() => {
@@ -99,10 +118,10 @@ export function Stage() {
       if (typing && e.key !== "Escape") return;
       if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
         e.preventDefault();
-        goTo(index + 1);
+        goForward();
       } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
         e.preventDefault();
-        goTo(index - 1);
+        goBack();
       } else if (e.key === "Escape") {
         setMenu(false);
       } else if (e.key.toLowerCase() === "f") {
@@ -113,7 +132,7 @@ export function Stage() {
     shell.current?.focus?.({ preventScroll: true });
     window.addEventListener("keydown", onKey, true);
     return () => window.removeEventListener("keydown", onKey, true);
-  }, [goTo, index]);
+  }, [goBack, goForward]);
 
   /* swipe */
   useEffect(() => {
@@ -121,7 +140,7 @@ export function Stage() {
     const start = (e: TouchEvent) => (sx = e.touches[0]!.clientX);
     const end = (e: TouchEvent) => {
       const dx = e.changedTouches[0]!.clientX - sx;
-      if (Math.abs(dx) > 60) goTo(index + (dx < 0 ? 1 : -1));
+      if (Math.abs(dx) > 60) (dx < 0 ? goForward() : goBack());
     };
     window.addEventListener("touchstart", start, { passive: true });
     window.addEventListener("touchend", end, { passive: true });
@@ -129,7 +148,7 @@ export function Stage() {
       window.removeEventListener("touchstart", start);
       window.removeEventListener("touchend", end);
     };
-  }, [goTo, index]);
+  }, [goBack, goForward]);
 
   /* Inês timer: only during act 2 */
   useEffect(() => {
@@ -188,7 +207,10 @@ export function Stage() {
           >
             {Chapter && (
               <FrameBody frame={frame} active={!actOverlay}>
-                <Chapter active={!actOverlay} />
+                <Chapter
+                  active={!actOverlay}
+                  {...(frame.id === "canais" ? { subframe: canaisPage } : {})}
+                />
               </FrameBody>
             )}
           </div>
@@ -240,14 +262,14 @@ export function Stage() {
         {/* arrows */}
         <button
           aria-label="Anterior"
-          onClick={() => goTo(index - 1)}
+          onClick={goBack}
           className="absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/80 p-3 text-navy shadow-[var(--shadow-card)] transition hover:bg-white"
         >
           <ChevronLeft className="h-6 w-6" />
         </button>
         <button
           aria-label="Seguinte"
-          onClick={() => goTo(index + 1)}
+          onClick={goForward}
           className="absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/80 p-3 text-navy shadow-[var(--shadow-card)] transition hover:bg-white"
         >
           <ChevronRight className="h-6 w-6" />
@@ -261,6 +283,7 @@ export function Stage() {
           >
             <List className="h-4 w-4 text-navy/50" />
             {ACTS[frame.act].label} · {frame.title}
+            {frame.id === "canais" ? ` ${canaisPage + 1}/3` : ""}
           </button>
           <span className="deck-num text-xs text-navy/50">
             {frame.n === 0 ? "Capa" : `${frame.n}/${TOTAL_CHAPTERS}`}
