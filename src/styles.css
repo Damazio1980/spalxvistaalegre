@@ -198,14 +198,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.3;
+  opacity: 0.5;
   filter: saturate(0.65) contrast(0.94) brightness(1.05);
   transform: scale(1.02);
 }
 
 /* original artwork, full colour */
 .porcelain-pattern__art--full {
-  opacity: 1;
+  opacity: 0.5;
   filter: none;
   transform: none;
 }
