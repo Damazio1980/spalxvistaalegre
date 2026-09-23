@@ -58,6 +58,13 @@ const seeds: Seed[] = [
     zoom: 0.78,
   },
   {
+    id: "apresentacao-empresas",
+    act: 1,
+    parent: "apresentacao",
+    title: "Apresentação das empresas",
+    rot: 0,
+  },
+  {
     id: "nomes",
     act: 1,
     title: "Os dois nomes",
@@ -75,6 +82,13 @@ const seeds: Seed[] = [
     rot: 2,
   },
   {
+    id: "identificacao-canais",
+    act: 1,
+    parent: "pergunta",
+    title: "Identificação dos canais",
+    rot: 0,
+  },
+  {
     id: "canais",
     act: 1,
     title: "Os mesmos canais, funções diferentes",
@@ -82,6 +96,13 @@ const seeds: Seed[] = [
     punchline: "Uma usa o site como loja. A outra, como catálogo.",
     rot: -1.5,
     score: [0, 1],
+  },
+  {
+    id: "introducao-website",
+    act: 1,
+    parent: "canais",
+    title: "Website",
+    rot: 0,
   },
   {
     id: "website",

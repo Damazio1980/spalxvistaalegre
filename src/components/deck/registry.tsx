@@ -1,10 +1,13 @@
 import type { ComponentType } from "react";
 import {
   Apresentacao,
+  ApresentacaoEmpresas,
   Canais,
   Capa,
   Duelo,
   Nomes,
+  IdentificacaoCanais,
+  IntroducaoWebsite,
   Percurso,
   Pergunta,
   Placar1,
@@ -32,9 +35,12 @@ import {
 export const CHAPTERS: Record<string, ComponentType<ChapterProps>> = {
   capa: Capa,
   apresentacao: Apresentacao,
+  "apresentacao-empresas": ApresentacaoEmpresas,
   nomes: Nomes,
   pergunta: Pergunta,
+  "identificacao-canais": IdentificacaoCanais,
   canais: Canais,
+  "introducao-website": IntroducaoWebsite,
   website: Website,
   "duelo-1": ({ active }) => <Duelo n={1} active={active} />,
   "duelo-2": ({ active }) => <Duelo n={2} active={active} />,
