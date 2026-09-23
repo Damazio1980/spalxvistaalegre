@@ -177,6 +177,10 @@
   --chart-editorial-soft: oklch(0.84 0.04 240);
   --chart-editorial-dark: oklch(0.259 0.049 262);
   --chart-editorial-muted: oklch(0.966 0.007 90 / 0.2);
+  --chart-blue-secondary: oklch(0.39 0.08 252);
+  --chart-neutral: oklch(0.72 0.018 255);
+  --chart-grid: oklch(0.259 0.049 262 / 0.14);
+  --chart-grid-light: oklch(0.966 0.007 90 / 0.2);
 }
 
 .porcelain-pattern {

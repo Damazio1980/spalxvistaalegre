@@ -14,4 +14,5 @@
 11. Manter “Identificação dos canais” em azul, texto branco e detalhes rosa seco. — feito
 12. Aplicar fundo branco a todas as páginas com gráficos, preservando SPAL azul e Vista Alegre rosa seco. — feito
 13. Aplicar a nova proposta escolhida em “Audiência e outros canais confirmados”. — feito
+14. Remover tons fluorescentes dos gráficos e consolidar a paleta azul SPAL, rosa Vista Alegre e neutros sobre fundo branco. — feito
 
