@@ -51,8 +51,8 @@ import {
 
 export type ChapterProps = { active: boolean; subframe?: number };
 
-const SPAL = "#2F5C9E";
-const VAA = "#B76876";
+const SPAL = "var(--spal)";
+const VAA = "var(--vaa)";
 
 export function Capa({}: ChapterProps) {
   return (
@@ -952,8 +952,8 @@ export function Radar6({ active }: ChapterProps) {
       <Reveal i={0} className="rounded-3xl border border-navy/10 bg-white p-4">
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart data={data} outerRadius="72%">
-            <PolarGrid stroke="#1B2A4425" />
-            <PolarAngleAxis dataKey="dim" tick={{ fontSize: 11, fill: "#1B2A44" }} />
+            <PolarGrid stroke="var(--chart-grid)" />
+            <PolarAngleAxis dataKey="dim" tick={{ fontSize: 11, fill: "var(--navy)" }} />
             <PolarRadiusAxis domain={[0, 5]} tick={{ fontSize: 10 }} />
             <Tooltip />
             <Legend />

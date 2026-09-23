@@ -25,8 +25,8 @@ import {
 } from "./charts";
 
 
-const SPAL = "#2F5C9E";
-const VAA = "#B76876";
+const SPAL = "var(--spal)";
+const VAA = "var(--vaa)";
 
 export function PorqueSpal() {
   const chips = [
@@ -109,9 +109,9 @@ const QUAL = [
 
 export function Jogadas({ active }: ChapterProps) {
   return (
-    <div className="flex h-full flex-col justify-center gap-7 p-14 text-porcelain">
+    <div className="flex h-full flex-col justify-center gap-7 p-14 text-navy">
       <Reveal i={0}>
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-porcelain/50">
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/50">
           D · marca escolhida: SPAL
         </p>
         <h3 className="deck-title mt-2">Três melhorias, por ordem de prioridade.</h3>
@@ -121,16 +121,16 @@ export function Jogadas({ active }: ChapterProps) {
           <Reveal
             key={j.n}
             i={i + 1}
-            className="deck-card border border-porcelain/15 bg-porcelain/5 p-6"
+            className="border-t-2 border-spal p-6"
           >
             <p className="deck-num text-5xl text-vaa">{j.n}</p>
             <p className="mt-3 text-lg font-semibold">{j.title}</p>
-            <p className="mt-2 text-[12px] text-porcelain/60">{j.onde}</p>
+            <p className="mt-2 text-[12px] text-navy/60">{j.onde}</p>
             <div className="mt-4">
-              <ChartPanel title="antes → depois esperado" dark className="h-[132px]" note={j.unidade}>
+              <ChartPanel title="antes → depois esperado" className="h-[132px]" note={j.unidade}>
                 <AntesDepois antes={j.antes} depois={j.depois} active={active} />
               </ChartPanel>
-              <p className="mt-1 text-[10px] text-porcelain/60">
+              <p className="mt-1 text-[10px] text-navy/60">
                 {QUAL[i]!.antes} → {QUAL[i]!.depois}
               </p>
             </div>
@@ -139,7 +139,7 @@ export function Jogadas({ active }: ChapterProps) {
       </div>
 
       <Reveal i={4}>
-        <p className="text-[15px] text-porcelain/80">
+        <p className="text-[15px] text-navy/80">
           A distância entre o que a SPAL tem e o que comunica é grande — e pode ser reduzida com
           três ações concretas.
         </p>
@@ -184,7 +184,7 @@ export function Jogada({ n, active }: { n: number; active: boolean }) {
                 { m: "depois", v: j.depois },
               ]}
             >
-              <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
               <XAxis dataKey="m" tick={{ fontSize: 11 }} />
               <YAxis tick={{ fontSize: 10 }} />
               <Tooltip />
@@ -523,7 +523,7 @@ export function Resposta({ active }: ChapterProps) {
 
 
 export function MarcaX({ active }: ChapterProps) {
-  const INSTA = "#7FA6E0";
+  const INSTA = "var(--chart-blue-secondary)";
   const campanhas = [
     {
       nome: "Instagram",
@@ -563,10 +563,10 @@ export function MarcaX({ active }: ChapterProps) {
   ];
 
   return (
-    <div className="grid h-full grid-cols-[1fr_1fr] gap-8 p-10 text-porcelain">
+    <div className="grid h-full grid-cols-[1fr_1fr] gap-8 p-10 text-navy">
       <div className="flex min-h-0 flex-col gap-3">
         <Reveal i={0}>
-          <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-porcelain/50">
+          <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/50">
             F · dados didáticos · marca fictícia X
           </p>
           <h3 className="mt-1 text-[30px] font-semibold leading-[1.1]">
@@ -595,7 +595,6 @@ export function MarcaX({ active }: ChapterProps) {
         <Reveal i={3} className="min-h-0">
           <ChartPanel
             title="Funil: impressões → cliques → sessões → encomendas"
-            dark
             className="h-[150px]"
             note="o Instagram traz mais tráfego; o Facebook fecha mais encomendas"
           >
@@ -605,7 +604,6 @@ export function MarcaX({ active }: ChapterProps) {
         <Reveal i={4} className="min-h-0">
           <ChartPanel
             title="ROAS não é lucro · os 640 € por dentro"
-            dark
             className="h-[104px]"
             note="margem de 40 % é um exemplo didático"
           >
@@ -785,8 +783,8 @@ export function Indicadores({ active }: ChapterProps) {
 
 export function Final({ active }: ChapterProps) {
   return (
-    <div className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-12 p-14 text-porcelain">
-      <Reveal i={0} className="mx-auto w-[300px] rounded-[28px] border-4 border-porcelain/25 bg-porcelain p-3">
+    <div className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-12 p-14 text-navy">
+      <Reveal i={0} className="mx-auto w-[300px] rounded-[28px] border-4 border-navy/15 bg-porcelain p-3">
         <div className="rounded-2xl bg-white p-3 text-navy">
           <p className="text-[10px] font-bold uppercase tracking-widest text-spal">
             spal.porcelanas
@@ -803,7 +801,7 @@ export function Final({ active }: ChapterProps) {
       </Reveal>
       <div className="space-y-6">
         <Reveal i={1}>
-          <p className="text-sm uppercase tracking-[0.3em] text-porcelain/50">20:00 · cronómetro parado</p>
+          <p className="text-sm uppercase tracking-[0.3em] text-navy/50">20:00 · cronómetro parado</p>
           <h3 className="deck-title mt-3">A Inês teve resposta.</h3>
         </Reveal>
         <Reveal i={2}>
@@ -815,11 +813,10 @@ export function Final({ active }: ChapterProps) {
         <Reveal i={3}>
           <ChartPanel
             title="Síntese · as seis dimensões do website"
-            dark
             className="h-[230px] max-w-[520px]"
             note="SPAL 3-2-3-1-2-2 · Vista Alegre 5-5-5-5-4-5"
           >
-            <RadarDimensoes active={active} compact dark />
+            <RadarDimensoes active={active} compact />
           </ChartPanel>
         </Reveal>
       </div>

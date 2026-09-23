@@ -21,10 +21,10 @@ import {
 } from "recharts";
 import { cn } from "@/lib/utils";
 
-export const SPAL_C = "#2F5C9E";
-export const VAA_C = "#B76876";
-export const IG_C = "#7FA6E0";
-export const FB_C = "#1B2A44";
+export const SPAL_C = "var(--spal)";
+export const VAA_C = "var(--vaa)";
+export const IG_C = "var(--chart-blue-secondary)";
+export const FB_C = "var(--navy)";
 const EDITORIAL_LIGHT = "var(--chart-editorial-light)";
 const EDITORIAL_SOFT = "var(--chart-editorial-soft)";
 const EDITORIAL_DARK = "var(--chart-editorial-dark)";
@@ -89,14 +89,14 @@ export function EvolucaoVAA({ active, editorial = false }: { active: boolean; ed
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data} barGap={6} margin={{ top: 4, right: 8, left: -18, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke={editorial ? EDITORIAL_MUTED : "#1B2A4415"} />
+        <CartesianGrid strokeDasharray="3 3" stroke={editorial ? EDITORIAL_MUTED : "var(--chart-grid)"} />
         <XAxis dataKey="m" tick={{ fontSize: 9, fill: editorial ? EDITORIAL_SOFT : EDITORIAL_DARK }} />
         <YAxis tick={{ fontSize: 9, fill: editorial ? EDITORIAL_SOFT : EDITORIAL_DARK }} unit=" M€" width={52} />
         <Tooltip {...tip} formatter={(v) => `${v} M€`} />
         <Legend wrapperStyle={{ fontSize: 9 }} />
         <Bar
           dataKey="1.º sem. 2025"
-          fill={editorial ? EDITORIAL_SOFT : "#9FB3CE"}
+          fill={editorial ? EDITORIAL_SOFT : "var(--chart-blue-secondary)"}
           radius={[6, 6, 0, 0]}
           isAnimationActive={active}
           animationDuration={1100}
@@ -148,7 +148,7 @@ export function DonutExportacao({
               stroke="none"
             >
               <Cell fill={color} />
-              <Cell fill={editorial ? EDITORIAL_MUTED : "#1B2A4415"} />
+              <Cell fill={editorial ? EDITORIAL_MUTED : "var(--chart-grid)"} />
             </Pie>
           </PieChart>
         </ResponsiveContainer>
@@ -177,7 +177,7 @@ export function AudienciaLog({ active }: { active: boolean }) {
         barGap={3}
         margin={{ top: 2, right: 20, left: 6, bottom: 0 }}
       >
-        <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
+        <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
         <XAxis
           type="number"
           scale="log"
@@ -230,11 +230,11 @@ export function RadarDimensoes({
   compact?: boolean;
   dark?: boolean;
 }) {
-  const label = dark ? "#F3F1EC" : "#1B2A44";
+  const label = dark ? "var(--porcelain)" : "var(--navy)";
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadarChart data={DIMENSOES} outerRadius={compact ? "70%" : "76%"}>
-        <PolarGrid stroke={dark ? "#F3F1EC33" : "#1B2A4425"} />
+        <PolarGrid stroke={dark ? "var(--chart-grid-light)" : "var(--chart-grid)"} />
         <PolarAngleAxis
           dataKey="dim"
           tick={{ fontSize: compact ? 8.5 : 11, fill: label }}
@@ -272,7 +272,7 @@ export function BarrasDimensoes({ active }: { active: boolean }) {
         barGap={3}
         margin={{ top: 2, right: 16, left: 4, bottom: 0 }}
       >
-        <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
+        <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
         <XAxis type="number" domain={[0, 5]} tick={{ fontSize: 9 }} />
         <YAxis type="category" dataKey="dim" width={86} tick={{ fontSize: 9 }} />
         <Tooltip {...tip} />
@@ -310,7 +310,7 @@ export function PassosChart({ active }: { active: boolean }) {
         layout="vertical"
         margin={{ top: 2, right: 24, left: 4, bottom: 0 }}
       >
-        <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
+        <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
         <XAxis type="number" domain={[0, 6]} tick={{ fontSize: 9 }} />
         <YAxis type="category" dataKey="m" width={80} tick={{ fontSize: 9 }} />
         <Tooltip {...tip} formatter={(v) => `${v} passos`} />
@@ -336,7 +336,7 @@ export function PublicacoesPorPerfil({ active }: { active: boolean }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data} margin={{ top: 2, right: 6, left: -22, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
+        <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
         <XAxis dataKey="m" tick={{ fontSize: 8.5 }} />
         <YAxis allowDecimals={false} tick={{ fontSize: 8.5 }} width={40} />
         <Tooltip {...tip} formatter={(v: number) => (v ? `${v} publicações` : "valor a inserir")} />
@@ -359,7 +359,7 @@ export function ReacoesPorPublicacao({ active }: { active: boolean }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data} margin={{ top: 2, right: 6, left: -22, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
+        <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
         <XAxis dataKey="m" tick={{ fontSize: 8.5 }} />
         <YAxis allowDecimals={false} tick={{ fontSize: 8.5 }} width={40} />
         <Tooltip {...tip} formatter={(v: number) => (v ? `${v} reações` : "valor a inserir")} />
@@ -398,7 +398,7 @@ export function IndicadorMini({
     <ChartPanel title={label} className="h-[130px]">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 2, right: 4, left: -26, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1B2A4415" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
           <XAxis dataKey="m" tick={{ fontSize: 8.5 }} />
           <YAxis domain={[0, max]} tick={{ fontSize: 8.5 }} width={38} />
           <Tooltip {...tip} formatter={(v) => `${v}${suffix}`} />
@@ -427,7 +427,7 @@ export function Funil({ active }: { active: boolean }) {
         <div key={k} className="space-y-1">
           <p
             className="text-[9.5px] font-bold uppercase tracking-widest"
-            style={{ color: k === "ig" ? IG_C : "#9FB3CE" }}
+            style={{ color: k === "ig" ? IG_C : VAA_C }}
           >
             {k === "ig" ? "Instagram" : "Facebook"}
           </p>
@@ -440,7 +440,7 @@ export function Funil({ active }: { active: boolean }) {
                 className="deck-grow mx-auto flex items-center justify-between rounded-md px-2 py-[3px] text-[9.5px] text-porcelain"
                 style={{
                   width: active ? `${w}%` : "10%",
-                  background: k === "ig" ? IG_C : "#3C5478",
+                  background: k === "ig" ? IG_C : VAA_C,
                   animationDelay: `${i * 120}ms`,
                 }}
                 title={`${f.etapa}: ${v.toLocaleString("pt-PT")}`}
@@ -475,7 +475,7 @@ export function MargemStack({ active }: { active: boolean }) {
         <Bar
           dataKey="Custo do produto (60 %)"
           stackId="a"
-          fill="#9FB3CE"
+          fill="var(--chart-neutral)"
           isAnimationActive={active}
         />
         <Bar dataKey="Anúncios (80 €)" stackId="a" fill={FB_C} isAnimationActive={active} />
@@ -507,7 +507,7 @@ export function Gauge({
   active: boolean;
 }) {
   const data = [
-    { name: "alerta", value: low, fill: "#C2603D" },
+    { name: "alerta", value: low, fill: VAA_C },
     { name: "meta", value: high, fill: SPAL_C },
   ];
   return (
@@ -525,7 +525,7 @@ export function Gauge({
           <Tooltip {...tip} formatter={(v) => `${v}${unidade}`} />
           <RadialBar
             dataKey="value"
-            background={{ fill: "#1B2A4412" }}
+            background={{ fill: "var(--chart-grid)" }}
             cornerRadius={5}
             isAnimationActive={active}
             animationDuration={1100}
@@ -556,15 +556,15 @@ export function AntesDepois({
   active: boolean;
 }) {
   const data = [
-    { m: "antes", v: antes, cor: "#9FB3CE" },
+    { m: "antes", v: antes, cor: SPAL_C },
     { m: "depois", v: depois, cor: VAA_C },
   ];
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data} margin={{ top: 2, right: 4, left: -26, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#F3F1EC22" />
-        <XAxis dataKey="m" tick={{ fontSize: 9, fill: "#F3F1EC" }} />
-        <YAxis tick={{ fontSize: 9, fill: "#F3F1EC" }} width={36} />
+        <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
+        <XAxis dataKey="m" tick={{ fontSize: 9, fill: "var(--navy)" }} />
+        <YAxis tick={{ fontSize: 9, fill: "var(--navy)" }} width={36} />
         <Tooltip {...tip} />
         <Bar dataKey="v" radius={[6, 6, 0, 0]} isAnimationActive={active} animationDuration={1100}>
           {data.map((d) => (
