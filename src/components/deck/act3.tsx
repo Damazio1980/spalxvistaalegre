@@ -12,6 +12,7 @@ import {
 import { Chip, Glossary, Num, Reveal, Shot } from "./primitives";
 import { RefShot } from "./mocks";
 import { MAQUETE, PERFIL_SPAL } from "@/data/images";
+import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
   AntesDepois,
@@ -784,7 +785,7 @@ export function Indicadores({ active }: ChapterProps) {
 
 export function Final({ active }: ChapterProps) {
   return (
-    <div className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-12 p-14 text-porcelain">
+    <div className="relative grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-12 px-14 pb-24 pt-12 text-porcelain">
       <Reveal i={0} className="mx-auto w-[300px] rounded-[28px] border-4 border-porcelain/25 bg-porcelain p-3">
         <div className="rounded-2xl bg-white p-3 text-navy">
           <p className="text-[10px] font-bold uppercase tracking-widest text-spal">
@@ -822,7 +823,10 @@ export function Final({ active }: ChapterProps) {
           </ChartPanel>
         </Reveal>
       </div>
-
+      <div className="absolute inset-x-14 bottom-8 border-t border-porcelain/25 pt-4 text-[11px] leading-relaxed text-porcelain/65">
+        <p>{FOOTER}</p>
+        <p>{PERIOD}</p>
+      </div>
     </div>
   );
 }
