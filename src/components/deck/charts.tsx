@@ -23,7 +23,6 @@ import { cn } from "@/lib/utils";
 
 export const SPAL_C = "#2F5C9E";
 export const VAA_C = "#B76876";
-const AUDIENCIA_VAA_C = "#C09C68";
 export const IG_C = "#7FA6E0";
 export const FB_C = "#1B2A44";
 
@@ -195,7 +194,7 @@ export function AudienciaLog({ active }: { active: boolean }) {
         />
         <Bar
           dataKey="Vista Alegre"
-          fill={AUDIENCIA_VAA_C}
+          fill={VAA_C}
           radius={[0, 5, 5, 0]}
           isAnimationActive={active}
           animationDuration={1100}
