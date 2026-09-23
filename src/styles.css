@@ -182,13 +182,11 @@
 
 /* alternating backdrops */
 .porcelain-pattern--navy {
-  background:
-    radial-gradient(ellipse 80% 80% at center, oklch(0.31 0.055 262) 0%, oklch(0.2 0.045 262) 100%);
+  background: var(--navy);
 }
 
 .porcelain-pattern--rose {
-  background:
-    radial-gradient(ellipse 80% 80% at center, oklch(0.87 0.035 25) 0%, oklch(0.79 0.05 24) 100%);
+  background: var(--vaa);
 }
 
 /* soft watermark: pattern stays, colors washed out so slides keep focus */
