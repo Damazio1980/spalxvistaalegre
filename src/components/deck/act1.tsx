@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { BadgeCheck, ChevronDown, Facebook, Globe, Instagram, Maximize2, Play, X } from "lucide-react";
 import coverPlate from "@/assets/cover-plate.png.asset.json";
 import spinningPlate from "@/assets/spinning-plate.png.asset.json";
+import coverAbertura from "@/assets/cover-abertura.png.asset.json";
 import identidadeVideo from "@/assets/identidade-6d-spal.mp4.asset.json";
 import identidadeVaaVideo from "@/assets/identidade-vaa.mp4.asset.json";
 import navegacaoSpalVideo from "@/assets/navegacao-spal.mp4.asset.json";
@@ -54,7 +55,22 @@ export type ChapterProps = { active: boolean };
 const SPAL = "#2F5C9E";
 const VAA = "#B76876";
 
-export function Capa({ active }: ChapterProps) {
+export function Capa({}: ChapterProps) {
+  return (
+    <div
+      className="relative h-full w-full overflow-hidden"
+      style={{
+        backgroundImage: `url(${coverAbertura.url})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
+    </div>
+  );
+}
+
+export function Apresentacao({ active }: ChapterProps) {
   return (
     <div
       className="relative flex h-full flex-col justify-between overflow-hidden p-16 text-porcelain"
