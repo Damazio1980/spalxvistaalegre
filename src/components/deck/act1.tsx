@@ -325,69 +325,72 @@ function CanalCard({ canal, i }: { canal: Canal; i: number }) {
 }
 
 export function Canais({ active, subframe = 0 }: ChapterProps) {
-  const titles = ["Os canais e as suas funções", "Audiência nas redes", "Outros canais confirmados"];
+  const titles = ["Os canais e as suas funções", "Audiência e outros canais confirmados"];
+  const spalCanais = CANAIS.filter((canal) => canal.marca === "SPAL");
+  const vaaCanais = CANAIS.filter((canal) => canal.marca === "Vista Alegre");
   return (
     <div className="flex h-full flex-col gap-3 px-8 pb-6 pt-8">
       <div className="flex shrink-0 items-end justify-between">
         <Reveal i={0}>
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-navy/45">
-            A · Canais {subframe + 1}/3
+            A · Canais {subframe + 1}/2
           </p>
           <h3 className="mt-1 font-[var(--font-display)] text-[27px] font-extrabold leading-none text-navy">
             {titles[subframe]}
           </h3>
         </Reveal>
         <div className="flex gap-1.5" aria-hidden="true">
-          {[0, 1, 2].map((page) => (
+          {[0, 1].map((page) => (
             <span key={page} className={`h-1.5 w-8 rounded-full ${page === subframe ? "bg-navy" : "bg-navy/15"}`} />
           ))}
         </div>
       </div>
 
       {subframe === 0 && (
-        <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-3 gap-2.5">
-          {CANAIS.map((canal, i) => <CanalCard key={`${canal.marca}-${canal.nome}`} canal={canal} i={i + 1} />)}
+        <div className="grid min-h-0 flex-1 grid-cols-2 gap-3">
+          <div className="grid min-h-0 grid-rows-3 gap-2.5">
+            {spalCanais.map((canal, i) => <CanalCard key={`${canal.marca}-${canal.nome}`} canal={canal} i={i + 1} />)}
+          </div>
+          <div className="grid min-h-0 grid-rows-3 gap-2.5">
+            {vaaCanais.map((canal, i) => <CanalCard key={`${canal.marca}-${canal.nome}`} canal={canal} i={i + 4} />)}
+          </div>
         </div>
       )}
 
       {subframe === 1 && (
-        <div className="flex min-h-0 flex-1 flex-col gap-3">
-          <Reveal i={1} className="min-h-0 flex-1">
-            <ChartPanel title="IG seguidores · IG publicações · Facebook seguidores" note="audiência ≠ vendas" className="h-full p-5">
-              <AudienciaLog active={active} />
-            </ChartPanel>
-          </Reveal>
-          <Reveal i={2}>
-            <p className="rounded-2xl bg-navy px-6 py-4 text-[18px] font-semibold leading-snug text-porcelain">
-              A Vista Alegre usa o site como loja e as redes como montra. A SPAL usa o site como catálogo e as redes como galeria.
-            </p>
-          </Reveal>
-        </div>
-      )}
-
-      {subframe === 2 && (
-        <div className="grid min-h-0 flex-1 grid-cols-2 gap-5">
-          <Reveal i={1} className="flex flex-col rounded-2xl border border-spal/25 bg-white p-6">
-            <p className="text-sm font-extrabold uppercase tracking-widest text-spal">SPAL</p>
-            <div className="mt-5 space-y-3">
-              {OUTROS_SPAL.map((item) => <p key={item} className="rounded-xl bg-porcelain px-4 py-3 text-[16px] font-semibold text-navy">{item}</p>)}
-            </div>
-            <div className="mt-auto border-t border-navy/10 pt-5">
-              <p className="text-[11px] font-bold uppercase tracking-widest text-navy/45">Contactos</p>
-              <p className="mt-2 text-[16px] font-semibold text-navy">e-mail protegido</p>
-            </div>
-          </Reveal>
-          <Reveal i={2} className="flex flex-col rounded-2xl border border-vaa/40 bg-white p-6">
-            <p className="text-sm font-extrabold uppercase tracking-widest text-vaa">Vista Alegre</p>
-            <div className="mt-5 space-y-3">
-              {OUTROS_VAA.map((item) => <p key={item} className="rounded-xl bg-porcelain px-4 py-3 text-[16px] font-semibold text-navy">{item}</p>)}
-            </div>
-            <div className="mt-auto border-t border-navy/10 pt-5">
-              <p className="text-[11px] font-bold uppercase tracking-widest text-navy/45">Contactos</p>
-              <p className="mt-2 text-[16px] font-semibold text-navy">socialmedia@vistaalegre.com</p>
-              <p className="mt-1 text-[16px] font-semibold text-navy">vistaalegre.com</p>
-            </div>
-          </Reveal>
+        <div className="grid min-h-0 flex-1 grid-cols-[1.25fr_1fr] gap-3">
+          <div className="flex min-h-0 flex-col gap-3">
+            <Reveal i={1} className="min-h-0 flex-1">
+              <ChartPanel title="IG seguidores · IG publicações · Facebook seguidores" note="audiência ≠ vendas" className="h-full p-4">
+                <AudienciaLog active={active} />
+              </ChartPanel>
+            </Reveal>
+            <Reveal i={2}>
+              <p className="rounded-2xl bg-navy px-5 py-3 text-[15px] font-semibold leading-snug text-porcelain">
+                A Vista Alegre usa o site como loja e as redes como montra. A SPAL usa o site como catálogo e as redes como galeria.
+              </p>
+            </Reveal>
+          </div>
+          <div className="grid min-h-0 grid-rows-2 gap-3">
+            <Reveal i={2} className="flex min-h-0 flex-col rounded-2xl border border-spal/25 bg-white p-4">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-spal">SPAL · outros canais</p>
+              <p className="mt-2 text-[13px] font-semibold leading-relaxed text-navy">{OUTROS_SPAL.join(" · ")}</p>
+              <div className="mt-auto border-t border-navy/10 pt-2">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-navy/45">Contactos</p>
+                <p className="mt-1 text-[12px] font-semibold text-navy">loja.alcobaca@spal.pt</p>
+                <p className="text-[12px] font-semibold text-navy">outlet.alcobaca@spal.pt</p>
+              </div>
+            </Reveal>
+            <Reveal i={3} className="flex min-h-0 flex-col rounded-2xl border border-vaa/40 bg-white p-4">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-vaa">Vista Alegre · outros canais</p>
+              <p className="mt-2 text-[13px] font-semibold leading-relaxed text-navy">{OUTROS_VAA.join(" · ")}</p>
+              <div className="mt-auto border-t border-navy/10 pt-2">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-navy/45">Contactos</p>
+                <p className="mt-1 text-[12px] font-semibold text-navy">socialmedia@vistaalegre.com</p>
+                <p className="text-[12px] font-semibold text-navy">vistaalegre.com</p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       )}
     </div>
