@@ -19,6 +19,30 @@ type Viewport = { width: number; height: number };
 type Backdrop = "pattern" | "navy" | "rose" | "wash";
 const BACKDROPS: Backdrop[] = ["pattern", "navy", "rose", "wash"];
 
+/** Slides com gráficos ou vídeos usam sempre uma base exterior lisa. */
+const SOLID_MEDIA_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "rose">> = {
+  nomes: "navy",
+  canais: "rose",
+  website: "navy",
+  "duelo-1": "rose",
+  "duelo-2": "navy",
+  "duelo-3": "rose",
+  "duelo-4": "navy",
+  "duelo-5": "rose",
+  "duelo-6": "navy",
+  percurso: "rose",
+  radar: "navy",
+  redes: "rose",
+  placar1: "navy",
+  jogadas: "rose",
+  "jogada-1": "navy",
+  "jogada-2": "rose",
+  "jogada-3": "navy",
+  marcax: "rose",
+  indicadores: "navy",
+  final: "rose",
+};
+
 function fitScale(f: FrameDef, viewport: Viewport) {
   const widthFit = (viewport.width * 0.94) / f.w;
   const heightFit = (viewport.height * 0.86) / f.h;
@@ -36,7 +60,7 @@ export function Stage() {
 
   const frame = FRAMES[index]!;
   const score = scoreAt(index);
-  const backdrop = BACKDROPS[index % BACKDROPS.length]!;
+  const backdrop = SOLID_MEDIA_BACKDROPS[frame.id] ?? BACKDROPS[index % BACKDROPS.length]!;
 
   useEffect(() => {
     const measure = () => setViewport({ width: window.innerWidth, height: window.innerHeight });
