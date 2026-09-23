@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 import { ChevronLeft, ChevronRight, Maximize, List } from "lucide-react";
 import {
   ACTS,
-  FOOTER,
   FRAMES,
   TOTAL_CHAPTERS,
   scoreAt,
