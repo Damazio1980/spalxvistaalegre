@@ -61,11 +61,11 @@ export function Stage() {
 
   const frame = FRAMES[index]!;
   const cumulativeScore = scoreAt(index);
-  const score = frame.id === "redes" && redesPage < 2
+  const score = frame.id === "redes" && redesPage < 3
     ? { ...cumulativeScore, vaa: cumulativeScore.vaa - 2 }
     : cumulativeScore;
   const redesTheme: Extract<Backdrop, "navy" | "rose" | "white"> | undefined =
-    frame.id === "redes" ? (redesPage === 1 ? "white" : "navy") : undefined;
+    frame.id === "redes" ? (redesPage === 2 ? "white" : "navy") : undefined;
   const canaisTheme: Extract<Backdrop, "navy" | "white"> | undefined =
     frame.id === "canais" ? (canaisPage === 0 ? "navy" : "white") : undefined;
   const chartTheme = frame.id === "redes" || frame.id === "canais" ? undefined : CHART_BACKDROPS[frame.id];
@@ -86,7 +86,7 @@ export function Stage() {
       previous.current = cur;
       const target = Math.max(0, Math.min(FRAMES.length - 1, next));
       if (FRAMES[target]?.id === "canais") setCanaisPage(next < cur ? 1 : 0);
-      if (FRAMES[target]?.id === "redes") setRedesPage(next < cur ? 2 : 0);
+      if (FRAMES[target]?.id === "redes") setRedesPage(next < cur ? 3 : 0);
       return target;
     });
   }, []);
@@ -96,7 +96,7 @@ export function Stage() {
       setCanaisPage((page) => page + 1);
       return;
     }
-    if (frame.id === "redes" && redesPage < 2) {
+    if (frame.id === "redes" && redesPage < 3) {
       setRedesPage((page) => page + 1);
       return;
     }
@@ -307,7 +307,7 @@ export function Stage() {
             <List className="h-4 w-4 text-navy/50" />
             {ACTS[frame.act].label} · {frame.title}
             {frame.id === "canais" ? ` ${canaisPage + 1}/2` : ""}
-            {frame.id === "redes" ? ` ${redesPage + 1}/3` : ""}
+            {frame.id === "redes" ? ` ${redesPage + 1}/4` : ""}
           </button>
           <span className="deck-num text-xs text-navy/50">
             {frame.n === 0 ? "Capa" : `${frame.n}/${TOTAL_CHAPTERS}`}

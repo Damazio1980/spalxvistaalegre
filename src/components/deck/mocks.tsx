@@ -194,12 +194,14 @@ export function RefShot({
   idSuffix = "",
   className,
   compact,
+  hideExpand = false,
 }: {
   img: RefImage;
   group: string;
   idSuffix?: string;
   className?: string | undefined;
   compact?: boolean | undefined;
+  hideExpand?: boolean | undefined;
 }) {
   return (
     <Shot
@@ -208,6 +210,7 @@ export function RefShot({
       caption={captionOf(img)}
       placeholder={img.isPlaceholder}
       lightboxVariant={group === "posts" ? "phone" : "default"}
+      hideExpand={hideExpand}
       className={className}
     >
       <div className="h-full w-full">

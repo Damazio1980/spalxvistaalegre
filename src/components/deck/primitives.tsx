@@ -138,6 +138,7 @@ export function Shot({
   replace,
   placeholder,
   lightboxVariant = "default",
+  hideExpand = false,
 }: {
   id: string;
   group: string;
@@ -147,6 +148,7 @@ export function Shot({
   replace?: boolean | undefined;
   placeholder?: boolean | undefined;
   lightboxVariant?: "default" | "phone" | undefined;
+  hideExpand?: boolean | undefined;
 }) {
   const ctx = useContext(Ctx);
   useEffect(() => {
@@ -171,12 +173,14 @@ export function Shot({
           SUBSTITUIR
         </span>
       )}
-      <button
-        onClick={() => ctx?.open(group, id)}
-        className="absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-navy/85 px-3 py-1 text-[11px] font-semibold text-porcelain opacity-100 transition-opacity"
-      >
-        <Maximize2 className="h-3 w-3" /> Ampliar
-      </button>
+      {!hideExpand && (
+        <button
+          onClick={() => ctx?.open(group, id)}
+          className="absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-navy/85 px-3 py-1 text-[11px] font-semibold text-porcelain opacity-100 transition-opacity"
+        >
+          <Maximize2 className="h-3 w-3" /> Ampliar
+        </button>
+      )}
     </div>
   );
 }
