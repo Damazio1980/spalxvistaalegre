@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { createPortal } from "react-dom";
 import { LoaderCircle, MessageCircleQuestion, Send, X } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { answerAudienceQuestion } from "@/lib/audience-question.functions";
@@ -59,7 +60,7 @@ export function AudienceQuestion() {
         <MessageCircleQuestion className="h-3.5 w-3.5" />
       </Button>
 
-      {open && (
+      {open && typeof document !== "undefined" && createPortal(
         <div
           className="fixed inset-0 z-50 flex items-end justify-center bg-navy/80 p-4 backdrop-blur-sm sm:items-center"
           role="presentation"
@@ -136,7 +137,8 @@ export function AudienceQuestion() {
               </div>
             )}
           </section>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );
