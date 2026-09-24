@@ -16,6 +16,7 @@ export type LightboxItem = {
   group: string;
   caption: string;
   node: ReactNode;
+  variant?: "default" | "phone";
 };
 
 type LightboxCtx = {
@@ -71,7 +72,12 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
           onClick={() => setCurrent(null)}
         >
           <div
-            className="deck-pop max-h-[70vh] w-full max-w-4xl overflow-hidden rounded-3xl bg-porcelain"
+            className={cn(
+              "deck-pop overflow-hidden bg-porcelain",
+              list[index]!.variant === "phone"
+                ? "h-[72vh] max-h-[820px] w-auto aspect-[9/16] rounded-[36px] border-[8px] border-porcelain/20 shadow-2xl"
+                : "max-h-[70vh] w-full max-w-4xl rounded-3xl",
+            )}
             onClick={(e) => e.stopPropagation()}
           >
             {list[index]!.node}
@@ -131,6 +137,7 @@ export function Shot({
   className,
   replace,
   placeholder,
+  lightboxVariant = "default",
 }: {
   id: string;
   group: string;
@@ -139,10 +146,17 @@ export function Shot({
   className?: string | undefined;
   replace?: boolean | undefined;
   placeholder?: boolean | undefined;
+  lightboxVariant?: "default" | "phone" | undefined;
 }) {
   const ctx = useContext(Ctx);
   useEffect(() => {
-    ctx?.register({ id, group, caption, node: <div className="p-6">{children}</div> });
+    ctx?.register({
+      id,
+      group,
+      caption,
+      variant: lightboxVariant,
+      node: lightboxVariant === "phone" ? <div className="h-full">{children}</div> : <div className="p-6">{children}</div>,
+    });
   });
   return (
     <div className={cn("group/shot relative overflow-hidden rounded-2xl border border-navy/10 bg-white", className)}>
@@ -159,7 +173,7 @@ export function Shot({
       )}
       <button
         onClick={() => ctx?.open(group, id)}
-        className="absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-navy/85 px-3 py-1 text-[11px] font-semibold text-porcelain opacity-0 transition-opacity group-hover/shot:opacity-100"
+        className="absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-navy/85 px-3 py-1 text-[11px] font-semibold text-porcelain opacity-100 transition-opacity"
       >
         <Maximize2 className="h-3 w-3" /> Ampliar
       </button>
