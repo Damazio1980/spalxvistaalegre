@@ -288,6 +288,10 @@
   border-color: oklch(0.259 0.049 262 / 0.18) !important;
 }
 
+.deck-theme-white .spal-score-number {
+  color: var(--porcelain) !important;
+}
+
 .deck-theme-navy .sample-channels-slide strong {
   color: var(--porcelain);
 }

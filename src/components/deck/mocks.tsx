@@ -207,6 +207,7 @@ export function RefShot({
       group={group}
       caption={captionOf(img)}
       placeholder={img.isPlaceholder}
+      lightboxVariant={group === "posts" ? "phone" : "default"}
       className={className}
     >
       <div className="h-full w-full">

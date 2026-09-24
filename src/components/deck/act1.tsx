@@ -979,8 +979,8 @@ export function Radar6({ active }: ChapterProps) {
         <Reveal i={1} className="deck-card bg-navy p-6 text-porcelain">
           <p className="text-sm text-porcelain/70">Total das seis rondas</p>
           <div className="mt-2 flex items-end gap-6">
-            <div>
-              <Num value={13} active={active} className="text-6xl text-porcelain" />
+            <div className="border border-porcelain/20 bg-spal px-5 py-4 text-center">
+              <Num value={13} active={active} className="spal-score-number text-6xl" />
               <p className="text-xs text-porcelain/60">SPAL · 3-2-3-1-2-2</p>
             </div>
             <div>
@@ -1156,22 +1156,22 @@ function PostCard({ post, index }: { post: SocialPost; index: number }) {
     ...(post.nota ? [["Nota", post.nota]] : []),
   ];
   return (
-    <Reveal i={(index % 4) + 1} className={`grid min-h-0 grid-cols-[92px_1fr] gap-2 border-t p-2 ${spal ? "border-spal/70" : "border-vaa/80"}`}>
+    <Reveal i={(index % 4) + 1} className={`grid min-h-0 grid-cols-[118px_1fr] gap-3 border-t py-2 ${spal ? "border-spal/70" : "border-vaa/80"}`}>
       <div className="min-w-0">
-        <div className="mb-1 flex items-center gap-1 text-[7.5px] font-bold text-porcelain">
-          <span className={`grid h-4 w-4 place-items-center rounded-full ${spal ? "bg-spal" : "bg-vaa"}`}>{post.marca.charAt(0)}</span>
+        <div className="mb-1 flex items-center gap-1 text-[8.5px] font-bold text-porcelain">
+          <span className={`grid h-5 w-5 place-items-center rounded-full ${spal ? "bg-spal" : "bg-vaa"}`}>{post.marca.charAt(0)}</span>
           <span className="truncate">{post.perfil}</span>
         </div>
-        <RefShot img={POSTS[index]!} group="posts" compact className="h-[78px] rounded-md" />
+        <RefShot img={POSTS[index]!} group="posts" compact className="h-[100px] rounded-md" />
       </div>
       <div className="min-w-0">
         <div className="flex items-center justify-between">
-          <p className={`deck-num text-[15px] ${spal ? "text-spal" : "text-vaa"}`}>POST {post.numero}</p>
-          <p className="text-[7px] font-bold uppercase text-porcelain/55">{post.rede}</p>
+          <p className={`deck-num text-[17px] ${spal ? "text-spal" : "text-vaa"}`}>POST {post.numero}</p>
+          <p className="text-[8px] font-bold uppercase text-porcelain/55">{post.rede}</p>
         </div>
         <div className="mt-0.5 space-y-[1px]">
           {fields.map(([label, value]) => (
-            <p key={`${label}-${value}`} className="text-[7.2px] leading-[1.22] text-porcelain/78">
+            <p key={`${label}-${value}`} className="text-[8.2px] leading-[1.22] text-porcelain/78">
               <strong className="text-porcelain">{label}:</strong> {value}
             </p>
           ))}
@@ -1193,7 +1193,7 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
           </div>
           <p className="text-[10px] text-porcelain/55">Instagram + Facebook · 23/09</p>
         </div>
-        <div className="grid min-h-0 flex-1 grid-cols-4 grid-rows-3 gap-x-3 gap-y-1">
+        <div className="grid min-h-0 flex-1 grid-cols-3 grid-rows-4 gap-x-5 gap-y-0">
           {SOCIAL_POSTS.map((post, i) => <PostCard key={post.numero} post={post} index={i} />)}
         </div>
       </div>
@@ -1221,23 +1221,23 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
   return (
     <div className="flex h-full flex-col p-8 text-porcelain">
       <div className="mb-3">
-        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-navy/60">C · Redes 3/3</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 3/3</p>
         <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[2]}</h3>
       </div>
-      <div className="min-h-0 flex-1 divide-y divide-navy/20 border-y border-navy/20">
+      <div className="min-h-0 flex-1 divide-y divide-porcelain/20 border-y border-porcelain/20">
         {COMPARACAO.map((row, i) => (
           <Reveal key={row.dim} i={i + 1} className="grid grid-cols-[165px_1fr_1fr] gap-5 py-3">
             <div>
-              <p className="text-[10px] font-extrabold uppercase tracking-widest text-navy">{row.dim}</p>
-              {row.winner && <span className="mt-1 inline-block rounded-full bg-navy/10 px-2 py-0.5 text-[8px] font-bold uppercase text-navy">vence Vista Alegre +1</span>}
-              {!row.winner && i < 2 && <span className="mt-1 block text-[8px] text-navy/60">estilos diferentes · sem ponto</span>}
+              <p className="text-[10px] font-extrabold uppercase tracking-widest text-vaa">{row.dim}</p>
+              {row.winner && <span className="mt-1 inline-block rounded-full bg-vaa/20 px-2 py-0.5 text-[8px] font-bold uppercase text-vaa">vence Vista Alegre +1</span>}
+              {!row.winner && i < 2 && <span className="mt-1 block text-[8px] text-porcelain/60">estilos diferentes · sem ponto</span>}
             </div>
-            <p className="text-[10.5px] leading-[1.4] text-porcelain/90"><strong className="text-navy">SPAL:</strong> {row.spal}</p>
-            <p className="text-[10.5px] leading-[1.4] text-porcelain/90"><strong className="text-navy">Vista Alegre:</strong> {row.vaa}</p>
+            <p className="text-[10.5px] leading-[1.4] text-porcelain/90"><strong className="text-porcelain">SPAL:</strong> {row.spal}</p>
+            <p className="text-[10.5px] leading-[1.4] text-porcelain/90"><strong className="text-vaa">Vista Alegre:</strong> {row.vaa}</p>
           </Reveal>
         ))}
       </div>
-      <Reveal i={7} className="mt-5 border-l-4 border-navy pl-5">
+      <Reveal i={7} className="mt-5 border-l-4 border-vaa pl-5">
         <p className="font-[var(--font-display)] text-[23px] font-extrabold leading-tight">
           “A SPAL fala uma língua institucional em duas redes iguais. A Vista Alegre fala duas línguas diferentes — uma por rede.”
         </p>

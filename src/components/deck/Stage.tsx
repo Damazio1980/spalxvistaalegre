@@ -23,9 +23,16 @@ type Backdrop = "pattern" | "navy" | "rose" | "wash" | "white";
 const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
   nomes: "white",
   website: "white",
+  "duelo-1": "white",
+  "duelo-2": "white",
+  "duelo-3": "white",
+  "duelo-4": "white",
+  "duelo-5": "white",
+  "duelo-6": "white",
   percurso: "white",
   radar: "white",
   redes: "white",
+  placar1: "white",
   jogadas: "white",
   "jogada-1": "white",
   "jogada-2": "white",
@@ -58,11 +65,13 @@ export function Stage() {
     ? { ...cumulativeScore, vaa: cumulativeScore.vaa - 2 }
     : cumulativeScore;
   const redesTheme: Extract<Backdrop, "navy" | "rose" | "white"> | undefined =
-    frame.id === "redes" ? (redesPage === 0 ? "navy" : redesPage === 1 ? "white" : "rose") : undefined;
-  const chartTheme = frame.id === "canais" && canaisPage === 1 ? "white" : frame.id === "redes" ? undefined : CHART_BACKDROPS[frame.id];
+    frame.id === "redes" ? (redesPage === 1 ? "white" : "navy") : undefined;
+  const canaisTheme: Extract<Backdrop, "navy" | "white"> | undefined =
+    frame.id === "canais" ? (canaisPage === 0 ? "navy" : "white") : undefined;
+  const chartTheme = frame.id === "redes" || frame.id === "canais" ? undefined : CHART_BACKDROPS[frame.id];
   const editorialTheme: Extract<Backdrop, "navy" | "rose"> = index % 2 === 0 ? "rose" : "navy";
-  const backdrop: Backdrop = frame.id === "capa" ? "pattern" : redesTheme ?? chartTheme ?? editorialTheme;
-  const frameTheme = frame.id === "capa" ? undefined : redesTheme ?? chartTheme ?? editorialTheme;
+  const backdrop: Backdrop = frame.id === "capa" ? "pattern" : canaisTheme ?? redesTheme ?? chartTheme ?? editorialTheme;
+  const frameTheme = frame.id === "capa" ? undefined : canaisTheme ?? redesTheme ?? chartTheme ?? editorialTheme;
 
   useEffect(() => {
     const measure = () => setViewport({ width: window.innerWidth, height: window.innerHeight });
