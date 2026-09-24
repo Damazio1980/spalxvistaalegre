@@ -1156,22 +1156,25 @@ function PostCard({ post, index }: { post: SocialPost; index: number }) {
     ...(post.nota ? [["Nota", post.nota]] : []),
   ];
   return (
-    <Reveal i={(index % 4) + 1} className={`grid min-h-0 grid-cols-[118px_1fr] gap-3 border-t py-2 ${spal ? "border-spal/70" : "border-vaa/80"}`}>
-      <div className="min-w-0">
-        <div className="mb-1 flex items-center gap-1 text-[8.5px] font-bold text-porcelain">
-          <span className={`grid h-5 w-5 place-items-center rounded-full ${spal ? "bg-spal" : "bg-vaa"}`}>{post.marca.charAt(0)}</span>
-          <span className="truncate">{post.perfil}</span>
+    <Reveal i={(index % 3) + 1} className={`flex min-h-0 gap-3 border-t pt-2 ${spal ? "border-spal/70" : "border-vaa/80"}`}>
+      <RefShot
+        img={POSTS[index]!}
+        group={`posts-${post.rede.toLowerCase()}`}
+        compact
+        hideExpand
+        className="h-[263px] w-[148px] shrink-0 rounded-[24px] border-[5px] border-porcelain/20 shadow-lg"
+      />
+      <div className="min-w-0 flex-1 py-1">
+        <div className="mb-1 flex items-start justify-between gap-2">
+          <div>
+            <p className={`deck-num text-[18px] ${spal ? "text-spal" : "text-vaa"}`}>POST {post.numero}</p>
+            <p className="max-w-[200px] truncate text-[8px] font-bold text-porcelain/70">{post.perfil}</p>
+          </div>
+          <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-[9px] font-bold text-porcelain ${spal ? "bg-spal" : "bg-vaa"}`}>{post.marca.charAt(0)}</span>
         </div>
-        <RefShot img={POSTS[index]!} group="posts" compact className="h-[100px] rounded-md" />
-      </div>
-      <div className="min-w-0">
-        <div className="flex items-center justify-between">
-          <p className={`deck-num text-[17px] ${spal ? "text-spal" : "text-vaa"}`}>POST {post.numero}</p>
-          <p className="text-[8px] font-bold uppercase text-porcelain/55">{post.rede}</p>
-        </div>
-        <div className="mt-0.5 space-y-[1px]">
+        <div className="space-y-[2px]">
           {fields.map(([label, value]) => (
-            <p key={`${label}-${value}`} className="text-[8.2px] leading-[1.22] text-porcelain/78">
+            <p key={`${label}-${value}`} className="text-[8.8px] leading-[1.24] text-porcelain/78">
               <strong className="text-porcelain">{label}:</strong> {value}
             </p>
           ))}
@@ -1182,29 +1185,33 @@ function PostCard({ post, index }: { post: SocialPost; index: number }) {
 }
 
 export function Redes({ active, subframe = 0 }: ChapterProps) {
-  const titles = ["As 12 publicações", "Perfis e frequência", "Comparação qualitativa"];
-  if (subframe === 0) {
+  const instagramPosts = SOCIAL_POSTS.map((post, index) => ({ post, index })).filter(({ post }) => post.rede === "Instagram");
+  const facebookPosts = SOCIAL_POSTS.map((post, index) => ({ post, index })).filter(({ post }) => post.rede === "Facebook");
+  const titles = ["Publicações de Instagram", "Publicações de Facebook", "Perfis e frequência", "Comparação qualitativa"];
+  if (subframe === 0 || subframe === 1) {
+    const entries = subframe === 0 ? instagramPosts : facebookPosts;
+    const network = subframe === 0 ? "Instagram" : "Facebook";
     return (
-      <div className="flex h-full flex-col p-7 text-porcelain">
+      <div className="flex h-full flex-col px-8 pb-7 pt-6 text-porcelain">
         <div className="mb-3 flex items-end justify-between border-b border-porcelain/20 pb-2">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 1/3</p>
-            <h3 className="font-[var(--font-display)] text-[27px] font-extrabold">{titles[0]}</h3>
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes {subframe + 1}/4</p>
+            <h3 className="font-[var(--font-display)] text-[27px] font-extrabold">{titles[subframe]}</h3>
           </div>
-          <p className="text-[10px] text-porcelain/55">Instagram + Facebook · 23/09</p>
+          <p className="text-[10px] text-porcelain/55">6 casos · {network}</p>
         </div>
-        <div className="grid min-h-0 flex-1 grid-cols-3 grid-rows-4 gap-x-5 gap-y-0">
-          {SOCIAL_POSTS.map((post, i) => <PostCard key={post.numero} post={post} index={i} />)}
+        <div className="grid min-h-0 flex-1 grid-cols-3 grid-rows-2 gap-x-5 gap-y-3">
+          {entries.map(({ post, index }) => <PostCard key={post.numero} post={post} index={index} />)}
         </div>
       </div>
     );
   }
-  if (subframe === 1) {
+  if (subframe === 2) {
     return (
       <div className="flex h-full flex-col p-8 text-navy">
         <div className="mb-3">
-          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 2/3</p>
-          <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[1]}</h3>
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 3/4</p>
+          <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[2]}</h3>
         </div>
         <div className="grid h-[310px] grid-cols-2 grid-rows-2 gap-x-6 gap-y-3">
           {PERFIS.map((p, i) => <PerfilCard key={p.marca + p.rede} p={p} i={i + 1} active={active} />)}
@@ -1221,8 +1228,8 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
   return (
     <div className="flex h-full flex-col p-8 text-porcelain">
       <div className="mb-3">
-        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 3/3</p>
-        <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[2]}</h3>
+        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 4/4</p>
+        <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[3]}</h3>
       </div>
       <div className="min-h-0 flex-1 divide-y divide-porcelain/20 border-y border-porcelain/20">
         {COMPARACAO.map((row, i) => (

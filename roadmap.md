@@ -20,4 +20,5 @@
 17. Permitir inserir uma pergunta da audiência e gerar uma resposta concisa baseada no deck através do Lovable AI. — feito
 18. Colocar os anexos nos posts 1, 2–3 e 4 do quadro “Redes sociais 1/3”, com carrosséis navegáveis. — feito
 19. Remover quatro frases de abertura, ajustar fundos pedidos, destacar o total SPAL e ampliar as publicações em formato de telemóvel. — feito
+20. Dividir as publicações em dois quadros, Instagram e Facebook, com seis mockups de telemóvel e informação completa por rede. — feito
 
