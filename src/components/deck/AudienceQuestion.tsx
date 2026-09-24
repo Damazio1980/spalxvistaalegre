@@ -18,6 +18,15 @@ export function AudienceQuestion() {
     if (open) window.setTimeout(() => textareaRef.current?.focus(), 80);
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
+
   async function submit(event: FormEvent) {
     event.preventDefault();
     const trimmed = question.trim();
