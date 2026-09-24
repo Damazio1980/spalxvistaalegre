@@ -48,7 +48,6 @@ export const answerAudienceQuestion = createServerFn({ method: "POST" })
         maxRetries: 2,
         system: `Responde em português europeu como assistente da apresentadora. Usa exclusivamente o contexto fornecido. Dá uma resposta direta, segura e concisa, com 2 a 4 frases e, quando ajudar, números exatos. Distingue claramente dados reais de exemplos didáticos ou hipóteses. Não inventes. Se o deck não contiver a resposta, diz: “Essa informação não consta da apresentação.”\n\nCONTEXTO DO DECK:\n${PRESENTATION_CONTEXT}`,
         prompt: data.question,
-        abortSignal: undefined,
         providerOptions: {
           openai: {
             forceReasoning: true,
