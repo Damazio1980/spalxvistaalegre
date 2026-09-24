@@ -1162,7 +1162,7 @@ function PostCard({ post, index }: { post: SocialPost; index: number }) {
         group={`posts-${post.rede.toLowerCase()}`}
         compact
         hideExpand
-        className="h-[238px] w-[134px] shrink-0 rounded-[22px] border-[5px] border-porcelain/20 shadow-lg"
+        className="h-[263px] w-[148px] shrink-0 rounded-[24px] border-[5px] border-porcelain/20 shadow-lg"
       />
       <div className="min-w-0 flex-1 py-1">
         <div className="mb-1 flex items-start justify-between gap-2">
@@ -1174,7 +1174,7 @@ function PostCard({ post, index }: { post: SocialPost; index: number }) {
         </div>
         <div className="space-y-[2px]">
           {fields.map(([label, value]) => (
-            <p key={`${label}-${value}`} className="text-[8.5px] leading-[1.24] text-porcelain/78">
+            <p key={`${label}-${value}`} className="text-[8.8px] leading-[1.24] text-porcelain/78">
               <strong className="text-porcelain">{label}:</strong> {value}
             </p>
           ))}
