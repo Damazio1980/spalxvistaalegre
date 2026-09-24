@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { captionOf, type RefImage } from "@/data/images";
 import { cn } from "@/lib/utils";
 import { Shot } from "./primitives";
@@ -110,6 +112,11 @@ function MobileMock({ img }: { img: RefImage }) {
 /** publicação de rede social simulada */
 export function PostMock({ img, compact }: { img: RefImage; compact?: boolean | undefined }) {
   const inicial = img.perfil?.replace("@", "").charAt(0).toUpperCase() ?? "?";
+  const images = img.gallery?.length ? img.gallery : [img.src];
+  const [current, setCurrent] = useState(0);
+  const go = (direction: -1 | 1) => {
+    setCurrent((value) => (value + direction + images.length) % images.length);
+  };
   return (
     <div className="flex h-full flex-col bg-white">
       <div className="flex items-center gap-1 px-1.5 py-1">
@@ -128,8 +135,21 @@ export function PostMock({ img, compact }: { img: RefImage; compact?: boolean | 
           {img.canal}
         </span>
       </div>
-      <div className="min-h-0 flex-1 overflow-hidden">
-        <img src={img.src} alt="" loading="lazy" className="h-full w-full object-cover" />
+      <div className="group/carousel relative min-h-0 flex-1 overflow-hidden">
+        <img src={images[current]} alt={`${img.caption}${images.length > 1 ? ` · imagem ${current + 1}` : ""}`} loading="lazy" className="h-full w-full object-cover" />
+        {images.length > 1 && (
+          <>
+            <button type="button" aria-label="Imagem anterior" onClick={(event) => { event.stopPropagation(); go(-1); }} className="absolute left-1 top-1/2 grid h-5 w-5 -translate-y-1/2 place-items-center rounded-full bg-navy/80 text-porcelain opacity-90">
+              <ChevronLeft className="h-3 w-3" />
+            </button>
+            <button type="button" aria-label="Imagem seguinte" onClick={(event) => { event.stopPropagation(); go(1); }} className="absolute right-1 top-1/2 grid h-5 w-5 -translate-y-1/2 place-items-center rounded-full bg-navy/80 text-porcelain opacity-90">
+              <ChevronRight className="h-3 w-3" />
+            </button>
+            <span className="absolute bottom-1 left-1/2 -translate-x-1/2 rounded-full bg-navy/80 px-1.5 py-0.5 text-[7px] font-bold text-porcelain">
+              {current + 1}/{images.length}
+            </span>
+          </>
+        )}
       </div>
     </div>
   );

@@ -18,4 +18,5 @@
 15. Aumentar 20% o texto de “Canais 1/2” e aplicar fundos azul/rosa sem gráficos e branco com gráficos até ao fim. — feito
 16. Dividir “C · Redes sociais” em três sub-quadros completos, atualizar as 12 publicações, perfis, gráfico, análise e placar. — feito
 17. Permitir inserir uma pergunta da audiência e gerar uma resposta concisa baseada no deck através do Lovable AI. — feito
+18. Colocar os anexos nos posts 1, 2–3 e 4 do quadro “Redes sociais 1/3”, com carrosséis navegáveis. — feito
 

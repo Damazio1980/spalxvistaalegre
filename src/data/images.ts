@@ -9,6 +9,14 @@
 import refPorcelana from "@/assets/ref-porcelana.jpg";
 import refMesa from "@/assets/ref-mesa.jpg";
 import refMaquete from "@/assets/ref-maquete.jpg";
+import vaaPost1 from "@/assets/social-posts/vaa-post-1.jpg.asset.json";
+import vaaPost2Archive from "@/assets/social-posts/vaa-post-2-archive.jpg.asset.json";
+import vaaPost2Product from "@/assets/social-posts/vaa-post-2-product.jpg.asset.json";
+import vaaPost4Image1 from "@/assets/social-posts/vaa-post-4-1.jpg.asset.json";
+import vaaPost4Image2 from "@/assets/social-posts/vaa-post-4-2.jpg.asset.json";
+import vaaPost4Image3 from "@/assets/social-posts/vaa-post-4-3.jpg.asset.json";
+import vaaPost4Image4 from "@/assets/social-posts/vaa-post-4-4.jpg.asset.json";
+import vaaPost4Image5 from "@/assets/social-posts/vaa-post-4-5.jpg.asset.json";
 
 export type RefKind = "desktop" | "mobile" | "post" | "maquete";
 
@@ -16,6 +24,8 @@ export type RefImage = {
   id: string;
   /** fotografia genérica usada dentro da simulação (ou a peça final) */
   src: string;
+  /** imagens adicionais quando a publicação é um carrossel */
+  gallery?: string[];
   caption: string;
   canal: string;
   /** data da captura a fazer / feita */
@@ -173,18 +183,23 @@ const post = (
 });
 
 export const POSTS: RefImage[] = [
-  post("post-1", "@vistaalegreofficial", "Instagram", refMesa, {
+  post("post-1", "@vistaalegreofficial", "Instagram", vaaPost1.url, {
     data: "23/09",
     formato: "Reel (7s)",
     tema: "Lançamento coleção Outono",
     cta: "nenhum explícito",
     reacoes: "130 gostos, 2 comentários, 3 reposts, 11 envios",
+    isPlaceholder: false,
   }),
-  post("post-2", "@vistaalegreofficial", "Instagram", refPorcelana, {
+  post("post-2", "@vistaalegreofficial", "Instagram", vaaPost2Archive.url, {
     data: "21/09", formato: "Carrossel 2 fotos", tema: "History — bilha de 1931", cta: "nenhum", reacoes: "155 gostos, 4 reposts/partilhas",
+    gallery: [vaaPost2Archive.url, vaaPost2Product.url],
+    isPlaceholder: false,
   }),
-  post("post-3", "@vistaalegreofficial", "Instagram", refMesa, {
+  post("post-3", "@vistaalegreofficial", "Instagram", vaaPost4Image1.url, {
     data: "18/09", formato: "Carrossel 5 fotos", tema: "Nova loja no Fórum Algarve", cta: "Venha conhecer as nossas coleções", reacoes: "1.324 gostos, 18 comentários, 2 reposts, 44 envios",
+    gallery: [vaaPost4Image1.url, vaaPost4Image2.url, vaaPost4Image3.url, vaaPost4Image4.url, vaaPost4Image5.url],
+    isPlaceholder: false,
   }),
   post("post-4", "Vista Alegre", "Facebook", refPorcelana, {
     data: "23/09 (há 6h)", formato: "Vídeo", tema: "Lançamento coleção Outono", cta: "nenhum", reacoes: "[não visível na captura]",
