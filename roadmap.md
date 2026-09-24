@@ -17,4 +17,5 @@
 14. Remover tons fluorescentes dos gráficos e consolidar a paleta azul SPAL, rosa Vista Alegre e neutros sobre fundo branco. — feito
 15. Aumentar 20% o texto de “Canais 1/2” e aplicar fundos azul/rosa sem gráficos e branco com gráficos até ao fim. — feito
 16. Dividir “C · Redes sociais” em três sub-quadros completos, atualizar as 12 publicações, perfis, gráfico, análise e placar. — feito
+17. Permitir inserir uma pergunta da audiência e gerar uma resposta concisa baseada no deck através do Lovable AI. — feito
 

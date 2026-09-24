@@ -10,6 +10,7 @@ import {
 } from "@/lib/presentation/deck";
 import { CHAPTERS } from "./registry";
 import { LightboxProvider } from "./primitives";
+import { AudienceQuestion } from "./AudienceQuestion";
 import { cn } from "@/lib/utils";
 import porcelainNavigationBackground from "@/assets/porcelain-navigation-bg-new.png.asset.json";
 
@@ -303,6 +304,7 @@ export function Stage() {
             {frame.n === 0 ? "Capa" : `${frame.n}/${TOTAL_CHAPTERS}`}
           </span>
           <ChapterPlate frame={frame} />
+          <AudienceQuestion />
           <button
             onClick={() =>
               document.fullscreenElement
