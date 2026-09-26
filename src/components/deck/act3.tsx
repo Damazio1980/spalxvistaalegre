@@ -98,35 +98,35 @@ const JOGADAS = [
 
 export function Jogadas() {
   return (
-    <div className="flex h-full flex-col justify-center gap-5 px-10 py-8 text-navy">
+    <div className="flex h-full flex-col justify-center gap-6 px-12 py-10 text-navy">
       <Reveal i={0}>
-        <h3 className="font-[var(--font-display)] text-[42px] font-extrabold leading-tight">
+        <h3 className="font-[var(--font-display)] text-[48px] font-extrabold leading-tight">
           Três jornadas por ordem de prioridade
         </h3>
       </Reveal>
-      <div className="grid min-h-0 grid-cols-3 gap-4">
+      <div className="grid min-h-0 grid-cols-3 gap-6">
         {JOGADAS.map((j, i) => (
           <Reveal
             key={j.n}
             i={i + 1}
-            className="border-t-2 border-spal px-4 py-4"
+            className="border-t-2 border-spal px-3 py-4"
           >
-            <p className="deck-num text-4xl text-vaa">{j.n}</p>
-            <p className="mt-2 text-base font-semibold">{j.title}</p>
-            <p className="mt-2 text-[10px] font-bold uppercase text-navy/45">Evidência</p>
-            <p className="mt-1 text-[11px] leading-snug text-navy/70">{j.prova}</p>
-            <p className="mt-2 text-[10px] font-bold uppercase text-navy/45">Ação</p>
-            <p className="mt-1 text-[11px] leading-snug text-navy/70">{j.jogada}</p>
-            <p className="mt-2 text-[10px] font-bold uppercase text-navy/45">Canal</p>
-            <p className="mt-1 text-[11px] text-navy/70">{j.onde}</p>
-            <p className="mt-2 text-[10px] font-bold uppercase text-navy/45">Resultado esperado</p>
-            <p className="mt-1 text-[11px] leading-snug text-navy/70">{j.muda}</p>
+            <p className="deck-num text-[42px] text-vaa">{j.n}</p>
+            <p className="mt-2 text-lg font-semibold">{j.title}</p>
+            <p className="mt-3 text-[11px] font-bold uppercase text-navy/45">Evidência</p>
+            <p className="mt-1 text-[13px] leading-snug text-navy/70">{j.prova}</p>
+            <p className="mt-3 text-[11px] font-bold uppercase text-navy/45">Ação</p>
+            <p className="mt-1 text-[13px] leading-snug text-navy/70">{j.jogada}</p>
+            <p className="mt-3 text-[11px] font-bold uppercase text-navy/45">Canal</p>
+            <p className="mt-1 text-[13px] text-navy/70">{j.onde}</p>
+            <p className="mt-3 text-[11px] font-bold uppercase text-navy/45">Resultado esperado</p>
+            <p className="mt-1 text-[13px] leading-snug text-navy/70">{j.muda}</p>
           </Reveal>
         ))}
       </div>
 
       <Reveal i={4}>
-        <p className="text-[13px] leading-snug text-navy/80">
+        <p className="text-[15px] leading-snug text-navy/80">
           A SPAL não perde por detalhes. Perde porque está a competir com uma loja de 2013 contra
           uma loja de 2026. A jogada não é consertar — é mudar de casa.
         </p>
@@ -277,7 +277,7 @@ export function Semana() {
             Calendário de trabalho mantido no Notion — inclui vista de tabela e vista de calendário
             mensal.
           </p>
-          <Button asChild variant="outline" className="shrink-0 border-navy/30 text-navy hover:bg-navy hover:text-porcelain">
+          <Button asChild variant="outline" className="shrink-0 border-vaa bg-vaa text-porcelain hover:bg-vaa/85 hover:text-porcelain">
             <a href={NOTION_CALENDAR_URL} target="_blank" rel="noreferrer">
               Ver calendário completo no Notion →
             </a>

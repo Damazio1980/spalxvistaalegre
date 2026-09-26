@@ -275,6 +275,8 @@ function FrameBody({
         "identificacao-canais",
         "introducao-website",
         "placar1",
+        "jogadas",
+        "semana",
       ].includes(frame.id) && (
         <span
           className={cn(
