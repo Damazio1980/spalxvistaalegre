@@ -65,14 +65,14 @@ export function Stage() {
 
   const frame = FRAMES[index]!;
   const redesTheme: Extract<Backdrop, "navy" | "rose" | "white"> | undefined =
-    frame.id === "redes" ? (redesPage === 2 ? "white" : "navy") : undefined;
+    frame.id === "redes" ? (redesPage === 3 ? "navy" : "white") : undefined;
   const canaisTheme: Extract<Backdrop, "navy" | "white"> | undefined =
     frame.id === "canais" ? (canaisPage === 0 ? "navy" : "white") : undefined;
   const requestedTheme = REQUESTED_BACKDROPS[frame.id];
   const chartTheme = frame.id === "redes" || frame.id === "canais" ? undefined : CHART_BACKDROPS[frame.id];
   const editorialTheme: Extract<Backdrop, "navy" | "rose"> = index % 2 === 0 ? "rose" : "navy";
-  const backdrop: Backdrop = frame.id === "capa" ? "pattern" : requestedTheme ?? canaisTheme ?? redesTheme ?? chartTheme ?? editorialTheme;
-  const frameTheme = frame.id === "capa" ? undefined : requestedTheme ?? canaisTheme ?? redesTheme ?? chartTheme ?? editorialTheme;
+  const backdrop: Backdrop = frame.id === "capa" ? "navy" : requestedTheme ?? canaisTheme ?? redesTheme ?? chartTheme ?? editorialTheme;
+  const frameTheme = frame.id === "capa" ? "navy" : requestedTheme ?? canaisTheme ?? redesTheme ?? chartTheme ?? editorialTheme;
 
   useEffect(() => {
     const measure = () => setViewport({ width: window.innerWidth, height: window.innerHeight });
@@ -292,7 +292,7 @@ function FrameBody({
           {frame.title}
         </span>
       )}
-      <div className="h-full pt-6">{children}</div>
+       <div className={frame.id === "capa" ? "h-full" : "h-full pt-6"}>{children}</div>
     </div>
   );
 }
