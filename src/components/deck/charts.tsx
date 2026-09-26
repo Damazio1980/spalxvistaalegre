@@ -363,7 +363,7 @@ export function ReacoesPorPublicacao({ active }: { active: boolean }) {
     { m: "10", v: 36, label: "36", cor: SPAL_C },
     { m: "11", v: 5, label: "5", cor: SPAL_C },
     { m: "12", v: 10, label: "10", cor: SPAL_C },
-    { m: "13", v: 0, label: "n/d", cor: SPAL_C },
+    { m: "13", v: 18, label: "18", cor: SPAL_C },
   ];
   return (
     <ResponsiveContainer width="100%" height="100%">
