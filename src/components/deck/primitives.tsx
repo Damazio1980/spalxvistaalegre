@@ -26,6 +26,10 @@ type LightboxCtx = {
 
 const Ctx = createContext<LightboxCtx | null>(null);
 
+export function useLightbox() {
+  return useContext(Ctx);
+}
+
 export function LightboxProvider({ children }: { children: ReactNode }) {
   const items = useRef<Map<string, LightboxItem>>(new Map());
   const [current, setCurrent] = useState<{ group: string; id: string } | null>(null);

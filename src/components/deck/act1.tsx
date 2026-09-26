@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { BadgeCheck, ChevronDown, Facebook, Globe, Instagram, Maximize2, Play, X } from "lucide-react";
 import coverPlate from "@/assets/cover-plate.png.asset.json";
 import spinningPlate from "@/assets/spinning-plate.png.asset.json";
@@ -33,7 +34,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Chip, DuelBar, Glossary, Num, Reveal, Shot } from "./primitives";
+import { Chip, DuelBar, Glossary, Num, Reveal, Shot, useLightbox } from "./primitives";
 import { RefShot } from "./mocks";
 import { FIG, POSTS } from "@/data/images";
 import {
@@ -119,13 +120,13 @@ function SectionSlide({ title, subtitle, roseAccent = false }: { title: string; 
 }
 
 export function ApresentacaoEmpresas() {
-  return <SectionSlide title="Apresentação das empresas" />;
+  return <SectionSlide title="APRESENTAÇÃO DAS EMPRESAS" />;
 }
 
 export function IdentificacaoCanais() {
   return (
     <SectionSlide
-      title="Identificação dos canais"
+      title="IDENTIFICAÇÃO DOS CANAIS"
       subtitle="Os mesmos canais — funções diferentes"
       roseAccent
     />
@@ -133,7 +134,7 @@ export function IdentificacaoCanais() {
 }
 
 export function IntroducaoWebsite() {
-  return <SectionSlide title="Website" subtitle="Em seis dimensões" />;
+  return <SectionSlide title="WEBSITE" subtitle="Em seis dimensões" />;
 }
 
 export function Nomes({ active }: ChapterProps) {
@@ -225,7 +226,7 @@ export function Pergunta() {
   return (
     <div className="sample-question-slide flex h-full flex-col items-start justify-center gap-8 px-24 text-left text-porcelain">
       <Reveal i={0}>
-        <h2 className="deck-title text-[64px]">A pergunta</h2>
+        <h2 className="deck-title text-[64px]">A PERGUNTA</h2>
       </Reveal>
       <Reveal i={1}>
         <p className="max-w-[900px] border-l border-porcelain/40 pl-8 text-[28px] font-semibold leading-snug text-porcelain/85">
@@ -1138,6 +1139,9 @@ function PerfilCard({ p, i, active }: { p: Perfil; i: number; active: boolean })
 
 function PostCard({ post, index }: { post: SocialPost; index: number }) {
   const spal = post.marca === "SPAL";
+  const lightbox = useLightbox();
+  const group = `posts-${post.rede.toLowerCase()}`;
+  const image = POSTS[index];
   const fields = [
     ["Data", post.data], ["Formato", post.formato], ["Tema", post.tema],
     ...(post.publico ? [["Público", post.publico]] : []),
@@ -1147,29 +1151,39 @@ function PostCard({ post, index }: { post: SocialPost; index: number }) {
     ...(post.nota ? [["Nota", post.nota]] : []),
   ];
   return (
-    <Reveal i={(index % 3) + 1} className={`flex min-h-0 gap-3 border-t pt-2 ${spal ? "border-spal/70" : "border-vaa/80"}`}>
+    <Reveal i={(index % 3) + 1} className={`flex min-h-0 gap-2 border-t pt-2 ${spal ? "border-spal/70" : "border-vaa/80"}`}>
       <RefShot
-        img={POSTS[index]!}
-        group={`posts-${post.rede.toLowerCase()}`}
+        img={image!}
+        group={group}
         compact
         hideExpand
         className="h-[263px] w-[148px] shrink-0 rounded-[24px] border-[5px] border-porcelain/20 shadow-lg"
       />
-      <div className="min-w-0 flex-1 py-1">
+      <div className="flex min-w-0 flex-1 flex-col py-1">
         <div className="mb-1 flex items-start justify-between gap-2">
           <div>
             <p className={`deck-num text-[18px] ${spal ? "text-spal" : "text-vaa"}`}>POST {post.numero}</p>
-            <p className="max-w-[200px] truncate text-[8px] font-bold text-porcelain/70">{post.perfil}</p>
+            <p className="max-w-[200px] truncate text-[10px] font-bold text-porcelain/70">{post.perfil}</p>
           </div>
           <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-[9px] font-bold text-porcelain ${spal ? "bg-spal" : "bg-vaa"}`}>{post.marca.charAt(0)}</span>
         </div>
-        <div className="space-y-[2px]">
+        <div className="space-y-[1px]">
           {fields.map(([label, value]) => (
-            <p key={`${label}-${value}`} className="text-[8.8px] leading-[1.24] text-porcelain/78">
+            <p key={`${label}-${value}`} className="text-[11px] leading-[1.2] text-porcelain/85">
               <strong className="text-porcelain">{label}:</strong> {value}
             </p>
           ))}
         </div>
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          aria-label={`Ampliar post ${post.numero}`}
+          onClick={() => image && lightbox?.open(group, image.id)}
+          className="mt-auto h-7 self-start border-porcelain/40 bg-transparent px-2.5 text-[11px] text-porcelain hover:bg-porcelain/10 hover:text-porcelain"
+        >
+          <Maximize2 className="h-3 w-3" /> Ampliar
+        </Button>
       </div>
     </Reveal>
   );
@@ -1186,7 +1200,6 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
       <div className="flex h-full flex-col px-8 pb-7 pt-6 text-porcelain">
         <div className="mb-3 flex items-end justify-between border-b border-porcelain/20 pb-2">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes {subframe + 1}/4</p>
             <h3 className="font-[var(--font-display)] text-[27px] font-extrabold">{titles[subframe]}</h3>
           </div>
           <p className="text-[10px] text-porcelain/55">6 casos · {network}</p>
@@ -1201,7 +1214,6 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
     return (
       <div className="flex h-full flex-col p-8 text-navy">
         <div className="mb-3">
-          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 3/4</p>
           <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[2]}</h3>
           <p className="text-[10px] text-navy/60">Dados dos perfis · 23/09/2026</p>
         </div>
@@ -1220,7 +1232,6 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
   return (
     <div className="flex h-full flex-col p-8 text-porcelain">
       <div className="mb-3">
-        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 4/4</p>
         <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[3]}</h3>
       </div>
       <div className="min-h-0 flex-1 divide-y divide-porcelain/20 border-y border-porcelain/20">

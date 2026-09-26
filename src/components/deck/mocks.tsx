@@ -209,7 +209,7 @@ export function RefShot({
       group={group}
       caption={captionOf(img)}
       placeholder={img.isPlaceholder}
-      lightboxVariant={group === "posts" ? "phone" : "default"}
+      lightboxVariant={group === "posts" || group.startsWith("posts-") ? "phone" : "default"}
       hideExpand={hideExpand}
       className={className}
     >
