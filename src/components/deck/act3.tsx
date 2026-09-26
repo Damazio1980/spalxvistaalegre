@@ -15,6 +15,7 @@ import { MAQUETE, PERFIL_SPAL } from "@/data/images";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
+  ChartPanel,
   Funil,
   Gauge,
   IndicadorMini,
