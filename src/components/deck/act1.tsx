@@ -56,15 +56,18 @@ const VAA = "var(--vaa)";
 
 export function Capa({}: ChapterProps) {
   return (
-    <div
-      className="relative h-full w-full overflow-hidden"
-      style={{
-        backgroundImage: `url(${coverAbertura.url})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" />
+    <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-navy">
+      <img
+        src={coverAbertura.url}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover opacity-30"
+      />
+      <img
+        src={coverAbertura.url}
+        alt="Capa da apresentação SPAL e Vista Alegre"
+        className="relative h-full w-4/5 object-cover object-center"
+      />
     </div>
   );
 }
@@ -124,17 +127,11 @@ export function ApresentacaoEmpresas() {
 }
 
 export function IdentificacaoCanais() {
-  return (
-    <SectionSlide
-      title="IDENTIFICAÇÃO DOS CANAIS"
-      subtitle="Os mesmos canais — funções diferentes"
-      roseAccent
-    />
-  );
+  return <SectionSlide title="IDENTIFICAÇÃO DOS CANAIS" roseAccent />;
 }
 
 export function IntroducaoWebsite() {
-  return <SectionSlide title="WEBSITE" subtitle="Em seis dimensões" />;
+  return <SectionSlide title="WEBSITE" />;
 }
 
 export function Nomes({ active }: ChapterProps) {
