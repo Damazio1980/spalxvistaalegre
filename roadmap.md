@@ -23,4 +23,5 @@
 20. Dividir as publicações em dois quadros, Instagram e Facebook, com seis mockups de telemóvel e informação completa por rede. — feito
 21. Retirar navegação inferior e placar geral; mostrar placar apenas no percurso de compra da Inês; limpar etiquetas e cabeçalhos superiores indicados. — feito
 22. Colocar as capturas enviadas nas publicações 8, 9 e 10 do Instagram da SPAL, com vídeo/copy e carrossel navegável. — feito (7 imagens recebidas do carrossel de 9)
+23. Atualizar a data de análise dos perfis para 23/09/2026 e associar oito capturas às seis publicações de Facebook. — feito
 

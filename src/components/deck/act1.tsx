@@ -1075,7 +1075,7 @@ const SOCIAL_POSTS: SocialPost[] = [
   { numero: "10", marca: "SPAL", rede: "Instagram", perfil: "@spalporcelanasofficial", data: "28/07", formato: "Carrossel 9 imagens", tema: "Sustentabilidade (água reciclada, argila reciclada, embalagem reciclável, toque suave, usar e reutilizar, consciência energética, versátil e multifuncional)", publico: "institucional/ESG", objetivo: "Informar", cta: "nenhum", reacoes: "36 gostos, 1 envio" },
   { numero: "11", marca: "SPAL", rede: "Facebook", perfil: "/SPALPorcelanas", data: "09/09", formato: "cross-posting idêntico ao Instagram", tema: "Recrutamento Assistente de Loja (idêntico ao post 8)", reacoes: "5 gostos, 2 partilhas", nota: "mesmo texto e imagem, sem adaptação" },
   { numero: "12", marca: "SPAL", rede: "Facebook", perfil: "/SPALPorcelanas", data: "24/08", formato: "cross-posting idêntico ao Instagram", tema: "“Arte que se serve à mesa” (idêntico ao post 9)", reacoes: "10 reações, 1 partilha", nota: "mesmo texto e imagem, sem adaptação" },
-  { numero: "13", marca: "SPAL", rede: "Facebook", perfil: "/SPALPorcelanas", data: "28/07", formato: "cross-posting idêntico ao Instagram", tema: "Sustentabilidade (idêntico ao post 10)", reacoes: "[não totalmente visível]", nota: "mesmo texto e imagem, sem adaptação" },
+  { numero: "13", marca: "SPAL", rede: "Facebook", perfil: "/SPALPorcelanas", data: "28/07", formato: "cross-posting idêntico ao Instagram", tema: "Sustentabilidade (idêntico ao post 10)", reacoes: "18 gostos, 1 partilha", nota: "mesmo texto e imagem, sem adaptação" },
 ];
 
 const COMPARACAO: { dim: string; spal: string; vaa: string; winner?: boolean }[] = [
@@ -1203,6 +1203,7 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
         <div className="mb-3">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-vaa">C · Redes 3/4</p>
           <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[2]}</h3>
+          <p className="text-[10px] text-navy/60">Dados dos perfis · 23/09/2026</p>
         </div>
         <div className="grid h-[310px] grid-cols-2 grid-rows-2 gap-x-6 gap-y-3">
           {PERFIS.map((p, i) => <PerfilCard key={p.marca + p.rede} p={p} i={i + 1} active={active} />)}
@@ -1210,7 +1211,7 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
         <p className="my-3 rounded-md bg-muted px-4 py-2 text-[10.5px] font-semibold leading-snug text-muted-foreground">
           Frequência total no período 26/06–23/09: n/d — a listagem completa de cada perfil não estava acessível para contagem; analisámos a amostra das 3 publicações mais recentes por perfil, como o enunciado permite.
         </p>
-        <ChartPanel title="Reações por publicação (das 12 analisadas)" note="Publicações 5, 7 e 13: n/d — reação não visível na captura." className="min-h-0 flex-1">
+        <ChartPanel title="Reações por publicação (das 12 analisadas)" note="Publicações 5 e 7: n/d — reação não visível na captura." className="min-h-0 flex-1">
           <ReacoesPorPublicacao active={active} />
         </ChartPanel>
       </div>

@@ -27,6 +27,14 @@ import spalPost10Image6 from "@/assets/social-posts/spal-ig-7393.jpg.asset.json"
 import spalPost10Image7 from "@/assets/social-posts/spal-ig-7394.jpg.asset.json";
 import spalPost10Image8 from "@/assets/social-posts/spal-ig-7395.jpg.asset.json";
 import spalPost10Image9 from "@/assets/social-posts/spal-ig-7396.jpg.asset.json";
+import vaaFbOutono from "@/assets/social-posts/vaa-fb-outono.jpg.asset.json";
+import vaaFbHistory from "@/assets/social-posts/vaa-fb-history.jpg.asset.json";
+import vaaFbPatrimonio from "@/assets/social-posts/vaa-fb-patrimonio.jpg.asset.json";
+import spalFbRecrutamento from "@/assets/social-posts/spal-fb-recrutamento.jpg.asset.json";
+import spalFbArteCopy from "@/assets/social-posts/spal-fb-arte-copy.jpg.asset.json";
+import spalFbArteVideo from "@/assets/social-posts/spal-fb-arte-video.png.asset.json";
+import spalFbSustentabilidadeCopy from "@/assets/social-posts/spal-fb-sustentabilidade-copy.jpg.asset.json";
+import spalFbSustentabilidade from "@/assets/social-posts/spal-fb-sustentabilidade.jpg.asset.json";
 
 export type RefKind = "desktop" | "mobile" | "post" | "maquete";
 
@@ -211,14 +219,17 @@ export const POSTS: RefImage[] = [
     gallery: [vaaPost4Image1.url, vaaPost4Image2.url, vaaPost4Image3.url, vaaPost4Image4.url, vaaPost4Image5.url],
     isPlaceholder: false,
   }),
-  post("post-4", "Vista Alegre", "Facebook", refPorcelana, {
+  post("post-4", "Vista Alegre", "Facebook", vaaFbOutono.url, {
     data: "23/09 (há 6h)", formato: "Vídeo", tema: "Lançamento coleção Outono", cta: "nenhum", reacoes: "[não visível na captura]",
+    isPlaceholder: false,
   }),
-  post("post-5", "Vista Alegre", "Facebook", refMesa, {
+  post("post-5", "Vista Alegre", "Facebook", vaaFbHistory.url, {
     data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "History — bilha de 1931 e Art Déco", cta: "nenhum", reacoes: "35 gostos, 2 partilhas",
+    isPlaceholder: false,
   }),
-  post("post-6", "Vista Alegre", "Facebook", refPorcelana, {
+  post("post-6", "Vista Alegre", "Facebook", vaaFbPatrimonio.url, {
     data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "Jornadas Europeias do Património", cta: "Conheça aqui as atividades e programação", reacoes: "[não visível]",
+    isPlaceholder: false,
   }),
   post("post-7", "@spalporcelanasofficial", "Instagram", spalPost8.url, {
     data: "09/09", formato: "Imagem única", tema: "Recrutamento — Assistente de Loja", cta: "envie o seu CV para rh@spal.pt", reacoes: "24 gostos, 12 envios",
@@ -234,14 +245,19 @@ export const POSTS: RefImage[] = [
     gallery: [spalPost10Cover.url, spalPost10Image4.url, spalPost10Image5.url, spalPost10Image6.url, spalPost10Image7.url, spalPost10Image8.url, spalPost10Image9.url],
     isPlaceholder: false,
   }),
-  post("post-10", "SPAL Porcelanas", "Facebook", refPorcelana, {
+  post("post-10", "SPAL Porcelanas", "Facebook", spalFbRecrutamento.url, {
     data: "09/09", formato: "Imagem única", tema: "Recrutamento Assistente de Loja", cta: "envie o seu CV para rh@spal.pt", reacoes: "5 gostos, 2 partilhas",
+    isPlaceholder: false,
   }),
-  post("post-11", "SPAL Porcelanas", "Facebook", refMesa, {
+  post("post-11", "SPAL Porcelanas", "Facebook", spalFbArteCopy.url, {
     data: "24/08", formato: "Reel", tema: "Arte que se serve à mesa", cta: "nenhum", reacoes: "10 reações, 1 partilha",
+    gallery: [spalFbArteCopy.url, spalFbArteVideo.url],
+    isPlaceholder: false,
   }),
-  post("post-12", "SPAL Porcelanas", "Facebook", refPorcelana, {
-    data: "28/07", formato: "Carrossel 9 imagens", tema: "Sustentabilidade", cta: "nenhum", reacoes: "[não totalmente visível]",
+  post("post-12", "SPAL Porcelanas", "Facebook", spalFbSustentabilidadeCopy.url, {
+    data: "28/07", formato: "Carrossel 9 imagens", tema: "Sustentabilidade", cta: "nenhum", reacoes: "18 gostos, 1 partilha",
+    gallery: [spalFbSustentabilidadeCopy.url, spalFbSustentabilidade.url],
+    isPlaceholder: false,
   }),
 ];
 

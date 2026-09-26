@@ -838,7 +838,7 @@ export function Bastidores() {
       <div className="space-y-3">
         <Reveal i={0}>
           <h3 className="deck-h2 text-navy">Bastidores</h3>
-          <p className="mt-2 text-sm text-navy/60">Fontes consultadas em 04/09/2026.</p>
+          <p className="mt-2 text-sm text-navy/60">Redes sociais analisadas em 23/09/2026 · websites consultados em 04/09/2026.</p>
         </Reveal>
         {fontes.map((f, i) => (
           <Reveal key={f} i={i + 1} className="rounded-xl bg-white px-4 py-2 text-[14px] text-navy/75">
