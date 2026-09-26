@@ -38,8 +38,8 @@ export function PorqueSpal() {
   return (
     <div className="flex h-full flex-col items-center justify-center gap-10 p-14 text-center">
       <Reveal i={0}>
-        <h3 className="deck-title text-navy">Porque a SPAL</h3>
-        <p className="mx-auto mt-5 max-w-[900px] text-xl leading-relaxed text-navy/70">
+        <h3 className="deck-title text-porcelain">Porque a SPAL</h3>
+        <p className="mx-auto mt-5 max-w-[900px] text-xl leading-relaxed text-porcelain/80">
           A distância entre o que a SPAL tem — design próprio, hotelware, exportação, rede física
           real — e o que comunica é grande. E a raiz do problema não são detalhes de conteúdo: é a
           própria plataforma. Por isso a prioridade não é corrigir o site atual. É substituí-lo.
@@ -49,7 +49,7 @@ export function PorqueSpal() {
         {chips.map((c, i) => (
           <Chip
             key={c}
-            tone={i === 3 ? "ines" : "spal"}
+            tone="ines"
             delay={400 + i * 400}
             className="px-6 py-3 text-lg"
           >
@@ -218,62 +218,53 @@ const SEMANA = [
 const NOTION_CALENDAR_URL = "https://app.notion.com/p/3671d655a81745a68f73db13608b9c70";
 
 export function Semana() {
-  const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className="flex h-full flex-col justify-center gap-6 p-12">
+    <div className="flex h-full flex-col justify-center gap-5 px-10 py-8">
       <Reveal i={0}>
-        <h3 className="deck-h2 text-navy">
+        <h3 className="deck-h2 text-porcelain">
           Uma semana de SPAL a falar com o consumidor.
         </h3>
-        <p className="mt-1 text-sm text-navy/60">Campanha de lançamento do site novo · 7 dias · 4 ações</p>
+        <p className="mt-1 text-sm text-porcelain/65">Campanha de lançamento do site novo · 7 dias · 4 ações</p>
       </Reveal>
-      <div className="relative pt-8">
-        <div className="deck-grow absolute left-0 right-0 top-12 h-0.5 bg-navy/15" />
-        <div className="relative grid grid-cols-4 gap-4">
+      <div className="relative pt-5">
+        <div className="deck-grow absolute left-2 right-2 top-[31px] h-px bg-vaa/70" />
+        <div className="relative grid grid-cols-4 gap-5">
           {SEMANA.map((s, i) => (
-            <Reveal key={s.dia} i={i + 1}>
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="deck-slide-btn block w-full text-left text-navy"
-              >
-                <span className="mb-4 block h-4 w-4 rounded-full bg-vaa ring-4 ring-vaa/20" />
-                <span className="block text-xs font-bold uppercase tracking-widest text-navy/50">
+            <Reveal key={s.dia} i={i + 1} className="min-w-0">
+              <div className="w-full text-left text-porcelain">
+                <span className="mb-4 block h-3.5 w-3.5 rounded-full bg-vaa ring-4 ring-vaa/20" />
+                <span className="block text-[11px] font-bold uppercase text-porcelain/60">
                   {s.dia} · {s.hora}
                 </span>
-                <span className="mt-1 block text-[15px] font-semibold leading-snug">
+                <span className="mt-1 block min-h-[42px] text-[16px] font-semibold leading-snug">
                   {s.titulo}
                 </span>
-              </button>
-              <div
-                className="overflow-hidden transition-all duration-500"
-                style={{ maxHeight: open === i ? 280 : 0, opacity: open === i ? 1 : 0 }}
-              >
-                <div className="mt-3 space-y-1 rounded-2xl border border-porcelain/20 p-4 text-[12px] leading-snug text-porcelain/80">
+              </div>
+              <div className="mt-3 min-h-[238px] space-y-1.5 border-t border-porcelain/20 pt-3 text-[11px] leading-snug text-porcelain/80">
                   <p>
-                    <strong className="text-navy">Canal</strong> · {s.canal}
+                    <strong className="text-vaa">Canal</strong> · {s.canal}
                   </p>
                   <p>
-                    <strong className="text-navy">Objetivo</strong> · {s.objetivo}
+                    <strong className="text-vaa">Objetivo</strong> · {s.objetivo}
                   </p>
                   <p>{s.descricao}</p>
                   <p>
-                    <strong className="text-navy">Chamada à ação</strong> · «{s.cta}»
+                    <strong className="text-vaa">Chamada à ação</strong> · «{s.cta}»
                   </p>
                   <p>
-                    <strong className="text-navy">Destino</strong> · {s.destino}
+                    <strong className="text-vaa">Destino</strong> · {s.destino}
                   </p>
                   <p>
-                    <strong className="text-navy">Indicador</strong> · {s.indicador}
+                    <strong className="text-vaa">Indicador</strong> · {s.indicador}
                   </p>
-                </div>
               </div>
             </Reveal>
           ))}
         </div>
       </div>
       <Reveal i={5}>
-        <div className="flex items-center justify-between gap-6 border-t border-navy/15 pt-4">
-          <p className="max-w-[610px] text-[12px] leading-relaxed text-navy/60">
+        <div className="flex items-center justify-between gap-6 border-t border-porcelain/20 pt-4">
+          <p className="max-w-[610px] text-[12px] leading-relaxed text-porcelain/60">
             Calendário de trabalho mantido no Notion — inclui vista de tabela e vista de calendário
             mensal.
           </p>

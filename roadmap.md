@@ -34,4 +34,5 @@
 31. Retirar o cronómetro, o placar flutuante e todas as etiquetas superiores com letras de secção. — feito
 32. Reenquadrar “Três jornadas”, redesenhar o calendário em azul, escolher imagem para a Inês, ampliar a capa e retirar os subtítulos dos separadores. — feito
 33. Criar o separador “JORNADA DE COMPRA” antes da Inês e retirar “Minuto” dos quatro títulos do percurso. — feito
+34. Ajustar Inês para fundo branco; percurso, compra e “Porque a SPAL” para azul; restaurar a linha temporal completa do calendário. — feito
 
