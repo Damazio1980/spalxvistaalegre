@@ -40,3 +40,7 @@
 
 
 37. Acrescentar o bloco "Se as metas fossem atingidas" (cenário hipotético, selo SIMULAÇÃO em tom neutro) ao capítulo dos Três Indicadores, mantendo os três cartões "a medir" intactos. — feito
+
+## 38 · Criativo "A SPAL tem casa nova" no slide A publicação
+- estado: feito
+- CriativoSpal em act3.tsx com fundo branco (classe criativo-white), headline serifada a azul e rosa, texto de apoio e CTA «Ver o novo site →» com seta rosa; still-life recortado do criativo enviado (src/assets/spal-criativo-still.jpg.asset.json); marca d'água «exercício académico»; legenda nova com hashtags a rosa; slide publicacao com fundo branco em Stage.tsx.
