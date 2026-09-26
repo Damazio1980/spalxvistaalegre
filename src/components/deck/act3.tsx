@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Bar,
   BarChart,
@@ -168,39 +169,54 @@ export function Jogada({ n }: { n: number; active: boolean }) {
 
 const SEMANA = [
   {
-    dia: "Seg 08/09",
+    dia: "Segunda",
     hora: "19h00",
-    canal: "Instagram Reel + Facebook",
-    titulo: "«A SPAL tem casa nova» — teaser do novo site, bastidores do processo de design (SPAL Studio)",
+    canal: "Instagram + Facebook",
+    objetivo: "Notoriedade",
+    titulo: "A SPAL tem casa nova (teaser)",
+    descricao: "Reel (20-30s) com bastidores do processo de design (SPAL Studio).",
     cta: "Fica atento",
-    indicador: "alcance, visualizações",
+    destino: "Sem link — é teaser; o site novo ainda não está no ar nesta ação.",
+    indicador: "alcance, visualizações, guardados",
   },
   {
-    dia: "Qua 10/09",
+    dia: "Quarta",
     hora: "12h30",
-    canal: "Facebook carrossel + IG Stories",
-    titulo:
-      "«O que muda» — preço visível, compra online, store locator, tudo num só lugar",
+    canal: "Facebook + Stories",
+    objetivo: "Compra",
+    titulo: "O que muda no novo site",
+    descricao:
+      "Carrossel: preço visível em todas as fichas, compra online, store locator completo, tudo num só lugar.",
     cta: "Explora o novo spal.pt",
+    destino: "Página inicial do site novo — destino fictício, simulação académica.",
     indicador: "cliques no link (UTM)",
   },
   {
-    dia: "Sex 12/09",
+    dia: "Sexta",
     hora: "18h00",
-    canal: "Instagram carrossel",
-    titulo: "Primeira coleção com ficha completa no novo site (ex.: Electric Rain), com preço e botão de compra",
+    canal: "Instagram",
+    objetivo: "Informar",
+    titulo: "Primeira coleção já à venda",
+    descricao:
+      "Carrossel: coleção Electric Rain a ganhar ficha completa no site novo, com preço, botão de compra e medidas.",
     cta: "Já podes comprar online",
+    destino: "Ficha de produto Electric Rain no site novo — destino fictício, simulação académica.",
     indicador: "sessões no site, primeiras encomendas",
   },
   {
-    dia: "Dom 14/09",
+    dia: "Domingo",
     hora: "10h30",
-    canal: "IG Stories caixa de perguntas + Facebook",
-    titulo: "«O que querias encontrar no novo site da SPAL?» — feedback real dos seguidores antes/depois do lançamento",
+    canal: "Stories + Facebook",
+    objetivo: "Fidelizar",
+    titulo: "O que procuras no novo site?",
+    descricao: "Caixa de perguntas em Stories + resumo em publicação de Facebook.",
     cta: "Diz-nos o que procuras",
-    indicador: "nº de respostas, taxa de resposta < 24 h",
+    destino: "Recolha de feedback antes do lançamento, sem link.",
+    indicador: "nº de respostas, taxa de resposta <24h",
   },
 ];
+
+const NOTION_CALENDAR_URL = "https://app.notion.com/p/3671d655a81745a68f73db13608b9c70";
 
 export function Semana() {
   const [open, setOpen] = useState<number | null>(0);
@@ -213,7 +229,7 @@ export function Semana() {
         <h3 className="deck-h2 mt-1 text-navy">
           Uma semana de SPAL a falar com o consumidor.
         </h3>
-        <p className="mt-1 text-sm text-navy/60">8 a 14 de setembro de 2026</p>
+        <p className="mt-1 text-sm text-navy/60">Campanha de lançamento do site novo · 7 dias · 4 ações</p>
       </Reveal>
       <div className="relative pt-8">
         <div className="deck-grow absolute left-0 right-0 top-12 h-0.5 bg-navy/15" />
@@ -234,14 +250,21 @@ export function Semana() {
               </button>
               <div
                 className="overflow-hidden transition-all duration-500"
-                style={{ maxHeight: open === i ? 220 : 0, opacity: open === i ? 1 : 0 }}
+                style={{ maxHeight: open === i ? 280 : 0, opacity: open === i ? 1 : 0 }}
               >
                 <div className="mt-3 space-y-1 rounded-2xl bg-white p-4 text-[12px] leading-snug text-navy/75">
                   <p>
                     <strong className="text-navy">Canal</strong> · {s.canal}
                   </p>
                   <p>
+                    <strong className="text-navy">Objetivo</strong> · {s.objetivo}
+                  </p>
+                  <p>{s.descricao}</p>
+                  <p>
                     <strong className="text-navy">Chamada à ação</strong> · «{s.cta}»
+                  </p>
+                  <p>
+                    <strong className="text-navy">Destino</strong> · {s.destino}
                   </p>
                   <p>
                     <strong className="text-navy">Indicador</strong> · {s.indicador}
@@ -253,10 +276,17 @@ export function Semana() {
         </div>
       </div>
       <Reveal i={5}>
-        <Chip className="text-[12px]">
-          Horários como hipótese a testar: comparar 12h30 vs 19h00 durante 2 semanas e adotar o
-          vencedor por rubrica.
-        </Chip>
+        <div className="flex items-center justify-between gap-6 border-t border-navy/15 pt-4">
+          <p className="max-w-[610px] text-[12px] leading-relaxed text-navy/60">
+            Calendário de trabalho mantido no Notion — inclui vista de tabela e vista de calendário
+            mensal.
+          </p>
+          <Button asChild variant="outline" className="shrink-0 border-navy/30 text-navy hover:bg-navy hover:text-porcelain">
+            <a href={NOTION_CALENDAR_URL} target="_blank" rel="noreferrer">
+              Ver calendário completo no Notion →
+            </a>
+          </Button>
+        </div>
       </Reveal>
     </div>
   );
