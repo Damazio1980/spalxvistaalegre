@@ -53,7 +53,7 @@ export function AudienceQuestion() {
         variant="ghost"
         size="icon"
         onClick={() => setOpen(true)}
-        className="h-7 w-7 rounded-full border border-navy/15 text-navy hover:bg-porcelain"
+        className="h-7 w-7 rounded-full border border-navy/15 bg-porcelain text-navy hover:bg-porcelain"
         aria-label="Pergunta da audiência"
         title="Pergunta da audiência"
       >
