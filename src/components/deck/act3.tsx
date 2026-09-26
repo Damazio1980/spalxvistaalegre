@@ -11,8 +11,8 @@ import {
   YAxis,
 } from "recharts";
 import { Chip, Glossary, Num, Reveal, Shot } from "./primitives";
-import { RefShot } from "./mocks";
-import { MAQUETE, PERFIL_SPAL } from "@/data/images";
+import { PERFIL_SPAL } from "@/data/images";
+import spalCriativoStill from "@/assets/spal-criativo-still.jpg.asset.json";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
@@ -280,10 +280,54 @@ export function Semana() {
 }
 
 const LEGENDA =
-  "A SPAL tem casa nova. A mesma porcelana que desenhamos e produzimos em Alcobaça para a hotelaria, agora com preço, compra online e todas as lojas num só lugar. Descobre o novo spal.pt — link na bio.";
+  "A SPAL tem casa nova. A mesma porcelana de sempre, agora com uma experiência digital renovada: mais coleções, mais informação e compra online num só lugar. Descobre o novo site e encontra as peças que combinam com a tua mesa.";
+
+const HASHTAGS = "#SPALPorcelanas #ASPALTemCasaNova #PorcelanaPortuguesa #MesaPosta #DesignPortuguês";
 
 const ALT_TEXT =
-  "Prato de porcelana branca com friso azul sobre fundo bege; texto: Da mesa dos hotéis para a tua mesa — porcelana de design feita em Alcobaça desde 1965; botão Onde comprar; logótipo SPAL.";
+  "Still-life de porcelana branca — prato, tigela e caneca — sobre fundo claro, com luz natural; texto: A SPAL tem casa nova; botão Ver o novo site; logótipo SPAL no canto superior esquerdo.";
+
+/** Criativo «A SPAL tem casa nova» — fundo branco, letras a azul e rosa, seta no CTA. */
+function CriativoSpal() {
+  return (
+    <div className="criativo-white flex h-full flex-col p-3">
+      {/* marca d'água académica, discreta no canto superior */}
+      <div className="flex items-start justify-end">
+        <span className="text-[6px] uppercase tracking-[0.18em] text-navy/35">
+          exercício académico
+        </span>
+      </div>
+      {/* still-life: a fotografia do criativo (logótipo SPAL no canto da própria foto) */}
+      <div className="mt-1.5 h-[40%] shrink-0 overflow-hidden">
+        <img src={spalCriativoStill.url} alt="" className="h-full w-full object-cover" />
+      </div>
+      {/* headline serifada a azul e rosa + texto de apoio */}
+      <div className="mt-2 px-0.5">
+        <div className="h-[2px] w-9 bg-vaa" />
+        <p className="mt-1.5 font-serif text-[18px] font-bold leading-[1.02] tracking-tight text-navy">
+          A SPAL tem
+          <br />
+          <span className="text-vaa">casa nova.</span>
+        </p>
+        <p className="mt-1.5 text-[8px] leading-snug text-navy/75">
+          A mesma porcelana de sempre, agora com uma experiência digital renovada: mais coleções,
+          mais informação e compra online num só lugar.
+        </p>
+        <p className="mt-1 text-[8px] leading-snug text-navy/55">
+          Descobre o novo site e encontra as peças que combinam com a tua mesa.
+        </p>
+        {/* CTA em pílula, terço inferior, com seta a rosa */}
+        <div className="mt-2 flex items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-navy px-3.5 py-1.5 text-[9px] font-bold text-porcelain">
+            Ver o novo site <span className="text-vaa">→</span>
+          </span>
+          <span className="h-[5px] w-[5px] rounded-full bg-vaa" />
+          <span className="h-[5px] w-[5px] rounded-full bg-navy/35" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function Publicacao() {
   const [alt, setAlt] = useState(false);
@@ -297,9 +341,17 @@ export function Publicacao() {
           <span className="h-7 w-7 rounded-full bg-spal" />
           <span className="text-[13px] font-semibold text-navy">spalporcelanasofficial</span>
         </div>
-        <RefShot img={MAQUETE} group="maquete" className="aspect-[4/5]" />
+        <Shot
+          id="maquete-publicacao"
+          group="maquete"
+          caption="Criativo da publicação · Instagram SPAL · carrossel 1080×1350"
+          className="aspect-[4/5]"
+        >
+          <CriativoSpal />
+        </Shot>
         <p className="mt-2 max-h-[150px] overflow-auto text-[11px] leading-snug text-navy/80">
-          <strong>spalporcelanasofficial</strong> {LEGENDA}
+          <strong>spalporcelanasofficial</strong> {LEGENDA}{" "}
+          <span className="font-semibold text-vaa">{HASHTAGS}</span>
         </p>
       </Reveal>
       <div className="space-y-3">
