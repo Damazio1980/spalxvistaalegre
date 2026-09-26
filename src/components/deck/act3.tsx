@@ -290,42 +290,34 @@ const ALT_TEXT =
 /** Criativo «A SPAL tem casa nova» — fundo branco, letras a azul e rosa, seta no CTA. */
 function CriativoSpal() {
   return (
-    <div className="flex h-full flex-col bg-white p-3.5">
-      {/* logótipo discreto no canto superior esquerdo + marca d'água académica */}
-      <div className="flex items-start justify-between">
-        <div className="leading-none">
-          <span className="block font-serif text-[15px] font-bold tracking-tight text-navy">
-            SPAL<span className="align-super text-[7px]">®</span>
-          </span>
-          <span className="mt-[3px] block text-[6px] font-semibold uppercase tracking-[0.32em] text-navy/70">
-            Porcelanas
-          </span>
-        </div>
-        <span className="mt-0.5 text-[6px] uppercase tracking-[0.18em] text-navy/35">
+    <div className="flex h-full flex-col bg-white p-3">
+      {/* marca d'água académica, discreta no canto superior */}
+      <div className="flex items-start justify-end">
+        <span className="text-[6px] uppercase tracking-[0.18em] text-navy/35">
           exercício académico
         </span>
       </div>
-      {/* still-life: a fotografia do criativo, sem texto por cima */}
-      <div className="mt-2.5 h-[42%] shrink-0 overflow-hidden">
+      {/* still-life: a fotografia do criativo (logótipo SPAL no canto da própria foto) */}
+      <div className="mt-1.5 h-[40%] shrink-0 overflow-hidden">
         <img src={spalCriativoStill.url} alt="" className="h-full w-full object-cover" />
       </div>
       {/* headline serifada a azul e rosa + texto de apoio */}
-      <div className="mt-3 px-0.5">
+      <div className="mt-2 px-0.5">
         <div className="h-[2px] w-9 bg-vaa" />
-        <p className="mt-2 font-serif text-[19px] font-bold leading-[1.02] tracking-tight text-navy">
+        <p className="mt-1.5 font-serif text-[18px] font-bold leading-[1.02] tracking-tight text-navy">
           A SPAL tem
           <br />
           <span className="text-vaa">casa nova.</span>
         </p>
-        <p className="mt-2 text-[8.5px] leading-snug text-navy/75">
+        <p className="mt-1.5 text-[8px] leading-snug text-navy/75">
           A mesma porcelana de sempre, agora com uma experiência digital renovada: mais coleções,
           mais informação e compra online num só lugar.
         </p>
-        <p className="mt-1.5 text-[8.5px] leading-snug text-navy/55">
+        <p className="mt-1 text-[8px] leading-snug text-navy/55">
           Descobre o novo site e encontra as peças que combinam com a tua mesa.
         </p>
         {/* CTA em pílula, terço inferior, com seta a rosa */}
-        <div className="mt-3 flex items-center gap-2">
+        <div className="mt-2 flex items-center gap-2">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-navy px-3.5 py-1.5 text-[9px] font-bold text-porcelain">
             Ver o novo site <span className="text-vaa">→</span>
           </span>
