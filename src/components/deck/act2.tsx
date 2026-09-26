@@ -12,6 +12,19 @@ import inesPortrait from "@/assets/ines-persona.jpg";
 import { Chip, Num, Reveal } from "./primitives";
 import type { ChapterProps } from "./act1";
 
+export function JornadaCompra() {
+  return (
+    <div className="flex h-full items-center px-24 text-porcelain">
+      <div>
+        <div className="mb-8 h-px w-28 bg-vaa" />
+        <Reveal i={0}>
+          <h2 className="deck-title text-[64px] leading-tight">JORNADA DE COMPRA</h2>
+        </Reveal>
+      </div>
+    </div>
+  );
+}
+
 export function InesPersona() {
   return (
     <div className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-10 p-14">

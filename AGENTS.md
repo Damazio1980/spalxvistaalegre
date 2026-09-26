@@ -13,3 +13,4 @@
 - Não exibir cronómetro, placar flutuante nem etiquetas superiores de secção, para manter todos os slides sem indicadores do enunciado.
 - Mostrar o conteúdo dos slides de imediato, sem páginas transitórias de frase ou de mudança de ato, para manter o avanço linear sem pop-ups.
 - O slide do minuto 0 usa os vídeos verticais enviados pelo utilizador via ponteiros de assets e amplia em portal, para comparar os sites reais sem simulações estáticas.
+- O percurso da Inês começa com o separador “JORNADA DE COMPRA”; os títulos seguintes não mostram a palavra “Minuto”.

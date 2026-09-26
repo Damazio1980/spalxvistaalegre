@@ -275,6 +275,7 @@ function FrameBody({
         "identificacao-canais",
         "introducao-website",
         "placar1",
+        "jornada-compra",
         "jogadas",
         "semana",
       ].includes(frame.id) && (
