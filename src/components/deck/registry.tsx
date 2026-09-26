@@ -16,7 +16,7 @@ import {
   Website,
   type ChapterProps,
 } from "./act1";
-import { DoisPlacares, InesPersona, Min0, Min12, Min3, Min8 } from "./act2";
+import { DoisPlacares, InesPersona, JornadaCompra, Min0, Min12, Min3, Min8 } from "./act2";
 import {
   Bastidores,
   Bio,
@@ -51,6 +51,7 @@ export const CHAPTERS: Record<string, ComponentType<ChapterProps>> = {
   radar: Radar6,
   redes: Redes,
   placar1: Placar1,
+  "jornada-compra": JornadaCompra,
   ines: InesPersona,
   min0: Min0,
   min3: Min3,

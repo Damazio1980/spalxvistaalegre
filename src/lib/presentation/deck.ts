@@ -190,6 +190,13 @@ const seeds: Seed[] = [
 
   // ── Ato 2 · anel intermédio ─────────────────────────────────────────────
   {
+    id: "jornada-compra",
+    act: 2,
+    title: "Jornada de compra",
+    navy: true,
+    rot: 0,
+  },
+  {
     id: "ines",
     act: 2,
     title: "Conhece a Inês",
@@ -199,14 +206,14 @@ const seeds: Seed[] = [
   {
     id: "min0",
     act: 2,
-    title: "Minuto 0 — a Inês entra",
+    title: "A Inês entra",
     punchline: "Um site pede-lhe uma escolha. O outro mostra-lhe um preço.",
     rot: 2.5,
   },
   {
     id: "min3",
     act: 2,
-    title: "Minuto 3 — à procura de um prato",
+    title: "À procura de um prato",
     punchline: "Cinco passos contra quatro. E um deles é uma miniatura sem nome.",
     rot: -2.5,
     score: [0, 1],
@@ -214,7 +221,7 @@ const seeds: Seed[] = [
   {
     id: "min8",
     act: 2,
-    title: "Minuto 8 — a ficha",
+    title: "A ficha",
     punchline: "Peso em gramas. E nem uma palavra sobre preço.",
     rot: 2,
     score: [0, 1],
@@ -222,7 +229,7 @@ const seeds: Seed[] = [
   {
     id: "min12",
     act: 2,
-    title: "Minuto 12 — 'e agora, onde compro?'",
+    title: "E agora, onde compro?",
     punchline: "A SPAL perde a Inês exatamente no momento em que ela decide comprar.",
     rot: -1.5,
     score: [0, 1],
