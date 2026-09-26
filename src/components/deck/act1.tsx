@@ -968,16 +968,16 @@ export function Radar6({ active }: ChapterProps) {
         </ResponsiveContainer>
       </Reveal>
       <div className="space-y-4">
-        <Reveal i={1} className="deck-card bg-navy p-6 text-porcelain">
-          <p className="text-sm text-porcelain/70">Total das seis rondas</p>
-          <div className="mt-2 flex items-end gap-6">
-            <div className="border border-porcelain/20 bg-spal px-5 py-4 text-center">
-              <Num value={13} active={active} className="spal-score-number text-6xl" />
-              <p className="text-xs text-porcelain/60">SPAL · 3-2-3-1-2-2</p>
+        <Reveal i={1} className="border-y border-navy/15 bg-porcelain px-2 py-6 text-navy">
+          <p className="text-sm text-navy/70">Total das seis rondas</p>
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            <div className="border-t-2 border-spal pt-3">
+              <Num value={13} active={active} className="text-6xl text-spal" />
+              <p className="mt-2 text-xs text-spal">SPAL · 3-2-3-1-2-2</p>
             </div>
-            <div>
+            <div className="border-t-2 border-vaa pt-3">
               <Num value={29} active={active} className="text-6xl text-vaa" />
-              <p className="text-xs text-porcelain/60">Vista Alegre · 5-5-5-5-4-5</p>
+              <p className="mt-2 text-xs text-vaa">Vista Alegre · 5-5-5-5-4-5</p>
             </div>
           </div>
         </Reveal>
@@ -1236,19 +1236,19 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
       </div>
       <div className="min-h-0 flex-1 divide-y divide-porcelain/20 border-y border-porcelain/20">
         {COMPARACAO.map((row, i) => (
-          <Reveal key={row.dim} i={i + 1} className="grid grid-cols-[165px_1fr_1fr] gap-5 py-3">
+          <Reveal key={row.dim} i={i + 1} className="grid grid-cols-[145px_1fr_1fr] gap-5 py-3">
             <div>
-              <p className="text-[10px] font-extrabold uppercase tracking-widest text-vaa">{row.dim}</p>
-              {row.winner && <span className="mt-1 inline-block rounded-full bg-vaa/20 px-2 py-0.5 text-[8px] font-bold uppercase text-vaa">vence Vista Alegre +1</span>}
-              {!row.winner && i < 2 && <span className="mt-1 block text-[8px] text-porcelain/60">estilos diferentes · sem ponto</span>}
+              <p className="text-[13px] font-extrabold uppercase text-vaa">{row.dim}</p>
+              {row.winner && <span className="mt-1 inline-block text-[11px] font-bold text-vaa">vence Vista Alegre +1</span>}
+              {!row.winner && i < 2 && <span className="mt-1 block text-[11px] text-porcelain/70">estilos diferentes · sem ponto</span>}
             </div>
-            <p className="text-[10.5px] leading-[1.4] text-porcelain/90"><strong className="text-porcelain">SPAL:</strong> {row.spal}</p>
-            <p className="text-[10.5px] leading-[1.4] text-porcelain/90"><strong className="text-vaa">Vista Alegre:</strong> {row.vaa}</p>
+            <p className="text-[14px] leading-[1.3] text-porcelain/90"><strong className="text-porcelain">SPAL:</strong> {row.spal}</p>
+            <p className="text-[14px] leading-[1.3] text-porcelain/90"><strong className="text-vaa">Vista Alegre:</strong> {row.vaa}</p>
           </Reveal>
         ))}
       </div>
       <Reveal i={7} className="mt-5 border-l-4 border-vaa pl-5">
-        <p className="font-[var(--font-display)] text-[23px] font-extrabold leading-tight">
+        <p className="font-[var(--font-display)] text-[21px] font-extrabold leading-tight">
           “A SPAL fala uma língua institucional em duas redes iguais. A Vista Alegre fala duas línguas diferentes — uma por rede.”
         </p>
       </Reveal>
@@ -1300,9 +1300,6 @@ export function Placar1({ active }: ChapterProps) {
   return (
     <div className="flex h-full flex-col gap-4 p-10 text-porcelain">
       <Reveal i={0}>
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-porcelain/50">
-          D · diagnóstico
-        </p>
         <h3 className="mt-1 font-[var(--font-display)] text-[26px] font-extrabold leading-tight">
           A Vista Alegre facilita melhor o percurso completo. A SPAL destaca-se na informação
           técnica.
