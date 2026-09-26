@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { ChevronLeft, ChevronRight, Maximize, List } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize } from "lucide-react";
 import {
   ACTS,
   FRAMES,
-  TOTAL_CHAPTERS,
   scoreAt,
   type ActId,
   type FrameDef,
@@ -52,7 +51,6 @@ export function Stage() {
   const [index, setIndex] = useState(0);
   const [viewport, setViewport] = useState<Viewport>({ width: 1280, height: 720 });
   const [actOverlay, setActOverlay] = useState<ActId | null>(null);
-  const [menu, setMenu] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const [canaisPage, setCanaisPage] = useState(0);
   const [redesPage, setRedesPage] = useState(0);
@@ -81,7 +79,6 @@ export function Stage() {
   }, []);
 
   const goTo = useCallback((next: number) => {
-    setMenu(false);
     setIndex((cur) => {
       previous.current = cur;
       const target = Math.max(0, Math.min(FRAMES.length - 1, next));
@@ -141,8 +138,6 @@ export function Stage() {
       } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
         e.preventDefault();
         goBack();
-      } else if (e.key === "Escape") {
-        setMenu(false);
       } else if (e.key.toLowerCase() === "f") {
         if (document.fullscreenElement) document.exitFullscreen();
         else shell.current?.requestFullscreen?.();
@@ -251,7 +246,7 @@ export function Stage() {
         )}
 
         {/* scoreboard */}
-        {frame.act !== 3 && !actOverlay && (
+        {frame.act === 2 && frame.id !== "ines" && frame.id !== "dois-placares" && !actOverlay && (
           <div className="absolute right-6 top-6 z-30 flex items-center gap-4 rounded-2xl bg-white/85 px-5 py-3 shadow-[var(--shadow-card)] backdrop-blur">
             <div className="text-center">
               <p className="text-[10px] font-bold uppercase tracking-widest text-spal">SPAL</p>
@@ -270,15 +265,13 @@ export function Stage() {
                 {score.vaa}
               </p>
             </div>
-            {frame.act === 2 && (
-              <div className="ml-2 border-l border-navy/20 pl-4 text-center">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-ines">Inês</p>
-                <p className="deck-num text-2xl text-ines">
-                  {String(Math.floor(seconds / 60)).padStart(2, "0")}:
-                  {String(seconds % 60).padStart(2, "0")}
-                </p>
-              </div>
-            )}
+            <div className="ml-2 border-l border-navy/20 pl-4 text-center">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-ines">Inês</p>
+              <p className="deck-num text-2xl text-ines">
+                {String(Math.floor(seconds / 60)).padStart(2, "0")}:
+                {String(seconds % 60).padStart(2, "0")}
+              </p>
+            </div>
           </div>
         )}
 
@@ -298,21 +291,8 @@ export function Stage() {
           <ChevronRight className="h-6 w-6" />
         </button>
 
-        {/* bottom bar */}
-        <div className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 items-center gap-4 rounded-2xl bg-white/85 px-5 py-2.5 shadow-[var(--shadow-card)] backdrop-blur">
-          <button
-            onClick={() => setMenu((m) => !m)}
-            className="flex items-center gap-2 text-left text-sm font-semibold text-navy"
-          >
-            <List className="h-4 w-4 text-navy/50" />
-            {ACTS[frame.act].label} · {frame.title}
-            {frame.id === "canais" ? ` ${canaisPage + 1}/2` : ""}
-            {frame.id === "redes" ? ` ${redesPage + 1}/4` : ""}
-          </button>
-          <span className="deck-num text-xs text-navy/50">
-            {frame.n === 0 ? "Capa" : `${frame.n}/${TOTAL_CHAPTERS}`}
-          </span>
-          <ChapterPlate frame={frame} />
+        {/* presentation tools remain available without slide navigation chrome */}
+        <div className="absolute bottom-4 right-4 z-30 flex items-center gap-2">
           <AudienceQuestion />
           <button
             onClick={() =>
@@ -320,34 +300,12 @@ export function Stage() {
                 ? document.exitFullscreen()
                 : shell.current?.requestFullscreen?.()
             }
-            className="rounded-full border border-navy/15 p-1.5 text-navy"
+            className="grid h-7 w-7 place-items-center rounded-full border border-navy/15 bg-porcelain text-navy"
             aria-label="Ecrã inteiro"
           >
             <Maximize className="h-3.5 w-3.5" />
           </button>
         </div>
-
-        {menu && (
-          <div className="absolute bottom-20 left-1/2 z-40 max-h-[60vh] w-[520px] -translate-x-1/2 overflow-auto rounded-2xl bg-white p-3 shadow-[var(--shadow-frame)]">
-            {FRAMES.map((f, i) => (
-              <button
-                key={f.id}
-                onClick={() => goTo(i)}
-                className={cn(
-                  "flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm hover:bg-porcelain",
-                  i === index && "bg-porcelain font-semibold",
-                  f.parent && "pl-9 text-navy/65",
-                )}
-              >
-                <span className="deck-num w-8 text-xs text-navy/40">{f.n}</span>
-                <span className="flex-1 text-navy">{f.title}</span>
-                <span className="text-[10px] uppercase tracking-widest text-navy/35">
-                  {ACTS[f.act].label}
-                </span>
-              </button>
-            ))}
-          </div>
-        )}
 
       </div>
     </LightboxProvider>
@@ -384,7 +342,7 @@ function FrameBody({
 
   return (
     <div className="relative h-full w-full">
-      {frame.tag && (
+      {frame.tag && frame.id !== "nomes" && (
         <span
           className={cn(
             "absolute right-5 top-5 z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest",
@@ -396,10 +354,17 @@ function FrameBody({
           {frame.tag}
         </span>
       )}
+      {frame.id === "nomes" && (
+        <span className="absolute left-6 top-5 z-10 text-[11px] font-bold uppercase tracking-[0.25em] text-navy/40">
+          Enquadramento
+        </span>
+      )}
       {![
         "capa",
         "apresentacao",
         "apresentacao-empresas",
+        "nomes",
+        "pergunta",
         "identificacao-canais",
         "introducao-website",
       ].includes(frame.id) && (
@@ -466,13 +431,3 @@ function PorcelainBackdrop({ variant }: { variant: Backdrop }) {
   );
 }
 
-function ChapterPlate({ frame }: { frame: FrameDef }) {
-  return (
-    <div className="grid h-[46px] w-[46px] shrink-0 place-items-center rounded-full border-2 border-spal/30 bg-porcelain shadow-inner">
-      <span className="deck-num text-[11px] text-navy/55">
-        {frame.n === 0 ? "00" : String(frame.n).padStart(2, "0")}
-      </span>
-      <span className="sr-only">{frame.title}</span>
-    </div>
-  );
-}
