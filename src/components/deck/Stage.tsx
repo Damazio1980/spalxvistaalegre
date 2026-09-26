@@ -42,6 +42,7 @@ const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
 const REQUESTED_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "white">> = {
   min8: "navy",
   "dois-placares": "white",
+  semana: "navy",
 };
 
 function fitScale(f: FrameDef, viewport: Viewport) {

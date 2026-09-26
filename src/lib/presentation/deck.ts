@@ -247,7 +247,7 @@ const seeds: Seed[] = [
   {
     id: "jogadas",
     act: 3,
-    title: "Três jogadas, por ordem de prioridade",
+    title: "Três jornadas por ordem de prioridade",
     punchline: "A jogada não é consertar — é mudar de casa.",
     navy: true,
     rot: 1.5,

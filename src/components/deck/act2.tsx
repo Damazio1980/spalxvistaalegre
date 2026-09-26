@@ -8,6 +8,7 @@ import spalOpeningWebm from "@/assets/ines-abre-spal.webm.asset.json";
 import vaaOpeningWebm from "@/assets/ines-abre-vista-alegre.webm.asset.json";
 import spalOpeningPoster from "@/assets/ines-abre-spal.jpg.asset.json";
 import vaaOpeningPoster from "@/assets/ines-abre-vista-alegre.jpg.asset.json";
+import inesPortrait from "@/assets/ines-persona.jpg";
 import { Chip, Num, Reveal } from "./primitives";
 import type { ChapterProps } from "./act1";
 
@@ -15,12 +16,14 @@ export function InesPersona() {
   return (
     <div className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-10 p-14">
       <Reveal i={0} className="deck-card overflow-hidden bg-white">
-        <div className="flex h-[300px] items-center justify-center bg-vaa/15">
-          <div className="relative h-40 w-40 rounded-full bg-porcelain">
-            <div className="absolute left-1/2 top-8 h-14 w-14 -translate-x-1/2 rounded-full bg-ines/80" />
-            <div className="absolute bottom-6 left-1/2 h-16 w-24 -translate-x-1/2 rounded-t-[40px] bg-navy/70" />
-          </div>
-        </div>
+        <img
+          src={inesPortrait}
+          alt="Inês, 36 anos, a comprar pelo telemóvel"
+          loading="lazy"
+          width={768}
+          height={1024}
+          className="h-[360px] w-full object-cover object-top"
+        />
         <div className="p-6">
           <p className="deck-h2 text-4xl text-ines">Inês</p>
           <p className="mt-1 text-sm text-navy/70">36 anos · Lisboa · compra pelo telemóvel</p>
@@ -45,11 +48,6 @@ export function InesPersona() {
             ),
           )}
         </div>
-        <Reveal i={4} className="rounded-2xl border border-navy/10 bg-white p-5">
-          <p className="text-sm text-navy/70">
-            Cronómetro a arrancar em <strong>00:00</strong>. Placar de volta a <strong>0-0</strong>.
-          </p>
-        </Reveal>
       </div>
     </div>
   );
