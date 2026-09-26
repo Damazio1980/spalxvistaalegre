@@ -493,6 +493,41 @@ export function Resposta({ active }: ChapterProps) {
   );
 }
 
+export function NoAr() {
+  return (
+    <div className="flex h-full items-center px-24 text-porcelain">
+      <div>
+        <div className="mb-8 h-px w-28 bg-vaa" />
+        <Reveal i={0}>
+          <h2 className="deck-title text-[64px] leading-tight">E SE JÁ ESTIVESSE NO AR?</h2>
+        </Reveal>
+        <Reveal i={1}>
+          <p className="mt-6 max-w-3xl text-3xl leading-snug text-porcelain/75">
+            As jogadas estão feitas. Agora, os números decidem.
+          </p>
+        </Reveal>
+      </div>
+    </div>
+  );
+}
+
+export function SimulacaoReal() {
+  return (
+    <div className="flex h-full items-center px-24 text-porcelain">
+      <div>
+        <div className="mb-8 h-px w-28 bg-vaa" />
+        <Reveal i={0}>
+          <h2 className="deck-title text-[64px] leading-tight">DA SIMULAÇÃO PARA O REAL</h2>
+        </Reveal>
+        <Reveal i={1}>
+          <p className="mt-6 max-w-3xl text-3xl leading-snug text-porcelain/75">
+            Chega de imaginar. Isto é o que vamos mesmo medir.
+          </p>
+        </Reveal>
+      </div>
+    </div>
+  );
+}
 
 export function MarcaX({ active }: ChapterProps) {
   const INSTA = "var(--chart-blue-secondary)";
