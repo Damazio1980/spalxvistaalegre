@@ -17,6 +17,16 @@ import vaaPost4Image2 from "@/assets/social-posts/vaa-post-4-2.jpg.asset.json";
 import vaaPost4Image3 from "@/assets/social-posts/vaa-post-4-3.jpg.asset.json";
 import vaaPost4Image4 from "@/assets/social-posts/vaa-post-4-4.jpg.asset.json";
 import vaaPost4Image5 from "@/assets/social-posts/vaa-post-4-5.jpg.asset.json";
+import spalPost8 from "@/assets/social-posts/spal-ig-7383.jpg.asset.json";
+import spalPost9Video from "@/assets/social-posts/spal-ig-7385.jpg.asset.json";
+import spalPost9Copy from "@/assets/social-posts/spal-ig-7386.jpg.asset.json";
+import spalPost10Cover from "@/assets/social-posts/spal-ig-7388.jpg.asset.json";
+import spalPost10Image4 from "@/assets/social-posts/spal-ig-7391.jpg.asset.json";
+import spalPost10Image5 from "@/assets/social-posts/spal-ig-7392.jpg.asset.json";
+import spalPost10Image6 from "@/assets/social-posts/spal-ig-7393.jpg.asset.json";
+import spalPost10Image7 from "@/assets/social-posts/spal-ig-7394.jpg.asset.json";
+import spalPost10Image8 from "@/assets/social-posts/spal-ig-7395.jpg.asset.json";
+import spalPost10Image9 from "@/assets/social-posts/spal-ig-7396.jpg.asset.json";
 
 export type RefKind = "desktop" | "mobile" | "post" | "maquete";
 
@@ -210,14 +220,19 @@ export const POSTS: RefImage[] = [
   post("post-6", "Vista Alegre", "Facebook", refPorcelana, {
     data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "Jornadas Europeias do Património", cta: "Conheça aqui as atividades e programação", reacoes: "[não visível]",
   }),
-  post("post-7", "@spalporcelanasofficial", "Instagram", refMesa, {
+  post("post-7", "@spalporcelanasofficial", "Instagram", spalPost8.url, {
     data: "09/09", formato: "Imagem única", tema: "Recrutamento — Assistente de Loja", cta: "envie o seu CV para rh@spal.pt", reacoes: "24 gostos, 12 envios",
+    isPlaceholder: false,
   }),
-  post("post-8", "@spalporcelanasofficial", "Instagram", refPorcelana, {
+  post("post-8", "@spalporcelanasofficial", "Instagram", spalPost9Video.url, {
     data: "24/08", formato: "Reel", tema: "Arte que se serve à mesa", cta: "nenhum", reacoes: "17 gostos, 1 repost, 4 envios",
+    gallery: [spalPost9Video.url, spalPost9Copy.url],
+    isPlaceholder: false,
   }),
-  post("post-9", "@spalporcelanasofficial", "Instagram", refMesa, {
+  post("post-9", "@spalporcelanasofficial", "Instagram", spalPost10Cover.url, {
     data: "28/07", formato: "Carrossel 9 imagens", tema: "Sustentabilidade", cta: "nenhum", reacoes: "36 gostos, 1 envio",
+    gallery: [spalPost10Cover.url, spalPost10Image4.url, spalPost10Image5.url, spalPost10Image6.url, spalPost10Image7.url, spalPost10Image8.url, spalPost10Image9.url],
+    isPlaceholder: false,
   }),
   post("post-10", "SPAL Porcelanas", "Facebook", refPorcelana, {
     data: "09/09", formato: "Imagem única", tema: "Recrutamento Assistente de Loja", cta: "envie o seu CV para rh@spal.pt", reacoes: "5 gostos, 2 partilhas",
