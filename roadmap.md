@@ -22,4 +22,5 @@
 19. Remover quatro frases de abertura, ajustar fundos pedidos, destacar o total SPAL e ampliar as publicações em formato de telemóvel. — feito
 20. Dividir as publicações em dois quadros, Instagram e Facebook, com seis mockups de telemóvel e informação completa por rede. — feito
 21. Retirar navegação inferior e placar geral; mostrar placar apenas no percurso de compra da Inês; limpar etiquetas e cabeçalhos superiores indicados. — feito
+22. Colocar as capturas enviadas nas publicações 8, 9 e 10 do Instagram da SPAL, com vídeo/copy e carrossel navegável. — feito (7 imagens recebidas do carrossel de 9)
 
