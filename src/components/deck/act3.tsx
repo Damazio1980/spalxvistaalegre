@@ -797,7 +797,7 @@ export function Indicadores({ active }: ChapterProps) {
           </div>
           <div>
             <p className="font-semibold text-navy/85">
-              2 · Resposta a comentários e mensagens em <24 h — meta ≥ 95 %
+              2 · Resposta a comentários e mensagens em {"<24 h"} — meta ≥ 95 %
             </p>
             <p className="mt-1">
               Numa semana com 40 comentários e mensagens recebidas, a meta significa responder a
