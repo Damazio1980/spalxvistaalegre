@@ -94,7 +94,7 @@ const JOGADAS = [
   },
 ];
 
-export function Jogadas({ active }: ChapterProps) {
+export function Jogadas() {
   return (
     <div className="flex h-full flex-col justify-center gap-7 p-14 text-navy">
       <Reveal i={0}>
@@ -114,6 +114,8 @@ export function Jogadas({ active }: ChapterProps) {
             <p className="mt-3 text-lg font-semibold">{j.title}</p>
             <p className="mt-2 text-[11px] font-bold uppercase text-navy/45">Evidência</p>
             <p className="mt-1 text-[12px] leading-snug text-navy/70">{j.prova}</p>
+            <p className="mt-3 text-[11px] font-bold uppercase text-navy/45">Ação</p>
+            <p className="mt-1 text-[12px] leading-snug text-navy/70">{j.jogada}</p>
             <p className="mt-3 text-[11px] font-bold uppercase text-navy/45">Canal</p>
             <p className="mt-1 text-[12px] text-navy/70">{j.onde}</p>
             <p className="mt-3 text-[11px] font-bold uppercase text-navy/45">Resultado esperado</p>
