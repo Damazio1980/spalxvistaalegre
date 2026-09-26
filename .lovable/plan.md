@@ -1,12 +1,12 @@
-# Ajustes visuais do percurso da Inês
+# Atualização do calendário da secção E
 
 ## Alterações
-- Ampliar os dois telemóveis em “Ela abre os dois sites”, aproveitando melhor a área disponível, e remover a frase final.
-- Aumentar a hierarquia tipográfica e a leitura em “À procura de um prato”.
-- Redesenhar “A ficha” sobre fundo azul, com texto branco e detalhes rosa seco, mantendo as comparações lado a lado.
-- Aumentar textos e números em “E agora, onde compro?”.
-- Passar “Dois placares, o mesmo resultado” para fundo branco, com tipografia e números em azul SPAL e rosa Vista Alegre.
+- Substituir apenas o calendário atual pelas quatro ações fornecidas, preservando a maquete, biografia e resposta ao cliente.
+- Manter dia, hora, canal, objetivo, descrição, chamada à ação, destino e indicador exatamente como indicados.
+- Acrescentar “Ver calendário completo no Notion →”, abrindo a página fornecida numa nova aba.
+- Incluir a nota de rodapé sobre as vistas de tabela e calendário mensal.
+- Usar apenas a ligação quando a página do Notion não permitir incorporação segura no slide.
 
 ## Validação
-- Confirmar os cinco slides no ecrã, incluindo a reprodução e ampliação dos vídeos.
-- Verificar leitura, enquadramento, contraste e ausência de sobreposições.
+- Confirmar que as quatro ações cabem e são legíveis no slide.
+- Confirmar que a ligação abre o calendário correto e que os restantes conteúdos da secção não mudaram.
