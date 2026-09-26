@@ -38,7 +38,11 @@ const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
   indicadores: "white",
   final: "white",
   min0: "white",
-  min8: "white",
+};
+
+const REQUESTED_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "white">> = {
+  min8: "navy",
+  "dois-placares": "white",
 };
 
 function fitScale(f: FrameDef, viewport: Viewport) {
@@ -65,10 +69,11 @@ export function Stage() {
     frame.id === "redes" ? (redesPage === 2 ? "white" : "navy") : undefined;
   const canaisTheme: Extract<Backdrop, "navy" | "white"> | undefined =
     frame.id === "canais" ? (canaisPage === 0 ? "navy" : "white") : undefined;
+  const requestedTheme = REQUESTED_BACKDROPS[frame.id];
   const chartTheme = frame.id === "redes" || frame.id === "canais" ? undefined : CHART_BACKDROPS[frame.id];
   const editorialTheme: Extract<Backdrop, "navy" | "rose"> = index % 2 === 0 ? "rose" : "navy";
-  const backdrop: Backdrop = frame.id === "capa" ? "pattern" : canaisTheme ?? redesTheme ?? chartTheme ?? editorialTheme;
-  const frameTheme = frame.id === "capa" ? undefined : canaisTheme ?? redesTheme ?? chartTheme ?? editorialTheme;
+  const backdrop: Backdrop = frame.id === "capa" ? "pattern" : requestedTheme ?? canaisTheme ?? redesTheme ?? chartTheme ?? editorialTheme;
+  const frameTheme = frame.id === "capa" ? undefined : requestedTheme ?? canaisTheme ?? redesTheme ?? chartTheme ?? editorialTheme;
 
   useEffect(() => {
     const measure = () => setViewport({ width: window.innerWidth, height: window.innerHeight });
