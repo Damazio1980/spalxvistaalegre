@@ -25,10 +25,12 @@ import {
   Jogada,
   Jogadas,
   MarcaX,
+  NoAr,
   PorqueSpal,
   Publicacao,
   Resposta,
   Semana,
+  SimulacaoReal,
 } from "./act3";
 
 export const CHAPTERS: Record<string, ComponentType<ChapterProps>> = {
@@ -67,7 +69,9 @@ export const CHAPTERS: Record<string, ComponentType<ChapterProps>> = {
   publicacao: Publicacao,
   bio: Bio,
   resposta: Resposta,
+  "no-ar": NoAr,
   marcax: MarcaX,
+  "simulacao-real": SimulacaoReal,
   indicadores: Indicadores,
   final: Final,
   bastidores: Bastidores,

@@ -47,6 +47,8 @@ const REQUESTED_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "white">> =
   "dois-placares": "white",
   "porque-spal": "navy",
   semana: "navy",
+  "no-ar": "navy",
+  "simulacao-real": "navy",
 };
 
 function fitScale(f: FrameDef, viewport: Viewport) {
@@ -282,6 +284,8 @@ function FrameBody({
         "jornada-compra",
         "jogadas",
         "semana",
+        "no-ar",
+        "simulacao-real",
       ].includes(frame.id) && (
         <span
           className={cn(
