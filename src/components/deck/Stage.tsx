@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 import { ChevronLeft, ChevronRight, Maximize } from "lucide-react";
 import {
   FRAMES,
-  scoreAt,
   type FrameDef,
 } from "@/lib/presentation/deck";
 import { CHAPTERS } from "./registry";
@@ -54,17 +53,12 @@ function fitScale(f: FrameDef, viewport: Viewport) {
 export function Stage() {
   const [index, setIndex] = useState(0);
   const [viewport, setViewport] = useState<Viewport>({ width: 1280, height: 720 });
-  const [seconds, setSeconds] = useState(0);
   const [canaisPage, setCanaisPage] = useState(0);
   const [redesPage, setRedesPage] = useState(0);
   const previous = useRef(0);
   const shell = useRef<HTMLDivElement>(null);
 
   const frame = FRAMES[index]!;
-  const cumulativeScore = scoreAt(index);
-  const score = frame.id === "redes" && redesPage < 3
-    ? { ...cumulativeScore, vaa: cumulativeScore.vaa - 2 }
-    : cumulativeScore;
   const redesTheme: Extract<Backdrop, "navy" | "rose" | "white"> | undefined =
     frame.id === "redes" ? (redesPage === 2 ? "white" : "navy") : undefined;
   const canaisTheme: Extract<Backdrop, "navy" | "white"> | undefined =
@@ -157,16 +151,6 @@ export function Stage() {
     };
   }, [goBack, goForward]);
 
-  /* Inês timer: only during act 2 */
-  useEffect(() => {
-    if (frame.act !== 2) return;
-    const id = setInterval(() => setSeconds((s) => s + 1), 1000);
-    return () => clearInterval(id);
-  }, [frame.act]);
-  useEffect(() => {
-    if (frame.id === "ines") setSeconds(0);
-  }, [frame.id]);
-
   const scale = useMemo(() => fitScale(frame, viewport), [frame, viewport]);
   const transitionStyle = useMemo(() => {
     const from = FRAMES[previous.current] ?? frame;
@@ -227,36 +211,6 @@ export function Stage() {
           </div>
         </div>
 
-        {/* scoreboard */}
-        {frame.act === 2 && frame.id !== "ines" && frame.id !== "dois-placares" && (
-          <div className="absolute right-6 top-6 z-30 flex items-center gap-4 rounded-2xl bg-white/85 px-5 py-3 shadow-[var(--shadow-card)] backdrop-blur">
-            <div className="text-center">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-spal">SPAL</p>
-              <p className="deck-num text-2xl text-spal">{score.spal}</p>
-            </div>
-            <span className="text-navy/25">—</span>
-            <div className="text-center">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-vaa">
-                V. Alegre
-              </p>
-              <p
-                key={score.vaa}
-                className="deck-num deck-pop text-2xl text-vaa"
-                style={{ animation: "deck-pop 500ms both, deck-glow 900ms 200ms" }}
-              >
-                {score.vaa}
-              </p>
-            </div>
-            <div className="ml-2 border-l border-navy/20 pl-4 text-center">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-ines">Inês</p>
-              <p className="deck-num text-2xl text-ines">
-                {String(Math.floor(seconds / 60)).padStart(2, "0")}:
-                {String(seconds % 60).padStart(2, "0")}
-              </p>
-            </div>
-          </div>
-        )}
-
         {/* arrows */}
         <button
           aria-label="Anterior"
@@ -306,18 +260,6 @@ function FrameBody({
 }) {
   return (
     <div className="relative h-full w-full">
-      {frame.tag && frame.id !== "nomes" && frame.id !== "placar1" && (
-        <span
-          className={cn(
-            "absolute right-5 top-5 z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest",
-            theme === "navy" || theme === "rose" || frame.navy
-              ? "bg-porcelain/10 text-porcelain/70"
-              : "bg-navy/6 text-navy/45",
-          )}
-        >
-          {frame.tag}
-        </span>
-      )}
       {frame.id === "nomes" && (
         <span className="absolute left-6 top-5 z-10 text-[11px] font-bold uppercase tracking-[0.25em] text-navy/40">
           Enquadramento

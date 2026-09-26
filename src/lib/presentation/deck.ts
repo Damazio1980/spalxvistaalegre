@@ -6,7 +6,7 @@ export type FrameDef = {
   n: number;
   act: ActId;
   title: string;
-  /** Small criterion tag from the brief, e.g. "A · canais". */
+  /** Optional internal category; section-letter labels are not rendered. */
   tag?: string;
   /** One-line punchline shown alone before the rest of the content. */
   punchline?: string;
@@ -183,7 +183,6 @@ const seeds: Seed[] = [
     id: "placar1",
     act: 1,
     title: "A resposta à pergunta",
-    tag: "D · diagnóstico",
     punchline: "Não é falta de produto. É uma decisão histórica de comunicar para o retalho.",
     navy: true,
     rot: -1,
@@ -194,7 +193,6 @@ const seeds: Seed[] = [
     id: "ines",
     act: 2,
     title: "Conhece a Inês",
-    tag: "D · diagnóstico",
     punchline: "20 minutos. Um telemóvel. Uma prenda para a mãe.",
     rot: -2,
   },
@@ -233,7 +231,6 @@ const seeds: Seed[] = [
     id: "dois-placares",
     act: 2,
     title: "Dois placares, o mesmo resultado",
-    tag: "D · diagnóstico",
     punchline: "Os dados e a pessoa contam a mesma história.",
     navy: true,
     rot: 1.5,
@@ -244,7 +241,6 @@ const seeds: Seed[] = [
     id: "porque-spal",
     act: 3,
     title: "Porque a SPAL",
-    tag: "E · intervenção",
     punchline: "A prioridade não é corrigir o site atual. É substituí-lo.",
     rot: -1.5,
   },
@@ -252,7 +248,6 @@ const seeds: Seed[] = [
     id: "jogadas",
     act: 3,
     title: "Três jogadas, por ordem de prioridade",
-    tag: "D · marca escolhida: SPAL",
     punchline: "A jogada não é consertar — é mudar de casa.",
     navy: true,
     rot: 1.5,
@@ -262,7 +257,6 @@ const seeds: Seed[] = [
     id: "jogada-1",
     act: 3,
     title: "01 · Site novo",
-    tag: "E · intervenção",
     parent: "jogadas",
     sub: true,
     rot: -2.5,
@@ -271,7 +265,6 @@ const seeds: Seed[] = [
     id: "jogada-2",
     act: 3,
     title: "02 · Lançamento nas redes",
-    tag: "E · intervenção",
     parent: "jogadas",
     sub: true,
     rot: 2,
@@ -280,7 +273,6 @@ const seeds: Seed[] = [
     id: "jogada-3",
     act: 3,
     title: "03 · Indicadores desde o dia um",
-    tag: "E · intervenção",
     parent: "jogadas",
     sub: true,
     rot: -1.5,
@@ -289,7 +281,6 @@ const seeds: Seed[] = [
     id: "semana",
     act: 3,
     title: "Uma semana de SPAL",
-    tag: "E · calendário",
     punchline: "Uma semana chega para mudar a primeira impressão.",
     rot: -2,
   },
@@ -297,7 +288,6 @@ const seeds: Seed[] = [
     id: "publicacao",
     act: 3,
     title: "A publicação",
-    tag: "E · intervenção",
     punchline: "A legenda diz onde comprar. É a única coisa que falta hoje.",
     rot: 2.5,
   },
@@ -305,7 +295,6 @@ const seeds: Seed[] = [
     id: "bio",
     act: 3,
     title: "A bio, antes e depois",
-    tag: "E · intervenção",
     punchline: "150 caracteres também vendem.",
     rot: -1,
   },
@@ -313,7 +302,6 @@ const seeds: Seed[] = [
     id: "resposta",
     act: 3,
     title: "A Inês pergunta",
-    tag: "E · intervenção",
     punchline: "Responder é a campanha mais barata que existe.",
     rot: 2,
   },
@@ -321,7 +309,6 @@ const seeds: Seed[] = [
     id: "marcax",
     act: 3,
     title: "O Instagram atrai melhor. O Facebook converte o dobro.",
-    tag: "F · dados didáticos · marca X",
     punchline: "O Instagram atrai. O Facebook vende.",
     navy: true,
     rot: -2,
@@ -330,7 +317,6 @@ const seeds: Seed[] = [
     id: "indicadores",
     act: 3,
     title: "Três indicadores. Uma decisão para cada resultado.",
-    tag: "F · acompanhar as melhorias",
     punchline: "Se não for medido, foi só uma opinião bonita.",
     rot: 1,
   },
@@ -338,7 +324,6 @@ const seeds: Seed[] = [
     id: "final",
     act: 3,
     title: "A Inês, 20 minutos depois",
-    tag: "E · intervenção",
     punchline:
       "A SPAL precisa de falar com a Inês antes que a Vista Alegre o faça por ela — em Alcobaça.",
     navy: true,
@@ -348,7 +333,6 @@ const seeds: Seed[] = [
     id: "bastidores",
     act: 3,
     title: "Bastidores",
-    tag: "fontes",
     rot: -1.5,
   },
 ];

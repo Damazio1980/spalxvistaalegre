@@ -31,4 +31,5 @@
 28. Ampliar os telemóveis e a tipografia dos minutos 3, 8 e 12; remover a frase do minuto 0; aplicar fundo azul ao minuto 8 e fundo branco aos dois placares. — feito
 29. Atualizar “Porque a SPAL” e as “Três jogadas” para a construção de um site novo, preservando todo o diagnóstico anterior. — feito
 30. Atualizar apenas o calendário da secção E com as quatro ações de lançamento e ligação ao calendário completo no Notion. — feito
+31. Retirar o cronómetro, o placar flutuante e todas as etiquetas superiores com letras de secção. — feito
 

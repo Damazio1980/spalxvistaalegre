@@ -100,10 +100,7 @@ export function Jogadas() {
   return (
     <div className="flex h-full flex-col justify-center gap-7 p-14 text-navy">
       <Reveal i={0}>
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/50">
-          D · marca escolhida: SPAL
-        </p>
-        <h3 className="deck-title mt-2">Três jogadas, por ordem de prioridade.</h3>
+        <h3 className="deck-title">Três jogadas, por ordem de prioridade.</h3>
       </Reveal>
       <div className="grid grid-cols-3 gap-5">
         {JOGADAS.map((j, i) => (
@@ -223,10 +220,7 @@ export function Semana() {
   return (
     <div className="flex h-full flex-col justify-center gap-6 p-12">
       <Reveal i={0}>
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
-          E · simulação · exercício académico
-        </p>
-        <h3 className="deck-h2 mt-1 text-navy">
+        <h3 className="deck-h2 text-navy">
           Uma semana de SPAL a falar com o consumidor.
         </h3>
         <p className="mt-1 text-sm text-navy/60">Campanha de lançamento do site novo · 7 dias · 4 ações</p>
@@ -317,10 +311,7 @@ export function Publicacao() {
       </Reveal>
       <div className="space-y-3">
         <Reveal i={1}>
-          <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
-            E · simulação · exercício académico
-          </p>
-          <h3 className="deck-h2 mt-1 text-navy">A publicação, com ficha técnica.</h3>
+          <h3 className="deck-h2 text-navy">A publicação, com ficha técnica.</h3>
         </Reveal>
         {(
           [
@@ -381,10 +372,7 @@ export function Bio({ active }: ChapterProps) {
   return (
     <div className="flex h-full flex-col justify-center gap-6 p-12">
       <Reveal i={0}>
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
-          E · simulação · exercício académico
-        </p>
-        <h3 className="deck-h2 mt-1 text-navy">A biografia, antes e depois.</h3>
+        <h3 className="deck-h2 text-navy">A biografia, antes e depois.</h3>
       </Reveal>
       <div className="grid grid-cols-2 gap-6">
         <Reveal i={1} className="rounded-3xl border border-navy/10 bg-white p-6">
@@ -481,10 +469,7 @@ export function Resposta({ active }: ChapterProps) {
   return (
     <div className="flex h-full flex-col justify-center gap-4 p-12">
       <Reveal i={0}>
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
-          E · simulação · exercício académico
-        </p>
-        <h3 className="deck-h2 mt-1 text-navy">A resposta ao cliente.</h3>
+        <h3 className="deck-h2 text-navy">A resposta ao cliente.</h3>
       </Reveal>
       <Reveal i={1} className="max-w-[620px] rounded-3xl rounded-bl-md bg-ines/12 p-5">
         <p className="text-[10px] font-bold uppercase tracking-widest text-ines">
@@ -560,10 +545,7 @@ export function MarcaX({ active }: ChapterProps) {
     <div className="grid h-full grid-cols-[1fr_1fr] gap-8 p-10 text-navy">
       <div className="flex min-h-0 flex-col gap-3">
         <Reveal i={0}>
-          <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/50">
-            F · dados didáticos · marca fictícia X
-          </p>
-          <h3 className="mt-1 text-[30px] font-semibold leading-[1.1]">
+          <h3 className="text-[30px] font-semibold leading-[1.1]">
             O Instagram atrai melhor. O Facebook converte o dobro.
           </h3>
         </Reveal>
@@ -716,10 +698,7 @@ export function Indicadores({ active }: ChapterProps) {
   return (
     <div className="flex h-full flex-col justify-center gap-6 p-12">
       <Reveal i={0}>
-        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
-          F · acompanhar as melhorias
-        </p>
-        <h3 className="deck-h2 mt-1 text-navy">
+        <h3 className="deck-h2 text-navy">
           Três indicadores. Uma decisão para cada resultado.
         </h3>
       </Reveal>
