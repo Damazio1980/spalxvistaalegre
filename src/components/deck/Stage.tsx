@@ -114,6 +114,7 @@ export function Stage() {
   /* keyboard */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (document.querySelector('[data-video-expanded="true"]')) return;
       const t = e.target as HTMLElement | null;
       const typing =
         !!t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
@@ -139,6 +140,7 @@ export function Stage() {
     let sx = 0;
     const start = (e: TouchEvent) => (sx = e.touches[0]!.clientX);
     const end = (e: TouchEvent) => {
+      if (document.querySelector('[data-video-expanded="true"]')) return;
       const dx = e.changedTouches[0]!.clientX - sx;
       if (Math.abs(dx) > 60) (dx < 0 ? goForward() : goBack());
     };

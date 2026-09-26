@@ -1,7 +1,12 @@
-import { useEffect, useState } from "react";
-import { Chip, Num, Phone, Reveal, Shot } from "./primitives";
-import { RefShot } from "./mocks";
-import { FIG } from "@/data/images";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { Maximize2, Play, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import spalOpeningVideo from "@/assets/ines-abre-spal.mp4.asset.json";
+import vaaOpeningVideo from "@/assets/ines-abre-vista-alegre.mp4.asset.json";
+import spalOpeningPoster from "@/assets/ines-abre-spal.jpg.asset.json";
+import vaaOpeningPoster from "@/assets/ines-abre-vista-alegre.jpg.asset.json";
+import { Chip, Num, Reveal } from "./primitives";
 import type { ChapterProps } from "./act1";
 
 export function InesPersona() {
@@ -48,47 +53,111 @@ export function InesPersona() {
   );
 }
 
+function OpeningPhone({ brand, site, video, poster, tone }: {
+  brand: string;
+  site: string;
+  video: string;
+  poster: string;
+  tone: "spal" | "vaa";
+}) {
+  const smallVideo = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const toggle = () => {
+    const player = smallVideo.current;
+    if (!player) return;
+    if (player.paused) {
+      void player.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    } else {
+      player.pause();
+      setPlaying(false);
+    }
+  };
+  const open = () => {
+    smallVideo.current?.pause();
+    setPlaying(false);
+    setExpanded(true);
+  };
+
+  useEffect(() => {
+    if (!expanded) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setExpanded(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [expanded]);
+
+  return (
+    <div className="flex min-w-0 flex-col items-center gap-3">
+      <div className="w-full border-b border-navy/15 pb-2 text-center">
+        <p className={`text-sm font-extrabold uppercase ${tone === "spal" ? "text-spal" : "text-vaa"}`}>{brand}</p>
+        <p className="text-xs text-navy/55">{site}</p>
+      </div>
+      <div className="relative aspect-[9/16] h-[370px] max-h-full overflow-hidden rounded-[29px] border-[6px] border-navy bg-navy shadow-[var(--shadow-card)]">
+        <video
+          ref={smallVideo}
+          src={video}
+          poster={poster}
+          playsInline
+          muted
+          preload="metadata"
+          onEnded={() => setPlaying(false)}
+          className="h-full w-full cursor-pointer object-contain"
+          onClick={toggle}
+          aria-label={`Vídeo da ${brand}`}
+        />
+        {!playing && (
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={toggle}
+            aria-label={`Reproduzir vídeo da ${brand}`}
+            className="absolute inset-0 h-full w-full rounded-none bg-navy/10 hover:bg-navy/10"
+          >
+            <span className="grid h-14 w-14 place-items-center rounded-full bg-porcelain text-navy shadow-[var(--shadow-card)]">
+              <Play className="ml-1 fill-current" />
+            </span>
+          </Button>
+        )}
+      </div>
+      <Button
+        type="button"
+        variant="outline"
+        onClick={open}
+        aria-label={`Ampliar vídeo da ${brand}`}
+        className={`h-9 border-current bg-transparent px-5 ${tone === "spal" ? "text-spal" : "text-vaa"}`}
+      >
+        <Maximize2 /> Ampliar
+      </Button>
+      {expanded && createPortal(
+        <div data-video-expanded="true" role="dialog" aria-modal="true" aria-label={`Vídeo ampliado da ${brand}`} className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-3 bg-navy/95 p-4" onClick={() => setExpanded(false)}>
+          <div className="flex w-full max-w-lg items-center justify-between text-porcelain" onClick={(event) => event.stopPropagation()}>
+            <span className="text-sm font-bold">{brand} · {site}</span>
+            <Button type="button" variant="ghost" onClick={() => setExpanded(false)} className="text-porcelain hover:bg-porcelain/10 hover:text-porcelain" aria-label="Fechar vídeo"><X /> Fechar</Button>
+          </div>
+          <video src={video} poster={poster} autoPlay controls playsInline className="max-h-[82vh] max-w-full rounded-md bg-navy object-contain" onClick={(event) => event.stopPropagation()} />
+        </div>,
+        document.body,
+      )}
+    </div>
+  );
+}
+
 export function Min0() {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-8 p-12">
+    <div className="flex h-full flex-col items-center justify-center gap-5 px-14 py-8">
       <Reveal i={0} className="text-center">
         <h3 className="deck-h2 text-navy">Ela abre os dois sites</h3>
         <p className="mt-2 text-navy/65">O primeiro ecrã já decide muita coisa.</p>
       </Reveal>
-      <div className="flex items-start gap-14">
-        <Reveal i={1}>
-          <Phone title="SPAL" tone="spal">
-            <div className="flex h-full flex-col items-center justify-center gap-3 p-4 text-center">
-              <p className="text-[10px] uppercase tracking-widest text-navy/40">spal.pt</p>
-              <p className="font-semibold">Escolha o idioma</p>
-              <div className="flex gap-2">
-                <span className="rounded-md border border-navy/20 px-3 py-1">PT</span>
-                <span className="rounded-md border border-navy/20 px-3 py-1">EN</span>
-              </div>
-              <div className="mt-4 w-full rounded-lg bg-white p-2 text-left text-[9px] text-navy/50">
-                Notícias · Feira de Frankfurt 2015 · Nova coleção 2015
-              </div>
-            </div>
-          </Phone>
-        </Reveal>
-        <Reveal i={2}>
-          <Phone title="Vista Alegre" tone="vaa">
-            <div className="h-full p-3">
-              <p className="text-[9px] uppercase tracking-widest text-navy/40">vistaalegre.com</p>
-              <div className="mt-2 h-28 rounded-lg bg-gradient-to-br from-vaa to-vaa/25" />
-              <p className="mt-2 font-semibold">Coleção Primavera</p>
-              <p className="text-[10px] text-navy/60">Prato de sobremesa</p>
-              <p className="mt-1 font-bold text-vaa">29,50 €</p>
-              <div className="mt-2 rounded-md bg-navy py-1 text-center text-[10px] font-semibold text-porcelain">
-                Comprar
-              </div>
-            </div>
-          </Phone>
-        </Reveal>
-      </div>
-      <div className="flex gap-3">
-        <RefShot img={FIG["fig8-spal-mobile"]!} group="min0" idSuffix="-min0" className="h-24 w-56" />
-        <RefShot img={FIG["fig9-vaa-mobile"]!} group="min0" idSuffix="-min0" className="h-24 w-56" />
+      <div className="grid w-full max-w-[700px] grid-cols-2 gap-12">
+        <Reveal i={1}><OpeningPhone brand="SPAL" site="spal.pt" video={spalOpeningVideo.url} poster={spalOpeningPoster.url} tone="spal" /></Reveal>
+        <Reveal i={2}><OpeningPhone brand="Vista Alegre" site="vistaalegre.com" video={vaaOpeningVideo.url} poster={vaaOpeningPoster.url} tone="vaa" /></Reveal>
       </div>
       <Chip tone="ines">isto é a ronda 1 do Ato 1 a acontecer</Chip>
     </div>

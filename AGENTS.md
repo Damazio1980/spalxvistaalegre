@@ -12,3 +12,4 @@
 - A apresentação usa apenas setas/teclado/gestos para avançar; não exibir lista nem contador de slides na barra inferior, para manter o ecrã limpo.
 - O placar flutuante aparece apenas no percurso de compra da Inês (Ato 2), porque a comparação não deve acompanhar todos os slides.
 - Mostrar o conteúdo dos slides de imediato, sem páginas transitórias de frase ou de mudança de ato, para manter o avanço linear sem pop-ups.
+- O slide do minuto 0 usa os vídeos verticais enviados pelo utilizador via ponteiros de assets e amplia em portal, para comparar os sites reais sem simulações estáticas.
