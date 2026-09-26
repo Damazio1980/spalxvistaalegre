@@ -747,7 +747,7 @@ export function Indicadores({ active }: ChapterProps) {
                 </p>
               )}
             </div>
-            <div className="mt-3">
+            <div className="mt-2">
               <Gauge
                 low={GAUGES[i]!.low}
                 high={GAUGES[i]!.high}
@@ -756,7 +756,7 @@ export function Indicadores({ active }: ChapterProps) {
                 active={active}
               />
             </div>
-            <div className="mt-3 rounded-xl bg-porcelain p-3">
+            <div className="mt-2 rounded-xl bg-porcelain p-2.5">
 
               <p className="text-[11px] font-semibold uppercase tracking-wider text-navy/50">
                 Decisão
@@ -765,7 +765,7 @@ export function Indicadores({ active }: ChapterProps) {
                 {c.decisao}
               </p>
             </div>
-            <p className="mt-3 text-[11px] text-navy/45">
+            <p className="mt-2 text-[10.5px] text-navy/45">
               Acesso interno:{" "}
               <span className="font-semibold text-navy/70">{c.acesso}</span>
             </p>
@@ -774,7 +774,7 @@ export function Indicadores({ active }: ChapterProps) {
       </div>
       <Reveal
         i={5}
-        className="rounded-2xl border-2 border-dashed border-navy/30 bg-porcelain/60 p-4"
+        className="rounded-2xl border-2 border-dashed border-navy/30 bg-porcelain/60 p-3"
       >
         <div className="flex items-center justify-between gap-4">
           <p className="text-sm font-bold uppercase tracking-widest text-navy/70">
@@ -784,7 +784,7 @@ export function Indicadores({ active }: ChapterProps) {
             Simulação — números hipotéticos para ilustrar a meta, não resultados reais
           </span>
         </div>
-        <div className="mt-3 grid grid-cols-3 gap-4 text-[11px] leading-snug text-navy/70">
+        <div className="mt-2 grid grid-cols-3 gap-3 text-[11px] leading-tight text-navy/70">
           <div>
             <p className="font-semibold text-navy/85">
               1 · Cliques em “Onde comprar” — meta ≥ 5 %
