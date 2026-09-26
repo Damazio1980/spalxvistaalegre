@@ -349,9 +349,6 @@ export function Canais({ active, subframe = 0 }: ChapterProps) {
     <div className={cn("sample-channels-slide flex h-full flex-col gap-4 px-12 pb-8 pt-12", subframe === 0 ? "channels-page-one text-porcelain" : "text-navy")}>
       <div className="flex shrink-0 items-end justify-between">
         <Reveal i={0}>
-          <p className={cn("text-[12px] font-bold uppercase tracking-[0.3em]", subframe === 0 ? "text-porcelain/55" : "text-navy/45")}>
-            A · Canais {subframe + 1}/2
-          </p>
           <h3 className={cn("mt-1 font-[var(--font-display)] text-[32px] font-extrabold leading-none", subframe === 0 ? "text-porcelain" : "text-navy")}>
             {titles[subframe]}
           </h3>
@@ -502,9 +499,6 @@ export function Website({ active }: ChapterProps) {
     <div className="grid h-full grid-cols-[1.15fr_0.85fr] gap-6 p-10">
       <div className="flex min-h-0 flex-col gap-3">
         <Reveal i={0}>
-          <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/45">
-            B · website
-          </p>
           <h3 className="mt-1 font-[var(--font-display)] text-[26px] font-extrabold leading-tight text-navy">
             Seis dimensões, um padrão: a SPAL informa o profissional, a Vista Alegre serve o
             consumidor.
@@ -900,9 +894,6 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
   return (
     <div className="flex h-full flex-col gap-3 p-6">
       <Reveal i={0} className="flex shrink-0 items-baseline gap-3">
-        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-navy/45">
-          B · {d.title.toLowerCase()}
-        </p>
         <h3 className="font-[var(--font-display)] text-2xl font-extrabold text-navy">
           {d.title} <span className="text-navy/45">— os dois sites em movimento</span>
         </h3>
