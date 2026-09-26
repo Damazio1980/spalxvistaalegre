@@ -39,3 +39,4 @@
 36. Inserir separadores “E SE JÁ ESTIVESSE NO AR?” antes de “O Instagram atrai melhor…” e “DA SIMULAÇÃO PARA O REAL” antes de “Três indicadores”, em azul com texto branco e detalhe rosa. — feito
 
 
+37. Acrescentar o bloco "Se as metas fossem atingidas" (cenário hipotético, selo SIMULAÇÃO em tom neutro) ao capítulo dos Três Indicadores, mantendo os três cartões "a medir" intactos. — feito
