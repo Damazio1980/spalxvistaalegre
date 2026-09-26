@@ -290,7 +290,7 @@ const ALT_TEXT =
 /** Criativo «A SPAL tem casa nova» — fundo branco, letras a azul e rosa, seta no CTA. */
 function CriativoSpal() {
   return (
-    <div className="flex h-full flex-col bg-white p-3">
+    <div className="criativo-white flex h-full flex-col p-3">
       {/* marca d'água académica, discreta no canto superior */}
       <div className="flex items-start justify-end">
         <span className="text-[6px] uppercase tracking-[0.18em] text-navy/35">

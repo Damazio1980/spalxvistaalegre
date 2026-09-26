@@ -272,6 +272,11 @@
 }
 
 /* White chart canvases: editorial rules instead of floating dashboard cards. */
+/* fundo branco imune às regras de tema (publicação "A SPAL tem casa nova") */
+.criativo-white {
+  background-color: var(--porcelain);
+}
+
 .deck-theme-white .text-porcelain,
 .deck-theme-white [class*="text-porcelain/"] {
   color: var(--navy) !important;

@@ -37,6 +37,7 @@ const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
   indicadores: "white",
   final: "white",
   min0: "white",
+  publicacao: "white",
 };
 
 const REQUESTED_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "white">> = {
