@@ -174,7 +174,6 @@ const seeds: Seed[] = [
     id: "redes",
     act: 1,
     title: "Redes sociais",
-    tag: "C · Redes",
     punchline: "Uma fala como fabricante. A outra, como marca de estilo de vida.",
     rot: 2,
     score: [0, 2],
