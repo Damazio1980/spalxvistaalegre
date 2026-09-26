@@ -816,7 +816,7 @@ export function Indicadores({ active }: ChapterProps) {
             </p>
           </div>
         </div>
-        <p className="mt-3 text-center text-[11px] italic text-navy/55">
+        <p className="mt-2 text-center text-[10.5px] italic text-navy/55">
           Isto não são números que já temos — é o que o sucesso pareceria, para sabermos
           reconhecê-lo quando o site novo estiver a funcionar.
         </p>
