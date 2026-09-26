@@ -36,4 +36,6 @@
 33. Criar o separador “JORNADA DE COMPRA” antes da Inês e retirar “Minuto” dos quatro títulos do percurso. — feito
 34. Ajustar Inês para fundo branco; percurso, compra e “Porque a SPAL” para azul; restaurar a linha temporal completa do calendário. — feito
 35. Usar apenas a fotografia integral na capa; reduzir a abertura a “Duas porcelanas portuguesas”; pôr os quadros de publicações Instagram e Facebook em fundo branco. — feito
+36. Inserir separadores “E SE JÁ ESTIVESSE NO AR?” antes de “O Instagram atrai melhor…” e “DA SIMULAÇÃO PARA O REAL” antes de “Três indicadores”, em azul com texto branco e detalhe rosa. — feito
+
 

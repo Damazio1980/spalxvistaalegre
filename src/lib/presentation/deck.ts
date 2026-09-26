@@ -313,12 +313,26 @@ const seeds: Seed[] = [
     rot: 2,
   },
   {
+    id: "no-ar",
+    act: 3,
+    title: "E se já estivesse no ar?",
+    navy: true,
+    rot: -1.5,
+  },
+  {
     id: "marcax",
     act: 3,
     title: "O Instagram atrai melhor. O Facebook converte o dobro.",
     punchline: "O Instagram atrai. O Facebook vende.",
     navy: true,
     rot: -2,
+  },
+  {
+    id: "simulacao-real",
+    act: 3,
+    title: "Da simulação para o real",
+    navy: true,
+    rot: 1.5,
   },
   {
     id: "indicadores",
