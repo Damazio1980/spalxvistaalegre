@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { BadgeCheck, ChevronDown, Facebook, Globe, Instagram, Maximize2, Play, X } from "lucide-react";
-import coverPlate from "@/assets/cover-plate.png.asset.json";
 import spinningPlate from "@/assets/spinning-plate.png.asset.json";
 import coverAbertura from "@/assets/cover-abertura.png.asset.json";
 import identidadeVideo from "@/assets/identidade-6d-spal.mp4.asset.json";
@@ -56,17 +55,11 @@ const VAA = "var(--vaa)";
 
 export function Capa({}: ChapterProps) {
   return (
-    <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-navy">
-      <img
-        src={coverAbertura.url}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover opacity-30"
-      />
+    <div className="h-full w-full overflow-hidden">
       <img
         src={coverAbertura.url}
         alt="Capa da apresentação SPAL e Vista Alegre"
-        className="relative h-full w-4/5 object-cover object-center"
+        className="h-full w-full object-cover object-center"
       />
     </div>
   );
@@ -84,8 +77,7 @@ export function Apresentacao({ active }: ChapterProps) {
           </Reveal>
           <Reveal i={2}>
             <p className="mx-auto mt-6 max-w-[560px] text-2xl leading-snug text-porcelain/90">
-              Duas porcelanas portuguesas. Um percurso até à compra.{" "}
-              <em className="text-vaa">Quem chega ao fim?</em>
+              Duas porcelanas portuguesas
             </p>
           </Reveal>
         </div>
@@ -1148,26 +1140,26 @@ function PostCard({ post, index }: { post: SocialPost; index: number }) {
     ...(post.nota ? [["Nota", post.nota]] : []),
   ];
   return (
-    <Reveal i={(index % 3) + 1} className={`flex min-h-0 gap-2 border-t pt-2 ${spal ? "border-spal/70" : "border-vaa/80"}`}>
+     <Reveal i={(index % 3) + 1} className={`flex min-h-0 gap-2 border-t pt-2 ${spal ? "border-spal/70" : "border-vaa/80"}`}>
       <RefShot
         img={image!}
         group={group}
         compact
         hideExpand
-        className="h-[263px] w-[148px] shrink-0 rounded-[24px] border-[5px] border-porcelain/20 shadow-lg"
+         className="h-[263px] w-[148px] shrink-0 rounded-[24px] border-[5px] border-navy/20 shadow-lg"
       />
       <div className="flex min-w-0 flex-1 flex-col py-1">
         <div className="mb-1 flex items-start justify-between gap-2">
           <div>
             <p className={`deck-num text-[18px] ${spal ? "text-spal" : "text-vaa"}`}>POST {post.numero}</p>
-            <p className="max-w-[200px] truncate text-[10px] font-bold text-porcelain/70">{post.perfil}</p>
+             <p className="max-w-[200px] truncate text-[10px] font-bold text-navy/70">{post.perfil}</p>
           </div>
-          <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-[9px] font-bold text-porcelain ${spal ? "bg-spal" : "bg-vaa"}`}>{post.marca.charAt(0)}</span>
+           <span className={`post-brand-badge grid h-6 w-6 shrink-0 place-items-center rounded-full text-[9px] font-bold text-porcelain ${spal ? "bg-spal" : "bg-vaa"}`}>{post.marca.charAt(0)}</span>
         </div>
         <div className="space-y-[1px]">
           {fields.map(([label, value]) => (
-            <p key={`${label}-${value}`} className="text-[11px] leading-[1.2] text-porcelain/85">
-              <strong className="text-porcelain">{label}:</strong> {value}
+             <p key={`${label}-${value}`} className="text-[11px] leading-[1.2] text-navy/85">
+               <strong className="text-navy">{label}:</strong> {value}
             </p>
           ))}
         </div>
@@ -1177,7 +1169,7 @@ function PostCard({ post, index }: { post: SocialPost; index: number }) {
           size="sm"
           aria-label={`Ampliar post ${post.numero}`}
           onClick={() => image && lightbox?.open(group, image.id)}
-          className="mt-auto h-7 self-start border-porcelain/40 bg-transparent px-2.5 text-[11px] text-porcelain hover:bg-porcelain/10 hover:text-porcelain"
+           className="mt-auto h-7 self-start border-navy/40 bg-transparent px-2.5 text-[11px] text-navy hover:bg-navy/10 hover:text-navy"
         >
           <Maximize2 className="h-3 w-3" /> Ampliar
         </Button>
@@ -1194,12 +1186,12 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
     const entries = subframe === 0 ? instagramPosts : facebookPosts;
     const network = subframe === 0 ? "Instagram" : "Facebook";
     return (
-      <div className="flex h-full flex-col px-8 pb-7 pt-6 text-porcelain">
-        <div className="mb-3 flex items-end justify-between border-b border-porcelain/20 pb-2">
+       <div className="flex h-full flex-col px-8 pb-7 pt-6 text-navy">
+         <div className="mb-3 flex items-end justify-between border-b border-navy/20 pb-2">
           <div>
             <h3 className="font-[var(--font-display)] text-[27px] font-extrabold">{titles[subframe]}</h3>
           </div>
-          <p className="text-[10px] text-porcelain/55">6 casos · {network}</p>
+           <p className="text-[10px] text-navy/55">6 casos · {network}</p>
         </div>
         <div className="grid min-h-0 flex-1 grid-cols-3 grid-rows-2 gap-x-5 gap-y-3">
           {entries.map(({ post, index }) => <PostCard key={post.numero} post={post} index={index} />)}

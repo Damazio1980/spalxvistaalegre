@@ -35,4 +35,5 @@
 32. Reenquadrar “Três jornadas”, redesenhar o calendário em azul, escolher imagem para a Inês, ampliar a capa e retirar os subtítulos dos separadores. — feito
 33. Criar o separador “JORNADA DE COMPRA” antes da Inês e retirar “Minuto” dos quatro títulos do percurso. — feito
 34. Ajustar Inês para fundo branco; percurso, compra e “Porque a SPAL” para azul; restaurar a linha temporal completa do calendário. — feito
+35. Usar apenas a fotografia integral na capa; reduzir a abertura a “Duas porcelanas portuguesas”; pôr os quadros de publicações Instagram e Facebook em fundo branco. — feito
 
