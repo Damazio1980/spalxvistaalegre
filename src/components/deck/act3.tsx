@@ -207,34 +207,34 @@ const SEMANA = [
     dia: "Seg 08/09",
     hora: "19h00",
     canal: "Instagram Reel + Facebook",
-    titulo: "Como nasce um prato — bastidores SPAL Studio",
-    cta: "Descobre as coleções",
-    indicador: "alcance, guardados",
+    titulo: "«A SPAL tem casa nova» — teaser do novo site, bastidores do processo de design (SPAL Studio)",
+    cta: "Fica atento",
+    indicador: "alcance, visualizações",
   },
   {
     dia: "Qua 10/09",
     hora: "12h30",
     canal: "Facebook carrossel + IG Stories",
     titulo:
-      "Onde comprar SPAL — Loja de Fábrica, Outlet, El Corte Inglés Lisboa e Gaia, online",
-    cta: "Ver lojas e horários",
-    indicador: "cliques na ligação",
+      "«O que muda» — preço visível, compra online, store locator, tudo num só lugar",
+    cta: "Explora o novo spal.pt",
+    indicador: "cliques no link (UTM)",
   },
   {
     dia: "Sex 12/09",
     hora: "18h00",
     canal: "Instagram carrossel",
-    titulo: "Electric Rain, peça a peça — 6 imagens com medidas do site",
-    cta: "Guarda para a próxima mesa",
-    indicador: "guardados, cliques na bio",
+    titulo: "Primeira coleção com ficha completa no novo site (ex.: Electric Rain), com preço e botão de compra",
+    cta: "Já podes comprar online",
+    indicador: "sessões no site, primeiras encomendas",
   },
   {
     dia: "Dom 14/09",
     hora: "10h30",
     canal: "IG Stories caixa de perguntas + Facebook",
-    titulo: "Pergunta à SPAL: vai à máquina? onde compro? fazem personalizados?",
-    cta: "Envia a tua pergunta",
-    indicador: "perguntas, resposta < 24 h",
+    titulo: "«O que querias encontrar no novo site da SPAL?» — feedback real dos seguidores antes/depois do lançamento",
+    cta: "Diz-nos o que procuras",
+    indicador: "nº de respostas, taxa de resposta < 24 h",
   },
 ];
 
@@ -299,7 +299,7 @@ export function Semana() {
 }
 
 const LEGENDA =
-  "Da mesa dos hotéis para a tua mesa. A mesma porcelana que desenhamos e produzimos em Alcobaça para a hotelaria está nas coleções de uso diário SPAL. Esta é a Electric Rain: prato de jantar Ø 27 cm, prato de sopa 76 cl, caneca 41 cl — desliza para ver as peças. Onde comprar? Ligação na bio. #SPALPorcelanas #FeitoEmAlcobaça #PorcelanaPortuguesa #MesaPosta";
+  "A SPAL tem casa nova. A mesma porcelana que desenhamos e produzimos em Alcobaça para a hotelaria, agora com preço, compra online e todas as lojas num só lugar. Descobre o novo spal.pt — link na bio.";
 
 const ALT_TEXT =
   "Prato de porcelana branca com friso azul sobre fundo bege; texto: Da mesa dos hotéis para a tua mesa — porcelana de design feita em Alcobaça desde 1965; botão Onde comprar; logótipo SPAL.";
@@ -331,8 +331,8 @@ export function Publicacao() {
         {(
           [
             ["Formato", "carrossel 1080×1350"],
-            ["Chamada à ação", "Onde comprar →"],
-            ["Destino", "spal.pt/index.php/contactos/lojas"],
+            ["Chamada à ação", "Ver o novo site →"],
+            ["Destino", "página inicial do novo spal.pt"],
           ] as const
         ).map(([t, d], i) => (
           <Reveal key={t} i={i + 2} className="deck-card bg-white px-5 py-3">
@@ -363,7 +363,7 @@ const BIO_ANTES =
   "Finest porcelain dinnerware both for domestic and hotelware purposes. What's your view on SPAL? 📷 Tag your photos @spalporcelanasofficial";
 
 const BIO_DEPOIS =
-  "Porcelana de design feita em Alcobaça desde 1965 🇵🇹 Da mesa dos hotéis para a tua. Loja de Fábrica · Outlet · El Corte Inglés. Onde comprar 👇";
+  "Porcelana de design feita em Alcobaça desde 1965 🇵🇹 Novo site: preço, compra e lojas num só lugar. Descobre 👇";
 
 export function Bio({ active }: ChapterProps) {
   const [depois, setDepois] = useState(false);
@@ -445,7 +445,7 @@ export function Bio({ active }: ChapterProps) {
             )}
           </p>
           <p className="text-[13px] font-semibold text-spal">
-            spal.pt/index.php/contactos/lojas
+            novo spal.pt · página inicial
           </p>
           <p className="mt-2 text-xs font-semibold text-navy/55">
             <Num value={depois ? typed.length : 0} active={active} />/150 caracteres
@@ -465,7 +465,7 @@ export function Bio({ active }: ChapterProps) {
 
 export function Resposta({ active }: ChapterProps) {
   const resposta =
-    "Olá! Muito obrigada, fico feliz que tenha gostado. 😊 As peças SPAL podem ser vistas e adquiridas na nossa Loja de Fábrica e no Outlet, em Ponte da Torre, Valado dos Frades (Alcobaça), nos espaços SPAL do El Corte Inglés de Lisboa e de Gaia, e online através dos parceiros indicados em spal.pt/index.php/contactos/lojas. Para lhe confirmar se esta coleção está disponível na loja mais perto de si, envie-nos por mensagem privada a sua zona e o nome da peça — verificamos com a loja e respondemos com contacto e horário. Obrigada por nos acompanhar!";
+    "Olá! Muito obrigada, fico feliz que tenha gostado. 😊 Acabámos de lançar o novo site da SPAL, onde já pode ver o preço, comprar online ou consultar a loja mais perto de si com horário e contacto — é só aceder a [novo site]. Qualquer dúvida, estamos aqui. Obrigada por nos acompanhar!";
   const [typed, setTyped] = useState("");
   useEffect(() => {
     setTyped("");
