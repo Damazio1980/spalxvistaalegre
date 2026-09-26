@@ -40,8 +40,12 @@ const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
 };
 
 const REQUESTED_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "white">> = {
+  ines: "white",
+  min3: "navy",
   min8: "navy",
+  min12: "navy",
   "dois-placares": "white",
+  "porque-spal": "navy",
   semana: "navy",
 };
 

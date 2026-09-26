@@ -188,11 +188,11 @@ export function Min3() {
   return (
     <div className="flex h-full flex-col justify-center gap-10 px-16 py-12">
       <Reveal i={0}>
-        <h3 className="deck-h2 text-[64px] text-navy">Quantos cliques até um prato?</h3>
+        <h3 className="deck-h2 text-[64px] text-porcelain">Quantos cliques até um prato?</h3>
       </Reveal>
       {(
         [
-          ["SPAL", spal, "bg-spal", "text-spal"],
+          ["SPAL", spal, "bg-porcelain", "text-porcelain"],
           ["Vista Alegre", vaa, "bg-vaa", "text-vaa"],
         ] as const
       ).map(([name, steps, bg, text], row) => (
@@ -204,7 +204,7 @@ export function Min3() {
             {steps.map((s, i) => (
               <div key={s} className="flex items-center gap-3">
                 <span
-                  className="deck-pop rounded-xl bg-white px-5 py-4 text-lg font-semibold text-navy shadow-[var(--shadow-card)]"
+                  className="deck-pop rounded-xl border border-porcelain/25 px-5 py-4 text-lg font-semibold text-porcelain"
                   style={{ animationDelay: `${row * 500 + i * 220}ms` }}
                 >
                   {s}
@@ -222,9 +222,9 @@ export function Min3() {
           </div>
         </Reveal>
       ))}
-      <Reveal i={4} className="flex items-center gap-5 border-t border-navy/15 pt-5">
+      <Reveal i={4} className="flex items-center gap-5 border-t border-porcelain/20 pt-5">
         <Chip tone="vaa" className="px-5 py-2 text-lg">+1 Vista Alegre</Chip>
-        <p className="max-w-[760px] text-lg leading-relaxed text-navy/70">
+        <p className="max-w-[760px] text-lg leading-relaxed text-porcelain/80">
           A última etapa da SPAL é uma miniatura numerada. A Inês não sabe o que está a clicar.
         </p>
       </Reveal>
@@ -298,9 +298,9 @@ export function Min8() {
 export function Min12({ active }: ChapterProps) {
   return (
     <div className="grid h-full grid-cols-2 gap-12 px-16 py-14">
-      <Reveal i={0} className="rounded-3xl border border-spal/25 bg-white p-8">
-        <p className="text-base font-bold uppercase text-spal">SPAL</p>
-        <p className="mt-3 text-3xl font-semibold text-navy">O caminho parte-se a meio</p>
+      <Reveal i={0} className="border-t-2 border-porcelain/70 p-8">
+        <p className="text-base font-bold uppercase text-porcelain">SPAL</p>
+        <p className="mt-3 text-3xl font-semibold text-porcelain">O caminho parte-se a meio</p>
         <div className="mt-7 space-y-4">
           {["Ficha do produto", "Onde comprar?", "El Corte Inglés · parceiros", "e-mail em imagem"].map(
             (s, i) => (
@@ -309,8 +309,8 @@ export function Min12({ active }: ChapterProps) {
                 className="deck-rise flex items-center gap-3"
                 style={{ animationDelay: `${i * 180}ms` }}
               >
-                <span className="h-2.5 w-2.5 rounded-full bg-spal" />
-                <span className="text-lg text-navy/75">{s}</span>
+                <span className="h-2.5 w-2.5 rounded-full bg-porcelain" />
+                <span className="text-lg text-porcelain/80">{s}</span>
                 {i === 1 && (
                   <span className="rounded-full bg-ines/12 px-3 py-1 text-sm font-bold text-ines">
                     caminho cortado
@@ -321,16 +321,16 @@ export function Min12({ active }: ChapterProps) {
           )}
         </div>
         <div className="mt-8 border-t border-spal/20 pt-5">
-          <p className="text-sm text-navy/55">Ao minuto 12</p>
-          <Num value={12} active={active} suffix=" min" className="text-6xl text-spal" />
-          <p className="text-base text-navy/55">sem resposta</p>
+          <p className="text-sm text-porcelain/60">Ao minuto 12</p>
+          <Num value={12} active={active} suffix=" min" className="text-6xl text-porcelain" />
+          <p className="text-base text-porcelain/60">sem resposta</p>
         </div>
       </Reveal>
-      <Reveal i={1} className="rounded-3xl border border-vaa/40 bg-white p-8">
+      <Reveal i={1} className="border-t-2 border-vaa p-8">
         <p className="text-base font-bold uppercase text-vaa">
           Vista Alegre
         </p>
-        <p className="mt-3 text-3xl font-semibold text-navy">O caminho chega ao fim</p>
+        <p className="mt-3 text-3xl font-semibold text-porcelain">O caminho chega ao fim</p>
         <div className="mt-7 space-y-4">
           {["Ficha com preço", "Adicionar ao carrinho", "Portes e prazo", "Loja mais perto · horário ✓"].map(
             (s, i) => (
@@ -340,15 +340,15 @@ export function Min12({ active }: ChapterProps) {
                 style={{ animationDelay: `${i * 180}ms` }}
               >
                 <span className="h-2.5 w-2.5 rounded-full bg-vaa" />
-                <span className="text-lg text-navy/75">{s}</span>
+                <span className="text-lg text-porcelain/80">{s}</span>
               </div>
             ),
           )}
         </div>
         <div className="mt-8 border-t border-vaa/25 pt-5">
-          <p className="text-sm text-navy/55">Ao minuto 6</p>
+          <p className="text-sm text-porcelain/60">Ao minuto 6</p>
           <Num value={6} active={active} suffix=" min" className="text-6xl text-vaa" />
-          <p className="text-base text-navy/55">com carrinho</p>
+          <p className="text-base text-porcelain/60">com carrinho</p>
         </div>
       </Reveal>
     </div>
