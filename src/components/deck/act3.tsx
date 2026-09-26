@@ -15,8 +15,6 @@ import { MAQUETE, PERFIL_SPAL } from "@/data/images";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
-  AntesDepois,
-  ChartPanel,
   Funil,
   Gauge,
   IndicadorMini,
@@ -39,8 +37,10 @@ export function PorqueSpal() {
     <div className="flex h-full flex-col items-center justify-center gap-10 p-14 text-center">
       <Reveal i={0}>
         <h3 className="deck-title text-navy">Porque a SPAL</h3>
-        <p className="mt-4 text-xl text-navy/65">
-          Nada do que vem a seguir exige um site novo. Exige usar o que já existe.
+        <p className="mx-auto mt-5 max-w-[900px] text-xl leading-relaxed text-navy/70">
+          A distância entre o que a SPAL tem — design próprio, hotelware, exportação, rede física
+          real — e o que comunica é grande. E a raiz do problema não são detalhes de conteúdo: é a
+          própria plataforma. Por isso a prioridade não é corrigir o site atual. É substituí-lo.
         </p>
       </Reveal>
       <div className="flex max-w-[900px] flex-wrap justify-center gap-4">
@@ -62,49 +62,36 @@ export function PorqueSpal() {
 const JOGADAS = [
   {
     n: "01",
-    title: "«Onde comprar» ligado a tudo",
+    title: "Site novo",
     prova:
-      "Ficha sem preço nem onde comprar; página Lojas com ligações externas e e-mails ilegíveis; bio do Instagram sem ligação de compra.",
+      "Plataforma de 2013, sem preço, sem pesquisa, sem carrinho, sem adaptação a telemóvel — o mesmo diagnóstico do percurso da Inês.",
     jogada:
-      "Página «Onde comprar» com mapa, horários e e-mail legível; botão «Onde comprar esta coleção» em cada ficha; a mesma ligação na bio do Instagram e no botão do Facebook.",
-    onde: "website + Instagram + Facebook",
-    muda: "Cliques medíveis por UTM; menos mensagens «onde compro?».",
-    antes: 0,
-    depois: 5,
-    unidade: "% de cliques em 'Onde comprar'",
+      "Construir um website novo, próprio, com navegação por ocasião (Mesa & Bar, Decoração, Presentes, Coleções), preço e botão de compra em todas as fichas, store locator completo, storytelling da ponte hotelaria→casa, mobile-first.",
+    onde: "website (plataforma nova)",
+    muda:
+      "Percurso descobrir→comprar em ≤3 cliques; venda direta sem depender de parceiros externos; base própria de dados de cliente.",
   },
   {
     n: "02",
-    title: "Fichas para o consumidor",
+    title: "Lançamento nas redes",
     prova:
-      "Referência e «Pack 04/24», sem uso nem cuidados, coleções em miniaturas numeradas.",
+      "305 publicações vs. 3.717 da Vista Alegre; bio em inglês sem ligação de compra; cross-posting idêntico entre Instagram e Facebook, sem adaptação.",
     jogada:
-      "Reescrever as 26 fichas de Uso Diário — nome visível, 2 frases sobre o design, ícones de uso confirmados pela SPAL, foto de mesa posta, ligação Onde comprar; dados técnicos num separador «Profissionais».",
-    onde: "website",
-    muda: "Mais tempo na página, menos rejeição em telemóvel.",
-    antes: 2,
-    depois: 5,
-    unidade: "nota da ficha (1-5)",
+      "Campanha de lançamento do novo site, com linha editorial «Feito em Alcobaça», adaptada a cada rede — não copiada de uma para a outra.",
+    onde: "Instagram + Facebook",
+    muda:
+      "Tráfego qualificado para o novo site desde o primeiro dia; crescimento de seguidores em Portugal.",
   },
   {
     n: "03",
-    title: "Linha editorial «Feito em Alcobaça»",
+    title: "Indicadores desde o dia um",
     prova:
-      "305 publicações e bio em inglês, contra 3 717 publicações e narrativa de coleção na Vista Alegre.",
+      "Sem Google Analytics, sem UTM, sem dados de conversão hoje.",
     jogada:
-      "3 publicações por semana em 3 rubricas — Bastidores/SPAL Studio (Reel), Da hotelaria para casa (carrossel), Onde comprar/perguntas (Stories + Facebook); bio em português com ligação.",
-    onde: "Instagram + Facebook",
-    muda: "Alcance e guardados; seguidores portugueses; cliques na bio.",
-    antes: 2,
-    depois: 3,
-    unidade: "publicações por semana",
+      "Implementar analítica completa (GA4, píxeis de redes sociais, disciplina de UTM em todas as campanhas) já no lançamento do site novo.",
+    onde: "website + Meta Business Suite",
+    muda: "Decisões futuras baseadas em dados reais, não em intuição.",
   },
-];
-
-const QUAL = [
-  { antes: "0 cliques medidos", depois: "meta ≥ 5 % das sessões" },
-  { antes: "bio com ligação: Não", depois: "bio com ligação: Sim" },
-  { antes: "[atual] por semana", depois: "3 por semana" },
 ];
 
 export function Jogadas({ active }: ChapterProps) {
@@ -114,7 +101,7 @@ export function Jogadas({ active }: ChapterProps) {
         <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-navy/50">
           D · marca escolhida: SPAL
         </p>
-        <h3 className="deck-title mt-2">Três melhorias, por ordem de prioridade.</h3>
+        <h3 className="deck-title mt-2">Três jogadas, por ordem de prioridade.</h3>
       </Reveal>
       <div className="grid grid-cols-3 gap-5">
         {JOGADAS.map((j, i) => (
@@ -125,34 +112,32 @@ export function Jogadas({ active }: ChapterProps) {
           >
             <p className="deck-num text-5xl text-vaa">{j.n}</p>
             <p className="mt-3 text-lg font-semibold">{j.title}</p>
-            <p className="mt-2 text-[12px] text-navy/60">{j.onde}</p>
-            <div className="mt-4">
-              <ChartPanel title="antes → depois esperado" className="h-[132px]" note={j.unidade}>
-                <AntesDepois antes={j.antes} depois={j.depois} active={active} />
-              </ChartPanel>
-              <p className="mt-1 text-[10px] text-navy/60">
-                {QUAL[i]!.antes} → {QUAL[i]!.depois}
-              </p>
-            </div>
+            <p className="mt-2 text-[11px] font-bold uppercase text-navy/45">Evidência</p>
+            <p className="mt-1 text-[12px] leading-snug text-navy/70">{j.prova}</p>
+            <p className="mt-3 text-[11px] font-bold uppercase text-navy/45">Canal</p>
+            <p className="mt-1 text-[12px] text-navy/70">{j.onde}</p>
+            <p className="mt-3 text-[11px] font-bold uppercase text-navy/45">Resultado esperado</p>
+            <p className="mt-1 text-[12px] leading-snug text-navy/70">{j.muda}</p>
           </Reveal>
         ))}
       </div>
 
       <Reveal i={4}>
         <p className="text-[15px] text-navy/80">
-          A distância entre o que a SPAL tem e o que comunica é grande — e pode ser reduzida com
-          três ações concretas.
+          A SPAL não perde por detalhes. Perde porque está a competir com uma loja de 2013 contra
+          uma loja de 2026. A jogada não é consertar — é mudar de casa.
         </p>
       </Reveal>
     </div>
   );
 }
 
-export function Jogada({ n, active }: { n: number; active: boolean }) {
-  const j = JOGADAS[n - 1]!;
+export function Jogada({ n }: { n: number; active: boolean }) {
+  const j = JOGADAS[n - 1];
+  if (!j) return null;
   return (
-    <div className="grid h-full grid-cols-[1.25fr_0.75fr] gap-6 p-10">
-      <div className="space-y-2.5">
+    <div className="flex h-full flex-col justify-center gap-6 p-12">
+      <div className="space-y-3">
         <Reveal i={0}>
           <p className="deck-num text-4xl text-vaa">{j.n}</p>
           <h3 className="font-[var(--font-display)] text-2xl font-extrabold text-navy">
@@ -167,36 +152,12 @@ export function Jogada({ n, active }: { n: number; active: boolean }) {
             ["Resultado esperado", j.muda],
           ] as const
         ).map(([k, v], i) => (
-          <Reveal key={k} i={i + 1} className="rounded-2xl bg-white p-3">
+          <Reveal key={k} i={i + 1} className="border-t border-navy/15 py-3">
             <p className="text-[10px] font-bold uppercase tracking-widest text-navy/45">{k}</p>
             <p className="text-[12px] leading-snug text-navy/80">{v}</p>
           </Reveal>
         ))}
       </div>
-      <Reveal i={2} className="flex flex-col rounded-2xl border border-navy/10 bg-white p-4">
-        <p className="text-[11px] font-semibold text-navy/60">antes → depois</p>
-        <p className="text-[10px] text-navy/45">{j.unidade}</p>
-        <div className="mt-2 flex-1">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              data={[
-                { m: "antes", v: j.antes },
-                { m: "depois", v: j.depois },
-              ]}
-            >
-              <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
-              <XAxis dataKey="m" tick={{ fontSize: 11 }} />
-              <YAxis tick={{ fontSize: 10 }} />
-              <Tooltip />
-              <Bar dataKey="v" radius={[10, 10, 0, 0]} isAnimationActive={active}>
-                <Cell fill={SPAL} />
-                <Cell fill={VAA} />
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-        <Chip className="mt-2 self-start">valores a testar</Chip>
-      </Reveal>
     </div>
   );
 }
