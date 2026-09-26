@@ -189,11 +189,11 @@ export function Stage() {
         <PorcelainBackdrop variant={backdrop} />
 
         {/* single slide, centred and scaled to the screen */}
-        <div className="absolute inset-0 grid place-items-center">
+        <div className="absolute inset-0 flex min-w-0 items-center justify-center">
           <div
             key={frame.id}
             className={cn(
-              "deck-slide-enter overflow-hidden",
+              "deck-slide-enter shrink-0 overflow-hidden",
               frameTheme ? "deck-sample-slide" : "shadow-[var(--shadow-frame)]",
               frameTheme === "navy" || (!frameTheme && frame.navy) ? "bg-navy" :
                 frameTheme === "rose" ? "bg-vaa" : "bg-porcelain",
