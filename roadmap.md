@@ -26,5 +26,5 @@
 23. Atualizar a data de análise dos perfis para 23/09/2026 e associar oito capturas às seis publicações de Facebook. — feito
 24. Colocar títulos principais em maiúsculas nos quatro separadores; ampliar a tipografia dos posts, oferecer “Ampliar” abaixo dos dados e retirar os indicadores C · Redes. — feito
 25. Retirar páginas transitórias de pop-up; ampliar a comparação qualitativa; retirar “D · diagnóstico” da resposta; usar placar branco com números azul e rosa nas seis rondas. — feito
-26. Verificar a proveniência dos números dos perfis em 23/09/2026; pôr os slides do primeiro minuto e do minuto 8 em branco, mostrar as duas comparações lado a lado sem clique e substituir o laranja por rosa seco. — em curso
+26. Verificar a proveniência dos números dos perfis em 23/09/2026; pôr os slides do primeiro minuto e do minuto 8 em branco, mostrar as duas comparações lado a lado sem clique e substituir o laranja por rosa seco. — feito; confirmação histórica dos totais pendente de capturas datadas dos quatro perfis
 
