@@ -724,17 +724,17 @@ export function Indicadores({ active }: ChapterProps) {
   ];
 
   return (
-    <div className="flex h-full flex-col justify-center gap-4 p-10">
+    <div className="flex h-full flex-col justify-center gap-3 p-6">
       <Reveal i={0}>
-        <h3 className="deck-h2 text-navy">
+        <h3 className="deck-h2 text-[36px] text-navy">
           Três indicadores. Uma decisão para cada resultado.
         </h3>
       </Reveal>
       <div className="grid grid-cols-3 gap-4">
         {cards.map((c, i) => (
           <Reveal key={c.label} i={i + 1} className="deck-card bg-white p-4">
-            <p className="text-sm font-semibold leading-snug text-navy/85">{c.label}</p>
-            <div className="mt-4 space-y-2 text-[12px] leading-snug text-navy/70">
+            <p className="text-[13px] font-semibold leading-snug text-navy/85">{c.label}</p>
+            <div className="mt-2 space-y-1.5 text-[11px] leading-snug text-navy/70">
               <p>
                 <strong className="text-navy/90">Fonte</strong> · {c.fonte}
               </p>
