@@ -1215,7 +1215,7 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
       <div className="flex h-full flex-col p-8 text-navy">
         <div className="mb-3">
           <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[2]}</h3>
-          <p className="text-[10px] text-navy/60">Dados dos perfis · 23/09/2026</p>
+          <p className="text-[10px] text-navy/60">Referência da análise: 23/09/2026 · totais dos perfis por confirmar com capturas datadas</p>
         </div>
         <div className="grid h-[310px] grid-cols-2 grid-rows-2 gap-x-6 gap-y-3">
           {PERFIS.map((p, i) => <PerfilCard key={p.marca + p.rede} p={p} i={i + 1} active={active} />)}

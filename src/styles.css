@@ -160,7 +160,7 @@
   --navy: oklch(0.259 0.049 262);
   --spal: oklch(0.462 0.121 259);
   --vaa: oklch(0.61 0.095 15);
-  --ines: oklch(0.575 0.135 40);
+  --ines: var(--vaa);
   --ink: oklch(0.28 0.02 265);
   --shadow-frame: 0 30px 90px -30px oklch(0.259 0.049 262 / 0.45);
   --shadow-card: 0 12px 30px -14px oklch(0.259 0.049 262 / 0.35);

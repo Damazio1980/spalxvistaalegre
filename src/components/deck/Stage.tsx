@@ -37,6 +37,8 @@ const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
   marcax: "white",
   indicadores: "white",
   final: "white",
+  min0: "white",
+  min8: "white",
 };
 
 function fitScale(f: FrameDef, viewport: Viewport) {

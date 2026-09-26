@@ -8,7 +8,7 @@ export function InesPersona() {
   return (
     <div className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-10 p-14">
       <Reveal i={0} className="deck-card overflow-hidden bg-white">
-        <div className="flex h-[300px] items-center justify-center bg-[linear-gradient(160deg,oklch(0.9_0.05_40),oklch(0.75_0.1_40))]">
+        <div className="flex h-[300px] items-center justify-center bg-vaa/15">
           <div className="relative h-40 w-40 rounded-full bg-porcelain">
             <div className="absolute left-1/2 top-8 h-14 w-14 -translate-x-1/2 rounded-full bg-ines/80" />
             <div className="absolute bottom-6 left-1/2 h-16 w-24 -translate-x-1/2 rounded-t-[40px] bg-navy/70" />
@@ -145,54 +145,31 @@ export function Min3() {
   );
 }
 
-function FlipCard({
-  brand,
-  front,
-  back,
-  tone,
-  delay,
-}: {
+function ProductComparison({ brand, seen, needed, tone, delay }: {
   brand: string;
-  front: string[];
-  back: string[];
+  seen: string[];
+  needed: string[];
   tone: "spal" | "vaa";
   delay: number;
 }) {
-  const [flipped, setFlipped] = useState(false);
+  const accent = tone === "spal" ? "text-spal" : "text-vaa";
+  const rule = tone === "spal" ? "border-spal" : "border-vaa";
   return (
-    <div
-      className="deck-rise [perspective:1200px]"
-      style={{ animationDelay: `${delay}ms` }}
-      onClick={() => setFlipped((f) => !f)}
-    >
-      <div
-        className="relative h-[330px] w-full cursor-pointer transition-transform duration-700 [transform-style:preserve-3d]"
-        style={{ transform: flipped ? "rotateY(180deg)" : "none" }}
-      >
-        <div className="absolute inset-0 rounded-3xl border border-navy/10 bg-white p-6 [backface-visibility:hidden]">
-          <p
-            className={`text-xs font-bold uppercase tracking-widest ${
-              tone === "spal" ? "text-spal" : "text-vaa"
-            }`}
-          >
-            {brand}
-          </p>
-          <p className="mt-1 text-sm font-semibold text-navy/70">o que a Inês vê</p>
-          <ul className="mt-4 space-y-2 text-[14px] text-navy/80">
-            {front.map((f) => (
-              <li key={f}>· {f}</li>
-            ))}
+    <div className="deck-rise border-t border-navy/20 pt-4" style={{ animationDelay: `${delay}ms` }}>
+      <p className={`mb-4 text-sm font-extrabold uppercase ${accent}`}>{brand}</p>
+      <div className="grid grid-cols-2 gap-8">
+        <section className={`border-l-[3px] ${rule} pl-5`}>
+          <h4 className="mb-3 text-lg font-bold text-navy">O que a Inês vê</h4>
+          <ul className="space-y-2 text-[17px] leading-snug text-navy/80">
+            {seen.map((item) => <li key={item}>· {item}</li>)}
           </ul>
-          <p className="absolute bottom-4 text-[11px] text-navy/40">clica para virar</p>
-        </div>
-        <div className="absolute inset-0 rounded-3xl bg-navy p-6 text-porcelain [backface-visibility:hidden] [transform:rotateY(180deg)]">
-          <p className="text-sm font-semibold text-vaa">o que a Inês precisava</p>
-          <ul className="mt-4 space-y-2 text-[14px] text-porcelain/85">
-            {back.map((f) => (
-              <li key={f}>· {f}</li>
-            ))}
+        </section>
+        <section className={`border-l-[3px] ${rule} pl-5`}>
+          <h4 className="mb-3 text-lg font-bold text-navy">O que a Inês precisava</h4>
+          <ul className="space-y-2 text-[17px] leading-snug text-navy/80">
+            {needed.map((item) => <li key={item}>· {item}</li>)}
           </ul>
-        </div>
+        </section>
       </div>
     </div>
   );
@@ -200,24 +177,24 @@ function FlipCard({
 
 export function Min8() {
   return (
-    <div className="flex h-full flex-col justify-center gap-6 p-14">
+    <div className="flex h-full flex-col justify-center gap-7 px-16 py-12">
       <Reveal i={0}>
         <h3 className="deck-h2 text-navy">A ficha do produto</h3>
       </Reveal>
-      <div className="grid grid-cols-2 gap-6">
-        <FlipCard
+      <div className="space-y-8">
+        <ProductComparison
           brand="SPAL"
           tone="spal"
           delay={150}
-          front={["medidas em cm", "peso em gramas", "referência interna", "Pack 04/24"]}
-          back={["preço", "onde comprar", "vai bem na máquina?", "embalagem para presente"]}
+          seen={["medidas em cm", "peso em gramas", "referência interna", "Pack 04/24"]}
+          needed={["preço", "onde comprar", "vai bem na máquina?", "embalagem para presente"]}
         />
-        <FlipCard
+        <ProductComparison
           brand="Vista Alegre"
           tone="vaa"
           delay={300}
-          front={["preço", "botão comprar", "cuidados de lavagem", "material e origem"]}
-          back={["já tem tudo o que ela procurava"]}
+          seen={["preço", "botão comprar", "cuidados de lavagem", "material e origem"]}
+          needed={["já tem tudo o que ela procurava"]}
         />
       </div>
       <div className="flex items-center gap-4">
