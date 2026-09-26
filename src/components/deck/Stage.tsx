@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { ChevronLeft, ChevronRight, Maximize } from "lucide-react";
 import {
-  ACTS,
   FRAMES,
   scoreAt,
-  type ActId,
   type FrameDef,
 } from "@/lib/presentation/deck";
 import { CHAPTERS } from "./registry";
@@ -50,7 +48,6 @@ function fitScale(f: FrameDef, viewport: Viewport) {
 export function Stage() {
   const [index, setIndex] = useState(0);
   const [viewport, setViewport] = useState<Viewport>({ width: 1280, height: 720 });
-  const [actOverlay, setActOverlay] = useState<ActId | null>(null);
   const [seconds, setSeconds] = useState(0);
   const [canaisPage, setCanaisPage] = useState(0);
   const [redesPage, setRedesPage] = useState(0);
@@ -111,19 +108,6 @@ export function Stage() {
     }
     goTo(index - 1);
   }, [canaisPage, frame.id, goTo, index, redesPage]);
-
-  /* act transition: short title card between acts */
-  useEffect(() => {
-    const from = FRAMES[previous.current]!;
-    const to = FRAMES[index]!;
-    if (from.act === to.act || previous.current === index) {
-      setActOverlay(null);
-      return;
-    }
-    setActOverlay(to.act);
-    const t = window.setTimeout(() => setActOverlay(null), 1400);
-    return () => clearTimeout(t);
-  }, [index]);
 
   /* keyboard */
   useEffect(() => {
@@ -223,9 +207,9 @@ export function Stage() {
             }}
           >
             {Chapter && (
-              <FrameBody frame={frame} active={!actOverlay} theme={frameTheme}>
+              <FrameBody frame={frame} theme={frameTheme}>
                 <Chapter
-                  active={!actOverlay}
+                  active
                   {...(frame.id === "canais" ? { subframe: canaisPage } : {})}
                   {...(frame.id === "redes" ? { subframe: redesPage } : {})}
                 />
@@ -234,19 +218,8 @@ export function Stage() {
           </div>
         </div>
 
-        {/* act overlay */}
-        {actOverlay && (
-          <div className="pointer-events-none absolute inset-0 z-40 flex flex-col items-center justify-center bg-navy/85 text-center text-porcelain backdrop-blur-sm">
-            <p className="deck-num text-[180px] leading-none text-vaa">{actOverlay}</p>
-            <p className="deck-title">
-              {ACTS[actOverlay].label} · {ACTS[actOverlay].title}
-            </p>
-            <p className="mt-4 text-lg text-porcelain/70">{ACTS[actOverlay].line}</p>
-          </div>
-        )}
-
         {/* scoreboard */}
-        {frame.act === 2 && frame.id !== "ines" && frame.id !== "dois-placares" && !actOverlay && (
+        {frame.act === 2 && frame.id !== "ines" && frame.id !== "dois-placares" && (
           <div className="absolute right-6 top-6 z-30 flex items-center gap-4 rounded-2xl bg-white/85 px-5 py-3 shadow-[var(--shadow-card)] backdrop-blur">
             <div className="text-center">
               <p className="text-[10px] font-bold uppercase tracking-widest text-spal">SPAL</p>
@@ -312,37 +285,19 @@ export function Stage() {
   );
 }
 
-/* frame chrome: tag, title, punchline-first reveal */
+/* frame chrome: slide content is visible without temporary pop-up pages */
 function FrameBody({
   frame,
-  active,
   theme,
   children,
 }: {
   frame: FrameDef;
-  active: boolean;
   theme?: "navy" | "rose" | "white" | undefined;
   children: React.ReactNode;
 }) {
-  const [phase, setPhase] = useState<"punch" | "content">(
-    frame.punchline ? "punch" : "content",
-  );
-  useEffect(() => {
-    if (!frame.punchline) return;
-    if (!active) {
-      setPhase("punch");
-      return;
-    }
-    setPhase("punch");
-    const t = setTimeout(() => setPhase("content"), 900);
-    return () => clearTimeout(t);
-  }, [active, frame.punchline]);
-
-  const showPunch = Boolean(frame.punchline) && phase === "punch";
-
   return (
     <div className="relative h-full w-full">
-      {frame.tag && frame.id !== "nomes" && (
+      {frame.tag && frame.id !== "nomes" && frame.id !== "placar1" && (
         <span
           className={cn(
             "absolute right-5 top-5 z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest",
@@ -367,6 +322,7 @@ function FrameBody({
         "pergunta",
         "identificacao-canais",
         "introducao-website",
+        "placar1",
       ].includes(frame.id) && (
         <span
           className={cn(
@@ -377,26 +333,7 @@ function FrameBody({
           {frame.title}
         </span>
       )}
-      {showPunch ? (
-        <div
-          key="punch"
-          className={cn(
-            "flex h-full items-center justify-center px-16 text-center",
-            theme === "navy" || theme === "rose" || frame.navy ? "text-porcelain" : "text-navy",
-          )}
-        >
-          <p
-            className="deck-rise text-4xl italic leading-snug"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
-          >
-            {frame.punchline}
-          </p>
-        </div>
-      ) : (
-        <div key={`content-${active}`} className="h-full pt-6">
-          {children}
-        </div>
-      )}
+      <div className="h-full pt-6">{children}</div>
     </div>
   );
 }
