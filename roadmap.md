@@ -28,4 +28,5 @@
 25. Retirar páginas transitórias de pop-up; ampliar a comparação qualitativa; retirar “D · diagnóstico” da resposta; usar placar branco com números azul e rosa nas seis rondas. — feito
 26. Verificar a proveniência dos números dos perfis em 23/09/2026; pôr os slides do primeiro minuto e do minuto 8 em branco, mostrar as duas comparações lado a lado sem clique e substituir o laranja por rosa seco. — feito; confirmação histórica dos totais pendente de capturas datadas dos quatro perfis
 27. No slide em que a Inês abre os dois sites, substituir as simulações e as duas imagens estáticas pelos vídeos enviados em dois telemóveis lado a lado, com reprodução direta e “Ampliar” debaixo de cada telemóvel. — feito
+28. Ampliar os telemóveis e a tipografia dos minutos 3, 8 e 12; remover a frase do minuto 0; aplicar fundo azul ao minuto 8 e fundo branco aos dois placares. — feito
 
