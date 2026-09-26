@@ -286,6 +286,7 @@ function FrameBody({
         "semana",
         "no-ar",
         "simulacao-real",
+        "indicadores",
       ].includes(frame.id) && (
         <span
           className={cn(
