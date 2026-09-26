@@ -4,6 +4,8 @@ import { Maximize2, Play, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import spalOpeningVideo from "@/assets/ines-abre-spal.mp4.asset.json";
 import vaaOpeningVideo from "@/assets/ines-abre-vista-alegre.mp4.asset.json";
+import spalOpeningWebm from "@/assets/ines-abre-spal.webm.asset.json";
+import vaaOpeningWebm from "@/assets/ines-abre-vista-alegre.webm.asset.json";
 import spalOpeningPoster from "@/assets/ines-abre-spal.jpg.asset.json";
 import vaaOpeningPoster from "@/assets/ines-abre-vista-alegre.jpg.asset.json";
 import { Chip, Num, Reveal } from "./primitives";
@@ -53,10 +55,11 @@ export function InesPersona() {
   );
 }
 
-function OpeningPhone({ brand, site, video, poster, tone }: {
+function OpeningPhone({ brand, site, video, webm, poster, tone }: {
   brand: string;
   site: string;
   video: string;
+  webm: string;
   poster: string;
   tone: "spal" | "vaa";
 }) {
@@ -101,7 +104,6 @@ function OpeningPhone({ brand, site, video, poster, tone }: {
       <div className="relative aspect-[9/16] h-[370px] max-h-full overflow-hidden rounded-[29px] border-[6px] border-navy bg-navy shadow-[var(--shadow-card)]">
         <video
           ref={smallVideo}
-          src={video}
           poster={poster}
           playsInline
           muted
@@ -110,7 +112,10 @@ function OpeningPhone({ brand, site, video, poster, tone }: {
           className="h-full w-full cursor-pointer object-contain"
           onClick={toggle}
           aria-label={`Vídeo da ${brand}`}
-        />
+        >
+          <source src={webm} type="video/webm" />
+          <source src={video} type="video/mp4" />
+        </video>
         {!playing && (
           <Button
             type="button"
@@ -140,7 +145,10 @@ function OpeningPhone({ brand, site, video, poster, tone }: {
             <span className="text-sm font-bold">{brand} · {site}</span>
             <Button type="button" variant="ghost" onClick={() => setExpanded(false)} className="text-porcelain hover:bg-porcelain/10 hover:text-porcelain" aria-label="Fechar vídeo"><X /> Fechar</Button>
           </div>
-          <video src={video} poster={poster} autoPlay controls playsInline className="max-h-[82vh] max-w-full rounded-md bg-navy object-contain" onClick={(event) => event.stopPropagation()} />
+          <video poster={poster} autoPlay controls playsInline className="max-h-[82vh] max-w-full rounded-md bg-navy object-contain" onClick={(event) => event.stopPropagation()}>
+            <source src={webm} type="video/webm" />
+            <source src={video} type="video/mp4" />
+          </video>
         </div>,
         document.body,
       )}
@@ -156,8 +164,8 @@ export function Min0() {
         <p className="mt-2 text-navy/65">O primeiro ecrã já decide muita coisa.</p>
       </Reveal>
       <div className="grid w-full max-w-[700px] grid-cols-2 gap-12">
-        <Reveal i={1}><OpeningPhone brand="SPAL" site="spal.pt" video={spalOpeningVideo.url} poster={spalOpeningPoster.url} tone="spal" /></Reveal>
-        <Reveal i={2}><OpeningPhone brand="Vista Alegre" site="vistaalegre.com" video={vaaOpeningVideo.url} poster={vaaOpeningPoster.url} tone="vaa" /></Reveal>
+        <Reveal i={1}><OpeningPhone brand="SPAL" site="spal.pt" video={spalOpeningVideo.url} webm={spalOpeningWebm.url} poster={spalOpeningPoster.url} tone="spal" /></Reveal>
+        <Reveal i={2}><OpeningPhone brand="Vista Alegre" site="vistaalegre.com" video={vaaOpeningVideo.url} webm={vaaOpeningWebm.url} poster={vaaOpeningPoster.url} tone="vaa" /></Reveal>
       </div>
       <Chip tone="ines">isto é a ronda 1 do Ato 1 a acontecer</Chip>
     </div>
