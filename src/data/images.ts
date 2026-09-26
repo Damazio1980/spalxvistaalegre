@@ -249,14 +249,14 @@ export const POSTS: RefImage[] = [
     data: "09/09", formato: "Imagem única", tema: "Recrutamento Assistente de Loja", cta: "envie o seu CV para rh@spal.pt", reacoes: "5 gostos, 2 partilhas",
     isPlaceholder: false,
   }),
-  post("post-11", "SPAL Porcelanas", "Facebook", spalFbArteCopy.url, {
+  post("post-11", "SPAL Porcelanas", "Facebook", spalFbArteVideo.url, {
     data: "24/08", formato: "Reel", tema: "Arte que se serve à mesa", cta: "nenhum", reacoes: "10 reações, 1 partilha",
-    gallery: [spalFbArteCopy.url, spalFbArteVideo.url],
+    gallery: [spalFbArteVideo.url, spalFbArteCopy.url],
     isPlaceholder: false,
   }),
-  post("post-12", "SPAL Porcelanas", "Facebook", spalFbSustentabilidadeCopy.url, {
+  post("post-12", "SPAL Porcelanas", "Facebook", spalFbSustentabilidade.url, {
     data: "28/07", formato: "Carrossel 9 imagens", tema: "Sustentabilidade", cta: "nenhum", reacoes: "18 gostos, 1 partilha",
-    gallery: [spalFbSustentabilidadeCopy.url, spalFbSustentabilidade.url],
+    gallery: [spalFbSustentabilidade.url, spalFbSustentabilidadeCopy.url],
     isPlaceholder: false,
   }),
 ];
