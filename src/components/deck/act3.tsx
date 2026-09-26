@@ -724,15 +724,15 @@ export function Indicadores({ active }: ChapterProps) {
   ];
 
   return (
-    <div className="flex h-full flex-col justify-center gap-6 p-12">
+    <div className="flex h-full flex-col justify-center gap-4 p-10">
       <Reveal i={0}>
         <h3 className="deck-h2 text-navy">
           Três indicadores. Uma decisão para cada resultado.
         </h3>
       </Reveal>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-3 gap-4">
         {cards.map((c, i) => (
-          <Reveal key={c.label} i={i + 1} className="deck-card bg-white p-5">
+          <Reveal key={c.label} i={i + 1} className="deck-card bg-white p-4">
             <p className="text-sm font-semibold leading-snug text-navy/85">{c.label}</p>
             <div className="mt-4 space-y-2 text-[12px] leading-snug text-navy/70">
               <p>
@@ -772,6 +772,55 @@ export function Indicadores({ active }: ChapterProps) {
           </Reveal>
         ))}
       </div>
+      <Reveal
+        i={5}
+        className="rounded-2xl border-2 border-dashed border-navy/30 bg-porcelain/60 p-4"
+      >
+        <div className="flex items-center justify-between gap-4">
+          <p className="text-sm font-bold uppercase tracking-widest text-navy/70">
+            Se as metas fossem atingidas
+          </p>
+          <span className="shrink-0 rounded-full border border-navy/25 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-navy/60">
+            Simulação — números hipotéticos para ilustrar a meta, não resultados reais
+          </span>
+        </div>
+        <div className="mt-3 grid grid-cols-3 gap-4 text-[11px] leading-snug text-navy/70">
+          <div>
+            <p className="font-semibold text-navy/85">
+              1 · Cliques em “Onde comprar” — meta ≥ 5 %
+            </p>
+            <p className="mt-1">
+              Num mês com 4.000 sessões no site novo, atingir 5 % significa 200 sessões a avançar
+              para “onde comprar” — hoje essa contagem simplesmente não existe, porque o botão não
+              existe.
+            </p>
+          </div>
+          <div>
+            <p className="font-semibold text-navy/85">
+              2 · Resposta a comentários e mensagens em <24 h — meta ≥ 95 %
+            </p>
+            <p className="mt-1">
+              Numa semana com 40 comentários e mensagens recebidas, a meta significa responder a
+              pelo menos 38 dentro de 24 horas.
+            </p>
+          </div>
+          <div>
+            <p className="font-semibold text-navy/85">
+              3 · Sessões em telemóvel — rejeição, meta −10 pontos
+            </p>
+            <p className="mt-1">
+              Se a rejeição em telemóvel partisse de um valor de referência de 70 % (hipotético, a
+              confirmar com o Google Analytics do site novo), atingir a meta significa descer para
+              60 % — 10 em cada 100 visitas de telemóvel a ficarem no site em vez de sair de
+              imediato.
+            </p>
+          </div>
+        </div>
+        <p className="mt-3 text-center text-[11px] italic text-navy/55">
+          Isto não são números que já temos — é o que o sucesso pareceria, para sabermos
+          reconhecê-lo quando o site novo estiver a funcionar.
+        </p>
+      </Reveal>
       <Reveal i={4}>
         <Chip tone="ink">
           Indicadores públicos sem acesso interno: publicações por semana, reações, comentários,
