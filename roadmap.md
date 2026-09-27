@@ -103,3 +103,7 @@
 ## 50 · Vídeos enviados
 - [x] Substituir «Imagem 1 de 3» em «Os Posts» por Reels/Stories com vídeo, ícones e legenda fornecidos.
 - [x] Colocar os vídeos de SPAL e Vista Alegre em «Integração e confiança».
+
+## 51 · Correções do Reels em «Os Posts» — feito
+- [x] Usar o vídeo vertical em toda a altura do primeiro telemóvel, com a publicação sobreposta ao vídeo.
+- [x] Preservar o áudio original e colocar os ícones junto às etiquetas «Reels» e «Story».
