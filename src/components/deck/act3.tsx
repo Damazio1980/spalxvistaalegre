@@ -540,7 +540,7 @@ export function Resposta({ active }: ChapterProps) {
         </p>
       </Reveal>
       <div className="flex justify-end">
-        <div className="max-w-[760px] rounded-3xl rounded-br-md bg-spal p-5 text-porcelain">
+        <div className="deck-on-blue max-w-[760px] rounded-3xl rounded-br-md bg-spal p-5 text-porcelain">
           <p className="text-[10px] font-bold uppercase tracking-widest text-porcelain/70">
             SPAL · resposta em menos de 24 h
           </p>
@@ -957,7 +957,7 @@ export function Bastidores() {
           <p className="mt-2 text-sm text-navy/60">Redes sociais analisadas em 23/09/2026 · websites consultados em 04/09/2026.</p>
         </Reveal>
         {fontes.map((f, i) => (
-          <Reveal key={f} i={i + 1} className="rounded-xl bg-white px-4 py-2 text-[14px] text-navy/75">
+          <Reveal key={f} i={i + 1} className="border-b border-navy/15 px-4 py-2 text-[14px] text-navy/75">
             {f}
           </Reveal>
         ))}

@@ -47,6 +47,7 @@ const REQUESTED_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "white">> =
   min12: "navy",
   "dois-placares": "white",
   "porque-spal": "navy",
+  "empresa-escolhida": "navy",
   semana: "navy",
   "no-ar": "navy",
   "simulacao-real": "navy",
