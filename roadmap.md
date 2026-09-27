@@ -65,3 +65,7 @@
 ## 42 · Bio sem botão + duas respostas em «A Inês pergunta» — feito
 - [x] Slide «A Bio»: biografia «depois» sempre visível, sem botão.
 - [x] Slide «A Inês pergunta»: nota de enquadramento, comentário e duas respostas lado a lado (Hoje → Depois) com frase de fecho.
+
+## 43 · Novo slide «O que já vimos» antes de «A empresa escolhida…» — feito
+- [x] Resumo em dois quadros lado a lado (Vista Alegre rosa seco / SPAL azul) com os pontos exatos do prompt.
+- [x] Frase de fecho grande e nota de transição; fundo branco registado no Stage.
