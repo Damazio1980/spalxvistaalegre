@@ -99,3 +99,7 @@
 - [x] Deixar a capa totalmente azul, com a imagem centrada a ocupar 80% da largura e da altura.
 - [x] Aplicar ao duelo «Telemóvel» a linguagem clean de navegador usada em «Próximo passo», em formato vertical.
 - [x] Atualizar «Anatomia da publicação» com os três headlines do carrossel e o CTA «Explora o novo spal.pt».
+
+## 50 · Vídeos enviados
+- [x] Substituir «Imagem 1 de 3» em «Os Posts» por Reels/Stories com vídeo, ícones e legenda fornecidos.
+- [x] Colocar os vídeos de SPAL e Vista Alegre em «Integração e confiança».
