@@ -28,6 +28,115 @@ import {
 const SPAL = "var(--spal)";
 const VAA = "var(--vaa)";
 
+const RESUMO_VAA = [
+  "Loja online com preço, pesquisa e carrinho de compra",
+  "~25 lojas e 6 outlets, com localizador completo",
+  "Redes sociais maiores (360 000 seguidores IG, 347 000 FB), conta verificada, «Recomendado por 92%»",
+  "Conteúdo adaptado a cada rede — não repete o mesmo post em todo o lado",
+  "Na jornada da Inês: chega à compra em 4 cliques e 6 minutos, com carrinho",
+];
+
+const RESUMO_SPAL = [
+  "Site de 2013: sem preço, sem pesquisa, sem carrinho, sem versão para telemóvel",
+  "Não vende diretamente — remete sempre para parceiros externos (ex.: El Corte Inglés)",
+  "Bio em inglês, sem link de compra",
+  "Publica o mesmo conteúdo, sem adaptação, no Instagram e no Facebook",
+  "Na jornada da Inês: ao fim de 12 minutos, sem resposta clara — sai do site sem saber onde comprar",
+];
+
+function ResumoCard({
+  brand,
+  subtitle,
+  items,
+  tone,
+  delay,
+}: {
+  brand: string;
+  subtitle: string;
+  items: string[];
+  tone: "vaa" | "spal";
+  delay: number;
+}) {
+  const isVaa = tone === "vaa";
+  return (
+    <Reveal i={1} delay={delay}>
+      <div
+        className={
+          "flex h-full flex-col gap-4 rounded-3xl border-2 p-7 " +
+          (isVaa ? "border-vaa/50 bg-vaa/10" : "border-spal/50 bg-spal/10")
+        }
+      >
+        <div>
+          <h4
+            className="font-[var(--font-display)] text-[30px] font-extrabold leading-tight"
+            style={{ color: isVaa ? VAA : SPAL }}
+          >
+            {brand}
+          </h4>
+          <p className="mt-1 text-[15px] font-semibold uppercase tracking-wide text-navy/55">
+            {subtitle}
+          </p>
+        </div>
+        <ul className="flex flex-col gap-3">
+          {items.map((item) => (
+            <li key={item} className="flex items-start gap-3">
+              <span
+                className="mt-[7px] h-2 w-2 shrink-0 rounded-full"
+                style={{ backgroundColor: isVaa ? VAA : SPAL }}
+              />
+              <span className="text-[16px] leading-snug text-navy/85">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Reveal>
+  );
+}
+
+export function OQueVimos() {
+  return (
+    <div className="relative flex h-full flex-col justify-center gap-6 px-16 py-10 text-navy">
+      <div className="absolute right-14 top-9 text-[11px] uppercase tracking-[0.25em] text-navy/40">
+        resumo · antes da intervenção
+      </div>
+      <Reveal i={0}>
+        <div className="mb-1 h-px w-24 bg-vaa" />
+        <h3 className="font-[var(--font-display)] text-[52px] font-extrabold leading-tight">
+          O que já vimos
+        </h3>
+        <p className="mt-2 text-xl text-navy/70">
+          Dos números às pessoas — tudo apontou para o mesmo sítio.
+        </p>
+      </Reveal>
+      <div className="grid flex-1 grid-cols-2 items-stretch gap-7">
+        <ResumoCard
+          brand="Vista Alegre"
+          subtitle="Onde está mais forte"
+          items={RESUMO_VAA}
+          tone="vaa"
+          delay={400}
+        />
+        <ResumoCard
+          brand="SPAL"
+          subtitle="Onde está mais frágil"
+          items={RESUMO_SPAL}
+          tone="spal"
+          delay={700}
+        />
+      </div>
+      <Reveal i={2} delay={1100}>
+        <p className="text-center font-[var(--font-display)] text-[24px] font-bold leading-snug">
+          A Vista Alegre não venceu por ter mais produto. Venceu por ter menos obstáculos entre a
+          pessoa e a compra.
+        </p>
+        <p className="mt-2 text-center text-[13px] italic text-navy/50">
+          É esta distância que a intervenção que se segue vai fechar.
+        </p>
+      </Reveal>
+    </div>
+  );
+}
+
 export function EmpresaEscolhida() {
   return (
     <div className="flex h-full items-center px-24 text-porcelain">
