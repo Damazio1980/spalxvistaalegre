@@ -112,7 +112,7 @@ function OpeningPhone({ brand, site, video, webm, poster, tone }: {
         <p className={`text-sm font-extrabold uppercase ${tone === "spal" ? "text-spal" : "text-vaa"}`}>{brand}</p>
         <p className="text-xs text-navy/55">{site}</p>
       </div>
-      <div className="relative aspect-[9/16] h-[430px] max-h-full overflow-hidden rounded-[18px] border-2 border-navy/70 bg-navy">
+      <div className="deck-device-frame relative aspect-[9/16] h-[430px] max-h-full overflow-hidden rounded-[18px] border-2 border-navy/70 bg-white">
         <video
           ref={smallVideo}
           poster={poster}
@@ -120,7 +120,7 @@ function OpeningPhone({ brand, site, video, webm, poster, tone }: {
           muted
           preload="metadata"
           onEnded={() => setPlaying(false)}
-          className="h-full w-full cursor-pointer object-contain"
+          className="h-full w-full cursor-pointer bg-white object-contain"
           onClick={toggle}
           aria-label={`Vídeo da ${brand}`}
         >

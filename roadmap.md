@@ -87,4 +87,10 @@
 
 ## 47 · Slide «Os Posts» — feito
 - [x] Criar um slide branco com quatro telemóveis: três imagens do carrossel na ordem enviada e o post completo navegável no segundo telemóvel.
+
+## 48 · Capa, telemóveis e publicação — feito
+- [x] Reenquadrar a capa com a fotografia a ocupar 80% do slide sobre fundo azul-escuro.
+- [x] Uniformizar os dois telemóveis de «A Inês entra» e o duelo «Telemóvel» com a moldura clean do template.
+- [x] Garantir texto branco no destaque inferior do teste de percurso.
+- [x] Atualizar «A publicação» e «Anatomia da publicação» com o carrossel enviado, a nova legenda e as novas hashtags.
 - [x] Usar integralmente a legenda e as hashtags fornecidas para o Instagram da SPAL.
