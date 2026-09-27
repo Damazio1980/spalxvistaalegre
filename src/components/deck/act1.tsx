@@ -902,19 +902,14 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
             {phone ? (
               <VideoPlayer src={src} label={name} site={site} phone className="min-h-0 flex-1" />
             ) : (
-              <div className="flex min-h-0 flex-1 flex-col items-center">
-                <div className="flex min-h-0 w-full flex-1 flex-col rounded-t-[14px] border-[7px] border-b-0 border-navy bg-navy">
-                  <div className="flex shrink-0 items-center gap-1.5 rounded-t-[6px] bg-porcelain px-2.5 py-1.5">
-                    <span className="h-2 w-2 rounded-full bg-navy/25" />
-                    <span className="h-2 w-2 rounded-full bg-navy/25" />
-                    <span className="h-2 w-2 rounded-full bg-navy/25" />
-                    <span className="ml-2 flex-1 truncate rounded-full bg-white px-3 py-[2px] text-[10px] text-navy/60">https://{site}</span>
-                  </div>
-                  <VideoPlayer src={src} label={name} site={site} className="min-h-0 flex-1 !rounded-none !border-0" />
+              <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-[18px] border border-navy/15 bg-white">
+                <div className="flex shrink-0 items-center gap-1.5 border-b border-navy/10 bg-white px-3 py-2">
+                  <span className="h-2 w-2 rounded-full bg-navy/15" />
+                  <span className="h-2 w-2 rounded-full bg-navy/15" />
+                  <span className="h-2 w-2 rounded-full bg-navy/15" />
+                  <span className="ml-2 flex-1 truncate rounded-full bg-porcelain px-3 py-[3px] text-[10px] text-navy/55">https://{site}</span>
                 </div>
-                <div className="h-3 w-full rounded-b-[10px] bg-navy/85" />
-                <div className="h-5 w-16 bg-navy/60" />
-                <div className="h-1.5 w-40 rounded-full bg-navy/60" />
+                <VideoPlayer src={src} label={name} site={site} className="min-h-0 flex-1 !rounded-none !border-0" />
               </div>
             )}
             <p className="shrink-0 px-1 pt-1.5 text-[11.5px] leading-snug text-navy/70">{side.obs}</p>
