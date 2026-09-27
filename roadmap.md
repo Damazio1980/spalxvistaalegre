@@ -69,3 +69,9 @@
 ## 43 · Novo slide «O que já vimos» antes de «A empresa escolhida…» — feito
 - [x] Resumo em dois quadros lado a lado (Vista Alegre rosa seco / SPAL azul) com os pontos exatos do prompt.
 - [x] Frase de fecho grande e nota de transição; fundo branco registado no Stage.
+
+## 44 · Uniformização visual global — feito
+- [x] Substituir texto cinzento por azul nos slides claros, mantendo branco nos fundos escuros.
+- [x] Tornar retos todos os quadros de informação, preservando círculos, botões e molduras de telemóvel.
+- [x] Usar nas publicações de Instagram e Facebook a moldura do slide «A publicação».
+- [x] Corrigir cores e encaixe em «A publicação», «Anatomia da publicação» e «A Inês pergunta».

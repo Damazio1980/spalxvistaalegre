@@ -15,3 +15,4 @@
 - O slide do minuto 0 usa os vídeos verticais enviados pelo utilizador via ponteiros de assets e amplia em portal, para comparar os sites reais sem simulações estáticas.
 - O percurso da Inês começa com o separador “JORNADA DE COMPRA”; os títulos seguintes não mostram a palavra “Minuto”.
 - Os slides “A publicação” e “Anatomia da publicação” partilham a imagem original enviada via ponteiro de asset, sem reconstruir o post, para manter as duas representações consistentes.
+- Nos slides claros, todo o texto secundário usa azul-marinho integral; os quadros de informação têm cantos retos, preservando apenas círculos, botões e silhuetas de dispositivos.

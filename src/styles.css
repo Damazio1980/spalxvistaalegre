@@ -211,6 +211,10 @@
   color: var(--porcelain);
 }
 
+.deck-theme-navy [class*="text-porcelain/"] {
+  color: var(--porcelain) !important;
+}
+
 /* Full-deck editorial treatment: content sits directly on one dominant colour. */
 .deck-theme-navy .text-navy,
 .deck-theme-navy [class*="text-navy/"] {
@@ -282,6 +286,23 @@
   color: var(--navy) !important;
 }
 
+/* On light and rose slides, secondary copy stays in the presentation navy.
+   Opacity belongs to rules and fills, never to typography. */
+.deck-theme-white [class*="text-navy/"],
+.deck-theme-rose [class*="text-navy/"],
+.deck-theme-white .text-muted-foreground,
+.deck-theme-rose .text-muted-foreground {
+  color: var(--navy) !important;
+}
+
+.deck-theme-white .recharts-cartesian-axis-tick-value,
+.deck-theme-rose .recharts-cartesian-axis-tick-value,
+.deck-theme-white .recharts-legend-item-text,
+.deck-theme-rose .recharts-legend-item-text {
+  color: var(--navy) !important;
+  fill: var(--navy) !important;
+}
+
 .deck-theme-white .bg-porcelain\/5,
 .deck-theme-white .bg-white {
   background-color: transparent !important;
@@ -316,6 +337,33 @@
 
 .deck-theme-navy .sample-channels-slide strong {
   color: var(--porcelain);
+}
+
+/* Information panels are editorial rectangles. Circular controls and physical
+   phone/browser silhouettes keep their purpose-built shapes. */
+.deck-theme-white .deck-card,
+.deck-theme-white .rounded-3xl,
+.deck-theme-white .rounded-2xl,
+.deck-theme-white .rounded-xl,
+.deck-theme-white .rounded-lg,
+.deck-theme-white .rounded-md,
+.deck-theme-navy .rounded-3xl,
+.deck-theme-navy .rounded-2xl,
+.deck-theme-navy .rounded-xl,
+.deck-theme-navy .rounded-lg,
+.deck-theme-navy .rounded-md,
+.deck-theme-rose .rounded-3xl,
+.deck-theme-rose .rounded-2xl,
+.deck-theme-rose .rounded-xl,
+.deck-theme-rose .rounded-lg,
+.deck-theme-rose .rounded-md {
+  border-radius: 0 !important;
+}
+
+.deck-theme-white .deck-device-frame,
+.deck-theme-rose .deck-device-frame,
+.deck-theme-navy .deck-device-frame {
+  border-radius: 28px !important;
 }
 
 /* soft watermark: pattern stays, colors washed out so slides keep focus */
