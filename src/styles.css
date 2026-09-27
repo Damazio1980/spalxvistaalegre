@@ -211,6 +211,10 @@
   color: var(--porcelain);
 }
 
+.deck-theme-navy [class*="text-porcelain/"] {
+  color: var(--porcelain) !important;
+}
+
 /* Full-deck editorial treatment: content sits directly on one dominant colour. */
 .deck-theme-navy .text-navy,
 .deck-theme-navy [class*="text-navy/"] {
@@ -354,6 +358,12 @@
 .deck-theme-rose .rounded-lg,
 .deck-theme-rose .rounded-md {
   border-radius: 0 !important;
+}
+
+.deck-theme-white .deck-device-frame,
+.deck-theme-rose .deck-device-frame,
+.deck-theme-navy .deck-device-frame {
+  border-radius: 28px !important;
 }
 
 /* soft watermark: pattern stays, colors washed out so slides keep focus */

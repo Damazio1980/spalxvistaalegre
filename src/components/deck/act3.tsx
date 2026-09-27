@@ -623,7 +623,7 @@ export function Resposta() {
             Depois
           </span>
         </div>
-        <Reveal i={4} className="rounded-3xl bg-navy p-5 text-porcelain">
+        <Reveal i={4} className="deck-on-blue rounded-3xl bg-navy p-5 text-porcelain">
           <p className="text-[10px] font-bold uppercase tracking-widest text-porcelain/70">
             Depois — com o site novo, compra online
           </p>
