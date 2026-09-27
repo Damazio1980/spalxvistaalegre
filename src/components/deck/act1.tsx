@@ -59,7 +59,7 @@ export function Capa({}: ChapterProps) {
       <img
         src={coverAbertura.url}
         alt="Capa da apresentação SPAL e Vista Alegre"
-        className="h-full w-4/5 object-cover object-center"
+        className="h-4/5 w-4/5 object-contain object-center"
       />
     </div>
   );
@@ -762,17 +762,26 @@ function VideoPlayer({
         className={cn(
           "relative overflow-hidden bg-navy",
           phone
-            ? "deck-device-frame mx-auto w-[230px] max-w-full rounded-[20px] border-2 border-navy bg-white"
+            ? "deck-device-frame mx-auto flex w-[230px] max-w-full flex-col rounded-[20px] border-2 border-navy bg-white"
             : "rounded-2xl border border-navy/10",
           className,
         )}
       >
-        {/* quadro alto e quase quadrado: o site vê-se bem à primeira vista */}
+        {phone && (
+          <div className="flex shrink-0 items-center gap-1 border-b border-navy/10 bg-white px-2 py-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-navy/20" />
+            <span className="h-1.5 w-1.5 rounded-full bg-navy/20" />
+            <span className="h-1.5 w-1.5 rounded-full bg-navy/20" />
+            <span className="ml-1 min-w-0 flex-1 truncate rounded-full bg-porcelain px-2 py-0.5 text-center text-[8px] text-navy">
+              {site}
+            </span>
+          </div>
+        )}
         <video
           ref={ref}
           src={src}
           onClick={toggle}
-          className={cn("h-full w-full cursor-pointer", phone ? "bg-white object-contain" : "object-cover")}
+          className={cn("w-full cursor-pointer", phone ? "min-h-0 flex-1 bg-white object-contain" : "h-full object-cover")}
           playsInline
           muted
           loop
@@ -799,11 +808,6 @@ function VideoPlayer({
         >
           <Maximize2 className="h-3.5 w-3.5" /> Ampliar
         </button>
-        {phone && (
-          <span className="pointer-events-none absolute left-3 top-2 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
-            ▶ vídeo · {site}
-          </span>
-        )}
       </div>
 
       {expanded &&
