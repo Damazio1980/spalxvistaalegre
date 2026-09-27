@@ -236,6 +236,13 @@ const seeds: Seed[] = [
   },
   // ── Ato 3 · centro do prato ─────────────────────────────────────────────
   {
+    id: "resumo",
+    act: 3,
+    title: "O que já vimos",
+    punchline: "Dos números às pessoas — tudo apontou para o mesmo sítio.",
+    rot: -1.5,
+  },
+  {
     id: "empresa-escolhida",
     act: 3,
     title: "A empresa escolhida para intervenção",
