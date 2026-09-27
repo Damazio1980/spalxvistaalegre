@@ -136,7 +136,7 @@ export function PostMock({ img, compact }: { img: RefImage; compact?: boolean | 
         </span>
       </div>
       <div className="group/carousel relative min-h-0 flex-1 overflow-hidden">
-        <img src={images[current]} alt={`${img.caption}${images.length > 1 ? ` · imagem ${current + 1}` : ""}`} loading="lazy" className="h-full w-full object-cover" />
+        <img src={images[current]} alt={`${img.caption}${images.length > 1 ? ` · imagem ${current + 1}` : ""}`} loading="lazy" className="h-full w-full bg-porcelain object-contain" />
         {images.length > 1 && (
           <>
             <button type="button" aria-label="Imagem anterior" onClick={(event) => { event.stopPropagation(); go(-1); }} className="deck-media-control absolute left-1 top-1/2 z-10 grid h-6 w-6 -translate-y-1/2 place-items-center rounded-full bg-navy text-porcelain">
