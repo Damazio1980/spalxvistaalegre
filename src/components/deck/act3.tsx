@@ -430,7 +430,11 @@ function PostPhone({
     <div className="flex min-w-0 flex-col items-center gap-2">
       <div className="deck-device-frame relative h-[472px] w-[226px] overflow-hidden border-2 border-navy bg-white text-navy">
         {children ?? (
-          <img src={image} alt={label} className="h-full w-full object-contain" />
+          <img
+            src={image}
+            alt={typeof label === "string" ? label : "Publicação da SPAL"}
+            className="h-full w-full object-contain"
+          />
         )}
       </div>
       <div className="text-[11px] font-bold uppercase text-vaa">{label}</div>
