@@ -563,7 +563,7 @@ export function Bio({ active }: ChapterProps) {
       </div>
       <div className="flex flex-wrap gap-3">
         {["PT em vez de EN", "origem + posicionamento", "ligação para a compra"].map((c, i) => (
-          <Chip key={c} tone="vaa" delay={300 + i * 200} className="bg-vaa/20 text-porcelain">
+          <Chip key={c} tone="vaa" delay={300 + i * 200}>
             {c}
           </Chip>
         ))}
@@ -799,7 +799,7 @@ export function MarcaX({ active }: ChapterProps) {
             </div>
           </Reveal>
         ))}
-        <Reveal i={6} className="rounded-2xl bg-vaa p-4 text-navy">
+        <Reveal i={6} className="deck-on-blue rounded-2xl bg-navy p-4 text-porcelain">
           <p className="text-xs font-bold uppercase tracking-widest">Decisão</p>
           <p className="mt-2 text-[13px] leading-snug">
             Reforçar o Facebook (mais encomendas, mais receita, menos investimento). No Instagram
@@ -977,7 +977,7 @@ export function Final({ active }: ChapterProps) {
           <p className="text-[10px] font-bold uppercase tracking-widest text-spal">
             spal.porcelanas
           </p>
-          <p className="mt-2 rounded-2xl rounded-bl-md bg-ines/12 p-3 text-[12px]">
+          <p className="deck-on-blue mt-2 rounded-2xl rounded-bl-md bg-navy p-3 text-[12px] text-porcelain">
             Onde posso comprar esta peça?
           </p>
           <p className="mt-2 rounded-2xl rounded-br-md bg-spal p-3 text-[12px] text-porcelain">

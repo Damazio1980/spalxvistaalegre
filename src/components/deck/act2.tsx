@@ -285,7 +285,7 @@ export function Min8() {
         />
       </div>
       <div className="flex items-center gap-5 border-t border-porcelain/20 pt-3">
-        <Chip tone="vaa" className="bg-vaa text-porcelain px-5 py-2 text-lg">+1 Vista Alegre</Chip>
+        <Chip tone="vaa" className="px-5 py-2 text-lg">+1 Vista Alegre</Chip>
         <p className="max-w-[900px] text-lg leading-relaxed text-porcelain/80">
           a SPAL tem melhor informação técnica do que muitas lojas — mas para o retalho, não para a
           Inês
@@ -312,7 +312,7 @@ export function Min12({ active }: ChapterProps) {
                 <span className="h-2.5 w-2.5 rounded-full bg-porcelain" />
                 <span className="text-lg text-porcelain/80">{s}</span>
                 {i === 1 && (
-                  <span className="rounded-full bg-ines/12 px-3 py-1 text-sm font-bold text-ines">
+                  <span className="rounded-full border border-porcelain/30 bg-navy px-3 py-1 text-sm font-bold text-porcelain">
                     caminho cortado
                   </span>
                 )}

@@ -612,9 +612,7 @@ function Fluxo({
       ))}
       <Reveal i={i + passos.length} className="mt-auto">
         <p
-          className={`rounded-xl px-3 py-1.5 text-[12px] font-bold leading-snug ${
-            tone === "spal" ? "bg-spal/10 text-spal" : "bg-vaa/15 text-vaa"
-          }`}
+          className="deck-on-blue rounded-xl bg-navy px-3 py-1.5 text-[12px] font-bold leading-snug text-porcelain"
         >
           {resultado}
         </p>
