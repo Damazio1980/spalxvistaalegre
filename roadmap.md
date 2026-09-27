@@ -56,3 +56,8 @@
 - [x] Criar «Anatomia da publicação» depois de «A publicação», com fundo branco.
 - [x] Manter o post na paleta monocromática original e mostrar o post inteiro ao ampliar.
 - [x] Retirar o texto alternativo, atualizar «A empresa escolhida» e retirar travessões de «Porque a SPAL».
+
+## 41 · Imagem enviada e biografia — feito
+- [x] Substituir o criativo nos slides «A publicação» e «Anatomia da publicação» pela imagem original enviada, sem cortar o quadrado.
+- [x] Usar azul-escuro nos títulos e textos dos dois slides.
+- [x] Aplicar fundo azul-escuro, texto branco e detalhes rosa à biografia.
