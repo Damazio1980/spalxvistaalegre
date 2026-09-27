@@ -412,24 +412,6 @@ const BIO_DEPOIS =
   "Porcelana de design feita em Alcobaça desde 1965 🇵🇹 Novo site: preço, compra e lojas num só lugar. Descobre 👇";
 
 export function Bio({ active }: ChapterProps) {
-  const [depois, setDepois] = useState(false);
-  const [typed, setTyped] = useState("");
-  useEffect(() => {
-    if (!depois) {
-      setTyped("");
-      return;
-    }
-    let i = 0;
-    const id = setInterval(() => {
-      i += 1;
-      setTyped(BIO_DEPOIS.slice(0, i));
-      if (i >= BIO_DEPOIS.length) clearInterval(id);
-    }, 24);
-    return () => clearInterval(id);
-  }, [depois]);
-  useEffect(() => {
-    if (!active) setDepois(false);
-  }, [active]);
   return (
     <div className="flex h-full flex-col justify-center gap-6 p-12 text-porcelain">
       <Reveal i={0}>
@@ -458,41 +440,25 @@ export function Bio({ active }: ChapterProps) {
           </p>
         </Reveal>
         <Reveal i={2} className="border-t-2 border-vaa p-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-vaa text-sm font-bold text-porcelain">
-                S
+          <div className="flex items-center gap-2">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-vaa text-sm font-bold text-porcelain">
+              S
+            </span>
+            <div>
+              <span className="block text-[13px] font-semibold text-porcelain">
+                {PERFIL_SPAL.handle.replace("@", "")}
               </span>
-              <div>
-                <span className="block text-[13px] font-semibold text-porcelain">
-                  {PERFIL_SPAL.handle.replace("@", "")}
-                </span>
-                <span className="block text-[11px] text-porcelain/70">
-                  {PERFIL_SPAL.seguidores.toLocaleString("pt-PT")} seguidores ·{" "}
-                  {PERFIL_SPAL.publicacoes} publicações
-                </span>
-              </div>
+              <span className="block text-[11px] text-porcelain/70">
+                {PERFIL_SPAL.seguidores.toLocaleString("pt-PT")} seguidores ·{" "}
+                {PERFIL_SPAL.publicacoes} publicações
+              </span>
             </div>
-            <Button
-              variant="outline"
-              onClick={() => setDepois(true)}
-              className="border-vaa bg-transparent text-porcelain hover:bg-vaa hover:text-porcelain"
-            >
-              depois
-            </Button>
           </div>
           <p className="mt-3 text-xs font-bold uppercase tracking-widest text-vaa">Depois</p>
-          <p className="mt-2 min-h-[92px] text-[15px] leading-relaxed text-porcelain">
-            {typed}
-            {depois && typed.length < BIO_DEPOIS.length && (
-              <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-vaa align-middle" />
-            )}
-          </p>
-          <p className="text-[13px] font-semibold text-vaa">
-            novo spal.pt · página inicial
-          </p>
+          <p className="mt-2 min-h-[92px] text-[15px] leading-relaxed text-porcelain">{BIO_DEPOIS}</p>
+          <p className="text-[13px] font-semibold text-vaa">novo spal.pt · página inicial</p>
           <p className="mt-2 text-xs font-semibold text-porcelain/70">
-            <Num value={depois ? typed.length : 0} active={active} />/150 caracteres
+            <Num value={BIO_DEPOIS.length} active={active} />/150 caracteres
           </p>
         </Reveal>
       </div>
@@ -507,57 +473,61 @@ export function Bio({ active }: ChapterProps) {
   );
 }
 
-export function Resposta({ active }: ChapterProps) {
-  const resposta =
-    "Olá! Muito obrigada, fico feliz que tenha gostado. 😊 Acabámos de lançar o novo site da SPAL, onde já pode ver o preço, comprar online ou consultar a loja mais perto de si com horário e contacto — é só aceder a [novo site]. Qualquer dúvida, estamos aqui. Obrigada por nos acompanhar!";
-  const [typed, setTyped] = useState("");
-  useEffect(() => {
-    setTyped("");
-    if (!active) return;
-    let i = 0;
-    let id: ReturnType<typeof setInterval> | undefined;
-    const start = setTimeout(() => {
-      id = setInterval(() => {
-        i += 4;
-        setTyped(resposta.slice(0, i));
-        if (i >= resposta.length) clearInterval(id);
-      }, 20);
-    }, 900);
-    return () => {
-      clearTimeout(start);
-      if (id) clearInterval(id);
-    };
-  }, [active]);
+const NOTA_ENQUADRAMENTO =
+  "O enunciado pede uma resposta com base na situação atual da marca — é a Resposta 1. A Resposta 2 é um acréscimo, para ilustrar o impacto da intervenção proposta.";
+
+const COMENTARIO_INES =
+  "«Gostei desta peça, mas não consigo perceber onde a posso comprar nem se existe numa loja perto de mim.»";
+
+const RESP1_HOJE =
+  "Olá! Muito obrigada, ficamos felizes que tenha gostado. 😊 De momento não vendemos diretamente no nosso site, mas pode encontrar esta peça na nossa Loja de Fábrica em Alcobaça ou em pontos de venda como o El Corte Inglés. Qualquer dúvida sobre disponibilidade, pode escrever-nos para rh@spal.pt ou visitar spal.pt/contactos. Obrigada por nos acompanhar!";
+
+const RESP2_DEPOIS =
+  "Olá! Muito obrigada, fico feliz que tenha gostado. 😊 Acabámos de lançar o novo site da SPAL, onde já pode ver o preço, comprar online ou consultar a loja mais perto de si com horário e contacto — é só aceder a [novo site]. Qualquer dúvida, estamos aqui. Obrigada por nos acompanhar!";
+
+export function Resposta() {
   return (
-    <div className="flex h-full flex-col justify-center gap-4 p-12">
+    <div className="flex h-full flex-col justify-center gap-3 p-12">
       <Reveal i={0}>
         <h3 className="deck-h2 text-navy">A resposta ao cliente.</h3>
       </Reveal>
-      <Reveal i={1} className="max-w-[620px] rounded-3xl rounded-bl-md bg-ines/12 p-5">
+      <Reveal i={1}>
+        <p className="max-w-[900px] text-[11.5px] italic leading-snug text-navy/55">
+          {NOTA_ENQUADRAMENTO}
+        </p>
+      </Reveal>
+      <Reveal i={2} className="max-w-[720px] rounded-3xl rounded-bl-md bg-ines/12 p-4">
         <p className="text-[10px] font-bold uppercase tracking-widest text-ines">
           Cliente · comentário
         </p>
-        <p className="mt-2 text-[17px] leading-snug text-navy/85">
-          «Gostei desta peça, mas não consigo perceber onde a posso comprar nem se existe numa loja
-          perto de mim.»
-        </p>
+        <p className="mt-1.5 text-[16px] leading-snug text-navy/85">{COMENTARIO_INES}</p>
       </Reveal>
-      <div className="flex justify-end">
-        <div className="deck-on-blue max-w-[760px] rounded-3xl rounded-br-md bg-spal p-5 text-porcelain">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-porcelain/70">
-            SPAL · resposta em menos de 24 h
+      <div className="grid grid-cols-[1fr_auto_1fr] items-stretch gap-3">
+        <Reveal i={3} className="rounded-3xl border-2 border-navy/25 bg-white p-5">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-navy/60">
+            Hoje — site atual, sem compra online
           </p>
-          <p className="mt-2 min-h-[150px] text-[15px] leading-snug">
-            {typed}
-            {typed.length < resposta.length && (
-              <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-porcelain align-middle" />
-            )}
-          </p>
+          <p className="mt-2 text-[13px] leading-snug text-navy/85">{RESP1_HOJE}</p>
+        </Reveal>
+        <div className="flex flex-col items-center justify-center gap-1 self-center">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-navy/50">
+            Hoje
+          </span>
+          <span className="text-3xl leading-none text-vaa">→</span>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-vaa">
+            Depois
+          </span>
         </div>
+        <Reveal i={4} className="rounded-3xl bg-spal p-5 text-porcelain">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-porcelain/70">
+            Depois — com o site novo, compra online
+          </p>
+          <p className="mt-2 text-[13px] leading-snug">{RESP2_DEPOIS}</p>
+        </Reveal>
       </div>
-      <Chip tone="spal" className="self-start">
-        Só pontos de venda confirmados no site; sem promessas de disponibilidade ou preço.
-      </Chip>
+      <p className="text-[11.5px] italic text-navy/55">
+        A pergunta da Inês não muda. A resposta da SPAL, sim.
+      </p>
     </div>
   );
 }
