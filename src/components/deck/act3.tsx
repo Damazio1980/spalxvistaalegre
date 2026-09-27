@@ -460,7 +460,7 @@ export function Publicacao() {
           ] as const
         ).map(([t, d], i) => (
           <Reveal key={t} i={i + 2} className="deck-card bg-white px-5 py-3">
-            <p className="text-[11px] font-bold uppercase tracking-widest text-navy/45">{t}</p>
+            <p className="text-[11px] font-bold uppercase tracking-widest text-vaa">{t}</p>
             <p className="mt-0.5 text-[15px] font-semibold text-navy">{d}</p>
           </Reveal>
         ))}
@@ -489,19 +489,19 @@ export function AnatomiaPublicacao() {
         <div className="space-y-5">
           {ANATOMIA.slice(0, 3).map(([title, copy], index) => (
             <Reveal key={title} i={index + 1} className="border border-navy/50 p-3">
-              <p className="text-[13px] font-extrabold">{title}</p>
-              <p className="mt-1 text-[11px] leading-snug text-navy/80">{copy}</p>
+              <p className="text-[13px] font-extrabold text-vaa">{title}</p>
+              <p className="mt-1 text-[11px] leading-snug text-navy">{copy}</p>
             </Reveal>
           ))}
         </div>
-        <Reveal i={2} className="mx-auto aspect-square w-full max-w-[385px] border-2 border-navy p-1">
+        <Reveal i={2} className="mx-auto aspect-square w-full max-w-[385px] overflow-hidden border-2 border-navy">
           <CriativoSpal />
         </Reveal>
         <div className="space-y-5">
           {ANATOMIA.slice(3).map(([title, copy], index) => (
             <Reveal key={title} i={index + 4} className="border border-navy/50 p-3">
-              <p className="text-[13px] font-extrabold">{title}</p>
-              <p className="mt-1 text-[11px] leading-snug text-navy/80">{copy}</p>
+              <p className="text-[13px] font-extrabold text-vaa">{title}</p>
+              <p className="mt-1 text-[11px] leading-snug text-navy">{copy}</p>
             </Reveal>
           ))}
         </div>
@@ -623,7 +623,7 @@ export function Resposta() {
             Depois
           </span>
         </div>
-        <Reveal i={4} className="rounded-3xl bg-spal p-5 text-porcelain">
+        <Reveal i={4} className="rounded-3xl bg-navy p-5 text-porcelain">
           <p className="text-[10px] font-bold uppercase tracking-widest text-porcelain/70">
             Depois — com o site novo, compra online
           </p>
