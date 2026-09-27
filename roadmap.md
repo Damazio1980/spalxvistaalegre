@@ -81,3 +81,6 @@
 - [x] «A Inês pergunta»: comentário rosa editorial com texto branco.
 - [x] Corrigir a assinatura final para Fernanda Damázio.
 - [x] Afinar as molduras dos posts e usar uma moldura mais clean para os vídeos em «A Inês entra».
+
+## 46 · Destaques de texto sólidos — feito
+- [x] Trocar destaques azul-claro e rosa-claro por azul-escuro sólido com texto branco em toda a apresentação, mantendo os blocos de marca rosa editorial já definidos.

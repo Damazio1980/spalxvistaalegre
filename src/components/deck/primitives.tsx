@@ -255,16 +255,16 @@ export function Chip({
   className?: string;
 }) {
   const tones: Record<string, string> = {
-    ink: "bg-navy/8 text-navy",
-    spal: "bg-spal/12 text-spal",
-    vaa: "bg-vaa/20 text-vaa",
-    ines: "bg-ines/12 text-ines",
+    ink: "bg-navy text-porcelain",
+    spal: "bg-navy text-porcelain",
+    vaa: "bg-navy text-porcelain",
+    ines: "bg-navy text-porcelain",
     light: "bg-porcelain/15 text-porcelain",
   };
   return (
     <span
       className={cn(
-        "deck-pop inline-flex items-center rounded-full px-3 py-1 text-[13px] font-semibold",
+        "deck-pop deck-on-blue inline-flex items-center rounded-full border border-porcelain/30 px-3 py-1 text-[13px] font-semibold",
         tones[tone],
         className,
       )}
@@ -293,7 +293,7 @@ export function Reveal({
 
 export function Glossary({ term, meaning }: { term: string; meaning: string }) {
   return (
-    <span className="ml-2 rounded-md bg-navy/8 px-2 py-0.5 text-[11px] font-medium text-navy/70">
+    <span className="deck-on-blue ml-2 rounded-md bg-navy px-2 py-0.5 text-[11px] font-medium text-porcelain">
       {term} — {meaning}
     </span>
   );
