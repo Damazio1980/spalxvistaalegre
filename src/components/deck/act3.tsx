@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import { Chip, Glossary, Num, Reveal, Shot } from "./primitives";
 import { PERFIL_SPAL } from "@/data/images";
-import spalCriativoStill from "@/assets/spal-criativo-still.jpg.asset.json";
+import spalPublicacaoOriginal from "@/assets/spal-publicacao-original.png.asset.json";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
@@ -298,35 +298,24 @@ const LEGENDA =
 
 const HASHTAGS = "#SPALPorcelanas #ASPALTemCasaNova #PorcelanaPortuguesa #MesaPosta #DesignPortuguês";
 
-/** Criativo «A SPAL tem casa nova» com a paleta monocromática original. */
+/** Criativo original enviado para a publicação e para a sua anatomia. */
 function CriativoSpal() {
   return (
-    <div className="criativo-white relative h-full overflow-hidden text-ink">
-      <img src={spalCriativoStill.url} alt="" className="absolute inset-0 h-full w-full object-cover" />
-      <span className="absolute left-[6%] top-[4%] font-serif text-[18px] font-black leading-none">SPAL</span>
-      <div className="absolute inset-x-[6%] bottom-[5%]">
-        <p className="max-w-[76%] font-serif text-[25px] font-black uppercase leading-[0.86]">
-          A SPAL tem<br />casa nova
-        </p>
-        <div className="mt-1.5 flex items-end justify-between gap-2">
-          <p className="max-w-[62%] text-[8px] leading-tight">
-            A mesma porcelana de sempre,<br />agora com compra online.
-          </p>
-          <span className="shrink-0 rounded-full bg-ink px-3 py-1.5 text-[8px] font-bold text-porcelain">
-            Ver o novo site
-          </span>
-        </div>
-      </div>
-      <span className="absolute right-2 top-2 text-[5px] uppercase tracking-[0.16em] text-ink/45">exercício académico</span>
+    <div className="criativo-white flex h-full items-center justify-center overflow-hidden">
+      <img
+        src={spalPublicacaoOriginal.url}
+        alt="Publicação SPAL: porcelana branca, A SPAL TEM CASA NOVA e Ver o novo site"
+        className="h-full w-full object-contain"
+      />
     </div>
   );
 }
 
 function PostCompleto() {
   return (
-    <div className="criativo-white flex h-full flex-col text-ink">
+    <div className="criativo-white flex h-full flex-col text-navy">
       <div className="flex h-10 shrink-0 items-center gap-2 px-3">
-        <span className="h-6 w-6 rounded-full bg-ink" />
+        <span className="h-6 w-6 rounded-full bg-navy" />
         <span className="text-[10px] font-semibold">spalporcelanasofficial</span>
       </div>
       <div className="aspect-[4/5] w-full shrink-0"><CriativoSpal /></div>
@@ -386,28 +375,28 @@ const ANATOMIA = [
 
 export function AnatomiaPublicacao() {
   return (
-    <div className="flex h-full flex-col p-10 text-ink">
+    <div className="flex h-full flex-col p-10 text-navy">
       <Reveal i={0}>
-        <h3 className="font-[var(--font-display)] text-[38px] font-extrabold">Anatomia da publicação</h3>
-        <p className="mt-1 text-[15px] text-ink/65">Cada elemento cumpre uma função estratégica dentro do post.</p>
+        <h3 className="font-[var(--font-display)] text-[38px] font-extrabold text-navy">Anatomia da publicação</h3>
+        <p className="mt-1 text-[15px] text-navy/70">Cada elemento cumpre uma função estratégica dentro do post.</p>
       </Reveal>
       <div className="mt-6 grid min-h-0 flex-1 grid-cols-[1fr_1.35fr_1fr] items-center gap-7">
         <div className="space-y-5">
           {ANATOMIA.slice(0, 3).map(([title, copy], index) => (
-            <Reveal key={title} i={index + 1} className="border border-ink/50 p-3">
+            <Reveal key={title} i={index + 1} className="border border-navy/50 p-3">
               <p className="text-[13px] font-extrabold">{title}</p>
-              <p className="mt-1 text-[11px] leading-snug text-ink/80">{copy}</p>
+              <p className="mt-1 text-[11px] leading-snug text-navy/80">{copy}</p>
             </Reveal>
           ))}
         </div>
-        <Reveal i={2} className="mx-auto aspect-[4/5] w-full max-w-[385px] border-2 border-ink p-1 shadow-[var(--shadow-card)]">
+        <Reveal i={2} className="mx-auto aspect-square w-full max-w-[385px] border-2 border-navy p-1">
           <CriativoSpal />
         </Reveal>
         <div className="space-y-5">
           {ANATOMIA.slice(3).map(([title, copy], index) => (
-            <Reveal key={title} i={index + 4} className="border border-ink/50 p-3">
+            <Reveal key={title} i={index + 4} className="border border-navy/50 p-3">
               <p className="text-[13px] font-extrabold">{title}</p>
-              <p className="mt-1 text-[11px] leading-snug text-ink/80">{copy}</p>
+              <p className="mt-1 text-[11px] leading-snug text-navy/80">{copy}</p>
             </Reveal>
           ))}
         </div>
@@ -442,73 +431,74 @@ export function Bio({ active }: ChapterProps) {
     if (!active) setDepois(false);
   }, [active]);
   return (
-    <div className="flex h-full flex-col justify-center gap-6 p-12">
+    <div className="flex h-full flex-col justify-center gap-6 p-12 text-porcelain">
       <Reveal i={0}>
-        <h3 className="deck-h2 text-navy">A biografia, antes e depois.</h3>
+        <h3 className="deck-h2 text-porcelain">A biografia, antes e depois.</h3>
       </Reveal>
       <div className="grid grid-cols-2 gap-6">
-        <Reveal i={1} className="rounded-3xl border border-navy/10 bg-white p-6">
+        <Reveal i={1} className="border-t-2 border-porcelain/40 p-6">
           <div className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-navy/15 text-sm font-bold text-navy">
+            <span className="grid h-9 w-9 place-items-center rounded-full border border-porcelain/50 text-sm font-bold text-porcelain">
               S
             </span>
             <div>
-              <span className="block text-[13px] font-semibold text-navy">
+              <span className="block text-[13px] font-semibold text-porcelain">
                 {PERFIL_SPAL.handle.replace("@", "")}
               </span>
-              <span className="block text-[11px] text-navy/50">
+              <span className="block text-[11px] text-porcelain/70">
                 {PERFIL_SPAL.seguidores.toLocaleString("pt-PT")} seguidores ·{" "}
                 {PERFIL_SPAL.publicacoes} publicações
               </span>
             </div>
           </div>
-          <p className="mt-3 text-xs font-bold uppercase tracking-widest text-navy/45">Antes</p>
-          <p className="mt-2 text-[15px] leading-relaxed text-navy/80">{BIO_ANTES}</p>
-          <p className="mt-3 text-xs text-navy/45">
+          <p className="mt-3 text-xs font-bold uppercase tracking-widest text-vaa">Antes</p>
+          <p className="mt-2 text-[15px] leading-relaxed text-porcelain">{BIO_ANTES}</p>
+          <p className="mt-3 text-xs text-porcelain/70">
             Fala inglês, fala com o retalho, não tem ligação para comprar.
           </p>
         </Reveal>
-        <Reveal i={2} className="rounded-3xl border border-spal/25 bg-white p-6">
+        <Reveal i={2} className="border-t-2 border-vaa p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-spal text-sm font-bold text-porcelain">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-vaa text-sm font-bold text-porcelain">
                 S
               </span>
               <div>
-                <span className="block text-[13px] font-semibold text-navy">
+                <span className="block text-[13px] font-semibold text-porcelain">
                   {PERFIL_SPAL.handle.replace("@", "")}
                 </span>
-                <span className="block text-[11px] text-navy/50">
+                <span className="block text-[11px] text-porcelain/70">
                   {PERFIL_SPAL.seguidores.toLocaleString("pt-PT")} seguidores ·{" "}
                   {PERFIL_SPAL.publicacoes} publicações
                 </span>
               </div>
             </div>
-            <button
+            <Button
+              variant="outline"
               onClick={() => setDepois(true)}
-              className="deck-slide-btn rounded-full bg-spal px-4 py-1.5 text-xs font-semibold text-porcelain"
+              className="border-vaa bg-transparent text-porcelain hover:bg-vaa hover:text-porcelain"
             >
               depois
-            </button>
+            </Button>
           </div>
-          <p className="mt-3 text-xs font-bold uppercase tracking-widest text-spal">Depois</p>
-          <p className="mt-2 min-h-[92px] text-[15px] leading-relaxed text-navy/85">
+          <p className="mt-3 text-xs font-bold uppercase tracking-widest text-vaa">Depois</p>
+          <p className="mt-2 min-h-[92px] text-[15px] leading-relaxed text-porcelain">
             {typed}
             {depois && typed.length < BIO_DEPOIS.length && (
-              <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-navy align-middle" />
+              <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-vaa align-middle" />
             )}
           </p>
-          <p className="text-[13px] font-semibold text-spal">
+          <p className="text-[13px] font-semibold text-vaa">
             novo spal.pt · página inicial
           </p>
-          <p className="mt-2 text-xs font-semibold text-navy/55">
+          <p className="mt-2 text-xs font-semibold text-porcelain/70">
             <Num value={depois ? typed.length : 0} active={active} />/150 caracteres
           </p>
         </Reveal>
       </div>
       <div className="flex flex-wrap gap-3">
         {["PT em vez de EN", "origem + posicionamento", "ligação para a compra"].map((c, i) => (
-          <Chip key={c} tone="spal" delay={300 + i * 200}>
+          <Chip key={c} tone="vaa" delay={300 + i * 200} className="bg-vaa/20 text-porcelain">
             {c}
           </Chip>
         ))}
