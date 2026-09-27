@@ -15,8 +15,6 @@ import compraSpalVideo from "@/assets/compra-spal.mp4.asset.json";
 import compraVaaVideo from "@/assets/compra-vaa.mp4.asset.json";
 import telemovelSpalVideo from "@/assets/telemovel-spal.mp4.asset.json";
 import telemovelVaaVideo from "@/assets/telemovel-vista-alegre.mp4.asset.json";
-import confiancaSpalVideo from "@/assets/confianca-spal.mp4.asset.json";
-import confiancaVaaVideo from "@/assets/confianca-vista-alegre.mp4.asset.json";
 import confiancaSpalWebm from "@/assets/confianca-spal.webm.asset.json";
 import confiancaVaaWebm from "@/assets/confianca-vista-alegre.webm.asset.json";
 import {

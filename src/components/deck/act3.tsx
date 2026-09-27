@@ -16,7 +16,6 @@ import { PERFIL_SPAL } from "@/data/images";
 import spalPost01 from "@/assets/os-posts/spal-post-01.png.asset.json";
 import spalPost02 from "@/assets/os-posts/spal-post-02.png.asset.json";
 import spalPost03 from "@/assets/os-posts/spal-post-03.png.asset.json";
-import spalReelsStories from "@/assets/os-posts/spal-reels-stories.mp4.asset.json";
 import spalReelsStoriesWebm from "@/assets/os-posts/spal-reels-stories.webm.asset.json";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
