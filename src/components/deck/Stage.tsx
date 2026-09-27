@@ -192,7 +192,7 @@ export function Stage() {
         <PorcelainBackdrop variant={backdrop} />
 
         {/* A fotografia da capa ocupa todo o ecrã; os restantes quadros mantêm o formato de apresentação. */}
-        {frame.id === "capa" ? (
+        {frame.id === "capa" && Chapter ? (
           <div className="absolute inset-0"><Chapter active /></div>
         ) : <div className="absolute inset-0 flex min-w-0 items-center justify-center">
           <div
