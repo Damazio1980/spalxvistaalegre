@@ -180,7 +180,7 @@ export function Shot({
       {!hideExpand && (
         <button
           onClick={() => ctx?.open(group, id)}
-          className="absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-navy/85 px-3 py-1 text-[11px] font-semibold text-porcelain opacity-100 transition-opacity"
+          className="deck-media-control absolute bottom-2 right-2 z-10 flex items-center gap-1 rounded-full bg-navy px-3 py-1 text-[11px] font-semibold text-porcelain"
         >
           <Maximize2 className="h-3 w-3" /> Ampliar
         </button>

@@ -139,13 +139,13 @@ export function PostMock({ img, compact }: { img: RefImage; compact?: boolean | 
         <img src={images[current]} alt={`${img.caption}${images.length > 1 ? ` · imagem ${current + 1}` : ""}`} loading="lazy" className="h-full w-full object-cover" />
         {images.length > 1 && (
           <>
-            <button type="button" aria-label="Imagem anterior" onClick={(event) => { event.stopPropagation(); go(-1); }} className="absolute left-1 top-1/2 z-10 grid h-5 w-5 -translate-y-1/2 place-items-center rounded-full bg-navy/80 text-porcelain opacity-90">
+            <button type="button" aria-label="Imagem anterior" onClick={(event) => { event.stopPropagation(); go(-1); }} className="deck-media-control absolute left-1 top-1/2 z-10 grid h-6 w-6 -translate-y-1/2 place-items-center rounded-full bg-navy text-porcelain">
               <ChevronLeft className="h-3 w-3" />
             </button>
-            <button type="button" aria-label="Imagem seguinte" onClick={(event) => { event.stopPropagation(); go(1); }} className="absolute right-1 top-1/2 z-10 grid h-5 w-5 -translate-y-1/2 place-items-center rounded-full bg-navy/80 text-porcelain opacity-90">
+            <button type="button" aria-label="Imagem seguinte" onClick={(event) => { event.stopPropagation(); go(1); }} className="deck-media-control absolute right-1 top-1/2 z-10 grid h-6 w-6 -translate-y-1/2 place-items-center rounded-full bg-navy text-porcelain">
               <ChevronRight className="h-3 w-3" />
             </button>
-            <span className="absolute bottom-1 left-1/2 -translate-x-1/2 rounded-full bg-navy/80 px-1.5 py-0.5 text-[7px] font-bold text-porcelain">
+            <span className="deck-media-control absolute bottom-1 left-1/2 -translate-x-1/2 rounded-full bg-navy px-1.5 py-0.5 text-[7px] font-bold text-porcelain">
               {current + 1}/{images.length}
             </span>
           </>

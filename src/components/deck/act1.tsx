@@ -797,7 +797,7 @@ function VideoPlayer({
           type="button"
           onClick={open}
           aria-label={`Ampliar vídeo do site da ${label}`}
-          className="absolute bottom-2 right-2 flex items-center gap-1.5 rounded-full bg-navy/85 px-3.5 py-1.5 text-[11px] font-semibold text-porcelain transition hover:bg-navy"
+          className="deck-media-control absolute bottom-2 right-2 z-10 flex items-center gap-1.5 rounded-full bg-navy px-3.5 py-1.5 text-[11px] font-semibold text-porcelain"
         >
           <Maximize2 className="h-3.5 w-3.5" /> Ampliar
         </button>
