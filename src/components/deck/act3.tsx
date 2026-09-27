@@ -477,6 +477,7 @@ export function OsPosts() {
                 src={spalReelsStoriesAudioWebm.url}
                 aria-label="Reels/Stories da SPAL: do desenho da porcelana à nova casa digital"
                 className="absolute inset-0 h-full w-full bg-navy object-cover"
+                autoPlay
                 loop
                 playsInline
                 controls
