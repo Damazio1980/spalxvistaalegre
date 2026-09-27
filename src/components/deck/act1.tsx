@@ -868,7 +868,6 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
     {
       name: "SPAL",
       side: d.spal,
-      border: "border-spal/30",
       text: "text-spal",
       src: vids.spal,
       site: "spal.pt",
@@ -876,7 +875,6 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
     {
       name: "Vista Alegre",
       side: d.vaa,
-      border: "border-vaa/40",
       text: "text-vaa",
       src: vids.vaa,
       site: "vistaalegre.com/pt",
@@ -891,7 +889,7 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
         </h3>
       </Reveal>
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-4">
-        {sides.map(({ name, side, border, text, src, site }, i) => (
+        {sides.map(({ name, side, text, src, site }, i) => (
           <Reveal
             key={name}
             i={i + 1}
