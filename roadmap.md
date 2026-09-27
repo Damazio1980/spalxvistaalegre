@@ -61,3 +61,7 @@
 - [x] Substituir o criativo nos slides «A publicação» e «Anatomia da publicação» pela imagem original enviada, sem cortar o quadrado.
 - [x] Usar azul-escuro nos títulos e textos dos dois slides.
 - [x] Aplicar fundo azul-escuro, texto branco e detalhes rosa à biografia.
+
+## 42 · Bio sem botão + duas respostas em «A Inês pergunta» — feito
+- [x] Slide «A Bio»: biografia «depois» sempre visível, sem botão.
+- [x] Slide «A Inês pergunta»: nota de enquadramento, comentário e duas respostas lado a lado (Hoje → Depois) com frase de fecho.
