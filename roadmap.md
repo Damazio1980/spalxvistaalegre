@@ -75,3 +75,9 @@
 - [x] Tornar retos todos os quadros de informação, preservando círculos, botões e molduras de telemóvel.
 - [x] Usar nas publicações de Instagram e Facebook a moldura do slide «A publicação».
 - [x] Corrigir cores e encaixe em «A publicação», «Anatomia da publicação» e «A Inês pergunta».
+
+## 45 · Cores, nome e telemóveis — feito
+- [x] «O que já vimos»: Vista Alegre rosa e SPAL azul-escuro, ambos com texto branco.
+- [x] «A Inês pergunta»: comentário rosa editorial com texto branco.
+- [x] Corrigir a assinatura final para Fernanda Damázio.
+- [x] Afinar as molduras dos posts e usar uma moldura mais clean para os vídeos em «A Inês entra».

@@ -60,18 +60,15 @@ function ResumoCard({
     <Reveal i={1}>
       <div
         className={
-          "flex h-full flex-col gap-4 rounded-3xl border-2 p-7 " +
-          (isVaa ? "border-vaa/50 bg-vaa/10" : "border-spal/50 bg-spal/10")
+          "deck-on-blue flex h-full flex-col gap-4 border-2 p-7 text-porcelain " +
+          (isVaa ? "border-vaa bg-vaa" : "border-navy bg-navy")
         }
       >
         <div>
-          <h4
-            className="font-[var(--font-display)] text-[30px] font-extrabold leading-tight"
-            style={{ color: isVaa ? VAA : SPAL }}
-          >
+          <h4 className="font-[var(--font-display)] text-[30px] font-extrabold leading-tight text-porcelain">
             {brand}
           </h4>
-          <p className="mt-1 text-[15px] font-semibold uppercase tracking-wide text-navy/55">
+          <p className="mt-1 text-[15px] font-semibold uppercase tracking-wide text-porcelain">
             {subtitle}
           </p>
         </div>
@@ -80,9 +77,9 @@ function ResumoCard({
             <li key={item} className="flex items-start gap-3">
               <span
                 className="mt-[7px] h-2 w-2 shrink-0 rounded-full"
-                style={{ backgroundColor: isVaa ? VAA : SPAL }}
+                className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-porcelain"
               />
-              <span className="text-[16px] leading-snug text-navy/85">{item}</span>
+              <span className="text-[16px] leading-snug text-porcelain">{item}</span>
             </li>
           ))}
         </ul>
@@ -601,11 +598,11 @@ export function Resposta() {
           {NOTA_ENQUADRAMENTO}
         </p>
       </Reveal>
-      <Reveal i={2} className="max-w-[720px] rounded-3xl rounded-bl-md bg-ines/12 p-4">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-ines">
+      <Reveal i={2} className="deck-on-rose max-w-[720px] rounded-3xl rounded-bl-md bg-vaa p-4 text-porcelain">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-porcelain">
           Cliente · comentário
         </p>
-        <p className="mt-1.5 text-[16px] leading-snug text-navy/85">{COMENTARIO_INES}</p>
+        <p className="mt-1.5 text-[16px] leading-snug text-porcelain">{COMENTARIO_INES}</p>
       </Reveal>
       <div className="grid grid-cols-[1fr_auto_1fr] items-stretch gap-3">
         <Reveal i={3} className="rounded-3xl border-2 border-navy/25 bg-white p-5">

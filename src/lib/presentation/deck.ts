@@ -477,5 +477,5 @@ export function scoreAt(index: number): { spal: number; vaa: number } {
 }
 
 export const FOOTER =
-  "Exercício académico · UC 00279 Gerir os canais de comunicação digital · IEFP Sintra · Fernanda [apelido] · setembro 2026";
+  "Exercício académico · UC 00279 Gerir os canais de comunicação digital · IEFP Sintra · Fernanda Damázio · setembro 2026";
 export const PERIOD = "Redes sociais: perfis analisados em 23/09/2026 · frequência 26/06–23/09/2026 · websites consultados em 04/09/2026";
