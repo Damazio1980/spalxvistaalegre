@@ -51,3 +51,8 @@
 - [x] Reenquadrar «A ficha» sem encolher excessivamente o texto.
 - [x] Retirar «Dois placares» e inserir «Nossa empresa escolhida para intervenção / SPAL» antes de «Porque a SPAL».
 - [x] Aplicar fundo branco a «A Inês pergunta» e «Bastidores», com contraste ajustado.
+
+## 40 · Anatomia e ajustes da publicação — em curso
+- [ ] Criar «Anatomia da publicação» depois de «A publicação», com fundo branco.
+- [ ] Manter o post na paleta monocromática original e mostrar o post inteiro ao ampliar.
+- [ ] Retirar o texto alternativo, atualizar «A empresa escolhida» e retirar travessões de «Porque a SPAL».

@@ -38,6 +38,7 @@ const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
   final: "white",
   min0: "white",
   publicacao: "white",
+  "anatomia-publicacao": "white",
 };
 
 const REQUESTED_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "white">> = {
@@ -293,6 +294,7 @@ function FrameBody({
         "no-ar",
         "simulacao-real",
         "indicadores",
+        "anatomia-publicacao",
       ].includes(frame.id) && (
         <span
           className={cn(

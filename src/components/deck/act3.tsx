@@ -34,7 +34,7 @@ export function EmpresaEscolhida() {
       <div>
         <div className="mb-8 h-px w-28 bg-vaa" />
         <Reveal i={0}>
-          <p className="text-[28px] font-semibold text-porcelain/80">Nossa empresa escolhida para intervenção</p>
+          <p className="text-[28px] font-semibold text-porcelain/80">A empresa escolhida para intervenção</p>
           <h2 className="mt-5 font-[var(--font-display)] text-[120px] font-extrabold leading-none text-porcelain">SPAL</h2>
         </Reveal>
       </div>
@@ -54,8 +54,8 @@ export function PorqueSpal() {
       <Reveal i={0}>
         <h3 className="deck-title text-porcelain">Porque a SPAL</h3>
         <p className="mx-auto mt-5 max-w-[900px] text-xl leading-relaxed text-porcelain/80">
-          A distância entre o que a SPAL tem — design próprio, hotelware, exportação, rede física
-          real — e o que comunica é grande. E a raiz do problema não são detalhes de conteúdo: é a
+          A distância entre o que a SPAL tem, incluindo design próprio, hotelware, exportação e rede física
+          real, e o que comunica é grande. E a raiz do problema não são detalhes de conteúdo: é a
           própria plataforma. Por isso a prioridade não é corrigir o site atual. É substituí-lo.
         </p>
       </Reveal>
@@ -298,75 +298,61 @@ const LEGENDA =
 
 const HASHTAGS = "#SPALPorcelanas #ASPALTemCasaNova #PorcelanaPortuguesa #MesaPosta #DesignPortuguês";
 
-const ALT_TEXT =
-  "Still-life de porcelana branca — prato, tigela e caneca — sobre fundo claro, com luz natural; texto: A SPAL tem casa nova; botão Ver o novo site; logótipo SPAL no canto superior esquerdo.";
-
-/** Criativo «A SPAL tem casa nova» — fundo branco, letras a azul e rosa, seta no CTA. */
+/** Criativo «A SPAL tem casa nova» com a paleta monocromática original. */
 function CriativoSpal() {
   return (
-    <div className="criativo-white flex h-full flex-col p-3">
-      {/* marca d'água académica, discreta no canto superior */}
-      <div className="flex items-start justify-end">
-        <span className="text-[6px] uppercase tracking-[0.18em] text-navy/35">
-          exercício académico
-        </span>
-      </div>
-      {/* still-life: a fotografia do criativo (logótipo SPAL no canto da própria foto) */}
-      <div className="mt-1.5 h-[40%] shrink-0 overflow-hidden">
-        <img src={spalCriativoStill.url} alt="" className="h-full w-full object-cover" />
-      </div>
-      {/* headline serifada a azul e rosa + texto de apoio */}
-      <div className="mt-2 px-0.5">
-        <div className="h-[2px] w-9 bg-vaa" />
-        <p className="mt-1.5 font-serif text-[18px] font-bold leading-[1.02] tracking-tight text-navy">
-          A SPAL tem
-          <br />
-          <span className="text-vaa">casa nova.</span>
+    <div className="criativo-white relative h-full overflow-hidden text-ink">
+      <img src={spalCriativoStill.url} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <span className="absolute left-[6%] top-[4%] font-serif text-[18px] font-black leading-none">SPAL</span>
+      <div className="absolute inset-x-[6%] bottom-[5%]">
+        <p className="max-w-[76%] font-serif text-[25px] font-black uppercase leading-[0.86]">
+          A SPAL tem<br />casa nova
         </p>
-        <p className="mt-1.5 text-[8px] leading-snug text-navy/75">
-          A mesma porcelana de sempre, agora com uma experiência digital renovada: mais coleções,
-          mais informação e compra online num só lugar.
-        </p>
-        <p className="mt-1 text-[8px] leading-snug text-navy/55">
-          Descobre o novo site e encontra as peças que combinam com a tua mesa.
-        </p>
-        {/* CTA em pílula, terço inferior, com seta a rosa */}
-        <div className="mt-2 flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-navy px-3.5 py-1.5 text-[9px] font-bold text-porcelain">
-            Ver o novo site <span className="text-vaa">→</span>
+        <div className="mt-1.5 flex items-end justify-between gap-2">
+          <p className="max-w-[62%] text-[8px] leading-tight">
+            A mesma porcelana de sempre,<br />agora com compra online.
+          </p>
+          <span className="shrink-0 rounded-full bg-ink px-3 py-1.5 text-[8px] font-bold text-porcelain">
+            Ver o novo site
           </span>
-          <span className="h-[5px] w-[5px] rounded-full bg-vaa" />
-          <span className="h-[5px] w-[5px] rounded-full bg-navy/35" />
         </div>
       </div>
+      <span className="absolute right-2 top-2 text-[5px] uppercase tracking-[0.16em] text-ink/45">exercício académico</span>
+    </div>
+  );
+}
+
+function PostCompleto() {
+  return (
+    <div className="criativo-white flex h-full flex-col text-ink">
+      <div className="flex h-10 shrink-0 items-center gap-2 px-3">
+        <span className="h-6 w-6 rounded-full bg-ink" />
+        <span className="text-[10px] font-semibold">spalporcelanasofficial</span>
+      </div>
+      <div className="aspect-[4/5] w-full shrink-0"><CriativoSpal /></div>
+      <p className="min-h-0 flex-1 overflow-hidden px-3 py-2 text-[8px] leading-snug">
+        <strong>spalporcelanasofficial</strong> {LEGENDA} {HASHTAGS}
+      </p>
     </div>
   );
 }
 
 export function Publicacao() {
-  const [alt, setAlt] = useState(false);
   return (
     <div className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-10 p-12">
       <Reveal
         i={0}
-        className="mx-auto w-[300px] rounded-3xl border border-navy/10 bg-white p-3 shadow-[var(--shadow-card)]"
+        className="mx-auto w-[280px] overflow-hidden rounded-[28px] border-[5px] border-ink bg-white"
       >
-        <div className="flex items-center gap-2 pb-2">
-          <span className="h-7 w-7 rounded-full bg-spal" />
-          <span className="text-[13px] font-semibold text-navy">spalporcelanasofficial</span>
-        </div>
         <Shot
           id="maquete-publicacao"
           group="maquete"
           caption="Criativo da publicação · Instagram SPAL · carrossel 1080×1350"
-          className="aspect-[4/5]"
+          className="aspect-[9/16] rounded-none border-0"
+          lightboxVariant="phone"
         >
-          <CriativoSpal />
+          <PostCompleto />
         </Shot>
-        <p className="mt-2 max-h-[150px] overflow-auto text-[11px] leading-snug text-navy/80">
-          <strong>spalporcelanasofficial</strong> {LEGENDA}{" "}
-          <span className="font-semibold text-vaa">{HASHTAGS}</span>
-        </p>
       </Reveal>
       <div className="space-y-3">
         <Reveal i={1}>
@@ -384,20 +370,47 @@ export function Publicacao() {
             <p className="mt-0.5 text-[15px] font-semibold text-navy">{d}</p>
           </Reveal>
         ))}
-        <Reveal i={5}>
-          <button
-            onClick={() => setAlt((a) => !a)}
-            className="deck-slide-btn rounded-full border border-navy/15 px-4 py-1.5 text-xs font-semibold text-navy"
-          >
-            {alt ? "esconder texto alternativo" : "ver texto alternativo"}
-            <Glossary term="alt text" meaning="descrição da imagem para quem não a vê" />
-          </button>
-          {alt && (
-            <p className="deck-rise mt-2 rounded-xl bg-porcelain p-3 text-[12px] leading-snug text-navy/70">
-              {ALT_TEXT}
-            </p>
-          )}
+      </div>
+    </div>
+  );
+}
+
+const ANATOMIA = [
+  ["1 · LOGÓTIPO", "Canto superior esquerdo, pequeno e discreto. Confirma a autoria da SPAL sem competir com a headline."],
+  ["2 · IMAGEM PRINCIPAL", "Louça branca em estilo clean e premium. A imagem ocupa o centro visual e reforça a linha Electric Rain."],
+  ["3 · LINHA EDITORIAL", "Base branca, luz natural e poucos elementos. O foco fica na porcelana, na textura e na elegância da marca."],
+  ["4 · HEADLINE", "Texto principal em destaque: “A SPAL TEM CASA NOVA”. Fica na zona de leitura forte do feed."],
+  ["5 · TEXTO DE APOIO", "Frase curta e funcional. Explica a novidade sem pesar: compra online, mantendo a essência da marca."],
+  ["6 · CTA", "Botão preto com alto contraste. “Ver o novo site” fecha o percurso visual e orienta a ação."],
+] as const;
+
+export function AnatomiaPublicacao() {
+  return (
+    <div className="flex h-full flex-col p-10 text-ink">
+      <Reveal i={0}>
+        <h3 className="font-[var(--font-display)] text-[38px] font-extrabold">Anatomia da publicação</h3>
+        <p className="mt-1 text-[15px] text-ink/65">Cada elemento cumpre uma função estratégica dentro do post.</p>
+      </Reveal>
+      <div className="mt-6 grid min-h-0 flex-1 grid-cols-[1fr_1.35fr_1fr] items-center gap-7">
+        <div className="space-y-5">
+          {ANATOMIA.slice(0, 3).map(([title, copy], index) => (
+            <Reveal key={title} i={index + 1} className="border border-ink/50 p-3">
+              <p className="text-[13px] font-extrabold">{title}</p>
+              <p className="mt-1 text-[11px] leading-snug text-ink/80">{copy}</p>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal i={2} className="mx-auto aspect-[4/5] w-full max-w-[385px] border-2 border-ink p-1 shadow-[var(--shadow-card)]">
+          <CriativoSpal />
         </Reveal>
+        <div className="space-y-5">
+          {ANATOMIA.slice(3).map(([title, copy], index) => (
+            <Reveal key={title} i={index + 4} className="border border-ink/50 p-3">
+              <p className="text-[13px] font-extrabold">{title}</p>
+              <p className="mt-1 text-[11px] leading-snug text-ink/80">{copy}</p>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </div>
   );
