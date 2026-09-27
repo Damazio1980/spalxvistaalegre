@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, Heart, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Bar,
@@ -13,6 +14,9 @@ import {
 import { Chip, Glossary, Num, Reveal, Shot } from "./primitives";
 import { PERFIL_SPAL } from "@/data/images";
 import spalPublicacaoOriginal from "@/assets/spal-publicacao-original.png.asset.json";
+import spalPost01 from "@/assets/os-posts/spal-post-01.png.asset.json";
+import spalPost02 from "@/assets/os-posts/spal-post-02.png.asset.json";
+import spalPost03 from "@/assets/os-posts/spal-post-03.png.asset.json";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
@@ -388,6 +392,122 @@ export function Semana() {
           </Button>
         </div>
       </Reveal>
+    </div>
+  );
+}
+
+const POST_CAROUSEL = [spalPost01.url, spalPost02.url, spalPost03.url];
+
+const POST_LEGENDA = `A SPAL tem uma nova casa digital.
+
+Agora, encontras as coleções, os preços, as lojas e a compra online reunidos num só lugar.
+
+Mais detalhe para escolher. Mais informação para decidir. A mesma porcelana de sempre, agora mais perto de ti.
+
+Explora o novo spal.pt.
+
+#SPALPorcelanas #SPAL #PorcelanaPortuguesa #Porcelana #MesaPosta #DesignPortuguês #ElectricRain #CasaPortuguesa #DecoraçãoDeInteriores #NovoSite`;
+
+function PostPhone({
+  image,
+  label,
+  children,
+}: {
+  image?: string;
+  label: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className="flex min-w-0 flex-col items-center gap-2">
+      <div className="deck-device-frame relative h-[472px] w-[226px] overflow-hidden border-2 border-navy bg-white text-navy">
+        {children ?? (
+          <img src={image} alt={label} className="h-full w-full object-contain" />
+        )}
+      </div>
+      <p className="text-[11px] font-bold uppercase text-vaa">{label}</p>
+    </div>
+  );
+}
+
+export function OsPosts() {
+  const [carouselIndex, setCarouselIndex] = useState(0);
+
+  const moveCarousel = (direction: -1 | 1) => {
+    setCarouselIndex((current) => (current + direction + POST_CAROUSEL.length) % POST_CAROUSEL.length);
+  };
+
+  return (
+    <div className="flex h-full flex-col px-9 py-7 text-navy">
+      <Reveal i={0}>
+        <h3 className="font-[var(--font-display)] text-[42px] font-extrabold leading-none text-navy">
+          Os Posts
+        </h3>
+        <p className="mt-2 text-[15px] font-semibold text-navy">
+          Carrossel de lançamento · Instagram SPAL
+        </p>
+      </Reveal>
+
+      <div className="mt-5 grid min-h-0 flex-1 grid-cols-4 items-center gap-5">
+        <Reveal i={1}>
+          <PostPhone image={POST_CAROUSEL[0]} label="Imagem 1 de 3" />
+        </Reveal>
+
+        <Reveal i={2}>
+          <PostPhone label="Post completo">
+            <div className="flex h-full flex-col bg-white">
+              <div className="flex h-9 shrink-0 items-center gap-2 border-b border-navy/15 px-2.5">
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-navy text-[9px] font-bold text-porcelain">S</span>
+                <span className="text-[9px] font-bold">spalporcelanasofficial</span>
+              </div>
+              <div className="relative aspect-square w-full shrink-0 overflow-hidden bg-white">
+                <img
+                  src={POST_CAROUSEL[carouselIndex]}
+                  alt={`Carrossel SPAL, imagem ${carouselIndex + 1} de 3`}
+                  className="h-full w-full object-contain"
+                />
+                <Button
+                  type="button"
+                  variant="default"
+                  size="icon"
+                  aria-label="Imagem anterior"
+                  onClick={() => moveCarousel(-1)}
+                  className="deck-media-control absolute left-1 top-1/2 h-7 w-7 -translate-y-1/2 rounded-full bg-navy text-porcelain"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <Button
+                  type="button"
+                  variant="default"
+                  size="icon"
+                  aria-label="Imagem seguinte"
+                  onClick={() => moveCarousel(1)}
+                  className="deck-media-control absolute right-1 top-1/2 h-7 w-7 -translate-y-1/2 rounded-full bg-navy text-porcelain"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+                <span className="absolute right-2 top-2 rounded-full bg-navy px-2 py-1 text-[8px] font-bold text-porcelain">
+                  {carouselIndex + 1}/3
+                </span>
+              </div>
+              <div className="flex shrink-0 items-center gap-2 px-2.5 py-1.5 text-navy">
+                <Heart className="h-4 w-4" />
+                <MessageCircle className="h-4 w-4" />
+                <Send className="h-4 w-4" />
+              </div>
+              <p className="min-h-0 flex-1 overflow-hidden whitespace-pre-line px-2.5 pb-2 text-[7.5px] leading-[1.35] text-navy">
+                <strong>spalporcelanasofficial</strong>{" "}{POST_LEGENDA}
+              </p>
+            </div>
+          </PostPhone>
+        </Reveal>
+
+        <Reveal i={3}>
+          <PostPhone image={POST_CAROUSEL[1]} label="Imagem 2 de 3" />
+        </Reveal>
+        <Reveal i={4}>
+          <PostPhone image={POST_CAROUSEL[2]} label="Imagem 3 de 3" />
+        </Reveal>
+      </div>
     </div>
   );
 }

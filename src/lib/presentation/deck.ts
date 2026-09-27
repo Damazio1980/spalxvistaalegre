@@ -297,6 +297,12 @@ const seeds: Seed[] = [
     rot: -2,
   },
   {
+    id: "os-posts",
+    act: 3,
+    title: "Os Posts",
+    rot: 1.5,
+  },
+  {
     id: "publicacao",
     act: 3,
     title: "A publicação",
