@@ -396,7 +396,7 @@ export function Semana() {
   );
 }
 
-const POST_CAROUSEL = [spalPost01.url, spalPost02.url, spalPost03.url];
+const POST_CAROUSEL = [spalPost01.url, spalPost02.url, spalPost03.url] as const;
 
 const POST_LEGENDA = `A SPAL tem uma nova casa digital.
 
@@ -431,6 +431,7 @@ function PostPhone({
 
 export function OsPosts() {
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const activeCarouselImage = POST_CAROUSEL[carouselIndex] ?? POST_CAROUSEL[0];
 
   const moveCarousel = (direction: -1 | 1) => {
     setCarouselIndex((current) => (current + direction + POST_CAROUSEL.length) % POST_CAROUSEL.length);
@@ -461,7 +462,7 @@ export function OsPosts() {
               </div>
               <div className="relative aspect-square w-full shrink-0 overflow-hidden bg-white">
                 <img
-                  src={POST_CAROUSEL[carouselIndex]}
+                  src={activeCarouselImage}
                   alt={`Carrossel SPAL, imagem ${carouselIndex + 1} de 3`}
                   className="h-full w-full object-contain"
                 />
