@@ -18,6 +18,7 @@ import {
 } from "./act1";
 import { InesPersona, JornadaCompra, Min0, Min12, Min3, Min8 } from "./act2";
 import {
+  AnatomiaPublicacao,
   Bastidores,
   Bio,
   EmpresaEscolhida,
@@ -68,6 +69,7 @@ export const CHAPTERS: Record<string, ComponentType<ChapterProps>> = {
   "jogada-3": ({ active }) => <Jogada n={3} active={active} />,
   semana: Semana,
   publicacao: Publicacao,
+  "anatomia-publicacao": AnatomiaPublicacao,
   bio: Bio,
   resposta: Resposta,
   "no-ar": NoAr,

@@ -238,7 +238,7 @@ const seeds: Seed[] = [
   {
     id: "empresa-escolhida",
     act: 3,
-    title: "Nossa empresa escolhida para intervenção",
+    title: "A empresa escolhida para intervenção",
     navy: true,
     rot: 1.5,
   },
@@ -295,6 +295,12 @@ const seeds: Seed[] = [
     title: "A publicação",
     punchline: "A legenda diz onde comprar. É a única coisa que falta hoje.",
     rot: 2.5,
+  },
+  {
+    id: "anatomia-publicacao",
+    act: 3,
+    title: "Anatomia da publicação",
+    rot: -1.5,
   },
   {
     id: "bio",
