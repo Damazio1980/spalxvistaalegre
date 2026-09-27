@@ -15,5 +15,6 @@
 - O slide do minuto 0 usa os vídeos verticais enviados pelo utilizador via ponteiros de assets e amplia em portal, para comparar os sites reais sem simulações estáticas.
 - O percurso da Inês começa com o separador “JORNADA DE COMPRA”; os títulos seguintes não mostram a palavra “Minuto”.
 - Os slides “Os Posts”, “A publicação” e “Anatomia da publicação” partilham o carrossel de três imagens enviado via ponteiros de assets e a legenda completa, para manter todas as representações consistentes.
+- Em “Os Posts”, o primeiro telemóvel apresenta o Reels/Stories enviado com legenda própria e ícones de Instagram/Facebook; o segundo mantém o carrossel completo, para distinguir os formatos.
 - Nos slides claros, todo o texto secundário usa azul-marinho integral; os quadros de informação têm cantos retos, preservando apenas círculos, botões e silhuetas de dispositivos.
 - Os destaques de texto usam azul-marinho sólido com letras brancas, nunca azul ou rosa diluídos; os quadros explicitamente de marca Vista Alegre e o comentário da Inês conservam rosa editorial sólido com letras brancas.

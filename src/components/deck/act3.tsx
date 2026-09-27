@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, Heart, MessageCircle, Send } from "lucide-react";
+import { ChevronLeft, ChevronRight, Facebook, Heart, Instagram, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Bar,
@@ -16,6 +16,7 @@ import { PERFIL_SPAL } from "@/data/images";
 import spalPost01 from "@/assets/os-posts/spal-post-01.png.asset.json";
 import spalPost02 from "@/assets/os-posts/spal-post-02.png.asset.json";
 import spalPost03 from "@/assets/os-posts/spal-post-03.png.asset.json";
+import spalReelsStories from "@/assets/os-posts/spal-reels-stories.mp4.asset.json";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
@@ -407,6 +408,15 @@ Explora o novo spal.pt.
 
 #SPALPorcelanas #SPAL #PorcelanaPortuguesa #Porcelana #MesaPosta #DesignPortuguês #ElectricRain #CasaPortuguesa #DecoraçãoDeInteriores #NovoSite`;
 
+const REELS_LEGENDA = `Antes de chegar à mesa, cada peça nasce de uma ideia.
+
+Do desenho ao detalhe, mantemos o mesmo cuidado de sempre — agora numa nova casa digital.
+
+A SPAL tem casa nova.
+Descobre o novo spal.pt.
+
+#SPALPorcelanas #SPAL #PorcelanaPortuguesa #ElectricRain #Porcelana #DesignPortuguês #MesaPosta #NovoSite`;
+
 function PostPhone({
   image,
   label,
@@ -443,13 +453,42 @@ export function OsPosts() {
           Os Posts
         </h3>
         <p className="mt-2 text-[15px] font-semibold text-navy">
-          Carrossel de lançamento · Instagram SPAL
+          Reels/Stories e carrossel de lançamento · SPAL
         </p>
       </Reveal>
 
       <div className="mt-5 grid min-h-0 flex-1 grid-cols-4 items-center gap-5">
         <Reveal i={1}>
-          <PostPhone image={POST_CAROUSEL[0]} label="Imagem 1 de 3" />
+          <PostPhone label="Reels/Stories">
+            <div className="flex h-full flex-col bg-white text-navy">
+              <div className="flex h-9 shrink-0 items-center gap-1.5 border-b border-navy/15 px-2">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-navy text-[9px] font-bold text-porcelain">S</span>
+                <span className="min-w-0 flex-1 truncate text-[8px] font-bold">spalporcelanasofficial</span>
+                <Instagram aria-label="Instagram" className="h-3.5 w-3.5 shrink-0 text-navy" />
+                <Facebook aria-label="Facebook" className="h-3.5 w-3.5 shrink-0 text-navy" />
+              </div>
+              <video
+                src={spalReelsStories.url}
+                aria-label="Reels/Stories da SPAL: do desenho da porcelana à nova casa digital"
+                className="h-[246px] w-full shrink-0 bg-navy object-contain"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+              />
+              <div className="flex h-7 shrink-0 items-center gap-2 px-2.5 text-navy">
+                <Heart aria-label="Gostar" className="h-4 w-4" />
+                <MessageCircle aria-label="Comentar" className="h-4 w-4" />
+                <Send aria-label="Partilhar" className="h-4 w-4" />
+              </div>
+              <div className="min-h-0 flex-1 overflow-y-auto px-2.5 pb-2 text-[8px] leading-[1.35] text-navy">
+                <strong>spalporcelanasofficial</strong>{" "}
+                <span className="whitespace-pre-line">{REELS_LEGENDA}</span>
+              </div>
+            </div>
+          </PostPhone>
         </Reveal>
 
         <Reveal i={2}>

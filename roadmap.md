@@ -101,5 +101,5 @@
 - [x] Atualizar «Anatomia da publicação» com os três headlines do carrossel e o CTA «Explora o novo spal.pt».
 
 ## 50 · Vídeos enviados
-- [ ] Substituir «Imagem 1 de 3» em «Os Posts» por Reels/Stories com vídeo, ícones e legenda fornecidos.
-- [ ] Colocar os vídeos de SPAL e Vista Alegre em «Integração e confiança».
+- [x] Substituir «Imagem 1 de 3» em «Os Posts» por Reels/Stories com vídeo, ícones e legenda fornecidos.
+- [x] Colocar os vídeos de SPAL e Vista Alegre em «Integração e confiança».
