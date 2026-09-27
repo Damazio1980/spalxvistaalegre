@@ -16,7 +16,7 @@ import { PERFIL_SPAL } from "@/data/images";
 import spalPost01 from "@/assets/os-posts/spal-post-01.png.asset.json";
 import spalPost02 from "@/assets/os-posts/spal-post-02.png.asset.json";
 import spalPost03 from "@/assets/os-posts/spal-post-03.png.asset.json";
-import spalReelsStoriesWebm from "@/assets/os-posts/spal-reels-stories.webm.asset.json";
+import spalReelsStoriesAudioWebm from "@/assets/os-posts/spal-reels-stories-audio.webm.asset.json";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
@@ -423,7 +423,7 @@ function PostPhone({
   children,
 }: {
   image?: string;
-  label: string;
+  label: React.ReactNode;
   children?: React.ReactNode;
 }) {
   return (
@@ -433,7 +433,7 @@ function PostPhone({
           <img src={image} alt={label} className="h-full w-full object-contain" />
         )}
       </div>
-      <p className="text-[11px] font-bold uppercase text-vaa">{label}</p>
+      <div className="text-[11px] font-bold uppercase text-vaa">{label}</div>
     </div>
   );
 }
@@ -459,33 +459,38 @@ export function OsPosts() {
 
       <div className="mt-5 grid min-h-0 flex-1 grid-cols-4 items-center gap-5">
         <Reveal i={1}>
-          <PostPhone label="Reels/Stories">
-            <div className="flex h-full flex-col bg-white text-navy">
-              <div className="flex h-9 shrink-0 items-center gap-1.5 border-b border-navy/15 px-2">
-                <span className="grid h-5 w-5 place-items-center rounded-full bg-navy text-[9px] font-bold text-porcelain">S</span>
-                <span className="min-w-0 flex-1 truncate text-[8px] font-bold">spalporcelanasofficial</span>
-                <Instagram aria-label="Instagram" className="h-3.5 w-3.5 shrink-0 text-navy" />
-                <Facebook aria-label="Facebook" className="h-3.5 w-3.5 shrink-0 text-navy" />
-              </div>
+          <PostPhone
+            label={
+              <span className="flex items-center justify-center gap-1.5">
+                <Instagram aria-hidden="true" className="h-3.5 w-3.5" /> Reels
+                <span aria-hidden="true">·</span>
+                <Facebook aria-hidden="true" className="h-3.5 w-3.5" /> Story
+              </span>
+            }
+          >
+            <div className="relative h-full overflow-hidden bg-navy text-porcelain">
               <video
-                src={spalReelsStoriesWebm.url}
+                src={spalReelsStoriesAudioWebm.url}
                 aria-label="Reels/Stories da SPAL: do desenho da porcelana à nova casa digital"
-                className="h-[246px] w-full shrink-0 bg-navy object-contain"
-                autoPlay
-                muted
+                className="absolute inset-0 h-full w-full bg-navy object-cover"
                 loop
                 playsInline
                 controls
-                preload="metadata"
+                preload="auto"
               />
-              <div className="flex h-7 shrink-0 items-center gap-2 px-2.5 text-navy">
-                <Heart aria-label="Gostar" className="h-4 w-4" />
-                <MessageCircle aria-label="Comentar" className="h-4 w-4" />
-                <Send aria-label="Partilhar" className="h-4 w-4" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 flex h-11 items-center gap-1.5 bg-navy/75 px-2 text-porcelain">
+                <span className="grid h-6 w-6 place-items-center rounded-full border border-porcelain/60 text-[9px] font-bold">S</span>
+                <span className="min-w-0 flex-1 truncate text-[8px] font-bold">spalporcelanasofficial</span>
               </div>
-              <div className="min-h-0 flex-1 overflow-y-auto px-2.5 pb-2 text-[8px] leading-[1.35] text-navy">
-                <strong>spalporcelanasofficial</strong>{" "}
-                <span className="whitespace-pre-line">{REELS_LEGENDA}</span>
+              <div className="pointer-events-none absolute inset-x-0 bottom-10 bg-navy/80 px-2.5 py-2 text-[7px] leading-[1.3] text-porcelain">
+                <p className="line-clamp-6 whitespace-pre-line">
+                  <strong>spalporcelanasofficial</strong>{" "}{REELS_LEGENDA}
+                </p>
+              </div>
+              <div className="pointer-events-none absolute bottom-12 right-2 flex flex-col items-center gap-2 text-porcelain">
+                <Heart aria-label="Gostar" className="h-5 w-5" />
+                <MessageCircle aria-label="Comentar" className="h-5 w-5" />
+                <Send aria-label="Partilhar" className="h-5 w-5" />
               </div>
             </div>
           </PostPhone>
