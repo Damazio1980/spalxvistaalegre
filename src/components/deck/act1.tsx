@@ -55,11 +55,11 @@ const VAA = "var(--vaa)";
 
 export function Capa({}: ChapterProps) {
   return (
-    <div className="h-full w-full overflow-hidden">
+    <div className="flex h-full w-full items-center justify-center overflow-hidden bg-navy">
       <img
         src={coverAbertura.url}
         alt="Capa da apresentação SPAL e Vista Alegre"
-        className="h-full w-full object-cover object-center"
+        className="h-full w-4/5 object-cover object-center"
       />
     </div>
   );
@@ -664,7 +664,7 @@ export function Percurso({ active }: ChapterProps) {
         </ChartPanel>
       </div>
       <Reveal i={9}>
-        <p className="rounded-2xl bg-navy px-5 py-2.5 text-[14px] font-semibold text-porcelain">
+        <p className="deck-on-blue rounded-2xl bg-navy px-5 py-2.5 text-[14px] font-semibold text-porcelain">
           A SPAL perde o consumidor exatamente no momento em que ele decide comprar.
         </p>
       </Reveal>
@@ -762,7 +762,7 @@ function VideoPlayer({
         className={cn(
           "relative overflow-hidden bg-navy",
           phone
-            ? "mx-auto w-[250px] max-w-full rounded-[30px] border-[6px] border-navy shadow-xl"
+            ? "deck-device-frame mx-auto w-[230px] max-w-full rounded-[20px] border-2 border-navy bg-white"
             : "rounded-2xl border border-navy/10",
           className,
         )}
@@ -772,7 +772,7 @@ function VideoPlayer({
           ref={ref}
           src={src}
           onClick={toggle}
-          className={cn("h-full w-full cursor-pointer", phone ? "object-contain" : "object-cover")}
+          className={cn("h-full w-full cursor-pointer", phone ? "bg-white object-contain" : "object-cover")}
           playsInline
           muted
           loop

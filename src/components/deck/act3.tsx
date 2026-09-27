@@ -13,7 +13,6 @@ import {
 } from "recharts";
 import { Chip, Glossary, Num, Reveal, Shot } from "./primitives";
 import { PERFIL_SPAL } from "@/data/images";
-import spalPublicacaoOriginal from "@/assets/spal-publicacao-original.png.asset.json";
 import spalPost01 from "@/assets/os-posts/spal-post-01.png.asset.json";
 import spalPost02 from "@/assets/os-posts/spal-post-02.png.asset.json";
 import spalPost03 from "@/assets/os-posts/spal-post-03.png.asset.json";
@@ -513,20 +512,31 @@ export function OsPosts() {
   );
 }
 
-const LEGENDA =
-  "A SPAL tem casa nova. A mesma porcelana de sempre, agora com uma experiência digital renovada: mais coleções, mais informação e compra online num só lugar. Descobre o novo site e encontra as peças que combinam com a tua mesa.";
+function CriativoSpal({ controls = false }: { controls?: boolean }) {
+  const [index, setIndex] = useState(0);
+  const image = POST_CAROUSEL[index] ?? POST_CAROUSEL[0];
+  const move = (direction: -1 | 1) => {
+    setIndex((current) => (current + direction + POST_CAROUSEL.length) % POST_CAROUSEL.length);
+  };
 
-const HASHTAGS = "#SPALPorcelanas #ASPALTemCasaNova #PorcelanaPortuguesa #MesaPosta #DesignPortuguês";
-
-/** Criativo original enviado para a publicação e para a sua anatomia. */
-function CriativoSpal() {
   return (
-    <div className="criativo-white flex h-full items-center justify-center overflow-hidden">
+    <div className="criativo-white relative flex h-full items-center justify-center overflow-hidden">
       <img
-        src={spalPublicacaoOriginal.url}
-        alt="Publicação SPAL: porcelana branca, A SPAL TEM CASA NOVA e Ver o novo site"
+        src={image}
+        alt={`Carrossel de lançamento do novo site SPAL, imagem ${index + 1} de 3`}
         className="h-full w-full object-contain"
       />
+      {controls && (
+        <>
+          <Button type="button" variant="default" size="icon" aria-label="Imagem anterior" onClick={() => move(-1)} className="deck-media-control absolute left-1 top-1/2 h-7 w-7 -translate-y-1/2 rounded-full bg-navy text-porcelain">
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <Button type="button" variant="default" size="icon" aria-label="Imagem seguinte" onClick={() => move(1)} className="deck-media-control absolute right-1 top-1/2 h-7 w-7 -translate-y-1/2 rounded-full bg-navy text-porcelain">
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+          <span className="deck-on-blue absolute right-2 top-2 rounded-full bg-navy px-2 py-1 text-[8px] font-bold text-porcelain">{index + 1}/3</span>
+        </>
+      )}
     </div>
   );
 }
@@ -538,9 +548,14 @@ function PostCompleto() {
         <span className="h-6 w-6 rounded-full bg-navy" />
         <span className="text-[10px] font-semibold">spalporcelanasofficial</span>
       </div>
-      <div className="aspect-[4/5] w-full shrink-0"><CriativoSpal /></div>
-      <p className="min-h-0 flex-1 overflow-hidden px-3 py-2 text-[8px] leading-snug">
-        <strong>spalporcelanasofficial</strong> {LEGENDA} {HASHTAGS}
+      <div className="aspect-square w-full shrink-0"><CriativoSpal controls /></div>
+      <div className="flex shrink-0 items-center gap-2 px-3 py-1.5 text-navy">
+        <Heart className="h-4 w-4" />
+        <MessageCircle className="h-4 w-4" />
+        <Send className="h-4 w-4" />
+      </div>
+      <p className="min-h-0 flex-1 overflow-hidden whitespace-pre-line px-3 pb-2 text-[7.2px] leading-[1.3]">
+        <strong>spalporcelanasofficial</strong>{" "}{POST_LEGENDA}
       </p>
     </div>
   );
@@ -610,7 +625,7 @@ export function AnatomiaPublicacao() {
           ))}
         </div>
         <Reveal i={2} className="mx-auto aspect-square w-full max-w-[385px] overflow-hidden border-2 border-navy">
-          <CriativoSpal />
+          <CriativoSpal controls />
         </Reveal>
         <div className="space-y-5">
           {ANATOMIA.slice(3).map(([title, copy], index) => (
