@@ -60,7 +60,7 @@ function ResumoCard({
     <Reveal i={1}>
       <div
         className={
-          "deck-on-blue flex h-full flex-col gap-4 border-2 p-7 text-porcelain " +
+          "deck-on-brand flex h-full flex-col gap-4 border-2 p-7 text-porcelain " +
           (isVaa ? "border-vaa bg-vaa" : "border-navy bg-navy")
         }
       >
@@ -75,10 +75,7 @@ function ResumoCard({
         <ul className="flex flex-col gap-3">
           {items.map((item) => (
             <li key={item} className="flex items-start gap-3">
-              <span
-                className="mt-[7px] h-2 w-2 shrink-0 rounded-full"
-                className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-porcelain"
-              />
+              <span className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-porcelain" />
               <span className="text-[16px] leading-snug text-porcelain">{item}</span>
             </li>
           ))}

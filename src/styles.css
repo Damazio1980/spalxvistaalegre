@@ -340,6 +340,11 @@
   color: var(--porcelain) !important;
 }
 
+.deck-theme-white .deck-on-brand,
+.deck-theme-white .deck-on-brand [class*="text-porcelain"] {
+  color: var(--porcelain) !important;
+}
+
 .deck-theme-navy .sample-channels-slide strong {
   color: var(--porcelain);
 }
