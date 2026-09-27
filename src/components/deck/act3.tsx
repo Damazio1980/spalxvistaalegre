@@ -49,17 +49,15 @@ function ResumoCard({
   subtitle,
   items,
   tone,
-  delay,
 }: {
   brand: string;
   subtitle: string;
   items: string[];
   tone: "vaa" | "spal";
-  delay: number;
 }) {
   const isVaa = tone === "vaa";
   return (
-    <Reveal i={delay > 500 ? 2 : 1}>
+    <Reveal i={1}>
       <div
         className={
           "flex h-full flex-col gap-4 rounded-3xl border-2 p-7 " +
@@ -114,14 +112,12 @@ export function OQueVimos() {
           subtitle="Onde está mais forte"
           items={RESUMO_VAA}
           tone="vaa"
-          delay={400}
         />
         <ResumoCard
           brand="SPAL"
           subtitle="Onde está mais frágil"
           items={RESUMO_SPAL}
           tone="spal"
-          delay={700}
         />
       </div>
       <Reveal i={2}>
