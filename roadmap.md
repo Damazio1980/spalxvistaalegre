@@ -107,3 +107,6 @@
 ## 51 · Correções do Reels em «Os Posts» — feito
 - [x] Usar o vídeo vertical em toda a altura do primeiro telemóvel, com a publicação sobreposta ao vídeo.
 - [x] Preservar o áudio original e colocar os ícones junto às etiquetas «Reels» e «Story».
+
+## 52 · Legenda do Reels sem filtros — feito
+- [x] Retirar as faixas azuis superior e inferior do vídeo e aumentar a legenda branca diretamente sobre a imagem.
