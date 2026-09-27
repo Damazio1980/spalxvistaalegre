@@ -38,6 +38,7 @@ const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
   final: "white",
   min0: "white",
   resumo: "white",
+  "os-posts": "white",
   publicacao: "white",
   "anatomia-publicacao": "white",
 };
