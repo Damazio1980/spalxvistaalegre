@@ -44,3 +44,10 @@
 ## 38 · Criativo "A SPAL tem casa nova" no slide A publicação
 - estado: feito
 - CriativoSpal em act3.tsx com fundo branco (classe criativo-white), headline serifada a azul e rosa, texto de apoio e CTA «Ver o novo site →» com seta rosa; still-life recortado do criativo enviado (src/assets/spal-criativo-still.jpg.asset.json); marca d'água «exercício académico»; legenda nova com hashtags a rosa; slide publicacao com fundo branco em Stage.tsx.
+
+## 39 · Ajustes de capa, controlos e sequência
+- [ ] Fazer da fotografia a capa inteira, sem fundo azul exterior.
+- [ ] Tornar «Ampliar» e as setas das publicações legíveis, sem filtro.
+- [ ] Reenquadrar «A ficha» sem encolher excessivamente o texto.
+- [ ] Retirar «Dois placares» e inserir «Nossa empresa escolhida para intervenção / SPAL» antes de «Porque a SPAL».
+- [ ] Aplicar fundo branco a «A Inês pergunta» e «Bastidores», com contraste ajustado.
