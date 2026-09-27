@@ -17,6 +17,7 @@ import spalPost01 from "@/assets/os-posts/spal-post-01.png.asset.json";
 import spalPost02 from "@/assets/os-posts/spal-post-02.png.asset.json";
 import spalPost03 from "@/assets/os-posts/spal-post-03.png.asset.json";
 import spalReelsStories from "@/assets/os-posts/spal-reels-stories.mp4.asset.json";
+import spalReelsStoriesWebm from "@/assets/os-posts/spal-reels-stories.webm.asset.json";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
@@ -468,7 +469,7 @@ export function OsPosts() {
                 <Facebook aria-label="Facebook" className="h-3.5 w-3.5 shrink-0 text-navy" />
               </div>
               <video
-                src={spalReelsStories.url}
+                src={spalReelsStoriesWebm.url}
                 aria-label="Reels/Stories da SPAL: do desenho da porcelana à nova casa digital"
                 className="h-[246px] w-full shrink-0 bg-navy object-contain"
                 autoPlay

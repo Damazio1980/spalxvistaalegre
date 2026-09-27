@@ -17,6 +17,8 @@ import telemovelSpalVideo from "@/assets/telemovel-spal.mp4.asset.json";
 import telemovelVaaVideo from "@/assets/telemovel-vista-alegre.mp4.asset.json";
 import confiancaSpalVideo from "@/assets/confianca-spal.mp4.asset.json";
 import confiancaVaaVideo from "@/assets/confianca-vista-alegre.mp4.asset.json";
+import confiancaSpalWebm from "@/assets/confianca-spal.webm.asset.json";
+import confiancaVaaWebm from "@/assets/confianca-vista-alegre.webm.asset.json";
 import {
   Bar,
   BarChart,
@@ -860,7 +862,7 @@ const DUELO_VIDEOS: { spal: string | null; vaa: string | null }[] = [
   { spal: produtoSpalVideo.url, vaa: produtoVaaVideo.url },
   { spal: compraSpalVideo.url, vaa: compraVaaVideo.url },
   { spal: telemovelSpalVideo.url, vaa: telemovelVaaVideo.url },
-  { spal: confiancaSpalVideo.url, vaa: confiancaVaaVideo.url },
+  { spal: confiancaSpalWebm.url, vaa: confiancaVaaWebm.url },
 ];
 
 export function Duelo({ n, active }: { n: number; active: boolean }) {
