@@ -335,6 +335,16 @@
   color: var(--porcelain) !important;
 }
 
+.deck-theme-white .deck-on-rose,
+.deck-theme-white .deck-on-rose [class*="text-porcelain"] {
+  color: var(--porcelain) !important;
+}
+
+.deck-theme-white .deck-on-brand,
+.deck-theme-white .deck-on-brand [class*="text-porcelain"] {
+  color: var(--porcelain) !important;
+}
+
 .deck-theme-navy .sample-channels-slide strong {
   color: var(--porcelain);
 }
@@ -363,7 +373,7 @@
 .deck-theme-white .deck-device-frame,
 .deck-theme-rose .deck-device-frame,
 .deck-theme-navy .deck-device-frame {
-  border-radius: 28px !important;
+  border-radius: 20px !important;
 }
 
 /* soft watermark: pattern stays, colors washed out so slides keep focus */

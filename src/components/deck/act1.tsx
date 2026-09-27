@@ -1152,7 +1152,7 @@ function PostCard({ post, index }: { post: SocialPost; index: number }) {
         group={group}
         compact
         hideExpand
-         className="deck-device-frame h-[263px] w-[148px] shrink-0 rounded-[28px] border-[5px] border-ink bg-white"
+          className="deck-device-frame h-[263px] w-[148px] shrink-0 rounded-[20px] border-2 border-navy bg-white"
       />
       <div className="flex min-w-0 flex-1 flex-col py-1">
         <div className="mb-1 flex items-start justify-between gap-2">

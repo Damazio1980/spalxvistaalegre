@@ -112,7 +112,7 @@ function OpeningPhone({ brand, site, video, webm, poster, tone }: {
         <p className={`text-sm font-extrabold uppercase ${tone === "spal" ? "text-spal" : "text-vaa"}`}>{brand}</p>
         <p className="text-xs text-navy/55">{site}</p>
       </div>
-      <div className="relative aspect-[9/16] h-[430px] max-h-full overflow-hidden rounded-[32px] border-[7px] border-navy bg-navy shadow-[var(--shadow-card)]">
+      <div className="relative aspect-[9/16] h-[430px] max-h-full overflow-hidden rounded-[18px] border-2 border-navy/70 bg-navy">
         <video
           ref={smallVideo}
           poster={poster}
