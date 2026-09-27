@@ -59,7 +59,7 @@ function ResumoCard({
 }) {
   const isVaa = tone === "vaa";
   return (
-    <Reveal i={1} delay={delay}>
+    <Reveal i={delay > 500 ? 2 : 1}>
       <div
         className={
           "flex h-full flex-col gap-4 rounded-3xl border-2 p-7 " +
