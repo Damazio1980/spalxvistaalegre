@@ -94,3 +94,8 @@
 - [x] Garantir texto branco no destaque inferior do teste de percurso.
 - [x] Atualizar «A publicação» e «Anatomia da publicação» com o carrossel enviado, a nova legenda e as novas hashtags.
 - [x] Usar integralmente a legenda e as hashtags fornecidas para o Instagram da SPAL.
+
+## 49 · Capa, telemóvel e anatomia — feito
+- [x] Deixar a capa totalmente azul, com a imagem centrada a ocupar 80% da largura e da altura.
+- [x] Aplicar ao duelo «Telemóvel» a linguagem clean de navegador usada em «Próximo passo», em formato vertical.
+- [x] Atualizar «Anatomia da publicação» com os três headlines do carrossel e o CTA «Explora o novo spal.pt».

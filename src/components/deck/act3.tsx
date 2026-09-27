@@ -603,9 +603,9 @@ const ANATOMIA = [
   ["1 · LOGÓTIPO", "Canto superior esquerdo, pequeno e discreto. Confirma a autoria da SPAL sem competir com a headline."],
   ["2 · IMAGEM PRINCIPAL", "Louça branca em estilo clean e premium. A imagem ocupa o centro visual e reforça a linha Electric Rain."],
   ["3 · LINHA EDITORIAL", "Base branca, luz natural e poucos elementos. O foco fica na porcelana, na textura e na elegância da marca."],
-  ["4 · HEADLINE", "Texto principal em destaque: “A SPAL TEM CASA NOVA”. Fica na zona de leitura forte do feed."],
+  ["4 · HEADLINE", "Três mensagens principais: “A SPAL tem uma nova casa digital”, “Vê cada coleção com mais detalhe” e “Compra online sem complicações”."],
   ["5 · TEXTO DE APOIO", "Frase curta e funcional. Explica a novidade sem pesar: compra online, mantendo a essência da marca."],
-  ["6 · CTA", "Botão preto com alto contraste. “Ver o novo site” fecha o percurso visual e orienta a ação."],
+  ["6 · CTA", "Botão preto com alto contraste. “Explora o novo spal.pt” fecha o percurso visual e orienta a ação."],
 ] as const;
 
 export function AnatomiaPublicacao() {
