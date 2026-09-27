@@ -234,16 +234,14 @@ const seeds: Seed[] = [
     rot: -1.5,
     score: [0, 1],
   },
+  // ── Ato 3 · centro do prato ─────────────────────────────────────────────
   {
-    id: "dois-placares",
-    act: 2,
-    title: "Dois placares, o mesmo resultado",
-    punchline: "Os dados e a pessoa contam a mesma história.",
+    id: "empresa-escolhida",
+    act: 3,
+    title: "Nossa empresa escolhida para intervenção",
     navy: true,
     rot: 1.5,
   },
-
-  // ── Ato 3 · centro do prato ─────────────────────────────────────────────
   {
     id: "porque-spal",
     act: 3,

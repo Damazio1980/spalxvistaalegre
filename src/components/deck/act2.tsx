@@ -242,18 +242,18 @@ function ProductComparison({ brand, seen, needed, tone, delay }: {
   const accent = tone === "spal" ? "text-porcelain" : "text-vaa";
   const rule = tone === "spal" ? "border-porcelain/55" : "border-vaa";
   return (
-    <div className="deck-rise border-t border-porcelain/25 pt-5" style={{ animationDelay: `${delay}ms` }}>
-      <p className={`mb-4 text-lg font-extrabold uppercase ${accent}`}>{brand}</p>
-      <div className="grid grid-cols-2 gap-10">
-        <section className={`border-l-[4px] ${rule} pl-6`}>
-          <h4 className="mb-3 text-2xl font-bold text-porcelain">O que a Inês vê</h4>
-          <ul className="space-y-2 text-[21px] leading-snug text-porcelain/85">
+    <div className="deck-rise min-w-0 border-t border-porcelain/25 pt-4" style={{ animationDelay: `${delay}ms` }}>
+      <p className={`mb-3 text-lg font-extrabold uppercase ${accent}`}>{brand}</p>
+      <div className="grid min-w-0 grid-cols-2 gap-6">
+        <section className={`min-w-0 border-l-[4px] ${rule} pl-5`}>
+          <h4 className="mb-2 text-[23px] font-bold leading-tight text-porcelain">O que a Inês vê</h4>
+          <ul className="space-y-1.5 text-[20px] leading-snug text-porcelain/85">
             {seen.map((item) => <li key={item}>· {item}</li>)}
           </ul>
         </section>
-        <section className={`border-l-[4px] ${rule} pl-6`}>
-          <h4 className="mb-3 text-2xl font-bold text-porcelain">O que a Inês precisava</h4>
-          <ul className="space-y-2 text-[21px] leading-snug text-porcelain/85">
+        <section className={`min-w-0 border-l-[4px] ${rule} pl-5`}>
+          <h4 className="mb-2 text-[23px] font-bold leading-tight text-porcelain">O que a Inês precisava</h4>
+          <ul className="space-y-1.5 text-[20px] leading-snug text-porcelain/85">
             {needed.map((item) => <li key={item}>· {item}</li>)}
           </ul>
         </section>
@@ -264,11 +264,11 @@ function ProductComparison({ brand, seen, needed, tone, delay }: {
 
 export function Min8() {
   return (
-    <div className="flex h-full flex-col justify-center gap-8 px-16 py-10">
+    <div className="flex h-full flex-col justify-center gap-5 px-16 py-7">
       <Reveal i={0}>
-        <h3 className="deck-h2 text-[64px] text-porcelain">A ficha do produto</h3>
+        <h3 className="deck-h2 text-[52px] text-porcelain">A ficha do produto</h3>
       </Reveal>
-      <div className="space-y-7">
+      <div className="space-y-4">
         <ProductComparison
           brand="SPAL"
           tone="spal"
@@ -284,7 +284,7 @@ export function Min8() {
           needed={["já tem tudo o que ela procurava"]}
         />
       </div>
-      <div className="flex items-center gap-5 border-t border-porcelain/20 pt-5">
+      <div className="flex items-center gap-5 border-t border-porcelain/20 pt-3">
         <Chip tone="vaa" className="bg-vaa text-porcelain px-5 py-2 text-lg">+1 Vista Alegre</Chip>
         <p className="max-w-[900px] text-lg leading-relaxed text-porcelain/80">
           a SPAL tem melhor informação técnica do que muitas lojas — mas para o retalho, não para a
@@ -355,49 +355,3 @@ export function Min12({ active }: ChapterProps) {
   );
 }
 
-export function DoisPlacares({ active }: ChapterProps) {
-  const [merged, setMerged] = useState(false);
-  useEffect(() => {
-    setMerged(false);
-    if (!active) return;
-    const t = setTimeout(() => setMerged(true), 1400);
-    return () => clearTimeout(t);
-  }, [active]);
-  return (
-    <div className="relative flex h-full flex-col items-center justify-center gap-10 p-14 text-navy">
-      <Reveal i={0}>
-        <h3 className="deck-h2 text-center text-navy">Dois placares, o mesmo resultado</h3>
-      </Reveal>
-      <div className="relative flex h-[280px] w-full items-center justify-center">
-        {(
-          [
-            ["Ato 1 · os dados", -1],
-            ["Ato 2 · a Inês", 1],
-          ] as const
-        ).map(([label, dir]) => (
-          <div
-            key={label}
-            className="absolute w-[340px] rounded-3xl border border-navy/15 bg-white p-8 text-center shadow-[var(--shadow-card)] transition-all duration-[1200ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
-            style={{
-              transform: merged
-                ? "translateX(0) scale(1.05)"
-                : `translateX(${dir * 220}px) rotate(${dir * 2}deg)`,
-              opacity: merged && dir === -1 ? 0.35 : 1,
-            }}
-          >
-            <p className="text-xs font-bold uppercase text-navy/60">{label}</p>
-            <div className="mt-3 flex items-center justify-center gap-5">
-              <Num value={0} active={active} className="text-7xl text-spal" />
-              <span className="text-2xl text-navy/30">—</span>
-              <Num value={3} active={active} className="text-7xl text-vaa" />
-            </div>
-            <p className="mt-1 text-xs text-navy/60">SPAL — Vista Alegre</p>
-          </div>
-        ))}
-      </div>
-      <Reveal i={2}>
-        <p className="text-2xl italic text-vaa">Os dados e a pessoa contam a mesma história.</p>
-      </Reveal>
-    </div>
-  );
-}

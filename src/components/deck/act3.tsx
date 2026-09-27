@@ -28,6 +28,20 @@ import {
 const SPAL = "var(--spal)";
 const VAA = "var(--vaa)";
 
+export function EmpresaEscolhida() {
+  return (
+    <div className="flex h-full items-center px-24 text-porcelain">
+      <div>
+        <div className="mb-8 h-px w-28 bg-vaa" />
+        <Reveal i={0}>
+          <p className="text-[28px] font-semibold text-porcelain/80">Nossa empresa escolhida para intervenção</p>
+          <h2 className="mt-5 font-[var(--font-display)] text-[120px] font-extrabold leading-none text-porcelain">SPAL</h2>
+        </Reveal>
+      </div>
+    </div>
+  );
+}
+
 export function PorqueSpal() {
   const chips = [
     "tem design próprio",
@@ -948,9 +962,9 @@ export function Bastidores() {
           </Reveal>
         ))}
       </div>
-      <Reveal i={2} className="flex flex-col justify-center rounded-3xl bg-navy p-8 text-porcelain">
+      <Reveal i={2} className="flex flex-col justify-center border-l-2 border-vaa p-8 text-navy">
         <p className="text-xs font-bold uppercase tracking-widest text-vaa">Utilização de IA</p>
-        <p className="mt-4 text-[15px] leading-relaxed text-porcelain/85">
+        <p className="mt-4 text-[15px] leading-relaxed text-navy/85">
           Claude apoiou a leitura das páginas públicas, cálculos, estrutura e redação; observações
           verificadas e capturas próprias; interpretações e propostas da formanda.
         </p>
