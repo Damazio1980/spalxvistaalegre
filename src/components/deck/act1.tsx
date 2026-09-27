@@ -801,9 +801,11 @@ function VideoPlayer({
         >
           <Maximize2 className="h-3.5 w-3.5" /> Ampliar
         </button>
-        <span className="pointer-events-none absolute left-3 top-2 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
-          ▶ vídeo · {site}
-        </span>
+        {phone && (
+          <span className="pointer-events-none absolute left-3 top-2 rounded-full bg-porcelain/90 px-2.5 py-[2px] text-[10px] font-bold uppercase tracking-wider text-navy">
+            ▶ vídeo · {site}
+          </span>
+        )}
       </div>
 
       {expanded &&
@@ -885,7 +887,7 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
     <div className="flex h-full flex-col gap-3 p-6">
       <Reveal i={0} className="flex shrink-0 items-baseline gap-3">
         <h3 className="font-[var(--font-display)] text-2xl font-extrabold text-navy">
-          {d.title} <span className="text-navy/45">— os dois sites em movimento</span>
+          {d.title}
         </h3>
       </Reveal>
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-4">
@@ -893,19 +895,30 @@ export function Duelo({ n, active }: { n: number; active: boolean }) {
           <Reveal
             key={name}
             i={i + 1}
-            className={`flex min-h-0 flex-col rounded-3xl border-2 bg-white p-2.5 ${border}`}
+            className="flex min-h-0 flex-col"
           >
             <p className={`shrink-0 px-1 pb-1.5 text-[12px] font-bold uppercase tracking-widest ${text}`}>
               {name} <span className="deck-num text-navy/70">{side.score}/5</span>
             </p>
             {/* vídeo em destaque: ocupa quase todo o cartão, formato alto e quadrado */}
-            <VideoPlayer
-              src={src}
-              label={name}
-              site={site}
-              phone={phone}
-              className="min-h-0 flex-1"
-            />
+            {phone ? (
+              <VideoPlayer src={src} label={name} site={site} phone className="min-h-0 flex-1" />
+            ) : (
+              <div className="flex min-h-0 flex-1 flex-col items-center">
+                <div className="flex min-h-0 w-full flex-1 flex-col rounded-t-[14px] border-[7px] border-b-0 border-navy bg-navy">
+                  <div className="flex shrink-0 items-center gap-1.5 rounded-t-[6px] bg-porcelain px-2.5 py-1.5">
+                    <span className="h-2 w-2 rounded-full bg-navy/25" />
+                    <span className="h-2 w-2 rounded-full bg-navy/25" />
+                    <span className="h-2 w-2 rounded-full bg-navy/25" />
+                    <span className="ml-2 flex-1 truncate rounded-full bg-white px-3 py-[2px] text-[10px] text-navy/60">https://{site}</span>
+                  </div>
+                  <VideoPlayer src={src} label={name} site={site} className="min-h-0 flex-1 !rounded-none !border-0" />
+                </div>
+                <div className="h-3 w-full rounded-b-[10px] bg-navy/85" />
+                <div className="h-5 w-16 bg-navy/60" />
+                <div className="h-1.5 w-40 rounded-full bg-navy/60" />
+              </div>
+            )}
             <p className="shrink-0 px-1 pt-1.5 text-[11.5px] leading-snug text-navy/70">{side.obs}</p>
           </Reveal>
         ))}
