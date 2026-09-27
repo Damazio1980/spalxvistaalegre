@@ -483,12 +483,12 @@ export function OsPosts() {
                 controls
                 preload="auto"
               />
-              <div className="pointer-events-none absolute inset-x-0 top-0 flex h-11 items-center gap-1.5 bg-navy/75 px-2 text-porcelain">
+              <div className="pointer-events-none absolute inset-x-0 top-0 flex h-11 items-center gap-1.5 px-2 text-porcelain">
                 <span className="grid h-6 w-6 place-items-center rounded-full border border-porcelain/60 text-[9px] font-bold">S</span>
-                <span className="min-w-0 flex-1 truncate text-[8px] font-bold">spalporcelanasofficial</span>
+                <span className="min-w-0 flex-1 truncate text-[9px] font-extrabold">spalporcelanasofficial</span>
               </div>
-              <div className="pointer-events-none absolute inset-x-0 bottom-10 bg-navy/80 px-2.5 py-2 text-[7px] leading-[1.3] text-porcelain">
-                <p className="line-clamp-6 whitespace-pre-line">
+              <div className="pointer-events-none absolute bottom-12 left-0 right-8 px-2.5 py-2 text-[9px] font-semibold leading-[1.35] text-porcelain">
+                <p className="line-clamp-7 whitespace-pre-line">
                   <strong>spalporcelanasofficial</strong>{" "}{REELS_LEGENDA}
                 </p>
               </div>
