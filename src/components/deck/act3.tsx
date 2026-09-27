@@ -124,7 +124,7 @@ export function OQueVimos() {
           delay={700}
         />
       </div>
-      <Reveal i={2} delay={1100}>
+      <Reveal i={2}>
         <p className="text-center font-[var(--font-display)] text-[24px] font-bold leading-snug">
           A Vista Alegre não venceu por ter mais produto. Venceu por ter menos obstáculos entre a
           pessoa e a compra.
