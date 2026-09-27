@@ -28,6 +28,20 @@ import {
 const SPAL = "var(--spal)";
 const VAA = "var(--vaa)";
 
+export function EmpresaEscolhida() {
+  return (
+    <div className="flex h-full items-center px-24 text-porcelain">
+      <div>
+        <div className="mb-8 h-px w-28 bg-vaa" />
+        <Reveal i={0}>
+          <p className="text-[28px] font-semibold text-porcelain/80">Nossa empresa escolhida para intervenção</p>
+          <h2 className="mt-5 font-[var(--font-display)] text-[120px] font-extrabold leading-none text-porcelain">SPAL</h2>
+        </Reveal>
+      </div>
+    </div>
+  );
+}
+
 export function PorqueSpal() {
   const chips = [
     "tem design próprio",
@@ -526,7 +540,7 @@ export function Resposta({ active }: ChapterProps) {
         </p>
       </Reveal>
       <div className="flex justify-end">
-        <div className="max-w-[760px] rounded-3xl rounded-br-md bg-spal p-5 text-porcelain">
+        <div className="deck-on-blue max-w-[760px] rounded-3xl rounded-br-md bg-spal p-5 text-porcelain">
           <p className="text-[10px] font-bold uppercase tracking-widest text-porcelain/70">
             SPAL · resposta em menos de 24 h
           </p>
@@ -943,14 +957,14 @@ export function Bastidores() {
           <p className="mt-2 text-sm text-navy/60">Redes sociais analisadas em 23/09/2026 · websites consultados em 04/09/2026.</p>
         </Reveal>
         {fontes.map((f, i) => (
-          <Reveal key={f} i={i + 1} className="rounded-xl bg-white px-4 py-2 text-[14px] text-navy/75">
+          <Reveal key={f} i={i + 1} className="border-b border-navy/15 px-4 py-2 text-[14px] text-navy/75">
             {f}
           </Reveal>
         ))}
       </div>
-      <Reveal i={2} className="flex flex-col justify-center rounded-3xl bg-navy p-8 text-porcelain">
+      <Reveal i={2} className="flex flex-col justify-center border-l-2 border-vaa p-8 text-navy">
         <p className="text-xs font-bold uppercase tracking-widest text-vaa">Utilização de IA</p>
-        <p className="mt-4 text-[15px] leading-relaxed text-porcelain/85">
+        <p className="mt-4 text-[15px] leading-relaxed text-navy/85">
           Claude apoiou a leitura das páginas públicas, cálculos, estrutura e redação; observações
           verificadas e capturas próprias; interpretações e propostas da formanda.
         </p>

@@ -45,11 +45,13 @@ const REQUESTED_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "white">> =
   min3: "navy",
   min8: "navy",
   min12: "navy",
-  "dois-placares": "white",
   "porque-spal": "navy",
+  "empresa-escolhida": "navy",
   semana: "navy",
   "no-ar": "navy",
   "simulacao-real": "navy",
+  resposta: "white",
+  bastidores: "white",
 };
 
 function fitScale(f: FrameDef, viewport: Viewport) {
@@ -189,8 +191,10 @@ export function Stage() {
       >
         <PorcelainBackdrop variant={backdrop} />
 
-        {/* single slide, centred and scaled to the screen */}
-        <div className="absolute inset-0 flex min-w-0 items-center justify-center">
+        {/* A fotografia da capa ocupa todo o ecrã; os restantes quadros mantêm o formato de apresentação. */}
+        {frame.id === "capa" && Chapter ? (
+          <div className="absolute inset-0"><Chapter active /></div>
+        ) : <div className="absolute inset-0 flex min-w-0 items-center justify-center">
           <div
             key={frame.id}
             className={cn(
@@ -217,7 +221,7 @@ export function Stage() {
               </FrameBody>
             )}
           </div>
-        </div>
+        </div>}
 
         {/* arrows */}
         <button
@@ -282,6 +286,7 @@ function FrameBody({
         "identificacao-canais",
         "introducao-website",
         "placar1",
+         "empresa-escolhida",
         "jornada-compra",
         "jogadas",
         "semana",

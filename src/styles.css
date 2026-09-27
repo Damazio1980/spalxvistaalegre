@@ -301,6 +301,19 @@
   color: var(--porcelain) !important;
 }
 
+/* Media controls keep white lettering on a solid navy surface even on white slides. */
+.deck-theme-white .deck-media-control {
+  color: var(--porcelain) !important;
+  background-color: var(--navy);
+  filter: none;
+  opacity: 1;
+}
+
+.deck-theme-white .deck-on-blue,
+.deck-theme-white .deck-on-blue [class*="text-porcelain"] {
+  color: var(--porcelain) !important;
+}
+
 .deck-theme-navy .sample-channels-slide strong {
   color: var(--porcelain);
 }

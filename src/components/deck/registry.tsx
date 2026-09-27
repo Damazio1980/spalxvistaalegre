@@ -16,10 +16,11 @@ import {
   Website,
   type ChapterProps,
 } from "./act1";
-import { DoisPlacares, InesPersona, JornadaCompra, Min0, Min12, Min3, Min8 } from "./act2";
+import { InesPersona, JornadaCompra, Min0, Min12, Min3, Min8 } from "./act2";
 import {
   Bastidores,
   Bio,
+  EmpresaEscolhida,
   Final,
   Indicadores,
   Jogada,
@@ -59,7 +60,7 @@ export const CHAPTERS: Record<string, ComponentType<ChapterProps>> = {
   min3: Min3,
   min8: Min8,
   min12: Min12,
-  "dois-placares": DoisPlacares,
+  "empresa-escolhida": EmpresaEscolhida,
   "porque-spal": PorqueSpal,
   jogadas: Jogadas,
   "jogada-1": ({ active }) => <Jogada n={1} active={active} />,
