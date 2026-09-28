@@ -17,6 +17,8 @@ import spalPost01 from "@/assets/os-posts/spal-post-01.png.asset.json";
 import spalPost02 from "@/assets/os-posts/spal-post-02.png.asset.json";
 import spalPost03 from "@/assets/os-posts/spal-post-03.png.asset.json";
 import spalReelsStoriesAudioWebm from "@/assets/os-posts/spal-reels-stories-audio.webm.asset.json";
+import spalStory01 from "@/assets/os-posts/spal-story-01.png.asset.json";
+import spalStory02 from "@/assets/os-posts/spal-story-02.png.asset.json";
 import electricRain01 from "@/assets/os-posts/electric-rain-01.png.asset.json";
 import electricRain02 from "@/assets/os-posts/electric-rain-02.png.asset.json";
 import electricRain03 from "@/assets/os-posts/electric-rain-03.png.asset.json";
@@ -459,6 +461,8 @@ function PostPhone({
 export function OsPosts() {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [electricRainIndex, setElectricRainIndex] = useState(0);
+  const [storyIndex, setStoryIndex] = useState(0);
+  const STORY_IMAGES = [spalStory01.url, spalStory02.url];
   const activeCarouselImage = POST_CAROUSEL[carouselIndex] ?? POST_CAROUSEL[0];
   const activeElectricRainImage = ELECTRIC_RAIN_CAROUSEL[electricRainIndex] ?? ELECTRIC_RAIN_CAROUSEL[0];
 
@@ -467,6 +471,9 @@ export function OsPosts() {
   };
   const moveElectricRain = (direction: -1 | 1) => {
     setElectricRainIndex((current) => (current + direction + ELECTRIC_RAIN_CAROUSEL.length) % ELECTRIC_RAIN_CAROUSEL.length);
+  };
+  const moveStory = (direction: -1 | 1) => {
+    setStoryIndex((current) => (current + direction + STORY_IMAGES.length) % STORY_IMAGES.length);
   };
 
   return (
@@ -598,7 +605,53 @@ export function OsPosts() {
           </PostPhone>
         </Reveal>
         <Reveal i={4}>
-          <PostPhone image={POST_CAROUSEL[2]} label="Imagem 3 de 3" />
+          <PostPhone
+            label={
+              <span className="flex items-center justify-center gap-1.5">
+                <Instagram aria-hidden="true" className="h-3.5 w-3.5" />
+                <Facebook aria-hidden="true" className="h-3.5 w-3.5" /> Story
+              </span>
+            }
+          >
+            <div className="relative h-full overflow-hidden bg-white">
+              <img
+                src={STORY_IMAGES[storyIndex]}
+                alt={`Story da SPAL, imagem ${storyIndex + 1} de 2`}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-x-2 top-1.5 flex gap-1">
+                {STORY_IMAGES.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`h-[3px] flex-1 rounded-full ${i <= storyIndex ? "bg-porcelain" : "bg-porcelain/40"}`}
+                  />
+                ))}
+              </div>
+              <div className="absolute inset-x-0 top-3 flex items-center gap-1.5 px-2 text-porcelain [text-shadow:0_1px_3px_rgba(15,23,42,0.55)]">
+                <span className="grid h-6 w-6 place-items-center rounded-full border border-porcelain/70 bg-navy/30 text-[9px] font-bold">S</span>
+                <span className="text-[9px] font-extrabold">spalporcelanasofficial</span>
+              </div>
+              <button
+                type="button"
+                aria-label="Story anterior"
+                onClick={() => moveStory(-1)}
+                className="absolute left-0 top-0 h-full w-1/4"
+              />
+              <button
+                type="button"
+                aria-label="Story seguinte"
+                onClick={() => moveStory(1)}
+                className="absolute right-0 top-0 h-full w-3/4"
+              />
+              <div className="pointer-events-none absolute inset-x-2 bottom-2 flex items-center gap-2 text-porcelain [text-shadow:0_1px_3px_rgba(15,23,42,0.55)]">
+                <span className="flex-1 rounded-full border border-porcelain/70 px-2.5 py-1 text-[8px] font-semibold">
+                  Enviar mensagem
+                </span>
+                <Heart aria-hidden="true" className="h-4 w-4" />
+                <Send aria-hidden="true" className="h-4 w-4" />
+              </div>
+            </div>
+          </PostPhone>
         </Reveal>
       </div>
     </div>
