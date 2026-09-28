@@ -1286,7 +1286,7 @@ export function Final({ active }: ChapterProps) {
         </Reveal>
         <Reveal i={2}>
           <p className="max-w-[680px] text-2xl italic leading-snug text-vaa">
-            A SPAL precisa de falar com a Inês antes que a Vista Alegre o faça por ela — em
+            A SPAL precisa de falar com a Inês antes que a Vista Alegre o faça por ela, em
             Alcobaça.
           </p>
         </Reveal>

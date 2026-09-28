@@ -302,7 +302,7 @@ const CANAIS: Canal[] = [
   },
 ];
 
-const OUTROS_SPAL = ["Pinterest", "YouTube", "LinkedIn", "sem newsletter — não confirmada"];
+const OUTROS_SPAL = ["Pinterest", "YouTube", "LinkedIn", "sem newsletter, não confirmada"];
 const OUTROS_VAA = ["Newsletter", "App instalável", "Pinterest", "YouTube", "LinkedIn"];
 
 function CanalCard({ canal, i }: { canal: Canal; i: number }) {
@@ -1065,13 +1065,13 @@ type SocialPost = {
 
 const SOCIAL_POSTS: SocialPost[] = [
   { numero: "1", marca: "Vista Alegre", rede: "Instagram", perfil: "@vistaalegreofficial", data: "23/09", formato: "Reel (7s)", tema: "Lançamento coleção Outono", publico: "consumidor global, decoração", objetivo: "Inspirar", cta: "nenhum explícito", reacoes: "130 gostos, 2 comentários, 3 reposts, 11 envios" },
-  { numero: "2–3", marca: "Vista Alegre", rede: "Instagram", perfil: "@vistaalegreofficial", data: "21/09", formato: "Carrossel 2 fotos", tema: "“History” — bilha de 1931 (ficha de arquivo + foto do produto)", publico: "colecionadores, património", objetivo: "Informar/Inspirar", cta: "nenhum", reacoes: "155 gostos, 4 (reposts/partilhas)" },
+  { numero: "2 e 3", marca: "Vista Alegre", rede: "Instagram", perfil: "@vistaalegreofficial", data: "21/09", formato: "Carrossel 2 fotos", tema: "“History”: bilha de 1931 (ficha de arquivo + foto do produto)", publico: "colecionadores, património", objetivo: "Informar/Inspirar", cta: "nenhum", reacoes: "155 gostos, 4 (reposts/partilhas)" },
   { numero: "4", marca: "Vista Alegre", rede: "Instagram", perfil: "@vistaalegreofficial", data: "18/09", formato: "Carrossel 5 fotos", tema: "Nova loja no Fórum Algarve", publico: "consumidor Algarve + geral", objetivo: "Encaminhar (visitar loja)", cta: "“Venha conhecer as nossas coleções”", reacoes: "1.324 gostos, 18 comentários, 2 reposts, 44 envios" },
   { numero: "5", marca: "Vista Alegre", rede: "Facebook", perfil: "/vistaalegreofficial", data: "23/09 (há 6h)", formato: "Vídeo", tema: "Lançamento coleção Outono (mesmo conteúdo do IG)", objetivo: "Inspirar", cta: "nenhum", reacoes: "[não visível na captura]" },
-  { numero: "6", marca: "Vista Alegre", rede: "Facebook", perfil: "/vistaalegreofficial", data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "“History” — bilha de 1931, com texto expandido e análise estilística (Art Déco) — mais longo que a versão do Instagram", objetivo: "Informar (curadoria)", cta: "nenhum", reacoes: "35 gostos, 2 partilhas" },
-  { numero: "7", marca: "Vista Alegre", rede: "Facebook", perfil: "/vistaalegreofficial", data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "Jornadas Europeias do Património — Museu Vista Alegre, tema “Reviver, resistir, reinventar”, visitas guiadas e oficinas 18–27 set.", objetivo: "Institucional/cultural (conteúdo exclusivo do Facebook, não existe no Instagram)", cta: "“Conheça aqui as atividades e programação”", reacoes: "[não visível]" },
-  { numero: "8", marca: "SPAL", rede: "Instagram", perfil: "@spalporcelanasofficial", data: "09/09", formato: "Imagem única", tema: "Recrutamento — Assistente de Loja (Loja de Fábrica de Alcobaça)", publico: "candidatos a emprego, não consumidor", objetivo: "Institucional/RH", cta: "“envie o seu CV para rh@spal.pt”", reacoes: "24 gostos, 12 envios" },
-  { numero: "9", marca: "SPAL", rede: "Instagram", perfil: "@spalporcelanasofficial", data: "24/08", formato: "Reel", tema: "“Arte que se serve à mesa” — artesão a pintar à mão, Dia Mundial do Artista, bilingue PT/EN", publico: "geral/institucional", objetivo: "Inspirar (marca)", cta: "nenhum", reacoes: "17 gostos, 1 repost, 4 envios" },
+  { numero: "6", marca: "Vista Alegre", rede: "Facebook", perfil: "/vistaalegreofficial", data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "“History”: bilha de 1931, com texto expandido e análise estilística (Art Déco), mais longo que a versão do Instagram", objetivo: "Informar (curadoria)", cta: "nenhum", reacoes: "35 gostos, 2 partilhas" },
+  { numero: "7", marca: "Vista Alegre", rede: "Facebook", perfil: "/vistaalegreofficial", data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "Jornadas Europeias do Património, Museu Vista Alegre, tema “Reviver, resistir, reinventar”, visitas guiadas e oficinas de 18 a 27 set.", objetivo: "Institucional/cultural (conteúdo exclusivo do Facebook, não existe no Instagram)", cta: "“Conheça aqui as atividades e programação”", reacoes: "[não visível]" },
+  { numero: "8", marca: "SPAL", rede: "Instagram", perfil: "@spalporcelanasofficial", data: "09/09", formato: "Imagem única", tema: "Recrutamento: Assistente de Loja (Loja de Fábrica de Alcobaça)", publico: "candidatos a emprego, não consumidor", objetivo: "Institucional/RH", cta: "“envie o seu CV para rh@spal.pt”", reacoes: "24 gostos, 12 envios" },
+  { numero: "9", marca: "SPAL", rede: "Instagram", perfil: "@spalporcelanasofficial", data: "24/08", formato: "Reel", tema: "“Arte que se serve à mesa”: artesão a pintar à mão, Dia Mundial do Artista, bilingue PT/EN", publico: "geral/institucional", objetivo: "Inspirar (marca)", cta: "nenhum", reacoes: "17 gostos, 1 repost, 4 envios" },
   { numero: "10", marca: "SPAL", rede: "Instagram", perfil: "@spalporcelanasofficial", data: "28/07", formato: "Carrossel 9 imagens", tema: "Sustentabilidade (água reciclada, argila reciclada, embalagem reciclável, toque suave, usar e reutilizar, consciência energética, versátil e multifuncional)", publico: "institucional/ESG", objetivo: "Informar", cta: "nenhum", reacoes: "36 gostos, 1 envio" },
   { numero: "11", marca: "SPAL", rede: "Facebook", perfil: "/SPALPorcelanas", data: "09/09", formato: "cross-posting idêntico ao Instagram", tema: "Recrutamento Assistente de Loja (idêntico ao post 8)", reacoes: "5 gostos, 2 partilhas", nota: "mesmo texto e imagem, sem adaptação" },
   { numero: "12", marca: "SPAL", rede: "Facebook", perfil: "/SPALPorcelanas", data: "24/08", formato: "cross-posting idêntico ao Instagram", tema: "“Arte que se serve à mesa” (idêntico ao post 9)", reacoes: "10 reações, 1 partilha", nota: "mesmo texto e imagem, sem adaptação" },
@@ -1081,24 +1081,24 @@ const SOCIAL_POSTS: SocialPost[] = [
 const COMPARACAO: { dim: string; spal: string; vaa: string; winner?: boolean }[] = [
   {
     dim: "Tom",
-    spal: "Institucional e bilingue PT/EN em todas as publicações (post 8: “envie o seu CV”; post 9–10: linguagem de missão e valores). Nenhuma publicação fala de uma coleção à venda.",
+    spal: "Institucional e bilingue PT/EN em todas as publicações (post 8: “envie o seu CV”; posts 9 e 10: linguagem de missão e valores). Nenhuma publicação fala de uma coleção à venda.",
     vaa: "Editorial e emocional, maioritariamente em português (post 1: “tons mais quentes e envolventes”; post 6: tom de curadoria de museu, “presença da Art Déco na estilização minimalista”).",
   },
   {
     dim: "Imagem",
-    spal: "Preto e branco no carrossel de sustentabilidade (post 10) e no reel institucional (post 9); azul institucional no post de recrutamento (post 8) — nenhuma é fotografia de produto SPAL identificável.",
-    vaa: "Cor viva e still-life de produto (post 1: verde-jade e terracota sazonais); post 2–3 combina fotografia de arquivo histórico (ficha de catálogo de 1931) com a peça real — recurso que a SPAL não usa.",
+    spal: "Preto e branco no carrossel de sustentabilidade (post 10) e no reel institucional (post 9); azul institucional no post de recrutamento (post 8). Nenhuma é fotografia de produto SPAL identificável.",
+    vaa: "Cor viva e still-life de produto (post 1: verde-jade e terracota sazonais); posts 2 e 3 combinam fotografia de arquivo histórico (ficha de catálogo de 1931) com a peça real, recurso que a SPAL não usa.",
   },
   {
     dim: "Variedade",
-    spal: "3 publicações, 3 temas institucionais (RH, arte/processo, sustentabilidade) — zero sobre coleções à venda.",
-    vaa: "4 temas nos 2 perfis — lançamento sazonal, património/arquivo, expansão de loja, agenda cultural do museu (só no Facebook) — cobre produto, história e retalho.",
+    spal: "3 publicações, 3 temas institucionais (RH, arte/processo, sustentabilidade). Zero sobre coleções à venda.",
+    vaa: "4 temas nos 2 perfis: lançamento sazonal, património/arquivo, expansão de loja e agenda cultural do museu (só no Facebook). Cobre produto, história e retalho.",
     winner: true,
   },
   {
     dim: "Adaptação à rede",
-    spal: "Nenhuma — os 3 posts do Facebook (11–13) são cópia exata dos 3 do Instagram (8–10): mesmo texto, mesma imagem, mesma data.",
-    vaa: "Clara — o post da Bilha (6) tem texto mais longo e analítico no Facebook do que no Instagram (2–3); a publicação das Jornadas Europeias do Património (7) existe só no Facebook, dirigida a um público diferente.",
+    spal: "Nenhuma. Os 3 posts do Facebook (11 a 13) são cópia exata dos 3 do Instagram (8 a 10): mesmo texto, mesma imagem, mesma data.",
+    vaa: "Clara. O post da Bilha (6) tem texto mais longo e analítico no Facebook do que no Instagram (2 e 3); a publicação das Jornadas Europeias do Património (7) existe só no Facebook, dirigida a um público diferente.",
     winner: true,
   },
   {
@@ -1220,9 +1220,9 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
           {PERFIS.map((p, i) => <PerfilCard key={p.marca + p.rede} p={p} i={i + 1} active={active} />)}
         </div>
         <p className="my-3 rounded-md bg-muted px-4 py-2 text-[10.5px] font-semibold leading-snug text-muted-foreground">
-          Frequência total no período 26/06–23/09: n/d — a listagem completa de cada perfil não estava acessível para contagem; analisámos a amostra das 3 publicações mais recentes por perfil, como o enunciado permite.
+          Frequência total no período de 26/06 a 23/09: n/d. A listagem completa de cada perfil não estava acessível para contagem; analisámos a amostra das 3 publicações mais recentes por perfil, como o enunciado permite.
         </p>
-        <ChartPanel title="Reações por publicação (das 12 analisadas)" note="Publicações 5 e 7: n/d — reação não visível na captura." className="min-h-0 flex-1">
+        <ChartPanel title="Reações por publicação (das 12 analisadas)" note="Publicações 5 e 7: n/d, reação não visível na captura." className="min-h-0 flex-1">
           <ReacoesPorPublicacao active={active} />
         </ChartPanel>
       </div>
@@ -1248,7 +1248,7 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
       </div>
       <Reveal i={7} className="mt-5 border-l-4 border-vaa pl-5">
         <p className="font-[var(--font-display)] text-[21px] font-extrabold leading-tight">
-          “A SPAL fala uma língua institucional em duas redes iguais. A Vista Alegre fala duas línguas diferentes — uma por rede.”
+          “A SPAL fala uma língua institucional em duas redes iguais. A Vista Alegre fala duas línguas diferentes, uma por rede.”
         </p>
       </Reveal>
     </div>
@@ -1331,7 +1331,7 @@ export function Placar1({ active }: ChapterProps) {
           ))}
           <Reveal i={4}>
             <p className="text-[11px] text-porcelain/55">
-              Em «Informar», a SPAL empata na parte técnica.
+              Em Informar, a SPAL empata na parte técnica.
             </p>
           </Reveal>
         </div>
@@ -1342,7 +1342,7 @@ export function Placar1({ active }: ChapterProps) {
               <Num value={0} active={active} className="text-5xl text-spal" />
               <p className="text-[10px] text-porcelain/60">SPAL</p>
             </div>
-            <span className="text-2xl text-porcelain/40">—</span>
+            <span className="text-2xl text-porcelain/40">a</span>
             <div>
               <Num value={3} active={active} className="text-5xl text-vaa" />
               <p className="text-[10px] text-porcelain/60">Vista Alegre</p>
