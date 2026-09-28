@@ -537,7 +537,7 @@ export function OsPosts() {
         </Reveal>
 
         <Reveal i={2}>
-          <PostPhone id="os-posts-carrossel" label="Post completo">
+          <PostPhone id="os-posts-carrossel" label={<span className="flex items-center justify-center gap-1.5"><Instagram aria-hidden="true" className="h-3.5 w-3.5" /><Facebook aria-hidden="true" className="h-3.5 w-3.5" /> Carrosel</span>}>
             <div className="flex h-full flex-col bg-white">
               <div className="flex h-9 shrink-0 items-center gap-2 border-b border-navy/15 px-2.5">
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-navy text-[9px] font-bold text-porcelain">S</span>
