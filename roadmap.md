@@ -123,3 +123,5 @@
 - [x] Retirar travessões e aspas angulares de todos os textos visíveis da apresentação.
 - [x] Trocar a linha editorial por Electric Rain e atualizar novo site para spal.pt na resposta à Inês.
 - [x] Colocar Ampliar nos quatro mockups de Os Posts e mover o slide para depois de Anatomia da publicação.
+
+56. Renumerar as publicações de Instagram e Facebook de 1 a 3 por marca e rede, e atualizar a comparação qualitativa com referências explícitas ao número e à rede. — feito

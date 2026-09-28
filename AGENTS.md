@@ -20,3 +20,4 @@
 - Nos slides claros, todo o texto secundário usa azul-marinho integral; os quadros de informação têm cantos retos, preservando apenas círculos, botões e silhuetas de dispositivos.
 - Os destaques de texto usam azul-marinho sólido com letras brancas, nunca azul ou rosa diluídos; os quadros explicitamente de marca Vista Alegre e o comentário da Inês conservam rosa editorial sólido com letras brancas.
 - Em “Os Posts”, os quatro telemóveis têm botão Ampliar; o quarto apresenta as duas imagens de story da SPAL em sequência navegável por toque, com barra de progresso, cabeçalho do perfil e barra Enviar mensagem.
+- Nas análises de redes sociais, identificar cada publicação pelo número dentro da respetiva rede, por exemplo “Post 1 do Facebook”, porque a numeração reinicia em cada marca e rede.
