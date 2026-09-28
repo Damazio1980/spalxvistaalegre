@@ -112,5 +112,5 @@
 - [x] Retirar as faixas azuis superior e inferior do vídeo e aumentar a legenda branca diretamente sobre a imagem.
 
 ## 53 · Carrossel Electric Rain no terceiro telemóvel
-- [ ] Mostrar as três imagens enviadas, pela ordem recebida, num carrossel navegável da SPAL.
-- [ ] Incluir a legenda e hashtags fornecidas; substituir «Imagem 3» por «Carrossel» com ícones Instagram e Facebook.
+- [x] Mostrar as três imagens enviadas, pela ordem recebida, num carrossel navegável da SPAL.
+- [x] Incluir a legenda e hashtags fornecidas; substituir a etiqueta anterior por «Carrosel» com ícones Instagram e Facebook.

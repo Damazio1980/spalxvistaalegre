@@ -17,6 +17,9 @@ import spalPost01 from "@/assets/os-posts/spal-post-01.png.asset.json";
 import spalPost02 from "@/assets/os-posts/spal-post-02.png.asset.json";
 import spalPost03 from "@/assets/os-posts/spal-post-03.png.asset.json";
 import spalReelsStoriesAudioWebm from "@/assets/os-posts/spal-reels-stories-audio.webm.asset.json";
+import electricRain01 from "@/assets/os-posts/electric-rain-01.png.asset.json";
+import electricRain02 from "@/assets/os-posts/electric-rain-02.png.asset.json";
+import electricRain03 from "@/assets/os-posts/electric-rain-03.png.asset.json";
 import { FOOTER, PERIOD } from "@/lib/presentation/deck";
 import type { ChapterProps } from "./act1";
 import {
@@ -397,6 +400,17 @@ export function Semana() {
 }
 
 const POST_CAROUSEL = [spalPost01.url, spalPost02.url, spalPost03.url] as const;
+const ELECTRIC_RAIN_CAROUSEL = [electricRain01.url, electricRain02.url, electricRain03.url] as const;
+
+const ELECTRIC_RAIN_LEGENDA = `A coleção Electric Rain já está na nova casa digital da SPAL.
+
+Agora, podes consultar a ficha completa, conhecer as características, ver medidas e cuidados, e comprar online com mais facilidade.
+
+Porcelana branca, textura em relevo e detalhes pensados para o uso diário.
+
+Descobre Electric Rain no novo spal.pt.
+
+#SPALPorcelanas #SPAL #ElectricRain #PorcelanaPortuguesa #Porcelana #DesignPortuguês #MesaPosta #CasaPortuguesa #DecoraçãoDeInteriores #CompraOnline #NovoSite`;
 
 const POST_LEGENDA = `A SPAL tem uma nova casa digital.
 
@@ -444,10 +458,15 @@ function PostPhone({
 
 export function OsPosts() {
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [electricRainIndex, setElectricRainIndex] = useState(0);
   const activeCarouselImage = POST_CAROUSEL[carouselIndex] ?? POST_CAROUSEL[0];
+  const activeElectricRainImage = ELECTRIC_RAIN_CAROUSEL[electricRainIndex] ?? ELECTRIC_RAIN_CAROUSEL[0];
 
   const moveCarousel = (direction: -1 | 1) => {
     setCarouselIndex((current) => (current + direction + POST_CAROUSEL.length) % POST_CAROUSEL.length);
+  };
+  const moveElectricRain = (direction: -1 | 1) => {
+    setElectricRainIndex((current) => (current + direction + ELECTRIC_RAIN_CAROUSEL.length) % ELECTRIC_RAIN_CAROUSEL.length);
   };
 
   return (
@@ -551,7 +570,32 @@ export function OsPosts() {
         </Reveal>
 
         <Reveal i={3}>
-          <PostPhone image={POST_CAROUSEL[1]} label="Imagem 2 de 3" />
+          <PostPhone label={<span className="flex items-center justify-center gap-1.5"><Instagram aria-hidden="true" className="h-3.5 w-3.5" /><Facebook aria-hidden="true" className="h-3.5 w-3.5" /> Carrosel</span>}>
+            <div className="flex h-full flex-col bg-white">
+              <div className="flex h-9 shrink-0 items-center gap-2 border-b border-navy/15 px-2.5">
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-navy text-[9px] font-bold text-porcelain">S</span>
+                <span className="text-[9px] font-bold">spalporcelanasofficial</span>
+              </div>
+              <div className="relative aspect-square w-full shrink-0 overflow-hidden bg-white">
+                <img src={activeElectricRainImage} alt={`Electric Rain, imagem ${electricRainIndex + 1} de 3`} className="h-full w-full object-contain" />
+                <Button type="button" variant="default" size="icon" aria-label="Imagem anterior de Electric Rain" onClick={() => moveElectricRain(-1)} className="deck-media-control absolute left-1 top-1/2 h-7 w-7 -translate-y-1/2 rounded-full bg-navy text-porcelain">
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <Button type="button" variant="default" size="icon" aria-label="Imagem seguinte de Electric Rain" onClick={() => moveElectricRain(1)} className="deck-media-control absolute right-1 top-1/2 h-7 w-7 -translate-y-1/2 rounded-full bg-navy text-porcelain">
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+                <span className="absolute right-2 top-2 rounded-full bg-navy px-2 py-1 text-[8px] font-bold text-porcelain">{electricRainIndex + 1}/3</span>
+              </div>
+              <div className="flex shrink-0 items-center gap-2 px-2.5 py-1.5 text-navy">
+                <Heart className="h-4 w-4" />
+                <MessageCircle className="h-4 w-4" />
+                <Send className="h-4 w-4" />
+              </div>
+              <p className="min-h-0 flex-1 overflow-y-auto whitespace-pre-line px-2.5 pb-2 text-[8px] leading-[1.4] text-navy">
+                <strong>spalporcelanasofficial</strong>{" "}{ELECTRIC_RAIN_LEGENDA}
+              </p>
+            </div>
+          </PostPhone>
         </Reveal>
         <Reveal i={4}>
           <PostPhone image={POST_CAROUSEL[2]} label="Imagem 3 de 3" />
