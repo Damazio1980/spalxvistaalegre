@@ -617,7 +617,7 @@ export function OsPosts() {
               <img
                 src={STORY_IMAGES[storyIndex]}
                 alt={`Story da SPAL, imagem ${storyIndex + 1} de 2`}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover object-left"
               />
               <div className="absolute inset-x-2 top-1.5 flex gap-1">
                 {STORY_IMAGES.map((_, i) => (
