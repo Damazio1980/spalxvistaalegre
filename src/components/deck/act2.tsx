@@ -287,7 +287,7 @@ export function Min8() {
       <div className="flex items-center gap-5 border-t border-porcelain/20 pt-3">
         <Chip tone="vaa" className="px-5 py-2 text-lg">+1 Vista Alegre</Chip>
         <p className="max-w-[900px] text-lg leading-relaxed text-porcelain/80">
-          a SPAL tem melhor informação técnica do que muitas lojas — mas para o retalho, não para a
+          a SPAL tem melhor informação técnica do que muitas lojas, mas para o retalho, não para a
           Inês
         </p>
       </div>

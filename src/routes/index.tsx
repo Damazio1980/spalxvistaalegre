@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Stage } from "@/components/deck/Stage";
 
-const title = "SPAL × Vista Alegre — Dos dados à Inês";
+const title = "SPAL × Vista Alegre: Dos dados à Inês";
 const description =
   "Apresentação interativa: duas porcelanas portuguesas, um percurso até à compra e as três jogadas que a SPAL pode fazer a seguir.";
 

@@ -353,7 +353,7 @@ export function PublicacoesPorPerfil({ active }: { active: boolean }) {
 export function ReacoesPorPublicacao({ active }: { active: boolean }) {
   const data = [
     { m: "1", v: 130, label: "130", cor: VAA_C },
-    { m: "2–3", v: 155, label: "155", cor: VAA_C },
+    { m: "2 e 3", v: 155, label: "155", cor: VAA_C },
     { m: "4", v: 1324, label: "1.324", cor: VAA_C },
     { m: "5", v: 0, label: "n/d", cor: VAA_C },
     { m: "6", v: 35, label: "35", cor: VAA_C },

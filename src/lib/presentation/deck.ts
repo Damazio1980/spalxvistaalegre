@@ -239,7 +239,7 @@ const seeds: Seed[] = [
     id: "resumo",
     act: 3,
     title: "O que já vimos",
-    punchline: "Dos números às pessoas — tudo apontou para o mesmo sítio.",
+    punchline: "Dos números às pessoas, tudo apontou para o mesmo sítio.",
     rot: -1.5,
   },
   {
@@ -260,7 +260,7 @@ const seeds: Seed[] = [
     id: "jogadas",
     act: 3,
     title: "Três jornadas por ordem de prioridade",
-    punchline: "A jogada não é consertar — é mudar de casa.",
+    punchline: "A jogada não é consertar. É mudar de casa.",
     navy: true,
     rot: 1.5,
     zoom: 0.62,
@@ -297,12 +297,6 @@ const seeds: Seed[] = [
     rot: -2,
   },
   {
-    id: "os-posts",
-    act: 3,
-    title: "Os Posts",
-    rot: 1.5,
-  },
-  {
     id: "publicacao",
     act: 3,
     title: "A publicação",
@@ -314,6 +308,12 @@ const seeds: Seed[] = [
     act: 3,
     title: "Anatomia da publicação",
     rot: -1.5,
+  },
+  {
+    id: "os-posts",
+    act: 3,
+    title: "Os Posts",
+    rot: 1.5,
   },
   {
     id: "bio",
@@ -363,7 +363,7 @@ const seeds: Seed[] = [
     act: 3,
     title: "A Inês, 20 minutos depois",
     punchline:
-      "A SPAL precisa de falar com a Inês antes que a Vista Alegre o faça por ela — em Alcobaça.",
+      "A SPAL precisa de falar com a Inês antes que a Vista Alegre o faça por ela, em Alcobaça.",
     navy: true,
     rot: 0,
   },
@@ -484,4 +484,4 @@ export function scoreAt(index: number): { spal: number; vaa: number } {
 
 export const FOOTER =
   "Exercício académico · UC 00279 Gerir os canais de comunicação digital · IEFP Sintra · Fernanda Damázio · setembro 2026";
-export const PERIOD = "Redes sociais: perfis analisados em 23/09/2026 · frequência 26/06–23/09/2026 · websites consultados em 04/09/2026";
+export const PERIOD = "Redes sociais: perfis analisados em 23/09/2026 · frequência de 26/06 a 23/09/2026 · websites consultados em 04/09/2026";

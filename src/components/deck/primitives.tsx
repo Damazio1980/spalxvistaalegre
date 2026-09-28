@@ -294,7 +294,7 @@ export function Reveal({
 export function Glossary({ term, meaning }: { term: string; meaning: string }) {
   return (
     <span className="deck-on-blue ml-2 rounded-md bg-navy px-2 py-0.5 text-[11px] font-medium text-porcelain">
-      {term} — {meaning}
+      {term}: {meaning}
     </span>
   );
 }
