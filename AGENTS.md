@@ -19,3 +19,4 @@
 - Em “Os Posts”, o terceiro telemóvel mostra o carrossel Electric Rain em três imagens, com legenda e hashtags fornecidas, navegação independente e etiqueta “Carrosel” acompanhada de ícones Instagram e Facebook; mantém-se distinto do carrossel do segundo telemóvel para preservar as duas publicações.
 - Nos slides claros, todo o texto secundário usa azul-marinho integral; os quadros de informação têm cantos retos, preservando apenas círculos, botões e silhuetas de dispositivos.
 - Os destaques de texto usam azul-marinho sólido com letras brancas, nunca azul ou rosa diluídos; os quadros explicitamente de marca Vista Alegre e o comentário da Inês conservam rosa editorial sólido com letras brancas.
+- Em “Os Posts”, o quarto telemóvel apresenta as duas imagens de story da SPAL em sequência navegável por toque (barra de progresso, cabeçalho do perfil e barra «Enviar mensagem»), com as imagens servidas por assets; mantém-se distinto do Reels do primeiro telemóvel.
