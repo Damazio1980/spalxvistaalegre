@@ -114,3 +114,7 @@
 ## 53 · Carrossel Electric Rain no terceiro telemóvel
 - [x] Mostrar as três imagens enviadas, pela ordem recebida, num carrossel navegável da SPAL.
 - [x] Incluir a legenda e hashtags fornecidas; substituir a etiqueta anterior por «Carrosel» com ícones Instagram e Facebook.
+
+## 54 · Stories das perguntas no quarto telemóvel
+- [x] Substituir a imagem solta do quarto telemóvel de «Os Posts» por um story com as duas imagens enviadas, em sequência.
+- [x] Barra de progresso, cabeçalho do perfil, toques para avançar/recuar e barra «Enviar mensagem», no estilo de story.
