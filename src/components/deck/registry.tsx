@@ -22,7 +22,6 @@ import {
   Bastidores,
   Bio,
   EmpresaEscolhida,
-  Final,
   Indicadores,
   Jogada,
   Jogadas,
@@ -80,6 +79,5 @@ export const CHAPTERS: Record<string, ComponentType<ChapterProps>> = {
   marcax: MarcaX,
   "simulacao-real": SimulacaoReal,
   indicadores: Indicadores,
-  final: Final,
   bastidores: Bastidores,
 };

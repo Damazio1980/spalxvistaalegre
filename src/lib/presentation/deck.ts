@@ -359,15 +359,6 @@ const seeds: Seed[] = [
     rot: 1,
   },
   {
-    id: "final",
-    act: 3,
-    title: "A Inês, 20 minutos depois",
-    punchline:
-      "A SPAL precisa de falar com a Inês antes que a Vista Alegre o faça por ela, em Alcobaça.",
-    navy: true,
-    rot: 0,
-  },
-  {
     id: "bastidores",
     act: 3,
     title: "Bastidores",

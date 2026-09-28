@@ -800,7 +800,7 @@ const BIO_ANTES =
   "Finest porcelain dinnerware both for domestic and hotelware purposes. What's your view on SPAL? 📷 Tag your photos @spalporcelanasofficial";
 
 const BIO_DEPOIS =
-  "Porcelana de design feita em Alcobaça desde 1965 🇵🇹 Novo site: preço, compra e lojas num só lugar. Descobre 👇";
+  "Porcelana de design feita em Alcobaça desde 1965 🇵🇹 Descobre a nossa nova casa digital: spal.pt";
 
 export function Bio({ active }: ChapterProps) {
   return (
@@ -1257,49 +1257,6 @@ export function Indicadores({ active }: ChapterProps) {
           seguidores. Não medem vendas.
         </Chip>
       </Reveal>
-    </div>
-  );
-}
-
-export function Final({ active }: ChapterProps) {
-  return (
-    <div className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-12 p-14 text-navy">
-      <Reveal i={0} className="mx-auto w-[300px] rounded-[28px] border-4 border-navy/15 bg-porcelain p-3">
-        <div className="rounded-2xl bg-white p-3 text-navy">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-spal">
-            spal.porcelanas
-          </p>
-          <p className="deck-on-blue mt-2 rounded-2xl rounded-bl-md bg-navy p-3 text-[12px] text-porcelain">
-            Onde posso comprar esta peça?
-          </p>
-          <p className="mt-2 rounded-2xl rounded-br-md bg-spal p-3 text-[12px] text-porcelain">
-            Em Alcobaça, na loja de fábrica: seg-sáb, 10h-19h. Fica a 6 min de si em Lisboa? Temos
-            no El Corte Inglés 💙
-          </p>
-          <p className="mt-2 text-right text-[10px] text-navy/45">visto · 20:14</p>
-        </div>
-      </Reveal>
-      <div className="space-y-6">
-        <Reveal i={1}>
-          <p className="text-sm uppercase tracking-[0.3em] text-navy/50">20:00 · cronómetro parado</p>
-          <h3 className="deck-title mt-3">A Inês teve resposta.</h3>
-        </Reveal>
-        <Reveal i={2}>
-          <p className="max-w-[680px] text-2xl italic leading-snug text-vaa">
-            A SPAL precisa de falar com a Inês antes que a Vista Alegre o faça por ela, em
-            Alcobaça.
-          </p>
-        </Reveal>
-        <Reveal i={3}>
-          <ChartPanel
-            title="Síntese · as seis dimensões do website"
-            className="h-[230px] max-w-[520px]"
-            note="SPAL 3-2-3-1-2-2 · Vista Alegre 5-5-5-5-4-5"
-          >
-            <RadarDimensoes active={active} compact />
-          </ChartPanel>
-        </Reveal>
-      </div>
     </div>
   );
 }
