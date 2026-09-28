@@ -13,7 +13,7 @@ function BarraEndereco({ url }: { url?: string | undefined }) {
       <span className="h-1.5 w-1.5 rounded-full bg-vaa" />
       <span className="h-1.5 w-1.5 rounded-full bg-spal/60" />
       <span className="ml-1 flex-1 truncate rounded-full bg-white px-2 py-[1px] text-[7px] text-navy/55">
-        {url ?? "—"}
+        {url ?? ""}
       </span>
     </div>
   );

@@ -118,3 +118,8 @@
 ## 54 · Stories das perguntas no quarto telemóvel
 - [x] Substituir a imagem solta do quarto telemóvel de «Os Posts» por um story com as duas imagens enviadas, em sequência.
 - [x] Barra de progresso, cabeçalho do perfil, toques para avançar/recuar e barra «Enviar mensagem», no estilo de story.
+
+## 55 · Limpeza de pontuação e ajustes dos posts
+- [x] Retirar travessões e aspas angulares de todos os textos visíveis da apresentação.
+- [x] Trocar a linha editorial por Electric Rain e atualizar novo site para spal.pt na resposta à Inês.
+- [x] Colocar Ampliar nos quatro mockups de Os Posts e mover o slide para depois de Anatomia da publicação.

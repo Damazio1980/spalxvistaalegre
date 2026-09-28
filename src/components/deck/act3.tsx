@@ -40,17 +40,17 @@ const VAA = "var(--vaa)";
 const RESUMO_VAA = [
   "Loja online com preço, pesquisa e carrinho de compra",
   "~25 lojas e 6 outlets, com localizador completo",
-  "Redes sociais maiores (360 000 seguidores IG, 347 000 FB), conta verificada, «Recomendado por 92%»",
-  "Conteúdo adaptado a cada rede — não repete o mesmo post em todo o lado",
+  "Redes sociais maiores (360 000 seguidores IG, 347 000 FB), conta verificada, Recomendado por 92%",
+  "Conteúdo adaptado a cada rede. Não repete o mesmo post em todo o lado",
   "Na jornada da Inês: chega à compra em 4 cliques e 6 minutos, com carrinho",
 ];
 
 const RESUMO_SPAL = [
   "Site de 2013: sem preço, sem pesquisa, sem carrinho, sem versão para telemóvel",
-  "Não vende diretamente — remete sempre para parceiros externos (ex.: El Corte Inglés)",
+  "Não vende diretamente. Remete sempre para parceiros externos (ex.: El Corte Inglés)",
   "Bio em inglês, sem link de compra",
   "Publica o mesmo conteúdo, sem adaptação, no Instagram e no Facebook",
-  "Na jornada da Inês: ao fim de 12 minutos, sem resposta clara — sai do site sem saber onde comprar",
+  "Na jornada da Inês: ao fim de 12 minutos, sem resposta clara, sai do site sem saber onde comprar",
 ];
 
 function ResumoCard({
@@ -106,7 +106,7 @@ export function OQueVimos() {
           O que já vimos
         </h3>
         <p className="mt-2 text-xl text-navy/70">
-          Dos números às pessoas — tudo apontou para o mesmo sítio.
+          Dos números às pessoas, tudo apontou para o mesmo sítio.
         </p>
       </Reveal>
       <div className="grid flex-1 grid-cols-2 items-stretch gap-7">
@@ -188,7 +188,7 @@ const JOGADAS = [
     n: "01",
     title: "Site novo",
     prova:
-      "Plataforma de 2013, sem preço, sem pesquisa, sem carrinho, sem adaptação a telemóvel — o mesmo diagnóstico do percurso da Inês.",
+      "Plataforma de 2013, sem preço, sem pesquisa, sem carrinho, sem adaptação a telemóvel. É o mesmo diagnóstico do percurso da Inês.",
     jogada:
       "Construir um website novo, próprio, com navegação por ocasião (Mesa & Bar, Decoração, Presentes, Coleções), preço e botão de compra em todas as fichas, store locator completo, storytelling da ponte hotelaria→casa, mobile-first.",
     onde: "website (plataforma nova)",
@@ -201,7 +201,7 @@ const JOGADAS = [
     prova:
       "305 publicações vs. 3.717 da Vista Alegre; bio em inglês sem ligação de compra; cross-posting idêntico entre Instagram e Facebook, sem adaptação.",
     jogada:
-      "Campanha de lançamento do novo site, com linha editorial «Feito em Alcobaça», adaptada a cada rede — não copiada de uma para a outra.",
+      "Campanha de lançamento do novo site, com linha editorial Electric Rain, adaptada a cada rede e não copiada de uma para a outra.",
     onde: "Instagram + Facebook",
     muda:
       "Tráfego qualificado para o novo site desde o primeiro dia; crescimento de seguidores em Portugal.",
@@ -250,7 +250,7 @@ export function Jogadas() {
       <Reveal i={4}>
         <p className="text-[15px] leading-snug text-navy/80">
           A SPAL não perde por detalhes. Perde porque está a competir com uma loja de 2013 contra
-          uma loja de 2026. A jogada não é consertar — é mudar de casa.
+          uma loja de 2026. A jogada não é consertar. É mudar de casa.
         </p>
       </Reveal>
     </div>
@@ -297,7 +297,7 @@ const SEMANA = [
     titulo: "A SPAL tem casa nova (teaser)",
     descricao: "Reel (20-30s) com bastidores do processo de design (SPAL Studio).",
     cta: "Fica atento",
-    destino: "Sem link — é teaser; o site novo ainda não está no ar nesta ação.",
+    destino: "Sem link. É teaser; o site novo ainda não está no ar nesta ação.",
     indicador: "alcance, visualizações, guardados",
   },
   {
@@ -309,7 +309,7 @@ const SEMANA = [
     descricao:
       "Carrossel: preço visível em todas as fichas, compra online, store locator completo, tudo num só lugar.",
     cta: "Explora o novo spal.pt",
-    destino: "Página inicial do site novo — destino fictício, simulação académica.",
+    destino: "Página inicial do site novo. Destino fictício, simulação académica.",
     indicador: "cliques no link (UTM)",
   },
   {
@@ -321,7 +321,7 @@ const SEMANA = [
     descricao:
       "Carrossel: coleção Electric Rain a ganhar ficha completa no site novo, com preço, botão de compra e medidas.",
     cta: "Já podes comprar online",
-    destino: "Ficha de produto Electric Rain no site novo — destino fictício, simulação académica.",
+    destino: "Ficha de produto Electric Rain no site novo. Destino fictício, simulação académica.",
     indicador: "sessões no site, primeiras encomendas",
   },
   {
@@ -371,7 +371,7 @@ export function Semana() {
                   </p>
                   <p>{s.descricao}</p>
                   <p>
-                    <strong className="text-vaa">Chamada à ação</strong> · «{s.cta}»
+                    <strong className="text-vaa">Chamada à ação</strong> · {s.cta}
                   </p>
                   <p>
                     <strong className="text-vaa">Destino</strong> · {s.destino}
@@ -387,7 +387,7 @@ export function Semana() {
       <Reveal i={5}>
         <div className="flex items-center justify-between gap-6 border-t border-porcelain/20 pt-4">
           <p className="max-w-[610px] text-[12px] leading-relaxed text-porcelain/60">
-            Calendário de trabalho mantido no Notion — inclui vista de tabela e vista de calendário
+            Calendário de trabalho mantido no Notion. Inclui vista de tabela e vista de calendário
             mensal.
           </p>
           <Button asChild variant="outline" className="shrink-0 border-vaa bg-vaa text-porcelain hover:bg-vaa/85 hover:text-porcelain">
@@ -426,7 +426,7 @@ Explora o novo spal.pt.
 
 const REELS_LEGENDA = `Antes de chegar à mesa, cada peça nasce de uma ideia.
 
-Do desenho ao detalhe, mantemos o mesmo cuidado de sempre — agora numa nova casa digital.
+Do desenho ao detalhe, mantemos o mesmo cuidado de sempre, agora numa nova casa digital.
 
 A SPAL tem casa nova.
 Descobre o novo spal.pt.
@@ -434,17 +434,25 @@ Descobre o novo spal.pt.
 #SPALPorcelanas #SPAL #PorcelanaPortuguesa #ElectricRain #Porcelana #DesignPortuguês #MesaPosta #NovoSite`;
 
 function PostPhone({
+  id,
   image,
   label,
   children,
 }: {
+  id: string;
   image?: string;
   label: React.ReactNode;
   children?: React.ReactNode;
 }) {
   return (
     <div className="flex min-w-0 flex-col items-center gap-2">
-      <div className="deck-device-frame relative h-[472px] w-[226px] overflow-hidden border-2 border-navy bg-white text-navy">
+      <Shot
+        id={id}
+        group="os-posts"
+        caption="Publicação da SPAL"
+        lightboxVariant="phone"
+        className="deck-device-frame relative h-[472px] w-[226px] overflow-hidden rounded-none border-2 border-navy bg-white text-navy"
+      >
         {children ?? (
           <img
             src={image}
@@ -452,7 +460,7 @@ function PostPhone({
             className="h-full w-full object-contain"
           />
         )}
-      </div>
+      </Shot>
       <div className="text-[11px] font-bold uppercase text-vaa">{label}</div>
     </div>
   );
@@ -490,6 +498,7 @@ export function OsPosts() {
       <div className="mt-5 grid min-h-0 flex-1 grid-cols-4 items-center gap-5">
         <Reveal i={1}>
           <PostPhone
+            id="os-posts-reels"
             label={
               <span className="flex items-center justify-center gap-1.5">
                 <Instagram aria-hidden="true" className="h-3.5 w-3.5" /> Reels
@@ -528,7 +537,7 @@ export function OsPosts() {
         </Reveal>
 
         <Reveal i={2}>
-          <PostPhone label="Post completo">
+          <PostPhone id="os-posts-carrossel" label="Post completo">
             <div className="flex h-full flex-col bg-white">
               <div className="flex h-9 shrink-0 items-center gap-2 border-b border-navy/15 px-2.5">
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-navy text-[9px] font-bold text-porcelain">S</span>
@@ -577,7 +586,7 @@ export function OsPosts() {
         </Reveal>
 
         <Reveal i={3}>
-          <PostPhone label={<span className="flex items-center justify-center gap-1.5"><Instagram aria-hidden="true" className="h-3.5 w-3.5" /><Facebook aria-hidden="true" className="h-3.5 w-3.5" /> Carrosel</span>}>
+          <PostPhone id="os-posts-electric-rain" label={<span className="flex items-center justify-center gap-1.5"><Instagram aria-hidden="true" className="h-3.5 w-3.5" /><Facebook aria-hidden="true" className="h-3.5 w-3.5" /> Carrosel</span>}>
             <div className="flex h-full flex-col bg-white">
               <div className="flex h-9 shrink-0 items-center gap-2 border-b border-navy/15 px-2.5">
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-navy text-[9px] font-bold text-porcelain">S</span>
@@ -606,6 +615,7 @@ export function OsPosts() {
         </Reveal>
         <Reveal i={4}>
           <PostPhone
+            id="os-posts-story"
             label={
               <span className="flex items-center justify-center gap-1.5">
                 <Instagram aria-hidden="true" className="h-3.5 w-3.5" />
@@ -855,16 +865,16 @@ export function Bio({ active }: ChapterProps) {
 }
 
 const NOTA_ENQUADRAMENTO =
-  "O enunciado pede uma resposta com base na situação atual da marca — é a Resposta 1. A Resposta 2 é um acréscimo, para ilustrar o impacto da intervenção proposta.";
+  "O enunciado pede uma resposta com base na situação atual da marca. É a Resposta 1. A Resposta 2 é um acréscimo, para ilustrar o impacto da intervenção proposta.";
 
 const COMENTARIO_INES =
-  "«Gostei desta peça, mas não consigo perceber onde a posso comprar nem se existe numa loja perto de mim.»";
+  "Gostei desta peça, mas não consigo perceber onde a posso comprar nem se existe numa loja perto de mim.";
 
 const RESP1_HOJE =
   "Olá! Muito obrigada, ficamos felizes que tenha gostado. 😊 De momento não vendemos diretamente no nosso site, mas pode encontrar esta peça na nossa Loja de Fábrica em Alcobaça ou em pontos de venda como o El Corte Inglés. Qualquer dúvida sobre disponibilidade, pode escrever-nos para rh@spal.pt ou visitar spal.pt/contactos. Obrigada por nos acompanhar!";
 
 const RESP2_DEPOIS =
-  "Olá! Muito obrigada, fico feliz que tenha gostado. 😊 Acabámos de lançar o novo site da SPAL, onde já pode ver o preço, comprar online ou consultar a loja mais perto de si com horário e contacto — é só aceder a [novo site]. Qualquer dúvida, estamos aqui. Obrigada por nos acompanhar!";
+  "Olá! Muito obrigada, fico feliz que tenha gostado. 😊 Acabámos de lançar o spal.pt, onde já pode ver o preço, comprar online ou consultar a loja mais perto de si com horário e contacto. É só aceder a spal.pt. Qualquer dúvida, estamos aqui. Obrigada por nos acompanhar!";
 
 export function Resposta() {
   return (
@@ -886,7 +896,7 @@ export function Resposta() {
       <div className="grid grid-cols-[1fr_auto_1fr] items-stretch gap-3">
         <Reveal i={3} className="rounded-3xl border-2 border-navy/25 bg-white p-5">
           <p className="text-[10px] font-bold uppercase tracking-widest text-navy/60">
-            Hoje — site atual, sem compra online
+            Hoje, site atual, sem compra online
           </p>
           <p className="mt-2 text-[13px] leading-snug text-navy/85">{RESP1_HOJE}</p>
         </Reveal>
@@ -901,7 +911,7 @@ export function Resposta() {
         </div>
         <Reveal i={4} className="deck-on-blue rounded-3xl bg-navy p-5 text-porcelain">
           <p className="text-[10px] font-bold uppercase tracking-widest text-porcelain/70">
-            Depois — com o site novo, compra online
+            Depois, com o spal.pt, compra online
           </p>
           <p className="mt-2 text-[13px] leading-snug">{RESP2_DEPOIS}</p>
         </Reveal>
@@ -1085,8 +1095,8 @@ export function MarcaX({ active }: ChapterProps) {
           <p className="text-xs font-bold uppercase tracking-widest">Decisão</p>
           <p className="mt-2 text-[13px] leading-snug">
             Reforçar o Facebook (mais encomendas, mais receita, menos investimento). No Instagram
-            testar a página de destino — enviar o clique diretamente para a ficha do produto com
-            preço e botão de compra — porque o problema está entre a sessão e a encomenda, não no
+            testar a página de destino, enviando o clique diretamente para a ficha do produto com
+            preço e botão de compra, porque o problema está entre a sessão e a encomenda, não no
             anúncio.
           </p>
         </Reveal>
@@ -1097,7 +1107,7 @@ export function MarcaX({ active }: ChapterProps) {
           <p className="mt-2 text-[13px] leading-snug text-navy/80">
             ROAS 8 = 8 € de receita por 1 € de anúncio, não 8 € de lucro. Ignora custo do produto,
             embalagem, transporte, devoluções, comissões, IVA e equipa. Com margem bruta de 40 %, os
-            640 € deixam 256 € — antes dos 80 € de anúncios e da logística.
+            640 € deixam 256 €, antes dos 80 € de anúncios e da logística.
           </p>
         </Reveal>
       </div>
@@ -1201,23 +1211,23 @@ export function Indicadores({ active }: ChapterProps) {
             Se as metas fossem atingidas
           </p>
           <span className="shrink-0 rounded-full border border-navy/25 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-navy/60">
-            Simulação — números hipotéticos para ilustrar a meta, não resultados reais
+            Simulação: números hipotéticos para ilustrar a meta, não resultados reais
           </span>
         </div>
         <div className="mt-2 grid grid-cols-3 gap-3 text-[11px] leading-tight text-navy/70">
           <div>
             <p className="font-semibold text-navy/85">
-              1 · Cliques em “Onde comprar” — meta ≥ 5 %
+              1 · Cliques em “Onde comprar”, meta ≥ 5 %
             </p>
             <p className="mt-1">
               Num mês com 4.000 sessões no site novo, atingir 5 % significa 200 sessões a avançar
-              para “onde comprar” — hoje essa contagem simplesmente não existe, porque o botão não
+              para “onde comprar”. Hoje essa contagem simplesmente não existe, porque o botão não
               existe.
             </p>
           </div>
           <div>
             <p className="font-semibold text-navy/85">
-              2 · Resposta a comentários e mensagens em {"<24 h"} — meta ≥ 95 %
+              2 · Resposta a comentários e mensagens em {"<24 h"}, meta ≥ 95 %
             </p>
             <p className="mt-1">
               Numa semana com 40 comentários e mensagens recebidas, a meta significa responder a
@@ -1226,25 +1236,25 @@ export function Indicadores({ active }: ChapterProps) {
           </div>
           <div>
             <p className="font-semibold text-navy/85">
-              3 · Sessões em telemóvel — rejeição, meta −10 pontos
+              3 · Sessões em telemóvel, rejeição com meta −10 pontos
             </p>
             <p className="mt-1">
               Se a rejeição em telemóvel partisse de um valor de referência de 70 % (hipotético, a
               confirmar com o Google Analytics do site novo), atingir a meta significa descer para
-              60 % — 10 em cada 100 visitas de telemóvel a ficarem no site em vez de sair de
+              60 %, com 10 em cada 100 visitas de telemóvel a ficarem no site em vez de sair de
               imediato.
             </p>
           </div>
         </div>
         <p className="mt-2 text-center text-[10.5px] italic text-navy/55">
-          Isto não são números que já temos — é o que o sucesso pareceria, para sabermos
+          Isto não são números que já temos. É o que o sucesso pareceria, para sabermos
           reconhecê-lo quando o site novo estiver a funcionar.
         </p>
       </Reveal>
       <Reveal i={4}>
         <Chip tone="ink">
           Indicadores públicos sem acesso interno: publicações por semana, reações, comentários,
-          seguidores — não medem vendas.
+          seguidores. Não medem vendas.
         </Chip>
       </Reveal>
     </div>
@@ -1276,7 +1286,7 @@ export function Final({ active }: ChapterProps) {
         </Reveal>
         <Reveal i={2}>
           <p className="max-w-[680px] text-2xl italic leading-snug text-vaa">
-            A SPAL precisa de falar com a Inês antes que a Vista Alegre o faça por ela — em
+            A SPAL precisa de falar com a Inês antes que a Vista Alegre o faça por ela, em
             Alcobaça.
           </p>
         </Reveal>

@@ -62,7 +62,7 @@ export type RefImage = {
 };
 
 const PLACEHOLDER_NOTE = (d: string) =>
-  `imagem de referência — a substituir pela captura de ${d}`;
+  `imagem de referência, a substituir pela captura de ${d}`;
 
 export function captionOf(img: RefImage) {
   return img.isPlaceholder ? `${img.caption} · ${PLACEHOLDER_NOTE(img.data)}` : img.caption;
@@ -210,7 +210,7 @@ export const POSTS: RefImage[] = [
     isPlaceholder: false,
   }),
   post("post-2", "@vistaalegreofficial", "Instagram", vaaPost2Archive.url, {
-    data: "21/09", formato: "Carrossel 2 fotos", tema: "History — bilha de 1931", cta: "nenhum", reacoes: "155 gostos, 4 reposts/partilhas",
+    data: "21/09", formato: "Carrossel 2 fotos", tema: "History: bilha de 1931", cta: "nenhum", reacoes: "155 gostos, 4 reposts/partilhas",
     gallery: [vaaPost2Archive.url, vaaPost2Product.url],
     isPlaceholder: false,
   }),
@@ -224,7 +224,7 @@ export const POSTS: RefImage[] = [
     isPlaceholder: false,
   }),
   post("post-5", "Vista Alegre", "Facebook", vaaFbHistory.url, {
-    data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "History — bilha de 1931 e Art Déco", cta: "nenhum", reacoes: "35 gostos, 2 partilhas",
+    data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "History: bilha de 1931 e Art Déco", cta: "nenhum", reacoes: "35 gostos, 2 partilhas",
     isPlaceholder: false,
   }),
   post("post-6", "Vista Alegre", "Facebook", vaaFbPatrimonio.url, {
@@ -232,7 +232,7 @@ export const POSTS: RefImage[] = [
     isPlaceholder: false,
   }),
   post("post-7", "@spalporcelanasofficial", "Instagram", spalPost8.url, {
-    data: "09/09", formato: "Imagem única", tema: "Recrutamento — Assistente de Loja", cta: "envie o seu CV para rh@spal.pt", reacoes: "24 gostos, 12 envios",
+    data: "09/09", formato: "Imagem única", tema: "Recrutamento: Assistente de Loja", cta: "envie o seu CV para rh@spal.pt", reacoes: "24 gostos, 12 envios",
     isPlaceholder: false,
   }),
   post("post-8", "@spalporcelanasofficial", "Instagram", spalPost9Video.url, {
