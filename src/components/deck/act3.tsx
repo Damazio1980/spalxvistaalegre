@@ -337,7 +337,8 @@ const SEMANA = [
   },
 ];
 
-const NOTION_CALENDAR_URL = "https://app.notion.com/p/3671d655a81745a68f73db13608b9c70";
+const NOTION_CALENDAR_URL =
+  "https://app.notion.com/p/3671d655a81745a68f73db13608b9c70?v=02891d41832244e0bd0662ca5719965d&source=copy_link";
 
 export function Semana() {
   return (
