@@ -355,6 +355,19 @@ const seeds: Seed[] = [
     title: "Bastidores",
     rot: -1.5,
   },
+  {
+    id: "mercado",
+    act: 3,
+    title: "O mercado está preparado",
+    rot: 1.5,
+  },
+  {
+    id: "conclusao",
+    act: 3,
+    title: "Conclusão",
+    navy: true,
+    rot: -1.5,
+  },
 ];
 
 /* ── layout on the plate ──────────────────────────────────────────────────

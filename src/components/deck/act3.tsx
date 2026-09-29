@@ -1297,3 +1297,129 @@ export function Bastidores() {
     </div>
   );
 }
+
+const MERCADO_DIGITAL = [
+  { label: "Compradores online", value: 67.9 },
+  { label: "Restante população", value: 32.1 },
+];
+
+const MERCADO_EXPORTACAO = [
+  { label: "Portugal", value: 12 },
+  { label: "Outros mercados", value: 88 },
+];
+
+export function Mercado({ active }: ChapterProps) {
+  return (
+    <div className="relative flex h-full flex-col px-14 pb-20 pt-12 text-navy">
+      <Reveal i={0}>
+        <p className="text-xs font-bold uppercase tracking-widest text-vaa">Potencial de mercado</p>
+        <h3 className="deck-h2 mt-2 text-navy">O mercado está preparado</h3>
+        <p className="mt-2 max-w-3xl text-[16px] leading-relaxed text-navy">
+          Há consumidores digitais em Portugal e há reconhecimento internacional para a cerâmica
+          portuguesa. A oportunidade já existe.
+        </p>
+      </Reveal>
+
+      <div className="mt-7 grid flex-1 grid-cols-2 gap-8">
+        <Reveal i={1} className="flex flex-col border-2 border-navy p-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-vaa">Consumo digital</p>
+          <div className="mt-2 flex items-end gap-3">
+            <p className="deck-num text-[58px] leading-none text-navy">
+              <Num value={5.8} active={active} decimals={1} suffix=" milhões" />
+            </p>
+          </div>
+          <p className="mt-2 text-[15px] font-semibold text-navy">
+            de compradores online em Portugal, em 2025
+          </p>
+          <div className="mt-auto h-[145px]" aria-label="67,9 por cento da população com 15 ou mais anos compra online">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={MERCADO_DIGITAL} layout="vertical" margin={{ top: 12, right: 10, bottom: 0, left: 0 }}>
+                <XAxis type="number" domain={[0, 100]} hide />
+                <YAxis type="category" dataKey="label" hide />
+                <Tooltip formatter={(value) => [`${value}%`, "Percentagem"]} />
+                <Bar dataKey="value" radius={0} isAnimationActive={active} animationDuration={860}>
+                  <Cell fill={SPAL} />
+                  <Cell fill="var(--porcelain-strong)" />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <p className="mt-1 text-right text-[30px] font-extrabold text-navy">67,9%</p>
+          <p className="text-right text-[10px] text-navy">da população com 15 ou mais anos</p>
+        </Reveal>
+
+        <Reveal i={2} className="flex flex-col border-2 border-vaa bg-vaa p-6 text-porcelain">
+          <p className="text-xs font-bold uppercase tracking-widest text-porcelain">Força internacional</p>
+          <div className="mt-2 flex items-end justify-between gap-6">
+            <div>
+              <p className="deck-num text-[58px] leading-none text-porcelain">257,9 M€</p>
+              <p className="mt-2 max-w-[290px] text-[15px] font-semibold text-porcelain">
+                exportados em louça e artigos domésticos de cerâmica, em 2025
+              </p>
+            </div>
+            <div className="border-l-2 border-porcelain/60 pl-5 text-right">
+              <p className="deck-num text-[52px] leading-none text-porcelain">2.º</p>
+              <p className="mt-2 text-[12px] font-semibold text-porcelain">maior exportador mundial</p>
+            </div>
+          </div>
+          <div className="mt-auto h-[120px]" aria-label="Portugal representa cerca de 12 por cento das exportações mundiais deste segmento">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={MERCADO_EXPORTACAO} layout="vertical" margin={{ top: 12, right: 10, bottom: 0, left: 0 }}>
+                <XAxis type="number" domain={[0, 100]} hide />
+                <YAxis type="category" dataKey="label" hide />
+                <Tooltip formatter={(value) => [`${value}%`, "Quota mundial"]} />
+                <Bar dataKey="value" radius={0} isAnimationActive={active} animationDuration={860}>
+                  <Cell fill="var(--porcelain)" />
+                  <Cell fill="var(--spal)" />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <p className="mt-1 text-right text-[28px] font-extrabold text-porcelain">cerca de 12%</p>
+          <p className="text-right text-[10px] text-porcelain">das exportações mundiais do segmento</p>
+        </Reveal>
+      </div>
+
+      <div className="absolute inset-x-14 bottom-6 flex justify-between gap-8 border-t border-navy/20 pt-3 text-[9px] text-navy">
+        <p>Fonte: Marktest, Barómetro de E commerce 2025, publicado em 2026.</p>
+        <p className="text-right">Fonte: AICEP e dados de comércio internacional, segmento HS 6912, 2025.</p>
+      </div>
+    </div>
+  );
+}
+
+export function Conclusao() {
+  return (
+    <div className="deck-on-blue relative flex h-full flex-col justify-center bg-navy px-20 py-16 text-porcelain">
+      <Reveal i={0}>
+        <p className="text-xs font-bold uppercase tracking-widest text-vaa">Conclusão</p>
+        <h3 className="mt-4 max-w-4xl font-[var(--font-display)] text-[48px] font-extrabold leading-[1.05] text-porcelain">
+          A oportunidade existe. A SPAL precisa de estar pronta para a aproveitar.
+        </h3>
+      </Reveal>
+
+      <Reveal i={1} className="mt-8 max-w-4xl border-l-4 border-vaa pl-7">
+        <p className="text-[20px] leading-relaxed text-porcelain">
+          Portugal já tem 5,8 milhões de compradores online e a cerâmica portuguesa ocupa uma
+          posição forte no mercado internacional. Há procura, há qualidade e há espaço para crescer.
+        </p>
+      </Reveal>
+
+      <Reveal i={2} className="mt-6 max-w-4xl">
+        <p className="text-[20px] leading-relaxed text-porcelain">
+          O desafio da SPAL não está no produto. Está em transformar essa força numa experiência
+          digital simples: um spal.pt que vende, redes com uma voz própria e indicadores que mostrem
+          o que funciona.
+        </p>
+      </Reveal>
+
+      <Reveal i={3} className="mt-10">
+        <p className="font-[var(--font-display)] text-[32px] font-bold text-vaa">
+          A porcelana já está pronta. Falta a casa digital.
+        </p>
+      </Reveal>
+
+      <p className="absolute bottom-7 left-20 text-[11px] text-porcelain">{FOOTER}</p>
+    </div>
+  );
+}
