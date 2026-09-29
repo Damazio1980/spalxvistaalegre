@@ -1287,10 +1287,9 @@ export function Bastidores() {
         ))}
       </div>
       <Reveal i={2} className="flex flex-col justify-center border-l-2 border-vaa p-8 text-navy">
-        <p className="text-xs font-bold uppercase tracking-widest text-vaa">Utilização de IA</p>
-        <p className="mt-4 text-[15px] leading-relaxed text-navy/85">
-          Claude apoiou a leitura das páginas públicas, cálculos, estrutura e redação; observações
-          verificadas e capturas próprias; interpretações e propostas da formanda.
+        <p className="text-[15px] leading-relaxed text-navy/85">
+          Apoio de IA (Claude) na leitura de páginas públicas e organização da informação.
+          Capturas, observações e interpretação da formanda.
         </p>
       </Reveal>
       <div className="absolute inset-x-14 bottom-7 border-t border-navy/15 pt-4 text-[11px] leading-relaxed text-navy/55">
