@@ -125,3 +125,4 @@
 - [x] Colocar Ampliar nos quatro mockups de Os Posts e mover o slide para depois de Anatomia da publicação.
 
 56. Renumerar as publicações de Instagram e Facebook de 1 a 3 por marca e rede, e atualizar a comparação qualitativa com referências explícitas ao número e à rede. — feito
+57. Remover o capítulo antigo «A resposta à pergunta» (`placar1`) e deixar «Redes» avançar diretamente para «Jornada de compra», com renumeração automática. — feito
