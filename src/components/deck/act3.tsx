@@ -929,11 +929,11 @@ export function NoAr() {
       <div>
         <div className="mb-8 h-px w-28 bg-vaa" />
         <Reveal i={0}>
-          <h2 className="deck-title text-[64px] leading-tight">E SE JÁ ESTIVESSE NO AR?</h2>
+          <h2 className="deck-title text-[64px] leading-tight">UM EXERCÍCIO, ANTES DOS NÚMEROS REAIS</h2>
         </Reveal>
         <Reveal i={1}>
           <p className="mt-6 max-w-3xl text-3xl leading-snug text-porcelain/75">
-            As jogadas estão feitas. Agora, os números decidem.
+            O enunciado dá uma campanha fictícia, a marca X, para praticar a leitura de CTR, conversão e ROAS. Os números reais da SPAL vêm a seguir.
           </p>
         </Reveal>
       </div>
@@ -1002,6 +1002,9 @@ export function MarcaX({ active }: ChapterProps) {
   return (
     <div className="grid h-full grid-cols-[1fr_1fr] gap-8 p-10 text-navy">
       <div className="flex min-h-0 flex-col gap-3">
+        <span className="self-start border border-vaa bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-vaa">
+          Marca fictícia X: exercício de cálculo do enunciado. Não são dados da SPAL nem da Vista Alegre.
+        </span>
         <Reveal i={0}>
           <h3 className="text-[30px] font-semibold leading-[1.1]">
             O Instagram atrai melhor. O Facebook converte o dobro.
