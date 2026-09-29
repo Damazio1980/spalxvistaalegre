@@ -34,7 +34,7 @@ const CHART_BACKDROPS: Record<string, Extract<Backdrop, "white">> = {
   "jogada-3": "white",
   marcax: "white",
   indicadores: "white",
-  final: "white",
+  mercado: "white",
   min0: "white",
   resumo: "white",
   "os-posts": "white",
@@ -55,6 +55,7 @@ const REQUESTED_BACKDROPS: Record<string, Extract<Backdrop, "navy" | "white">> =
   "simulacao-real": "navy",
   resposta: "white",
   bastidores: "white",
+  conclusao: "navy",
 };
 
 function fitScale(f: FrameDef, viewport: Viewport) {
