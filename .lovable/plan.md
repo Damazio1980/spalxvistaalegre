@@ -1,12 +1,10 @@
-# Vídeo Reels/Stories em «Os Posts»
+# Remover o capítulo antigo «A resposta à pergunta»
 
 ## Alteração
-- Substituir o conteúdo do primeiro telemóvel de «Os Posts» pelo vídeo vertical enviado.
-- Trocar a indicação «Imagem 1 de 3» por «Reels/Stories».
-- Simular uma publicação real da SPAL dentro do telemóvel: cabeçalho do perfil, vídeo, ícones de interação e legenda completa fornecida.
-- Manter os outros três telemóveis e os restantes slides inalterados.
+- Remover o capítulo `placar1` da sequência da apresentação.
+- Remover o respetivo conteúdo e todas as referências de apresentação associadas.
+- Manter «O que já vimos» e todos os restantes capítulos sem alterações.
+- Confirmar que «Redes» avança diretamente para «Jornada de compra» e que a numeração seguinte fica contínua.
 
-## Detalhes técnicos
-- Guardar o vídeo como asset servido pela aplicação, sem incorporar o ficheiro bruto no código.
-- Usar reprodução inline, silenciosa e em loop, preservando o enquadramento vertical.
-- Verificar o resultado no ecrã e confirmar que a apresentação continua sem erros.
+## Verificação
+- Confirmar a sequência no ecrã e validar que a apresentação continua sem erros.
