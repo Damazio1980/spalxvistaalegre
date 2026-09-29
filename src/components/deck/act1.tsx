@@ -128,6 +128,14 @@ export function IntroducaoWebsite() {
   return <SectionSlide title="WEBSITE" />;
 }
 
+export function IntroducaoMercado() {
+  return <SectionSlide title="MERCADO" />;
+}
+
+export function IntroducaoRedes() {
+  return <SectionSlide title="REDES SOCIAIS" roseAccent />;
+}
+
 export function Nomes({ active }: ChapterProps) {
   return (
     <div className="sample-company-slide flex h-full flex-col gap-5 px-14 pb-10 pt-14 text-navy">
@@ -1191,10 +1199,10 @@ function PostCard({ post, index }: { post: SocialPost; index: number }) {
 export function Redes({ active, subframe = 0 }: ChapterProps) {
   const instagramPosts = SOCIAL_POSTS.map((post, index) => ({ post, index })).filter(({ post }) => post.rede === "Instagram");
   const facebookPosts = SOCIAL_POSTS.map((post, index) => ({ post, index })).filter(({ post }) => post.rede === "Facebook");
-  const titles = ["Publicações de Instagram", "Publicações de Facebook", "Perfis e frequência", "Comparação qualitativa"];
-  if (subframe === 0 || subframe === 1) {
-    const entries = subframe === 0 ? instagramPosts : facebookPosts;
-    const network = subframe === 0 ? "Instagram" : "Facebook";
+  const titles = ["Perfis e frequência", "Publicações de Instagram", "Publicações de Facebook", "Comparação qualitativa"];
+  if (subframe === 1 || subframe === 2) {
+    const entries = subframe === 1 ? instagramPosts : facebookPosts;
+    const network = subframe === 1 ? "Instagram" : "Facebook";
     return (
        <div className="flex h-full flex-col px-8 pb-7 pt-6 text-navy">
          <div className="mb-3 flex items-end justify-between border-b border-navy/20 pb-2">
@@ -1209,11 +1217,11 @@ export function Redes({ active, subframe = 0 }: ChapterProps) {
       </div>
     );
   }
-  if (subframe === 2) {
+  if (subframe === 0) {
     return (
       <div className="flex h-full flex-col p-8 text-navy">
         <div className="mb-3">
-          <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[2]}</h3>
+          <h3 className="font-[var(--font-display)] text-[28px] font-extrabold">{titles[0]}</h3>
           <p className="text-[10px] text-navy/60">Referência da análise: 23/09/2026 · totais dos perfis por confirmar com capturas datadas</p>
         </div>
         <div className="grid h-[310px] grid-cols-2 grid-rows-2 gap-x-6 gap-y-3">
