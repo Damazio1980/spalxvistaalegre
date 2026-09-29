@@ -179,15 +179,6 @@ const seeds: Seed[] = [
     score: [0, 2],
   },
 
-  {
-    id: "placar1",
-    act: 1,
-    title: "A resposta à pergunta",
-    punchline: "Não é falta de produto. É uma decisão histórica de comunicar para o retalho.",
-    navy: true,
-    rot: -1,
-  },
-
   // ── Ato 2 · anel intermédio ─────────────────────────────────────────────
   {
     id: "jornada-compra",
