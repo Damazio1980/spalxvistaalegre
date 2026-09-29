@@ -288,6 +288,8 @@ function FrameBody({
         "nomes",
         "pergunta",
         "identificacao-canais",
+        "introducao-mercado",
+        "introducao-redes",
         "introducao-website",
          "empresa-escolhida",
         "jornada-compra",

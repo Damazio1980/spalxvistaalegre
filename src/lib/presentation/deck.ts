@@ -71,6 +71,19 @@ const seeds: Seed[] = [
     rot: -2.5,
   },
   {
+    id: "introducao-mercado",
+    act: 1,
+    parent: "nomes",
+    title: "Mercado",
+    rot: 0,
+  },
+  {
+    id: "mercado",
+    act: 1,
+    title: "O mercado está preparado",
+    rot: 1.5,
+  },
+  {
     id: "pergunta",
     act: 1,
     title: "A pergunta",
@@ -169,6 +182,13 @@ const seeds: Seed[] = [
     title: "As seis rondas de uma só vez",
     rot: -2,
     score: [0, 1],
+  },
+  {
+    id: "introducao-redes",
+    act: 1,
+    parent: "radar",
+    title: "Redes sociais",
+    rot: 0,
   },
   {
     id: "redes",
@@ -354,12 +374,6 @@ const seeds: Seed[] = [
     act: 3,
     title: "Bastidores",
     rot: -1.5,
-  },
-  {
-    id: "mercado",
-    act: 3,
-    title: "O mercado está preparado",
-    rot: 1.5,
   },
   {
     id: "conclusao",

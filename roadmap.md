@@ -37,9 +37,10 @@
 34. Ajustar Inês para fundo branco; percurso, compra e “Porque a SPAL” para azul; restaurar a linha temporal completa do calendário. — feito
 35. Usar apenas a fotografia integral na capa; reduzir a abertura a “Duas porcelanas portuguesas”; pôr os quadros de publicações Instagram e Facebook em fundo branco. — feito
 36. Inserir separadores “E SE JÁ ESTIVESSE NO AR?” antes de “O Instagram atrai melhor…” e “DA SIMULAÇÃO PARA O REAL” antes de “Três indicadores”, em azul com texto branco e detalhe rosa. — feito
+37. Inserir os separadores “MERCADO” e “REDES SOCIAIS”, mover “O mercado está preparado” para depois de Mercado e começar Redes sociais por “Perfis e frequência”. — feito
 
 
-37. Acrescentar o bloco "Se as metas fossem atingidas" (cenário hipotético, selo SIMULAÇÃO em tom neutro) ao capítulo dos Três Indicadores, mantendo os três cartões "a medir" intactos. — feito
+38. Acrescentar o bloco "Se as metas fossem atingidas" (cenário hipotético, selo SIMULAÇÃO em tom neutro) ao capítulo dos Três Indicadores, mantendo os três cartões "a medir" intactos. — feito
 
 ## 38 · Criativo "A SPAL tem casa nova" no slide A publicação
 - estado: feito
