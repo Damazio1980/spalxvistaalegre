@@ -296,9 +296,9 @@ const SEMANA = [
     objetivo: "Notoriedade",
     titulo: "A SPAL tem casa nova (teaser)",
     descricao: "Reel (20-30s) com bastidores do processo de design (SPAL Studio).",
-    cta: "Fica atento",
-    destino: "Sem link. É teaser; o site novo ainda não está no ar nesta ação.",
-    indicador: "alcance, visualizações, guardados",
+    cta: "Descobre o novo spal.pt",
+    destino: "Página inicial do site novo. Destino fictício, simulação académica.",
+    indicador: "alcance, visualizações, guardados, cliques no link (UTM)",
   },
   {
     dia: "Quarta",
@@ -320,7 +320,7 @@ const SEMANA = [
     titulo: "Primeira coleção já à venda",
     descricao:
       "Carrossel: coleção Electric Rain a ganhar ficha completa no site novo, com preço, botão de compra e medidas.",
-    cta: "Já podes comprar online",
+    cta: "Descobre Electric Rain no novo spal.pt",
     destino: "Ficha de produto Electric Rain no site novo. Destino fictício, simulação académica.",
     indicador: "sessões no site, primeiras encomendas",
   },
