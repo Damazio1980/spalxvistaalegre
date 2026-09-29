@@ -370,16 +370,16 @@ const seeds: Seed[] = [
     rot: 1,
   },
   {
-    id: "bastidores",
-    act: 3,
-    title: "Bastidores",
-    rot: -1.5,
-  },
-  {
     id: "conclusao",
     act: 3,
     title: "Conclusão",
     navy: true,
+    rot: -1.5,
+  },
+  {
+    id: "bastidores",
+    act: 3,
+    title: "Bastidores",
     rot: -1.5,
   },
 ];

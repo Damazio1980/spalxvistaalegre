@@ -48,8 +48,7 @@ export function InesPersona() {
             Quer oferecer uma peça à mãe. <em className="text-ines">Hoje.</em>
           </h3>
           <p className="mt-3 max-w-[560px] text-lg text-navy/70">
-            Tem 20 minutos, o telemóvel na mão e nenhuma paciência para menus. A partir de agora,
-            cada obstáculo que ela encontra é um número que já viste no Ato 1.
+            Tem 20 minutos, o telemóvel na mão e nenhuma paciência para menus.
           </p>
         </Reveal>
         <div className="flex flex-wrap gap-3">

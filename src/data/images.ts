@@ -220,7 +220,7 @@ export const POSTS: RefImage[] = [
     isPlaceholder: false,
   }),
   post("post-4", "Vista Alegre", "Facebook", vaaFbOutono.url, {
-    data: "23/09 (há 6h)", formato: "Vídeo", tema: "Lançamento coleção Outono", cta: "nenhum", reacoes: "[não visível na captura]",
+    data: "23/09 (há 6h)", formato: "Vídeo", tema: "Lançamento coleção Outono", cta: "nenhum", reacoes: "74 gostos, 1 comentário, 4 partilhas",
     isPlaceholder: false,
   }),
   post("post-5", "Vista Alegre", "Facebook", vaaFbHistory.url, {
@@ -228,7 +228,7 @@ export const POSTS: RefImage[] = [
     isPlaceholder: false,
   }),
   post("post-6", "Vista Alegre", "Facebook", vaaFbPatrimonio.url, {
-    data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "Jornadas Europeias do Património", cta: "Conheça aqui as atividades e programação", reacoes: "[não visível]",
+    data: "21/09 (há 2 dias)", formato: "Carrossel", tema: "Jornadas Europeias do Património", cta: "Conheça aqui as atividades e programação", reacoes: "13 gostos, 7 partilhas",
     isPlaceholder: false,
   }),
   post("post-7", "@spalporcelanasofficial", "Instagram", spalPost8.url, {

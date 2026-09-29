@@ -6,7 +6,6 @@ import {
 } from "@/lib/presentation/deck";
 import { CHAPTERS } from "./registry";
 import { LightboxProvider } from "./primitives";
-import { AudienceQuestion } from "./AudienceQuestion";
 import { cn } from "@/lib/utils";
 import porcelainNavigationBackground from "@/assets/porcelain-navigation-bg-new.png.asset.json";
 
@@ -245,7 +244,6 @@ export function Stage() {
 
         {/* presentation tools remain available without slide navigation chrome */}
         <div className="absolute bottom-4 right-4 z-30 flex items-center gap-2">
-          <AudienceQuestion />
           <button
             onClick={() =>
               document.fullscreenElement

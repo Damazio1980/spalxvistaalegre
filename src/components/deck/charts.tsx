@@ -352,18 +352,18 @@ export function PublicacoesPorPerfil({ active }: { active: boolean }) {
 
 export function ReacoesPorPublicacao({ active }: { active: boolean }) {
   const data = [
-    { m: "1", v: 130, label: "130", cor: VAA_C },
-    { m: "2 e 3", v: 155, label: "155", cor: VAA_C },
-    { m: "4", v: 1324, label: "1.324", cor: VAA_C },
-    { m: "5", v: 0, label: "n/d", cor: VAA_C },
-    { m: "6", v: 35, label: "35", cor: VAA_C },
-    { m: "7", v: 0, label: "n/d", cor: VAA_C },
-    { m: "8", v: 24, label: "24", cor: SPAL_C },
-    { m: "9", v: 17, label: "17", cor: SPAL_C },
-    { m: "10", v: 36, label: "36", cor: SPAL_C },
-    { m: "11", v: 5, label: "5", cor: SPAL_C },
-    { m: "12", v: 10, label: "10", cor: SPAL_C },
-    { m: "13", v: 18, label: "18", cor: SPAL_C },
+    { m: "VA IG1", v: 130, cor: VAA_C },
+    { m: "VA IG2", v: 155, cor: VAA_C },
+    { m: "VA IG3", v: 1324, cor: VAA_C },
+    { m: "VA FB1", v: 74, cor: VAA_C },
+    { m: "VA FB2", v: 35, cor: VAA_C },
+    { m: "VA FB3", v: 13, cor: VAA_C },
+    { m: "SP IG1", v: 24, cor: SPAL_C },
+    { m: "SP IG2", v: 17, cor: SPAL_C },
+    { m: "SP IG3", v: 36, cor: SPAL_C },
+    { m: "SP FB1", v: 5, cor: SPAL_C },
+    { m: "SP FB2", v: 10, cor: SPAL_C },
+    { m: "SP FB3", v: 18, cor: SPAL_C },
   ];
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -373,7 +373,7 @@ export function ReacoesPorPublicacao({ active }: { active: boolean }) {
         <YAxis allowDecimals={false} tick={{ fontSize: 8.5 }} width={40} />
         <Tooltip
           {...tip}
-          formatter={(v: number, _name, item) => item.payload.label === "n/d" ? "n/d" : `${v.toLocaleString("pt-PT")} reações`}
+          formatter={(v: number) => `${v.toLocaleString("pt-PT")} gostos`}
         />
         <Bar
           dataKey="v"
