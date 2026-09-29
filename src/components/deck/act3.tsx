@@ -503,7 +503,7 @@ export function OsPosts() {
               <span className="flex items-center justify-center gap-1.5">
                 <Instagram aria-hidden="true" className="h-3.5 w-3.5" /> Reels
                 <span aria-hidden="true">·</span>
-                <Facebook aria-hidden="true" className="h-3.5 w-3.5" /> Story
+                <Facebook aria-hidden="true" className="h-3.5 w-3.5" /> Stories
               </span>
             }
           >
@@ -619,7 +619,7 @@ export function OsPosts() {
             label={
               <span className="flex items-center justify-center gap-1.5">
                 <Instagram aria-hidden="true" className="h-3.5 w-3.5" />
-                <Facebook aria-hidden="true" className="h-3.5 w-3.5" /> Story
+                <Facebook aria-hidden="true" className="h-3.5 w-3.5" /> Stories
               </span>
             }
           >
