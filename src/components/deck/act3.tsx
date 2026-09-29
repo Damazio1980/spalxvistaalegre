@@ -1267,11 +1267,11 @@ export function Indicadores({ active }: ChapterProps) {
 export function Bastidores() {
   const fontes = [
     "spal.pt",
-    "LinkedIn SPAL",
-    "Instagram e Facebook das duas marcas",
-    "vistaalegre.com/pt e store locator",
-    "Resultados VAA · 1.º semestre 2026",
-    "Notícias do outlet de Alcobaça e da coleção Niemeyer",
+    "vistaalegre.com/pt",
+    "Instagram SPAL",
+    "Instagram Vista Alegre",
+    "Facebook SPAL",
+    "Facebook Vista Alegre",
   ];
   return (
     <div className="relative grid h-full grid-cols-2 gap-10 px-14 pb-24 pt-14">
@@ -1421,8 +1421,6 @@ export function Conclusao() {
           A porcelana já está pronta. Falta a casa digital.
         </p>
       </Reveal>
-
-      <p className="absolute bottom-7 left-20 text-[11px] text-porcelain">{FOOTER}</p>
     </div>
   );
 }
