@@ -129,3 +129,4 @@
 57. Remover o capítulo antigo «A resposta à pergunta» (`placar1`) e deixar «Redes» avançar diretamente para «Jornada de compra», com renumeração automática. — feito
 58. Retirar o ícone «Pergunta da audiência»; atualizar as reações dos Posts 1 e 3 do Facebook da Vista Alegre; retirar a frase indicada de «Conheça a Inês»; limpar as fontes de «Bastidores», movê-lo para o fim; e retirar o rodapé da conclusão. — feito
 59. Alinhar os cartões de segunda e sexta de «Uma semana de SPAL» com os textos dos posts, incluindo destino e indicador de cliques na segunda-feira; preservar quarta e domingo. — feito
+60. Exportar a apresentação completa em PDF para entrega. — feito
